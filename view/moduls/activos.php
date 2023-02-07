@@ -6,14 +6,15 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class="contenedor">
+<div class="container pt-4" style="margin-top: 80px;">
     <div class="container mt-3">
-        <h2>Control de Activos</h2>
+        <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Activos</h2>
 
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddActivo">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddActivo" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
             Agregar Activos
         </button>
-        <div class="table-responsive">
+        <div class="box-body">
+        <div class="table-responsive roboto">
         <table id="tabla" class="table"  data-sort="table">
                 <thead>
                     <tr>
@@ -68,6 +69,7 @@
                 </tbody>
 
             </table>
+        </div>
         </div>
     </div>
 

@@ -16,20 +16,17 @@ font-size:20px;
 }
 
 
-.main-menu:hover,nav.main-menu.expanded{
-  width:250px;
-  overflow:visible;
- /*contenedor 
-  margin: 55px 0px 20px 250px;*/
+.main-menu:hover,nav.main-menu.expanded {
+width:250px;
+overflow:visible;
 }
-
 
 .main-menu {
 background:#212121;
 border-right:1px solid #1E4E78;
 position: fixed;
-top: 51px;
-bottom:0;
+top: 78px;
+bottom:60px;
 height:100%;
 left:0;
 width:60px;

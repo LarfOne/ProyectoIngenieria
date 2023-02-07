@@ -2,8 +2,8 @@
 <link href="https://fonts.googleapis.com/css?family=Fredoka+One|Pacifico|Vibur" rel="stylesheet">
 
 <nav class="main-menu">
-    
-    <ul>
+
+    <ul class="">
 
         <?php
 
@@ -138,7 +138,6 @@
     ?>
     
 
-    <ul class="logout" style="margin-bottom: 50px">
         <?php
         if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") {
             echo '<li>
@@ -152,6 +151,6 @@
         }
         ?>
 
-    </ul>
+    
 
 </nav>

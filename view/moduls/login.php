@@ -6,7 +6,6 @@
 	<link rel="stylesheet" type="text/css" href="css/login.css">
 </head>
 <body img src="imagen/login.jpg">
-	
  <div class="container">
   
  	<div class="header">
@@ -14,7 +13,7 @@
     <img src="imagen/ratonAzul2.png"
         class="img-responsive" style="padding:0px 100px 0px 110px">
   </div>
- 		<h3>Ingrese al Sistema</h3y>
+ 		<h3 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Ingrese al Sistema</h3y>
  	</div>
  	<div class="main">
 
@@ -30,7 +29,7 @@
       
       <div class="row">
         
-        <button>Ingresar</button>
+        <button style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Ingresar</button>
         
       </div>
 

@@ -5,17 +5,18 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class= "contenedor">
+<div class= "container pt-4" style="margin-top: 80px;">
 
 <div class="container mt-3">
-  <h2>Control de Categorias</h2>
+  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Categorias</h2>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddCategories">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddCategories">
         Agregar Categoría
     </button>
-  <div class="table-responsive">
-    <table class="table" id="tabla" data-sort="table">
-      <thead>
+  <div class="box-body">
+  <div class="table-responsive roboto">
+  <table class="table" id="tabla" data-sort="table">
+    <thead>
                 <tr>
                     <th>Codigo</th>
                     <th>Nombre</th>
@@ -44,7 +45,7 @@
 
           <div class="btn-group">
               <button style="margin: 5px" class="btn btn-warning btnUpdate btnUpdateCategories" idCategories = <?php echo $categories1['codigo']; ?>
-              data-toggle="modal" data-target="#modalUpdateCategories"><i class="fa fa-pencil"></i></button>
+              data-bs-toggle="modal" data-bs-target="#modalUpdateCategories"><i class="fa fa-pencil"></i></button>
               
               <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteCategories" codigoM = <?php echo $categories1['codigo']; ?>
               ><i class="fa fa-times"></i></button>
@@ -61,6 +62,7 @@
     </tbody>
 
     </table>
+    </div>
   </div>
 </div>
 

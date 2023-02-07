@@ -8,17 +8,18 @@
 
 <link rel="stylesheet" href="css/boton.css">
 
-<div class= "contenedor">
+<div class= "container pt-4" style="margin-top: 80px;">
 
 <div class="container mt-3">
-  <h2>Control de Inventario</h2>
+  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Inventario</h2>
 
     <!--<button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-toggle="modal" data-target="#modalAddUser">
         Agregar Usuario
     </button>-->
 
     <input style="margin-left: 65%;" type="text" id="buscar" onkeyup="buscar()" placeholder="Buscar en tabla" title="Empieza a escribir para buscar">
-  <div class=table-responsive>
+  <div class="box-body">
+  <div class="table-responsive roboto">
   <table class="table" id="tabla" data-sort="table">
     <thead>
                 <tr>
@@ -76,6 +77,7 @@
     </tbody>
 
     </table>
+  </div>
   </div>
 </div>
 

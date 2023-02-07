@@ -5,15 +5,16 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class= "contenedor">
+<div class= "container pt-4" style="margin-top: 80px;">
 
 <div class="container mt-3">
-  <h2>Control de Cliente</h2>
+  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Clientes</h2>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddClient">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddClient" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Cliente
     </button>
-  <div class="table-responsive">
+  <div class="box-body">
+  <div class="table-responsive roboto">
   <table class="table" id="tabla" data-sort="table">
     <thead>
                 <tr>
@@ -68,6 +69,7 @@
     </tbody>
 
     </table>
+  </div>
   </div>
 </div>
 

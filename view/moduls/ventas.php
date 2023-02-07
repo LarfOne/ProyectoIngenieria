@@ -6,7 +6,7 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 
-<div class= "contenedor">
+<div class= "container pt-4" style="margin-top: 80px">
 <div class="content-wrapper" style="padding: 15px !important;">
 <div class="content-wrapper">
 
@@ -15,14 +15,14 @@
   </section>
 
   <section class="content">
-    <h2>Facturas</h2>
+    <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Facturas</h2>
     <div class="box">
 
       <div class="box-header with-border">
   
         <a href="createVenta">
 
-          <button class="btn btn-primary navbar-right" style="margin: 7px;margin-bottom: 20px; ">
+          <button class="btn btn-primary navbar-right" style="margin: 7px;margin-bottom: 20px; " style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
             
             Agregar venta
 
@@ -38,6 +38,7 @@
       </div>
 
       <div class="box-body">
+      <div class="table-responsive roboto">
         
        <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
          
@@ -46,7 +47,7 @@
          <tr>
            
              
-         <th style="width:10px">#</th>
+         <th style="width:10px" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">#</th>
            <th>Código factura</th>
            <th>Cliente</th>
            <th>Sucursal</th>
@@ -153,6 +154,7 @@
         </tbody>
 
        </table>
+          </div>
 
        <?php
 

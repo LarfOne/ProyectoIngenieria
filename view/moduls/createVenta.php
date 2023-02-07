@@ -13,7 +13,7 @@
 
   <section class="content-header">
     
-    <h1>
+    <h1 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
       
       Crear venta
     

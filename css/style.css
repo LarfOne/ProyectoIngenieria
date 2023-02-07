@@ -1,19 +1,13 @@
-.principal{
-    margin: 0px;
-    padding: 0px;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+
+/* *{
+    font-family: 'Roboto Condensed', sans-serif !important
+
+} */
 
 .contenedor {
-    margin: 55px 0px 20px 61px;
-    /*margin: 55px 0px 20px 250px;*/
-}
+    margin: 51px 0px 20px 61px;
 
-.contenedor.active{
-    margin: 55px 0px 20px 250px;
-}
-
-.container mt-3{
-    display: inline-block;
 }
 
 .footer {
@@ -28,4 +22,43 @@
     padding: 10px 0px;
     text-align: center;
     grid-area: footer;
+}
+
+input::file-selector-button {
+    border: thin solid grey;
+    border-radius: 50px;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+.button-save {
+    margin-right: 50px;
+    height: 80px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #40B419;
+    font-size: larger;
+    border: none;
+    color: white;
+}
+
+.button-cancel {
+    margin-right: 50px;
+    height: 80px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #FF0038;
+    font-size: larger;
+    border: none;
+    color: white;
+}
+.roboto{
+    font-family: 'Roboto Condensed', sans-serif !important;
+    font-weight: 400 !important;
 }

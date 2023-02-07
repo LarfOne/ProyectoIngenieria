@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
-<div class="contenedor">
+<div class="container pt-4" style="margin-top: 80px;">
 
 
     <!-------------------------------Saludoi ---->
@@ -9,7 +9,46 @@
                 <span class="hidden-xs"><?php echo $_SESSION["apellidos"]; ?></span></span></p>
         <span class="progress"></span>
     </div>
-    <div class="container">
+
+    <div class="container  w-100">
+        <div class="row w-100">
+            <div class="col cards">
+                <span>
+                    <i class="fa fa-user"></i>
+                </span>
+                <div>
+
+                </div>
+            </div>
+            <div class="col cards">
+                <span>
+                    <i class="fa fa-id-card" aria-hidden="true"></i>
+                </span>
+                <div>
+
+                </div>
+            </div>
+            <div class="col cards">
+                <span>
+                    <i class="fa fa-cubes" aria-hidden="true"></i>
+                </span>
+                <div>
+
+                </div>
+            </div>
+            <div class="col cards">
+                <span>
+                    <i class="fa fa-bolt" aria-hidden="true"></i>
+                </span>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="container">
         <div>
             <div class="container ml-4">
                 <div class="col-md-6">
@@ -28,7 +67,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- <div class="reloj">
                 <span id="tiempo">00 : 00 : 00</span>
             </div> -->
@@ -38,12 +77,12 @@
     var chart = new Chart(coso, {
         type: "line",
         data: {
-            labels: ["", "", "", "","","","","",""],
+            labels: ["", "", "", "", "", "", "", "", ""],
             datasets: [{
                 label: "Reporte de Visitas",
                 backgroundColor: "rgb(133,12,12,0.2)",
                 borderColor: "rgb(230,23,40)",
-                data: [7,4,12,8,4,15,34,12,2],
+                data: [7, 4, 12, 8, 4, 15, 34, 12, 2],
                 fill: true,
                 pointBackgroundColor: "rgb(0,0,0)",
             }]
@@ -65,7 +104,7 @@
             labels: ["", "", "", ""],
             datasets: [{
                 label: "Ventas Mensuales",
-                backgroundColor: ["rgb(87,135,255)","rgb(246,185,36)","rgb(226,60,97)","rgb(130,59,206)"],
+                backgroundColor: ["rgb(87,135,255)", "rgb(246,185,36)", "rgb(226,60,97)", "rgb(130,59,206)"],
                 borderColor: "rgb(0,0,0)",
                 data: [10, 3, 8, 10]
             }]
@@ -86,7 +125,7 @@
             labels: ["Productos destacados", "Productos menos vendidos", "Productos estancados", "Productos más vendidos"], //el texto de los campos del grafico
             datasets: [{
                 backgroundColor: ["rgb(87,135,255,0.8)", "rgb(246,185,36, 0.8)", "rgb(226,60,97, 0.8)", "rgb(19,197,133, 0.8)"], //el color del apartado del grafico (orden segun los labels)
-                borderColor: ["rgb(10,63,107)","rgb(246,185,36)","rgb(226,60,97)" ,"rgb(37,133,27)"], //el color del borde del apartado
+                borderColor: ["rgb(10,63,107)", "rgb(246,185,36)", "rgb(226,60,97)", "rgb(37,133,27)"], //el color del borde del apartado
                 data: [10, 3, 8, 10]
             }],
         },
@@ -101,35 +140,35 @@
         type: "radar",
         data: {
             labels: [
-    'Computadoras',
-    'Laptops',
-    'Monitores',
-    'Teclados',
-    'Mouses',
-    'Cables',
-    'Routers'
-  ],
-  datasets: [{
-    label: '',
-    data: [65, 59, 70, 81, 56, 55, 40],
-    fill: true,
-    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-    borderColor: 'rgb(255, 99, 132)',
-    pointBackgroundColor: 'rgb(255, 99, 132)',
-    pointBorderColor: '#fff',
-    pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgb(255, 99, 132)'
-  }, {
-    label: '',
-    data: [28, 90, 40, 50, 96, 27, 100],
-    fill: true,
-    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-    borderColor: 'rgb(54, 162, 235)',
-    pointBackgroundColor: 'rgb(54, 162, 235)',
-    pointBorderColor: '#fff',
-    pointHoverBackgroundColor: '#fff',
-    pointHoverBorderColor: 'rgb(54, 162, 235)'
-  }]
+                'Computadoras',
+                'Laptops',
+                'Monitores',
+                'Teclados',
+                'Mouses',
+                'Cables',
+                'Routers'
+            ],
+            datasets: [{
+                label: '',
+                data: [65, 59, 70, 81, 56, 55, 40],
+                fill: true,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                pointBackgroundColor: 'rgb(255, 99, 132)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(255, 99, 132)'
+            }, {
+                label: '',
+                data: [28, 90, 40, 50, 96, 27, 100],
+                fill: true,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgb(54, 162, 235)',
+                pointBackgroundColor: 'rgb(54, 162, 235)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgb(54, 162, 235)'
+            }]
         },
         options: {
             maintainAspectRatio: false

@@ -5,15 +5,15 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class= "contenedor">
+<div class= "container pt-4" style="margin-top: 80px;">
 
 <div class="container mt-3">
-  <h2>Control de Sucursal</h2>
+  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Sucursal</h2>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddSucursal">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddSucursal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Sucursal
     </button>
-
+    <div class="table-responsive roboto">
   <table class="table" id="tabla" data-sort="table">
     <thead>
                 <tr>
@@ -49,7 +49,7 @@
 
                 <div class="btn-group">
                     <button style="margin: 5px" class="btn btn-warning btnUpdate btnUpdateSucursal" idSucursal = <?php echo $sucursal1['codigo']; ?>
-                    data-toggle="modal" data-target="#modalUpdateSucursal"><i class="fa fa-pencil"></i></button>
+                    data-bs-toggle="modal" data-bs-target="#modalUpdateSucursal"><i class="fa fa-pencil"></i></button>
                     
                     <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteSucursal" codigoM = <?php echo $sucursal1['codigo']; ?>
                     ><i class="fa fa-times"></i></button>
@@ -65,6 +65,7 @@
         </tbody>
 
     </table>
+    <div/>
   </div>
 </div>
 
@@ -82,7 +83,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Agregar Sucursal</h4>
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Sucursal</h4>
         </div>
 
     </br>
@@ -182,7 +183,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Editar Sucursal</h4>
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Sucursal</h4>
         </div>
 
 

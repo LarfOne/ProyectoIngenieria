@@ -1,24 +1,22 @@
 <link rel="stylesheet" href="css/boton.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">  
+<link rel="stylesheet" href="css/style.css">  
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class= "contenedor">
+<div class= "container pt-4" style="margin-top: 80px;">
 
 <div class="container mt-3">
-  <h2>Control de Usuario</h2>
+  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
 
-    <button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-toggle="modal" data-target="#modalAddUser">
-        Agregar Usuario
-    </button>
 
    
     
-    <div class="table-responsive">
+    <div class="table-responsive roboto">
       <table class="table" id="tabla" data-sort="table">
-      <thead>
+    <thead>
                 <tr>
                     <th>Cedula</th>
                     <th>Nombre</th>
@@ -60,7 +58,7 @@
 
           <div class="btn-group">
               <button  class="btn btn-warning btnUpdate btnUpdateUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
-              data-toggle="modal" data-target="#modalUpdateUser"><i class="fa fa-pencil"></i></button>
+              data-bs-toggle="modal" data-bs-target="#modalUpdateUser"><i class="fa fa-pencil"></i></button>
               
               <button  class="btn btn-danger btnDelete btnDeleteUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
               ><i class="fa fa-times"></i></button>
@@ -79,6 +77,9 @@
     </table>
   </div>
 </div>
+<button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
+        Agregar Usuario
+    </button>
 
 </div>
 
@@ -94,7 +95,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Agregar Usuario</h4>
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Usuario</h4>
         </div>
 
         <div class="modal-body">
@@ -232,8 +233,8 @@
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Salir</button>
+          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Guardar</button>
         </div>
 
             <?php

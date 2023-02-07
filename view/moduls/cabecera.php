@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top " style="background-color: rgb(30,78,120)">
+<nav class="navbar navbar-inverse fixed-top" style="background-color: rgb(30,78,120)">
   <div class="container-fluid" >
     <div class="navbar-header">
      

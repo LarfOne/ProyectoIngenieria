@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    }
+
+    .headder{
+     background-color: rgb(17, 79, 133);
+     position: fixed;
+     width:100%;
+     margin-top: 0px;
+     
+    }
+
+    .avatar {
+        vertical-align: middle;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+
+    .headder h1{
+     display: inline-block;
+     margin-left: 5px;
+     padding: 2px;
+     font-family: Arial, Helvetica, sans-serif;
+     color:white;
+    
+    }
+
+    .headder ul{
+    display: inline-block;
+    float: right;
+    }
+    
+    .headder ul li{
+    display: inline-block;
+    float: left;
+    list-style-type: none;
+    height: 36px;
+    color:white;
+    padding:15px ;
+    padding-top: 25px;
+    
+    
+    }
+
+    .headder ul li:hover{
+    background-color: rgb(54,127,169);
+
+    }
+
+    .headder ul a{
+    text-decoration-style: none;
+    
+    
+    }
+    

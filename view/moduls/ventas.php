@@ -6,7 +6,7 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 
-<div class= "container pt-4" style="margin-top: 80px">
+<div id= "container pt-4" style="margin-top: 80px">
 <div class="content-wrapper" style="padding: 15px !important;">
 <div class="content-wrapper">
 

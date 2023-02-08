@@ -6,17 +6,19 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class= "container pt-4" style="margin-top: 80px;">
+<div id= "container pt-4" style="margin-top: 80px;">
 
 <div class="container mt-3">
   <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
 
 
-   
+   <button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
+        Agregar Usuario
+    </button>
     
     <div class="table-responsive roboto">
       <table class="table" id="tabla" data-sort="table">
-    <thead>
+              <thead>
                 <tr>
                     <th>Cedula</th>
                     <th>Nombre</th>
@@ -30,7 +32,7 @@
                     <th>Acciones</th>
                     
                 </tr>
-                </thead>
+              </thead>
 
                 <tbody>
 
@@ -77,9 +79,7 @@
     </table>
   </div>
 </div>
-<button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
-        Agregar Usuario
-    </button>
+
 
 </div>
 

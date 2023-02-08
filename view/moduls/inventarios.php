@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="css/boton.css">
 
-<div class= "container pt-4" style="margin-top: 80px;">
+<div id= "container pt-4" style="margin-top: 80px;">
 
 <div class="container mt-3">
   <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Inventario</h2>

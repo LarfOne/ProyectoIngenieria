@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
-<div class="container pt-4" style="margin-top: 80px;">
+<div id="container pt-4" style="margin-top: 80px;">
 
 
     <!-------------------------------Saludoi ---->

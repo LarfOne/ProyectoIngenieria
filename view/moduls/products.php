@@ -2,7 +2,7 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<div class="container pt-4" style="margin-top:80px;">
+<div id="container pt-4" style="margin-top:80px;">
       <h1 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
       <form class="container roboto" action="POST" role="form">
             <div class="row align-items-center">

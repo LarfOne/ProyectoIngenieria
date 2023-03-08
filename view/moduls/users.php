@@ -10,15 +10,14 @@
 
 <div class="container mt-3">
   <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
-
-
-   <button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
+  <div>
+    <button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Usuario
     </button>
     
     <div class="table-responsive roboto">
       <table class="table" id="tabla" data-sort="table">
-              <thead>
+    <thead>
                 <tr>
                     <th>Cedula</th>
                     <th>Nombre</th>
@@ -32,7 +31,7 @@
                     <th>Acciones</th>
                     
                 </tr>
-              </thead>
+                </thead>
 
                 <tbody>
 
@@ -63,7 +62,7 @@
               data-bs-toggle="modal" data-bs-target="#modalUpdateUser"><i class="fa fa-pencil"></i></button>
               
               <button  class="btn btn-danger btnDelete btnDeleteUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
-              ><i class="fa fa-times"></i></button>
+              ><i class="fa fa-times background-color: #FF0038;"></i></button>
           </div>
 
         </td>

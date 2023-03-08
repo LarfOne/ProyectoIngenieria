@@ -1,177 +1,88 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
-<div id="container pt-4" style="margin-top: 100px;">
+<div id="container pt-4" style="margin-top:100px;">
 
+    <div id="container mt-3">
 
-    <!-------------------------------Saludoi ---->
-    <div class="notification">
-        <p> Bienvenido, <span class="hidden-xs"><?php echo $_SESSION["nombre"]; ?>
-                <span class="hidden-xs"><?php echo $_SESSION["apellidos"]; ?></span></span></p>
-        <span class="progress"></span>
-    </div>
+        <!-------------------------------Saludo ---->
+        <!----- <div class="notification">
+            <p> Bienvenido, <span class="hidden-xs"><?php echo $_SESSION["nombre"]; ?>
+                    <span class="hidden-xs"><?php echo $_SESSION["apellidos"]; ?></span></span></p>
+            <span class="progress"></span>
+        </div>---->
 
-    <div class="container  w-100">
-        <div class="row w-100">
-            <div class="col cards">
-                <span>
-                    <i class="fa fa-user"></i>
-                </span>
-                <div>
+        <div class="" style="margin-left:80px">
+            <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Bienvenido a StockLamp.</h2>
+            <h4 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Sistema de inventario.</h4>
 
+            <div class="cardCont cards-4">
+                <div class="card card-user">
+                    <img src="imagen/user.png" class="card-img">
+                    <a href="users"  class="btn-perso btn-user">Usuarios</a>
+                </div>
+                <div class="card card-inventory">
+                    <img src="imagen/inventario.png" class="card-img">
+                    <a href="inventarios" class="btn-perso btn-inventory">Inventario</a>
+                </div>
+                <div class="card card-clients">
+                    <img src="imagen/clientes.png" class="card-img">
+                    <a href="clients" class="btn-perso btn-clients">Clientes</a>
+                </div>
+                <div class="card card-sells">
+                    <img src="imagen/ventas.png" class="card-img">
+                    <a href="ventas" class="btn-perso btn-sells">Ventas</a>
                 </div>
             </div>
-            <div class="col cards">
-                <span>
-                    <i class="fa fa-id-card" aria-hidden="true"></i>
-                </span>
-                <div>
 
-                </div>
-            </div>
-            <div class="col cards">
-                <span>
-                    <i class="fa fa-cubes" aria-hidden="true"></i>
-                </span>
-                <div>
-
-                </div>
-            </div>
-            <div class="col cards">
-                <span>
-                    <i class="fa fa-bolt" aria-hidden="true"></i>
-                </span>
-                <div>
-
-                </div>
-            </div>
+        
         </div>
+
+
+            <div class = "container row justify-content-rigth", style = "width: 50em 0; margin: 2.25rem;">
+                <div class="row justify-content-centejkkkkr">
+
+                    <!-- Column 1.x -->
+                    <div class="col-sm">
+
+                        <!-- Column 1.1 -->
+                        <div class="container", style = "width: 50em 0;">
+                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
+                            <h2 class="text-center">Manuel Manolo</h2>
+                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi provident autem, facere itaque incidunt voluptatum enim totam eveniet non ratione odit cum nostrum quas minima, illo quasi veritatis fugit maiores?</p>
+                        </div>
+                        <br/>
+
+                        <!-- Column 1.2 -->
+                        <div class="container", style = "width: 50em 0;">
+                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
+                            <h2 class = "text-center">Samanta Bucamarit</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius sapiente error labore facere exercitationem voluptatibus laboriosam, ad nam, rerum dignissimos amet voluptates, quos nisi iste fuga accusamus libero? Neque, laborum.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Column 2.x -->
+                    <div class="col-sm center">
+
+                        <!-- Column 2.1 -->
+                        <div class="container cener", style = "width: 50em 0;">
+                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
+                            <h2 class="text-center">Pepito de los Palotes</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic fugit nostrum eius perspiciatis tempora temporibus eveniet doloribus itaque delectus, culpa necessitatibus, facilis, voluptates molestias! Placeat quidem optio cum numquam.</p>
+                        </div>
+                        <br/>
+
+                        <!-- Column 2.2 -->
+                        <div class="container", style = "width: 50em 0;">
+                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
+                            <h2 class="text-center">Benganito Florencia</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta saepe laboriosam ad molestiae, dignissimos id facere qui tempore sed, ratione et deleniti ipsum velit quisquam reiciendis a minima officia eligendi.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
     </div>
-
-
-    <!-- <div class="container">
-        <div>
-            <div class="container ml-4">
-                <div class="col-md-6">
-                    <canvas id="graphtest3" width="5" height="400"></canvas>
-                </div>
-                <div class="col-md-6">
-                    <canvas id="graphtest4" width="5" height="400"></canvas>
-                </div>
-            </div>
-            <div class="container mt-4">
-                <div class="col-md-6">
-                    <canvas id="graphtest1" width="5" height="400"></canvas>
-                </div>
-                <div class="col-md-6">
-                    <canvas id="graphtest2" width="5" height="400"></canvas>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="reloj">
-                <span id="tiempo">00 : 00 : 00</span>
-            </div> -->
 </div>
-<script type="text/javascript">
-    let coso = document.getElementById("graphtest1").getContext("2d");
-    var chart = new Chart(coso, {
-        type: "line",
-        data: {
-            labels: ["", "", "", "", "", "", "", "", ""],
-            datasets: [{
-                label: "Reporte de Visitas",
-                backgroundColor: "rgb(133,12,12,0.2)",
-                borderColor: "rgb(230,23,40)",
-                data: [7, 4, 12, 8, 4, 15, 34, 12, 2],
-                fill: true,
-                pointBackgroundColor: "rgb(0,0,0)",
-            }]
-        },
-        options: {
-            //responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    })
-    let coso2 = document.getElementById("graphtest2").getContext("2d");
-    var chart = new Chart(coso2, {
-        type: "bar",
-        data: {
-            labels: ["", "", "", ""],
-            datasets: [{
-                label: "Ventas Mensuales",
-                backgroundColor: ["rgb(87,135,255)", "rgb(246,185,36)", "rgb(226,60,97)", "rgb(130,59,206)"],
-                borderColor: "rgb(0,0,0)",
-                data: [10, 3, 8, 10]
-            }]
-        },
-        options: {
-            maintainAspectRatio: false,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    })
-    let coso3 = document.getElementById("graphtest3").getContext("2d");
-    var chart = new Chart(coso3, {
-        type: "doughnut",
-        data: {
-            labels: ["Productos destacados", "Productos menos vendidos", "Productos estancados", "Productos más vendidos"], //el texto de los campos del grafico
-            datasets: [{
-                backgroundColor: ["rgb(87,135,255,0.8)", "rgb(246,185,36, 0.8)", "rgb(226,60,97, 0.8)", "rgb(19,197,133, 0.8)"], //el color del apartado del grafico (orden segun los labels)
-                borderColor: ["rgb(10,63,107)", "rgb(246,185,36)", "rgb(226,60,97)", "rgb(37,133,27)"], //el color del borde del apartado
-                data: [10, 3, 8, 10]
-            }],
-        },
-        options: {
-            //responsive: true,
-            maintainAspectRatio: false
-        }
-
-    })
-    let coso4 = document.getElementById("graphtest4").getContext("2d");
-    var chart = new Chart(coso4, {
-        type: "radar",
-        data: {
-            labels: [
-                'Computadoras',
-                'Laptops',
-                'Monitores',
-                'Teclados',
-                'Mouses',
-                'Cables',
-                'Routers'
-            ],
-            datasets: [{
-                label: '',
-                data: [65, 59, 70, 81, 56, 55, 40],
-                fill: true,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
-                pointBackgroundColor: 'rgb(255, 99, 132)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(255, 99, 132)'
-            }, {
-                label: '',
-                data: [28, 90, 40, 50, 96, 27, 100],
-                fill: true,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgb(54, 162, 235)',
-                pointBackgroundColor: 'rgb(54, 162, 235)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgb(54, 162, 235)'
-            }]
-        },
-        options: {
-            maintainAspectRatio: false
-        }
-    })
-</script>

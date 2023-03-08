@@ -7,67 +7,67 @@
 
 <div id= "container pt-4" style="margin-top: 100px;">
 
-<div class="container mt-3">
-  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Sucursal</h2>
+  <div class="container mt-3">
+      <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Sucursal</h2>
+      
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddSucursal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
+            Agregar Sucursal
+        </button>
+        <div class="table-responsive roboto">
+          <table class="table" id="tabla" data-sort="table">
+            <thead>
+                  <tr>
+                      <th>Codigo</th>
+                      <th>Nombre</th>
+                      <th>Direccion</th>
+                      <th>Telefono</th>
+                      <th>Email</th>
+                      <th>Acciones</th>
+                      
+                  </tr>
+                  </thead>
 
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddSucursal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
-        Agregar Sucursal
-    </button>
-    <div class="table-responsive roboto">
-  <table class="table" id="tabla" data-sort="table">
-    <thead>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th>Telefono</th>
-                    <th>Email</th>
-                    <th>Acciones</th>
-                    
-                </tr>
-                </thead>
+          <tbody>
 
-        <tbody>
+                  <?php
+                  $item = null;
+                  $valor = null;
+                  
+                  $sucursal = ControllerSucursal::ctrShowSucursal($item, $valor);
+            
 
-                <?php
-                $item = null;
-                $valor = null;
-                
-                $sucursal = ControllerSucursal::ctrShowSucursal($item, $valor);
-          
+            foreach($sucursal as $key => $sucursal1) { ?>
+            <tr>
 
-          foreach($sucursal as $key => $sucursal1) { ?>
-          <tr>
+                <td><?php echo $sucursal1['codigo']; ?></td>
+                <td><?php echo $sucursal1['nombre']; ?></td>
+                <td><?php echo $sucursal1['direccion']; ?></td>
+                <td><?php echo $sucursal1['telefono']; ?></td>
+                <td><?php echo $sucursal1['email']; ?></td>
 
-              <td><?php echo $sucursal1['codigo']; ?></td>
-              <td><?php echo $sucursal1['nombre']; ?></td>
-              <td><?php echo $sucursal1['direccion']; ?></td>
-              <td><?php echo $sucursal1['telefono']; ?></td>
-              <td><?php echo $sucursal1['email']; ?></td>
+                <td>
 
-              <td>
+                  <div class="btn-group">
+                      <button style="margin: 5px" class="btn btn-warning btnUpdate btnUpdateSucursal" idSucursal = <?php echo $sucursal1['codigo']; ?>
+                      data-bs-toggle="modal" data-bs-target="#modalUpdateSucursal"><i class="fa fa-pencil"></i></button>
+                      
+                      <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteSucursal" codigoM = <?php echo $sucursal1['codigo']; ?>
+                      ><i class="fa fa-times"></i></button>
+                  </div>
 
-                <div class="btn-group">
-                    <button style="margin: 5px" class="btn btn-warning btnUpdate btnUpdateSucursal" idSucursal = <?php echo $sucursal1['codigo']; ?>
-                    data-bs-toggle="modal" data-bs-target="#modalUpdateSucursal"><i class="fa fa-pencil"></i></button>
-                    
-                    <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteSucursal" codigoM = <?php echo $sucursal1['codigo']; ?>
-                    ><i class="fa fa-times"></i></button>
-                </div>
-
-              </td>
+                </td>
 
 
-          </tr>
+            </tr>
 
-          <?php } ?>
+            <?php } ?>
 
-        </tbody>
+          </tbody>
 
-    </table>
-    <div/>
+          </table>
+        <div/>
+    </div>
   </div>
-</div>
 
 </div>
 

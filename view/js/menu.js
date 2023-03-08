@@ -6,7 +6,7 @@ mouses.addEventListener('mouseover', function(){
 })
 mouses.addEventListener('mouseout', function(){   
     var intro = document.getElementById('container pt-4');
-    intro.style.marginLeft = '61px';
+    intro.style.marginLeft = '0px';
 })
 
 /*

@@ -51,8 +51,7 @@ class Categories{
 
         $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
-       
-  
+
 
 
 
@@ -81,13 +80,12 @@ class Categories{
     static public function mdlUpdate($table, $datas){
 
         $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET nombre = :nombre
-                                                         WHERE codigo = :codigo");
+                                            WHERE codigo = :codigo");
         
         
         $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
-       
-      
+
 
         if($sentenciaSQL->execute()){
             

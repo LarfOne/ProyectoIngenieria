@@ -6,7 +6,7 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div id="container pt-4" style="margin-top: 100px;">
+<div id="container pt-4" style="margin-top: 100px; ">
     <div class="container mt-3">
         <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Activos</h2>
 
@@ -55,7 +55,7 @@
                                      data-toggle="modal fade" data-target="#modalUpdateActivo"><i class="fa fa-pencil"></i></button>
 
                                     <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteActivo" codigo=<?php echo $activo['codigo']; ?>>
-                                    <i class="fa fa-times"></i></button>
+                                    <i class="fa fa-times background-color: #FF0038;"></i></button>
                                 </div>
 
                             </td>

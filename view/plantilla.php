@@ -7,7 +7,7 @@ session_start(); //para usar variables de session
 
 <head>
 
-  <title>Stock-Lamp</title>
+  <title>StockLamp</title>
   <link rel="icon" href="view/img/empresa/logoBlanco.png ">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

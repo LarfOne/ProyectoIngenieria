@@ -67,6 +67,55 @@
                     $table = "empleado";
 
                     $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
+                    
+                    
+                    /**Agregar foto a una carpeta */
+                    $target_dir = "imagen/"; //directorio en el que se subira
+                    $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
+                    $uploadOk = 1;//se añade un valor determinado en 1
+                    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                    // Comprueba si el archivo de imagen es una imagen real o una imagen falsa
+                    if(isset($_POST["submit"])) {//detecta el boton
+                        $check = getimagesize($_FILES["image"]["tmp_name"]);
+                        if($check !== false) {//si es falso es una imagen y si no lanza error
+                            echo "Archivo es una imagen- " . $check["mime"] . ".";
+                            $uploadOk = 1;
+                        } else {
+                            echo "El archivo no es una imagen";
+                            $uploadOk = 0;
+                        }
+                    }
+                    // Comprobar si el archivo ya existe
+                    if (file_exists($target_file)) {
+                        echo "El archivo ya existe";
+                        $uploadOk = 0;//si existe lanza un valor en 0
+                    }
+                    // Comprueba el peso
+                    if ($_FILES["image"]["size"] > 500000) {
+                        echo "Perdon pero el archivo es muy pesado";
+                        $uploadOk = 0;
+                    }
+                    // Permitir ciertos formatos de archivo
+                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif" ) {
+                        echo "Perdon solo, JPG, JPEG, PNG & GIF Estan soportados";
+                        $uploadOk = 0;
+                    }
+                    //Comprueba si $ uploadOk se establece en 0 por un error
+                    if ($uploadOk == 0) {
+                        echo "Perdon, pero el archivo no se subio";
+                    // si todo está bien, intenta subir el archivo
+                    } else {
+                        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                            echo "El archivo ". basename( $_FILES["image"]["name"]). " Se subio correctamente";
+                        } else {
+                            echo "Error al cargar el archivo";
+                        }
+                    }
+
+
+
+                    
 
                     $datas = array("cedula" => $_POST["idUser"], 
                                     "nombre" => $_POST["nameUser"], 
@@ -76,8 +125,9 @@
                                     "role" => $_POST["roleUser"],
                                     "cuentaBancaria" => $_POST["cuentaUser"],
                                     "idSucursal" => $_POST["sucursalUser"],
-                                    "direccion" => $_POST["directionUser"]);
-
+                                    "direccion" => $_POST["directionUser"],
+                                    "image" => $_FILES["image"]["name"]);
+  
                     $respuesta = User::mdlAdd($table, $datas);
                     
                     if($respuesta == "ok"){
@@ -142,7 +192,8 @@
                                     "role" => $_POST["roleUserm"],
                                     "cuentaBancaria" => $_POST["cuentaUserm"],
                                     "idSucursal" => $_POST["sucursalUserm"],
-                                    "direccion" => $_POST["directionUserm"]);
+                                    "direccion" => $_POST["directionUserm"],
+                                    "image" => file_get_contents($_FILES['image']['tmp_name']));
 
                     $respuesta = User::mdlUpdate($table, $datas);
                     

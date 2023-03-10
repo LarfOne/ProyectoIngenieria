@@ -49,9 +49,9 @@
         static public function mdlAdd($table, $datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (cedula, idSucursal, nombre, apellidos, email,
-                                                                                role, password, cuentaBancaria, direccion) VALUES
+                                                                                role, password, cuentaBancaria, direccion, image) VALUES
                                                                                 (:cedula, :idSucursal, :nombre, :apellidos, :email,
-                                                                                :role, :password, :cuentaBancaria, :direccion)");
+                                                                                :role, :password, :cuentaBancaria, :direccion, :image)");
 
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
@@ -62,7 +62,7 @@
             $sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
-
+            $sentenciaSQL->bindParam(':image', $datas["image"]);
 
 
             if($sentenciaSQL->execute()){
@@ -90,7 +90,7 @@
         static public function mdlUpdate($table, $datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET idSucursal = :idSucursal, nombre = :nombre, apellidos = :apellidos, email = :email,
-                                                            role = :role, password = :password, cuentaBancaria = :cuentaBancaria, direccion = :direccion WHERE cedula = :cedula");
+                                                            role = :role, password = :password, cuentaBancaria = :cuentaBancaria, direccion = :direccion, image = :image WHERE cedula = :cedula");
             
             
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
@@ -101,6 +101,7 @@
             $sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':image', $datas["image"]);
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
 
             if($sentenciaSQL->execute()){

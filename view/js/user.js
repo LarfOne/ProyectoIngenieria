@@ -1,23 +1,3 @@
-/*$(".image").chage(function(){
-
-    var imagen = this.files[0];
-    console.log("imagen",imagen);
-
-    /**VALIDAR QUE LA FOTO SEA PNG O JPEG 
-
-    if(imagen["type"] != "image/jpeg" && imagen["type"] != "image/png"){
-
-        $(".image").val("");
-        Swal.fire({
-            title: "Error al subir la imagen",
-            text: "La imagen debe de estar em formato JPG o PNG",
-            icon: "error"
-
-        });
-    }
-
-})*/
-
 /**EDITAR USUARIO */
 
 $(".btnUpdateUser").click(function(){
@@ -60,20 +40,6 @@ $(".btnUpdateUser").click(function(){
 $(".btnDeleteUser").click(function(){
 
     var idEmpleado = $(this).attr("idEmpleado"); 
-    
-    /*Swal.fire({
-        title: 'Estas seguro de eliminar el usuario?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Borrar',
-        denyButtonText: 'No borrar',
-      }).then((result) => {
-        if (result.isConfirmed) {
-            window.location = "index.php?ruta=users&idEmpleado="+idEmpleado;
-        } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info')
-        }
-      })*/
       
     Swal.fire({
         title: 'Estas seguro de eliminar el usuario?',
@@ -92,3 +58,12 @@ $(".btnDeleteUser").click(function(){
     })
 
 })
+
+/*function fotoUser(f){
+    console.log(f.target.files[0])
+    const name = f.target.files[0];
+    
+    const nameTemp = URL.createObjectURL(name);
+    
+    document.getElementById("img-preview").src = nameTemp;
+}*/

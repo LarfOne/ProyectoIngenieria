@@ -45,6 +45,7 @@
     foreach($empleados as $key => $empleado1) { ?>
     <tr>
 
+
         <td><?php echo $empleado1['cedula']; ?></td>
         <td><?php echo $empleado1['nombre']; ?></td>
         <td><?php echo $empleado1['apellidos']; ?></td>
@@ -53,8 +54,16 @@
         <td><?php echo $empleado1['cuentaBancaria']; ?></td>
         <td><?php echo $empleado1['idSucursal']; ?></td>
         <td><?php echo $empleado1['direccion']; ?></td>
-        <td><img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="40px"></td>
-
+        <?php 
+        
+        if($empleado1['image'] != null){?>
+          <td><img src="imagen/<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
+          <?php } ?>
+          <?php
+          if($empleado1['image'] == null){?>
+          <td><img src="imagen/userDefault.png" class="img-thumbnail" width="40px"></td>
+          <?php } ?>
+        
         <td>
 
           <div class="btn-group">
@@ -220,10 +229,11 @@
             <div class="form-group">
 
               <div class="panel">Subir Foto</div>
-              <input type="file" class="image" name="image">
+              <input type="file" id="image" name="image">
 
               <p class="help-block">Peso maximo de la foto 200 MB</p>
-              <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
+              <img src="view/img/plantilla/userDefault.png" id="img-preview" class="img-thumbnail" width="100px">
+              
 
             </div>
 
@@ -387,11 +397,11 @@
             <div class="form-group">
 
               <div class="panel">Subir Foto</div>
-              <input type="file" class="image" id="imagem" name="image"> <!--Ponerle otro nombre de class para ver si funciona-->
+              <input type="file" class="image" name="image">
 
               <p class="help-block">Peso maximo de la foto 200 MB</p>
-              <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
-
+              <img src="view/img/plantilla/userDefault.png" id="img-preview" class="img-thumbnail" width="100px">
+              
             </div>
 
           </div>

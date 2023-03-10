@@ -38,47 +38,37 @@
         </div>
 
 
-            <div class = "container row justify-content-rigth", style = "width: 50em 0; margin: 2.25rem;">
-                <div class="row justify-content-centejkkkkr">
+            <div class = "columnas-juntas">
+                <div class="row justify-content-center", style="margin: rigth 200px;">
 
                     <!-- Column 1.x -->
                     <div class="col-sm">
-
-                        <!-- Column 1.1 -->
-                        <div class="container", style = "width: 50em 0;">
-                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
-                            <h2 class="text-center">Manuel Manolo</h2>
-                            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi provident autem, facere itaque incidunt voluptatum enim totam eveniet non ratione odit cum nostrum quas minima, illo quasi veritatis fugit maiores?</p>
+                        <div id="perfil-usuario">
+                            <img src="imagen/imagen-usuario.jpg" alt="  Usuario logeado" class="imagen-usuario">
+                            <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Nombre de usuario:</h1>
+                            <span class="hidden-sm"><?php  echo $_SESSION["nombre"]; ?></span>
+                            <span class="hidden-sm"><?php  echo $_SESSION["apellidos"]; ?></span>
+                            
+                             <input type="file" id="input-imagen" accept="image/*">
+                            
+                             
                         </div>
-                        <br/>
-
-                        <!-- Column 1.2 -->
-                        <div class="container", style = "width: 50em 0;">
-                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
-                            <h2 class = "text-center">Samanta Bucamarit</h2>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius sapiente error labore facere exercitationem voluptatibus laboriosam, ad nam, rerum dignissimos amet voluptates, quos nisi iste fuga accusamus libero? Neque, laborum.</p>
-                        </div>
+                        
 
                     </div>
 
                     <!-- Column 2.x -->
                     <div class="col-sm center">
 
-                        <!-- Column 2.1 -->
-                        <div class="container cener", style = "width: 50em 0;">
-                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
-                            <h2 class="text-center">Pepito de los Palotes</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic fugit nostrum eius perspiciatis tempora temporibus eveniet doloribus itaque delectus, culpa necessitatibus, facilis, voluptates molestias! Placeat quidem optio cum numquam.</p>
-                        </div>
-                        <br/>
-
-                        <!-- Column 2.2 -->
-                        <div class="container", style = "width: 50em 0;">
-                            <center><img src="{{ url_for('static', filename = 'img/integrant.jpg') }}" class="img-fluid" style = "background-repeat: no-repeat; background-position: 50%; border-radius: 50%; background-size: 100% auto;"><br/><br/></center>
-                            <h2 class="text-center">Benganito Florencia</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta saepe laboriosam ad molestiae, dignissimos id facere qui tempore sed, ratione et deleniti ipsum velit quisquam reiciendis a minima officia eligendi.</p>
+                    <div id="cantidad-productos">
+                            <img src="imagen/cantidad-productos.png" alt="Imagen de productos." class="cantidad-productos">
+                            <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Cantidad de Productos Almacenados: 60</h1>
+                            
+                             
+                             <button></button>
                         </div>
 
+                      
                     </div>
 
                 </div>

@@ -228,6 +228,8 @@ section {
     text-align: center;
     padding-top: 10px;
 }
+
+
 @media only screen and (max-width: 1500px) {
     .cards-4 {
         grid-template-columns: repeat(3, 1fr);
@@ -260,15 +262,10 @@ section {
 }
 .col{
 
-
-
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 2fr 2fr;
     text-align: center;
-
-
-
 
 }
 

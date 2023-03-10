@@ -13,7 +13,7 @@
 				
         <ul class="nav navbar-nav navbar-right">
          <li>
-             <img style=" width: 25px; margin: 0.4px;margin-top: 13px " src="imagen/usuario.png"> 
+             <img style=" width: 25px; margin: 0.4px;margin-top: 13px " src=""> 
           </li> 
 
           <li class="dropdown user user-menu">

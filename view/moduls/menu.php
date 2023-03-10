@@ -4,7 +4,7 @@
 
 <nav class="main-menu">
 
-    <ul class="">
+    <ul>
 
         <?php
 
@@ -138,7 +138,7 @@
     }
     ?>
     
-
+    <ul class="logout" style="margin-bottom: 71px;">
         <?php
         if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") {
             echo '<li>
@@ -151,7 +151,7 @@
                     </li> ';
         }
         ?>
-
+    </ul>
     
 
 </nav>

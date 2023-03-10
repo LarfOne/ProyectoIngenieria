@@ -8,7 +8,7 @@
 
 <div id= "container pt-4" style="margin-top: 100px;">
 
-<div class="container mt-3">
+<div class="container mt-3 si">
   <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
   <div>
     <button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">

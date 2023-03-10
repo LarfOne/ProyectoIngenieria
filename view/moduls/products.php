@@ -4,9 +4,9 @@
 
 <div id="container pt-4" style="margin-top:100px;">
 <div class="container mt-3">
-      <h1 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
+      <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
       <form class="container roboto" action="POST" role="form">
-            <div class="row align-items-center">
+            <div class="row align-items-center first">
                   <div class="col mt-5 mr-5">
                         <label>Codigo del producto</label>
                         <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
@@ -28,7 +28,7 @@
                         <input class="form-control input-sm mt-2" type="text" name="cantProducto" placeholder="Cantidad de productos" required>
                   </div>
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-center second">
                   <div class="col mt-5 mr-5">
                         <label>Existencia</label>
                         <input class="form-control input-sm mt-2" type="text" name="existProducto" placeholder="Existencia actual" required>
@@ -75,7 +75,7 @@
                         <input class="form-control input-sm mt-2" type="text" name="porcProducto" placeholder="Ingresar porcentaje" required>
                   </div>
             </div>
-            <div class="row align-items-center">
+            <div class="row align-items-center third">
                   <div class="col mt-5 mr-5">
                         <label>Precio compra</label>
                         <input class="form-control input-sm mt-2" type="text" name="precioProducto" placeholder="Ingresar precio" required>
@@ -105,10 +105,10 @@
             $category = ControllerCategories::ctrShowCategories($item, $valor);
             ?>
 
-            <div class="row align-items-center">
+            <div class="row align-items-center four">
                   <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                         <label>Categoria</label>
-                        <select class="form-control input-lg" name="cateProducto">
+                        <select class="form-control input-lg selectC" name="cateProducto">
 
                               <?php foreach ($category as $category1) { ?>
                                     <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
@@ -122,6 +122,7 @@
                         <textarea class="form-control" name="obsProducto" rows="2" placeholder="Observaciones"></textarea>
                   </div>
             </div>
+
             <div class="button-container">
 
                   <button type="submit" class="button-save">Registrar</button>

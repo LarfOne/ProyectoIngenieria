@@ -229,10 +229,10 @@
             <div class="form-group">
 
               <div class="panel">Subir Foto</div>
-              <input type="file" id="image" name="image">
+              <input type="file" id="image" name="image" onchange="fotoUser(event)">
 
               <p class="help-block">Peso maximo de la foto 200 MB</p>
-              <img src="view/img/plantilla/userDefault.png" id="img-preview" class="img-thumbnail" width="100px">
+              <img src="imagen/userDefault.png" id="img-preview" class="img-thumbnail" width="100px">
               
 
             </div>

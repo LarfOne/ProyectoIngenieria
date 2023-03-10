@@ -59,11 +59,11 @@ $(".btnDeleteUser").click(function(){
 
 })
 
-/*function fotoUser(f){
-    console.log(f.target.files[0])
+function fotoUser(f){
+    console.log(f.target.files)
     const name = f.target.files[0];
     
     const nameTemp = URL.createObjectURL(name);
     
     document.getElementById("img-preview").src = nameTemp;
-}*/
+}

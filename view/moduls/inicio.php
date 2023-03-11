@@ -44,12 +44,22 @@
                     <!-- Column 1.x -->
                     <div class="col-sm">
                         <div id="perfil-usuario">
-                            <img src="imagen/imagen-usuario.jpg" alt="  Usuario logeado" class="imagen-usuario">
+                            
+                        <?php 
+        
+                        if($_SESSION['image'] != null){?>
+                            <img src="imagen/<?php echo $_SESSION['image'];?>" alt="  Usuario logeado" class="imagen-usuario">
+                        <?php } ?>
+                        <?php
+                        if($_SESSION['image'] == null){?>
+                            <img src="imagen/pareja-usuarios.png" alt="  Usuario logeado" class="imagen-usuario">
+                        <?php } ?>
+
                             <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Nombre de usuario:</h1>
                             <span class="hidden-sm"><?php  echo $_SESSION["nombre"]; ?></span>
                             <span class="hidden-sm"><?php  echo $_SESSION["apellidos"]; ?></span>
                             
-                             <input type="file" id="input-imagen" accept="image/*">
+                             <!--<input type="file" id="input-imagen" accept="image/*">-->
                             
                              
                         </div>

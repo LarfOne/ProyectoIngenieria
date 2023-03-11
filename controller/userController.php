@@ -40,6 +40,8 @@
                         $_SESSION["apellidos"] = $respuesta["apellidos"];
 						$_SESSION["role"] = $respuesta["role"];
                         $_SESSION["idSucursal"] = $respuesta["idSucursal"];
+                        $_SESSION["email"] = $respuesta["email"];
+                        $_SESSION["image"] = $respuesta["image"];
                         
                         echo '<script>
                                 window.location = "inicio"
@@ -74,50 +76,21 @@
                     $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
                     $uploadOk = 1;//se añade un valor determinado en 1
                     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                    // Comprueba si el archivo de imagen es una imagen real o una imagen falsa
-                    if(isset($_POST["submit"])) {//detecta el boton
-                        $check = getimagesize($_FILES["image"]["tmp_name"]);
-                        if($check !== false) {//si es falso es una imagen y si no lanza error
-                            echo "Archivo es una imagen- " . $check["mime"] . ".";
-                            $uploadOk = 1;
-                        } else {
-                            echo "El archivo no es una imagen";
-                            $uploadOk = 0;
-                        }
-                    }
-                    // Comprobar si el archivo ya existe
-                    if (file_exists($target_file)) {
-                        echo "El archivo ya existe";
-                        $uploadOk = 0;//si existe lanza un valor en 0
-                    }
-                    // Comprueba el peso
-                    if ($_FILES["image"]["size"] > 500000) {
-                        echo "Perdon pero el archivo es muy pesado";
-                        $uploadOk = 0;
-                    }
-                    // Permitir ciertos formatos de archivo
-                    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                    && $imageFileType != "gif" ) {
-                        echo "Perdon solo, JPG, JPEG, PNG & GIF Estan soportados";
-                        $uploadOk = 0;
-                    }
-                    //Comprueba si $ uploadOk se establece en 0 por un error
-                    if ($uploadOk == 0) {
-                        echo "Perdon, pero el archivo no se subio";
-                    // si todo está bien, intenta subir el archivo
-                    } else {
-                        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-                            echo "El archivo ". basename( $_FILES["image"]["name"]). " Se subio correctamente";
-                        } else {
-                            echo "Error al cargar el archivo";
-                        }
-                    }
-
-
-
                     
+                    $max_size = 200 * 1024 * 1024; // 200MB
+                    //$max_size = 200 * 1024 * 1024;
+                    // Comprobar si el archivo ya existe
+                    if (file_exists($target_file) != true) {
+                        
+                        //Comprueba el peso
+                        if ($_FILES["image"]["size"] < $max_size) {
+                            
+                            if($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType || "jpeg") {
 
-                    $datas = array("cedula" => $_POST["idUser"], 
+                                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                                    
+
+                                    $datas = array("cedula" => $_POST["idUser"], 
                                     "nombre" => $_POST["nameUser"], 
                                     "password" => $incrypt,
                                     "apellidos" => $_POST["lastNameUser"],
@@ -128,35 +101,77 @@
                                     "direccion" => $_POST["directionUser"],
                                     "image" => $_FILES["image"]["name"]);
   
-                    $respuesta = User::mdlAdd($table, $datas);
-                    
-                    if($respuesta == "ok"){
+                                    $respuesta = User::mdlAdd($table, $datas);
+
+                                    if($respuesta == "ok"){
+                                        echo "<script>
+                                        
+                                            Swal.fire({
+                                                title: 'El usuario se agrego correctamente',
+                                                icon: 'success',
+                                            }).then((result) => {
+                                                window.location = 'users';
+                                            })
+                
+                                        </script>";
+                                    }else{
+
+                                        echo "<script>
+                                        
+                                        Swal.fire({
+                                            title: 'No se puede agregar el usuario',
+                                            icon: 'error',
+                                        }).then((result) => {
+                                            window.location = 'users';
+                                        })
+                                        </script>";
+                                    }
+
+
+                                } else {
+                                    echo "<script>
+                                        Swal.fire({
+                                            title: 'Error al cargar la imagen',
+                                            icon: 'error',
+                                        }).then((result) => {
+                                            window.location = 'users';
+                                        })
+                                    </script>";
+                                }
+
+                            }else{
+                                echo "<script>
+                                    Swal.fire({
+                                        title: 'Agregue un formato valido para la foto (jpg, png, jpeg)',
+                                        icon: 'error',
+                                    }).then((result) => {
+                                        window.location = 'users';
+                                    })
+                                </script>";
+                            }
+
+                        }else{
+                            echo "<script>
+                                Swal.fire({
+                                    title: 'La imagen supera los 200 MB',
+                                    icon: 'error',
+                                }).then((result) => {
+                                    window.location = 'users';
+                                })
+                            </script>";
+                        }
+
+
+                    }else{
                         echo "<script>
-                        
                             Swal.fire({
-                                title: 'El usuario se agrego correctamente',
-                                icon: 'success',
+                                title: 'El nombre de la foto ya existe',
+                                icon: 'error',
                             }).then((result) => {
                                 window.location = 'users';
                             })
-
                         </script>";
                     }
-
-
-                    
-
-                }else{
-
-                    echo "<script>
-                    
-                    Swal.fire({
-                        title: 'No se puede agregar el usuario',
-                        icon: 'error',
-                    }).then((result) => {
-                        window.location = 'users';
-                    })
-                    </script>";
                 }
             }
         }

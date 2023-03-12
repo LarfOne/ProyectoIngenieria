@@ -97,7 +97,7 @@
 
 <div class="modal fade" id="modalAddUser" role="dialog">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content ">
 
 
       <form role="form" method="POST" enctype="multipart/form-data">
@@ -108,7 +108,7 @@
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalC">
 
             <!--AGREGAR DE Cedula-->
             <div class="form-group">
@@ -226,12 +226,14 @@
             </div>
 
             <!--AGREGAR DE FOTO-->
-            <div class="form-group">
+            <div class="form-group subirFoto">
 
-              <div class="panel">Subir Foto</div>
-              <input type="file" id="image" name="image" onchange="fotoUser(event)">
+              <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
 
-              <p class="help-block">Peso maximo de la foto 200 MB</p>
+                  <input type="file" id="image" name="image" onchange="fotoUser(event)">
+
+                  <p class="help-block pesoText">Peso maximo de la foto 200 MB</p>
+                
               <img src="imagen/userDefault.png" id="img-preview" class="img-thumbnail" width="100px">
               
 

@@ -143,3 +143,52 @@ input::file-selector-button {
 
 
 
+/* *{
+    subir foto
+
+} */
+
+.subirFoto{
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 40px 40px 1fr;
+}
+
+.fotoText{
+    margin-top: 13PX;
+    margin-left: 15px;
+}
+
+#image{
+
+
+    margin-top: 5px;
+    margin-left: 15px;
+
+}
+
+.iconoFoto{
+    width: 100%;
+    margin-top: 10PX;
+    display: flex;
+
+}
+
+.pesoText{
+    margin-top: 0px;
+    margin-left: 15px;
+}
+
+#img-preview{
+    margin-left: 15px;
+    width: 150px;
+    height: 150px;
+}
+
+.modalC{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

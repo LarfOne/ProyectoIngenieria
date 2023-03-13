@@ -62,9 +62,9 @@
 
         static public function ctrUpdateActivo(){
 
-            if(isset($_POST["idActivom"])){
+            if(isset($_POST["codigom"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["idActivom"])){
+                if(preg_match('/^[0-9]+$/', $_POST["codigom"])){
 
                     $table = "activos";
 

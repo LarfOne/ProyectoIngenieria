@@ -48,7 +48,7 @@
                         <?php 
         
                         if($_SESSION['image'] != null){?>
-                            <img src="imagen/<?php echo $_SESSION['image'];?>" alt="  Usuario logeado" class="imagen-usuario">
+                            <img src="<?php echo $_SESSION['image'];?>" alt="  Usuario logeado" class="imagen-usuario">
                         <?php } ?>
                         <?php
                         if($_SESSION['image'] == null){?>

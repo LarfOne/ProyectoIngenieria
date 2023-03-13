@@ -70,25 +70,44 @@
 
                     $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
                     
+                    $ruta = null;
                     
-                    /**Agregar foto a una carpeta */
-                    $target_dir = "imagen/"; //directorio en el que se subira
-                    $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
-                    $uploadOk = 1;//se añade un valor determinado en 1
-                    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                    
-                    $max_size = 200 * 1024 * 1024; // 200MB
-                    //$max_size = 200 * 1024 * 1024;
-                    // Comprobar si el archivo ya existe
-                    if (file_exists($target_file) != true) {
-                        
-                        //Comprueba el peso
-                        if ($_FILES["image"]["size"] < $max_size) {
-                            
-                            if($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType || "jpeg") {
+                    if(isset($_FILES["image"]["tmp_name"])){
 
-                                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-                                    
+                        list($ancho, $alto) = getimagesize($_FILES["image"]["tmp_name"]);
+
+                        //var_dump($_FILES["image"]["tmp_name"]);
+
+                        $directorio = "imagen/".$_POST["idUser"];
+
+                        mkdir($directorio, 0755);
+
+                        if($_FILES["image"]["type"] == "image/jpeg"){
+                            
+                            $ruta = "imagen/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                        
+                            $origen = imagecreatefromjpeg($_FILES["image"]["tmp_name"]);
+                            $destino = imagecreatetruecolor(500, 500);
+
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+
+                            imagejpeg($destino, $ruta);
+                        }
+
+                        if($_FILES["image"]["type"] == "image/png"){
+                            
+                            $ruta = "imagen/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                        
+                            $origen = imagecreatefrompng($_FILES["image"]["tmp_name"]);
+                            $destino = imagecreatetruecolor(500, 500);
+
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+
+                            imagepng($destino, $ruta);
+                        }
+                        
+
+                    }
 
                                     $datas = array("cedula" => $_POST["idUser"], 
                                     "nombre" => $_POST["nameUser"], 
@@ -99,7 +118,7 @@
                                     "cuentaBancaria" => $_POST["cuentaUser"],
                                     "idSucursal" => $_POST["sucursalUser"],
                                     "direccion" => $_POST["directionUser"],
-                                    "image" => $_FILES["image"]["name"]);
+                                    "image" =>$ruta);
   
                                     $respuesta = User::mdlAdd($table, $datas);
 
@@ -126,52 +145,6 @@
                                         })
                                         </script>";
                                     }
-
-
-                                } else {
-                                    echo "<script>
-                                        Swal.fire({
-                                            title: 'Error al cargar la imagen',
-                                            icon: 'error',
-                                        }).then((result) => {
-                                            window.location = 'users';
-                                        })
-                                    </script>";
-                                }
-
-                            }else{
-                                echo "<script>
-                                    Swal.fire({
-                                        title: 'Agregue un formato valido para la foto (jpg, png, jpeg)',
-                                        icon: 'error',
-                                    }).then((result) => {
-                                        window.location = 'users';
-                                    })
-                                </script>";
-                            }
-
-                        }else{
-                            echo "<script>
-                                Swal.fire({
-                                    title: 'La imagen supera los 200 MB',
-                                    icon: 'error',
-                                }).then((result) => {
-                                    window.location = 'users';
-                                })
-                            </script>";
-                        }
-
-
-                    }else{
-                        echo "<script>
-                            Swal.fire({
-                                title: 'El nombre de la foto ya existe',
-                                icon: 'error',
-                            }).then((result) => {
-                                window.location = 'users';
-                            })
-                        </script>";
-                    }
                 }
             }
         }
@@ -192,11 +165,63 @@
 
                     $table = "empleado";
 
-                    //Se digito una nueva contraseña
+
+                    /**FOTO AL MODIFICAR */
+
+                    $ruta = $_POST["fotoActual"];
+
+                    if(isset($_FILES["imageUpdate"]["tmp_name"]) && !empty($_FILES["imageUpdate"]["tmp_name"])){
+
+                        list($ancho, $alto) = getimagesize($_FILES["imageUpdate"]["tmp_name"]);
+
+                        //var_dump($_FILES["image"]["tmp_name"]);
+
+                        $directorio = "imagen/".$_POST["idUserm"];
+
+                        /**VER SI HAY UNA FOTO EN LA BASE DE DATOS */
+
+                        if(!empty($_POST["fotoActual"])){
+                            unlink($_POST["fotoActual"]);
+                        }else{
+                            mkdir($directorio, 0755);
+                        }
+
+                        
+
+                        if($_FILES["imageUpdate"]["type"] == "image/jpeg"){
+                            
+                            $ruta = "imagen/".$_POST["idUserm"]."/".$_FILES["imageUpdate"]["name"];
+                        
+                            $origen = imagecreatefromjpeg($_FILES["imageUpdate"]["tmp_name"]);
+                            $destino = imagecreatetruecolor(500, 500);
+
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+
+                            imagejpeg($destino, $ruta);
+                        }
+
+                        if($_FILES["imageUpdate"]["type"] == "image/png"){
+                            
+                            $ruta = "imagen/".$_POST["idUserm"]."/".$_FILES["imageUpdate"]["name"];
+                        
+                            $origen = imagecreatefrompng($_FILES["imageUpdate"]["tmp_name"]);
+                            $destino = imagecreatetruecolor(500, 500);
+
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+
+                            imagepng($destino, $ruta);
+                        }
+                        
+
+                    }
+
+
+                    /**CAMBIAR CONTRASEÑA */
+
                     if($_POST["passwordUserm"] != ""){
                         $incrypt = crypt($_POST["passwordUserm"], '$2a$07$usesomesillystringforsalt$');
                     }else{
-                        $incrypt = $_POST["passwordActual"];
+                        $incrypt = $passwordActual;
                     }
 
                     $datas = array("cedula" => $_POST["idUserm"], 
@@ -208,7 +233,7 @@
                                     "cuentaBancaria" => $_POST["cuentaUserm"],
                                     "idSucursal" => $_POST["sucursalUserm"],
                                     "direccion" => $_POST["directionUserm"],
-                                    "image" => file_get_contents($_FILES['image']['tmp_name']));
+                                    "image" =>$ruta);
 
                     $respuesta = User::mdlUpdate($table, $datas);
                     

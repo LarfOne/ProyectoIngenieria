@@ -57,7 +57,7 @@
         <?php 
         
         if($empleado1['image'] != null){?>
-          <td><img src="imagen/<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
+          <td><img src="<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
           <?php } ?>
           <?php
           if($empleado1['image'] == null){?>
@@ -97,7 +97,7 @@
 
 <div class="modal fade" id="modalAddUser" role="dialog">
   <div class="modal-dialog">
-    <div class="modal-content">
+    <div class="modal-content ">
 
 
       <form role="form" method="POST" enctype="multipart/form-data">
@@ -108,7 +108,7 @@
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalC">
 
             <!--AGREGAR DE Cedula-->
             <div class="form-group">
@@ -226,13 +226,15 @@
             </div>
 
             <!--AGREGAR DE FOTO-->
-            <div class="form-group">
+            <div class="form-group subirFoto">
 
-              <div class="panel">Subir Foto</div>
-              <input type="file" class="image" name="image">
+              <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
 
-              <p class="help-block">Peso maximo de la foto 10 MB</p>
-              <img src="imagen/userDefault.png" id="img-preview" class="img-thumbnail imageTemp" width="100px">
+                  <input type="file" class="image" name="image">
+
+                  <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
+                
+              <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
               
 
             </div>
@@ -356,19 +358,18 @@
 
             </div>
 
-            <!--MODIFICAR DE PASSWORD
+            <!--MODIFICAR DE PASSWORD-->
             <div class="form-group">
 
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="hidden" class="form-control input-lg" id="passwordUserm" name="passwordUserm" value="Ingresar la nueva contrasena" required>
-                
+                <input type="password" class="form-control input-lg" id="passwordUserm" name="passwordUserm" placeholder="Ingresar la nueva contrasena">
+                <input type ="hidden" id="passwordActual" name="passwordActual">
               </div>
 
             </div>
--->
-            <input type="hidden" class="form-control input-lg" id="passwordUserm" name="passwordUserm" value="Ingresar la nueva contrasena" required>
+
             <!--MODIFICAR DE CUENTA BANCARIA-->
             <div class="form-group">
 
@@ -397,11 +398,13 @@
             <div class="form-group">
 
               <div class="panel">Subir Foto</div>
-              <input type="file" class="image" name="image">
+              <input type="file" class="image" name="imageUpdate">
 
-              <p class="help-block">Peso maximo de la foto 200 MB</p>
-              <img src="view/img/plantilla/userDefault.png" id="img-preview" class="img-thumbnail" width="100px">
+              <p class="help-block">Peso maximo de la foto 10MB</p>
+              <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
               
+              <input type = "hidden" name="fotoActual" id = "fotoActual">
+
             </div>
 
           </div>

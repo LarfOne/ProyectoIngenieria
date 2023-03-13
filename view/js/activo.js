@@ -1,6 +1,6 @@
 $(".btnUpdateActivo").click(function(){
     var codigo = $(this).attr("codigo");
-    //console.log("idEmpleado", idEmpleado);
+    //console.log("idEmpleado", codigo);
 
     var datas = new FormData();
 

@@ -8,39 +8,40 @@
 
 <div id= "container pt-4" style="margin-top: 100px;">
 
-<div class="container mt-3 si">
-  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
-  <div>
-    <button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
-        Agregar Usuario
-    </button>
-    
-    <div class="table-responsive roboto">
-      <table class="table" id="tabla" data-sort="table">
-    <thead>
+  <div class="container mt-3 fondoUser">
+    <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
+
+    <div class="tablaUs" >
+      <button class="btn btn-primary btnAgregarU" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
+          Agregar Usuario
+      </button>
+      
+      <div class="table-responsive roboto rU">
+          <table class="table tableU" id="tabla" data-sort="table">
+            <thead>
                 <tr>
-                    <th>Cedula</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>C.C</th>
-                    <th>Sucursal</th>
-                    <th>direccion</th>
-                    <th>Imagen</th>
-                    <th>Acciones</th>
-                    
+                  <th >Cedula</th>
+                  <th>Nombre</th>
+                  <th>Apellidos</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>C.C</th>
+                  <th>Sucursal</th>
+                  <th>direccion</th>
+                  <th>Imagen</th>
+                  <th>Acciones</th>
+                      
                 </tr>
-                </thead>
+            </thead>
 
-                <tbody>
+            <tbody>
 
-    <?php
-    $item = null;
-    $valor = null;
-    
-    $empleados = ControllerUser::ctrShowUser($item, $valor);
-    
+              <?php
+              $item = null;
+              $valor = null;
+      
+              $empleados = ControllerUser::ctrShowUser($item, $valor);
+      
 
     foreach($empleados as $key => $empleado1) { ?>
     <tr>
@@ -70,25 +71,44 @@
               <button  class="btn btn-warning btnUpdate btnUpdateUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
               data-bs-toggle="modal" data-bs-target="#modalUpdateUser"><i class="fa fa-pencil"></i></button>
               
-              <button  class="btn btn-danger btnDelete btnDeleteUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
-              ><i class="fa fa-times background-color: #FF0038;"></i></button>
-          </div>
+              <tr>
 
-        </td>
+                <td><?php echo $empleado1['cedula']; ?></td>
+                <td><?php echo $empleado1['nombre']; ?></td>
+                <td><?php echo $empleado1['apellidos']; ?></td>
+                <td><?php echo $empleado1['email']; ?></td>
+                <td><?php echo $empleado1['role']; ?></td>
+                <td><?php echo $empleado1['cuentaBancaria']; ?></td>
+                <td><?php echo $empleado1['idSucursal']; ?></td>
+                <td><?php echo $empleado1['direccion']; ?></td>
+                <?php 
+                
+                if($empleado1['image'] != null){?>
+                  <td><img src="imagen/<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
+                  <?php } ?>
+                  <?php
+                  if($empleado1['image'] == null){?>
+                  <td><img src="imagen/userDefault.png" class="img-thumbnail" width="40px"></td>
+                  <?php } ?>
+                
+                <td>
+                  <div class="btn-group">
+                      <button  class="btn btn-warning btnUpdate btnUpdateUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
+                      data-bs-toggle="modal" data-bs-target="#modalUpdateUser"><i class="fa fa-pencil"></i></button>
+                      
+                      <button  class="btn btn-danger btnDelete btnDeleteUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
+                      ><i class="fa fa-times background-color: #FF0038;"></i></button>
+                  </div>
 
+                </td>
+              </tr>
 
-    </tr>
+            <?php } ?>
 
-    <?php } ?>
-
-
-    </tbody>
-
-    </table>
+              </tbody>
+          </table>
+    </div>
   </div>
-</div>
-
-
 </div>
 
 

@@ -71,11 +71,14 @@ $pdf->setPrintHeader(false); //para eliminar la linea superio del pdf por defect
 $pdf->startPageGroup();
 $pdf->SetTitle('Factura de compra');
 $pdf->AddPage();
-
+$pdf->Image('images/ratonAzul22.jpg', '', '', 40, 40, '', '', 'T', false, 300, '', false, false, 1, false, false, false);
 // ---------------------------------------------------------
 
+
+
 $bloque1 = <<<EOF
-<img style=" width: 45px; margin: 5px;margin-top: 2.5px " src="imagen/ratonAzul2.png">
+
+
 <h2>MOUSE LAMP</h2>
 
 	<table>

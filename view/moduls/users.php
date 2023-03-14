@@ -365,7 +365,17 @@
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="password" class="form-control input-lg" id="passwordUserm" name="passwordUserm" placeholder="Ingresar la nueva contrasena">
-                <input type ="hidden" id="passwordActual" name="passwordActual">
+                <!--<input type ="hidden" id="passwordActual" name="passwordActual">-->
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control input-lg" id="passwordActual" name="passwordActual" placeholder="Ingresar la nueva contrasena">
               </div>
 
             </div>

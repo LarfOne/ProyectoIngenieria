@@ -221,7 +221,7 @@
                     if($_POST["passwordUserm"] != ""){
                         $incrypt = crypt($_POST["passwordUserm"], '$2a$07$usesomesillystringforsalt$');
                     }else{
-                        $incrypt = $passwordActual;
+                        $incrypt = $_POST["passwordActual"];
                     }
 
                     $datas = array("cedula" => $_POST["idUserm"], 

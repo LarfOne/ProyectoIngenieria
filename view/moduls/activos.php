@@ -73,7 +73,7 @@
 </div>
 
 
-<!--MODAL PARA AGREGAR USUARIO-->
+<!--MODAL PARA AGREGAR ACTIVOS-->
 
 
 <div class="modal fade" id="modalAddActivo" role="dialog">
@@ -91,18 +91,6 @@
         <div class="modal-body">
 
           <div class="box-body">
-
-            <!--AGREGAR DE codigo-->
-            <div class="form-group">
-
-              <div class="input-group">
-
-                  <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="text" class="form-control input-lg" name="codigo" placeholder="Ingresar código" required>
-
-              </div>
-
-            </div>
 
             <!--AGREGAR id de sucursal-->
             <div class="form-group">
@@ -197,7 +185,7 @@
                             <div class="input-group">
 
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                <input type="text" class="form-control input-lg" id="codigom" name="codigom" value="Ingresar el codigo" required>
+                                <input type="text" class="form-control input-lg" id="codigom" name="codigom" value="Ingresar el codigo" readonly>
                             </div>
 
                         </div>

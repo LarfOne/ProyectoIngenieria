@@ -78,13 +78,13 @@
 
                         //var_dump($_FILES["image"]["tmp_name"]);
 
-                        $directorio = "imagen/".$_POST["idUser"];
+                        $directorio = "imagen/perfil/".$_POST["idUser"];
 
                         mkdir($directorio, 0755);
 
                         if($_FILES["image"]["type"] == "image/jpeg"){
                             
-                            $ruta = "imagen/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["image"]["name"];
                         
                             $origen = imagecreatefromjpeg($_FILES["image"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
@@ -96,7 +96,7 @@
 
                         if($_FILES["image"]["type"] == "image/png"){
                             
-                            $ruta = "imagen/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["image"]["name"];
                         
                             $origen = imagecreatefrompng($_FILES["image"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
@@ -176,7 +176,7 @@
 
                         //var_dump($_FILES["image"]["tmp_name"]);
 
-                        $directorio = "imagen/".$_POST["idUserm"];
+                        $directorio = "imagen/perfil/".$_POST["idUserm"];
 
                         /**VER SI HAY UNA FOTO EN LA BASE DE DATOS */
 
@@ -190,7 +190,7 @@
 
                         if($_FILES["imageUpdate"]["type"] == "image/jpeg"){
                             
-                            $ruta = "imagen/".$_POST["idUserm"]."/".$_FILES["imageUpdate"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUserm"]."/".$_FILES["imageUpdate"]["name"];
                         
                             $origen = imagecreatefromjpeg($_FILES["imageUpdate"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
@@ -202,7 +202,7 @@
 
                         if($_FILES["imageUpdate"]["type"] == "image/png"){
                             
-                            $ruta = "imagen/".$_POST["idUserm"]."/".$_FILES["imageUpdate"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUserm"]."/".$_FILES["imageUpdate"]["name"];
                         
                             $origen = imagecreatefrompng($_FILES["imageUpdate"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);

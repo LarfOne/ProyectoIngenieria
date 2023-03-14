@@ -85,6 +85,7 @@
   </div>
 </div>
 
+
 <!--MODAL PARA AGREGAR USUARIO-->
 
 
@@ -189,7 +190,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                 <input type="password" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
-                <input type = "hidden" id ="passwordActual" name="passwordActual">
+
               </div>
 
             </div>
@@ -353,25 +354,24 @@
 
             <!--MODIFICAR DE PASSWORD-->
             <div class="form-group">
-
               <div class="input-group">
-
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                
                 <input type="password" class="form-control input-lg" id="passwordUserm" name="passwordUserm" placeholder="Ingresar la nueva contrasena">
-                <!--<input type ="hidden" id="passwordActual" name="passwordActual">-->
+                <input type="hidden" id="passwordActual" name="passwordActual">
               </div>
-
             </div>
 
+            <!--MODIFICAR DE PASSWORD
             <div class="form-group">
-
               <div class="input-group">
-
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="passwordActual" name="passwordActual" placeholder="Ingresar la nueva contrasena">
+                
+                <input type="text" class="form-control input-lg" id="passwordActual" name="passwordActual" value="Ingresar la nueva contrasena" required>
+                
               </div>
-
             </div>
+-->
 
             <!--MODIFICAR DE CUENTA BANCARIA-->
             <div class="form-group">
@@ -439,8 +439,4 @@
   $deleteUser -> ctrDeleteUser();
 
 ?>
-
-
-
-
 

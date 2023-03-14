@@ -142,7 +142,6 @@ class ControllerProduct
 						}).then((result) => {
 							window.location = 'products';
 						})
-
 					</script>";
 				
 				} else {

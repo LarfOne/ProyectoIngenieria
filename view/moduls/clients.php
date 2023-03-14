@@ -10,7 +10,7 @@
 <div class="container mt-3">
   <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Clientes</h2>
 
-    <button class="btn btn-primary" data-toggle="modal" data-target="#modalAddClient" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddClient" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Cliente
     </button>
   <div class="box-body">
@@ -52,7 +52,7 @@
 
           <div class="btn-group">
               <button style="margin: 5px" class="btn btn-warning btnUpdate btnUpdateClient" idClient = <?php echo $client1['cedula']; ?>
-              data-toggle="modal" data-target="#modalUpdateClient"><i class="fa fa-pencil"></i></button>
+              data-bs-toggle="modal" data-bs-target="#modalUpdateClient"><i class="fa fa-pencil"></i></button>
               
               <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteClient" codigoC = <?php echo $client1['cedula']; ?>
               ><i class="fa fa-times"></i></button>
@@ -230,7 +230,7 @@
           <div class="input-group">
 
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control input-lg" id="nomClientem" name="nombreClientem" value="Ingresar nombre" required>
+            <input type="text" class="form-control input-lg" id="nomClientem" name="nomClientem" value="Ingresar nombre" required>
 
           </div>
 

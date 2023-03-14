@@ -46,6 +46,13 @@ input::file-selector-button {
     font-size: larger;
     border: none;
     color: white;
+    font-size: 30px;
+}
+
+.button-save:hover{
+    border: 2px solid black;
+    color: black;
+    text-decoration: underline;
 }
 
 .button-cancel {
@@ -57,10 +64,19 @@ input::file-selector-button {
     font-size: larger;
     border: none;
     color: white;
+    font-size: 30px;
 }
+
+.button-cancel:hover{
+    border: 2px solid black;
+    color: black;
+    text-decoration: underline;
+}
+
 .roboto{
     font-family: 'Roboto Condensed', sans-serif !important;
     font-weight: 400 !important;
+    color: black;
 }
 
 
@@ -142,4 +158,245 @@ input::file-selector-button {
 }
 
 
+
+/* *{
+    subir foto
+
+} */
+
+.subirFoto{
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 40px 40px 40px 1fr;
+}
+
+.fotoText{
+    margin-top: 13PX;
+    margin-left: 15px;
+}
+
+#image{
+
+
+    margin-top: 5px;
+    margin-left: 15px;
+
+}
+
+.iconoFoto{
+    width: 100%;
+    margin-top: 10PX;
+    display: flex;
+
+}
+
+.pesoText{
+    margin-top: 0px;
+    margin-left: 15px;
+}
+
+#img-preview{
+    margin-left: 15px;
+    width: 150px;
+    height: 150px;
+}
+
+.modalC{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.btnAgregarU:hover{
+color: black;
+background-color: #06aaeb;
+border: 1px solid black;
+}
+
+.btnUpdateUser:hover{
+    
+    background-color: yellow;
+    border: 1.5px solid black;
+}
+
+.btnDeleteUser:hover{
+    background-color: red;
+    border: 1.5px solid black;
+    color: black;
+}
+
+.fondoUser{
+    background: #eee;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 1032px){
+
+    .fondoUser{
+        background: none;
+   
+    }
+    
+    .tablaUs{
+        width: 850px;
+        margin-left: 60px;
+    }
+
+    .cUser{
+        margin-left: 60px;
+
+    }
+
+    .rU{
+        width: 850px;
+    }
+}
+
+@media screen and (max-width: 991px){
+
+    .fondoUser{
+        background: none;
+   
+    }
+
+    .tablaUs{
+        width: 820px;
+        margin-left: -40px;
+    }
+
+    .cUser{
+        margin-left: -40px;
+
+    }
+
+    .rU{
+        width: 820px;
+    }
+}
+
+@media screen and (max-width: 900px){
+
+    .fondoUser{
+        background: none;
+   
+    }
+    .tablaUs{
+        width: 750px;
+        margin-left: 10px;
+    }
+
+    .cUser{
+        margin-left: 10px;
+
+    }
+
+    .rU{
+        width: 750px;
+    }
+}
+
+@media screen and (max-width: 800px){
+
+    .fondoUser{
+        background: none;
+   
+    }
+    .tablaUs{
+        width: 690px;
+        margin-left: 25px ;
+    }
+
+    .cUser{
+        margin-left: 25px;
+
+    }
+
+    .rU{
+        width: 690px;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .fondoUser{
+        background: none;
+   
+    }
+
+    .tablaUs{
+        width: 630px;
+        margin-left: -25px ;
+    }
+
+    .cUser{
+        margin-left: -25px;
+
+    }
+
+    .rU{
+        width: 630px;
+    }
+}
+
+@media screen and (max-width: 670px){
+    .fondoUser{
+        background: none;
+   
+    }
+
+    .tablaUs{
+        width: 560px;
+        margin-left: 15px ;
+    }
+
+    .cUser{
+        margin-left: 15px;
+    }
+
+    .rU{
+        width: 560px;
+    }
+}
+
+@media screen and (max-width: 594px){
+    .fondoUser{
+        background: none;
+   
+    }
+
+    .tablaUs{
+        width: 475px;
+        margin-left: 45px ;
+    }
+
+    .cUser{
+        margin-left: 45px;
+    }
+
+    .rU{
+        width: 475px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .fondoUser{
+        background: none;
+   
+    }
+    .tablaUs{
+        width: 410px;
+        margin-left: 55px ;
+    }
+
+    .cUser{
+        margin-left: 55px;
+    }
+
+    .rU{
+        width: 410px;
+    }
+}
 

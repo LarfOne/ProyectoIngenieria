@@ -43,33 +43,7 @@
               $empleados = ControllerUser::ctrShowUser($item, $valor);
       
 
-    foreach($empleados as $key => $empleado1) { ?>
-    <tr>
-
-
-        <td><?php echo $empleado1['cedula']; ?></td>
-        <td><?php echo $empleado1['nombre']; ?></td>
-        <td><?php echo $empleado1['apellidos']; ?></td>
-        <td><?php echo $empleado1['email']; ?></td>
-        <td><?php echo $empleado1['role']; ?></td>
-        <td><?php echo $empleado1['cuentaBancaria']; ?></td>
-        <td><?php echo $empleado1['idSucursal']; ?></td>
-        <td><?php echo $empleado1['direccion']; ?></td>
-        <?php 
-        
-        if($empleado1['image'] != null){?>
-          <td><img src="<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
-          <?php } ?>
-          <?php
-          if($empleado1['image'] == null){?>
-          <td><img src="imagen/userDefault.png" class="img-thumbnail" width="40px"></td>
-          <?php } ?>
-        
-        <td>
-
-          <div class="btn-group">
-              <button  class="btn btn-warning btnUpdate btnUpdateUser" idEmpleado = <?php echo $empleado1['cedula']; ?>
-              data-bs-toggle="modal" data-bs-target="#modalUpdateUser"><i class="fa fa-pencil"></i></button>
+              foreach($empleados as $key => $empleado1) { ?>
               
               <tr>
 
@@ -84,7 +58,7 @@
                 <?php 
                 
                 if($empleado1['image'] != null){?>
-                  <td><img src="imagen/<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
+                  <td><img src="<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
                   <?php } ?>
                   <?php
                   if($empleado1['image'] == null){?>
@@ -110,7 +84,6 @@
     </div>
   </div>
 </div>
-
 
 <!--MODAL PARA AGREGAR USUARIO-->
 
@@ -216,7 +189,7 @@
 
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                 <input type="password" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
-
+                <input type = "hidden" id ="passwordActual" name="passwordActual">
               </div>
 
             </div>

@@ -50,10 +50,9 @@ class Activo{
 
     static public function mdlAdd($table, $datas){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (codigo, idSucursal,descripcion,estado,empleado_id) VALUES
-                                                                            (:codigo, :idSucursal, :descripcion, :estado, :empleado_id )");
-
-        $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
+        $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (idSucursal,descripcion,estado,empleado_id) VALUES
+                                                                            (:idSucursal, :descripcion, :estado, :empleado_id )");
+                                                                            
         $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':descripcion', $datas["descripcion"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
@@ -86,16 +85,15 @@ class Activo{
 
     static public function mdlUpdate($table, $datas){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET codigo = :codigo, idSucursal = :idSucursal, descripcion = :descripcion, estado = :estado,
+        $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET idSucursal = :idSucursal, descripcion = :descripcion, estado = :estado,
                                                          empleado_id = :empleado_id WHERE codigo = :codigo");
         
         
-        $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':descripcion', $datas["descripcion"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':empleado_id', $datas["empleado_id"], PDO::PARAM_STR);
-      
+        $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
 
 
 

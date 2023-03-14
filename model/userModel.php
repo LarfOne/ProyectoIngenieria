@@ -62,7 +62,7 @@
             $sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
-            $sentenciaSQL->bindParam(':image', $datas["image"]);
+            $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);
 
 
             if($sentenciaSQL->execute()){
@@ -101,7 +101,7 @@
             $sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
-            $sentenciaSQL->bindParam(':image', $datas["image"]);
+            $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
 
             if($sentenciaSQL->execute()){

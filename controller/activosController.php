@@ -4,17 +4,15 @@
    
         /**REGISTRO DE ACTIVOS */
         static public function ctrCreateActivo(){
-            if(isset($_POST["codigo"])){
+            if(isset($_POST["idSucursal"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["codigo"]) 
-                   ){
+                if(preg_match('/^[0-9]+$/', $_POST["idSucursal"])){
 
                     $table = "activos";
 
                     
 
-                    $datas = array("codigo" => $_POST["codigo"],
-                                    "idSucursal" => $_POST["idSucursal"], 
+                    $datas = array("idSucursal" => $_POST["idSucursal"], 
                                     "descripcion" => $_POST["descripcion"],
                                     "estado" => $_POST["estado"],
                                     "empleado_id" => $_POST["empleado_id"]);
@@ -62,9 +60,9 @@
 
         static public function ctrUpdateActivo(){
 
-            if(isset($_POST["idActivom"])){
+            if(isset($_POST["codigom"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["idActivom"])){
+                if(preg_match('/^[0-9]+$/', $_POST["codigom"])){
 
                     $table = "activos";
 

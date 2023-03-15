@@ -1,6 +1,6 @@
 $(".btnUpdateActivo").click(function(){
     var codigo = $(this).attr("codigo");
-    //console.log("idEmpleado", idEmpleado);
+    //console.log("activo id", codigo);
 
     var datas = new FormData();
 
@@ -23,7 +23,7 @@ $(".btnUpdateActivo").click(function(){
             $("#estadom").val(respuesta["estado"]);
             $("#empleado_idm").val(respuesta["empleado_id"]);
 
-            //console.log("respuesta", respuesta);
+            console.log("respuesta", respuesta);
 
         }
 

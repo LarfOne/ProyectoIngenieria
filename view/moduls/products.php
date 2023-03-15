@@ -3,10 +3,13 @@
 <link rel="stylesheet" href="css/style.css">
 
 <div id="container pt-4" style="margin-top:100px;">
-<div class="container mt-3">
-      <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
-      <form class="container roboto" action="POST" role="form">
-            <div class="row align-items-center first">
+      <div class="container mt-3">
+
+            <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
+            </br>
+      <form class="col-md-12" role="form" method="POST" style="padding-top:30px;">
+
+      <div class="row align-items-center first">
                   <div class="col mt-5 mr-5">
                         <label>Codigo del producto</label>
                         <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
@@ -28,6 +31,8 @@
                         <input class="form-control input-sm mt-2" type="text" name="cantProducto" placeholder="Cantidad de productos" required>
                   </div>
             </div>
+
+
             <div class="row align-items-center second">
                   <div class="col mt-5 mr-5">
                         <label>Existencia</label>
@@ -75,6 +80,14 @@
                         <input class="form-control input-sm mt-2" type="text" name="porcProducto" placeholder="Ingresar porcentaje" required>
                   </div>
             </div>
+
+            <!-- Mandar a traer las categorias -->
+            <?php
+            $item = null;
+            $valor = null;
+            $category = ControllerCategories::ctrShowCategories($item, $valor);
+            ?>
+
             <div class="row align-items-center third">
                   <div class="col mt-5 mr-5">
                         <label>Precio compra</label>
@@ -92,20 +105,6 @@
                         <label>Precio IVA</label>
                         <input class="form-control input-sm mt-2" type="text" name="ivaProducto" placeholder="Ingresar precio" required>
                   </div>
-                  <div class="col mt-5 mr-5">
-                        <label>Foto del producto</label>
-                        <input type="file" class="image" name="image">
-                        <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
-                  </div>
-            </div>
-            <!-- Mandar a traer las categorias -->
-            <?php
-            $item = null;
-            $valor = null;
-            $category = ControllerCategories::ctrShowCategories($item, $valor);
-            ?>
-
-            <div class="row align-items-center four">
                   <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                         <label>Categoria</label>
                         <select class="form-control input-lg selectC" name="cateProducto">
@@ -116,6 +115,16 @@
 
                         </select>
 
+                  </div>
+            </div>
+            
+            
+
+            <div class="row align-items-center four">
+                  <div class="col mt-5 mr-5">
+                        <label>Foto del producto</label>
+                        <input type="file" class="image" name="image">
+                        <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
                   </div>
                   <div class="col mt-5 mr-5 align-self-center">
                         <label>Observaciones</label>
@@ -139,7 +148,7 @@
             $addInventario->ctrCreateInventario();
 
             ?>
-      </form>
 
+      </form>
       </div>
 </div>

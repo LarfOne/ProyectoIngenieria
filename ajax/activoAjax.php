@@ -1,6 +1,6 @@
 <?php
 
-require_once "../controller/activosController.php  ";
+require_once "../controller/activosController.php";
 require_once "../model/activoModel.php";
 
 class AjaxActivo{
@@ -26,7 +26,7 @@ class AjaxActivo{
 if(isset($_POST["codigo"])){
 
     $update =  new AjaxActivo();
-    $update->idActivo = $_POST["codigo"];
+    $update->codigo = $_POST["codigo"];
     $update->ajaxUpdateActivo();
 }
 

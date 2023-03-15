@@ -2,7 +2,7 @@
   <div class="container-fluid" >
     <div class="navbar-header">
      
-      <img style=" width: 45px; margin: 5px;margin-top: 2.5px " src="view/img/empresa/LogoRaton2.png">
+      <img style=" width: 55px; height: 46px; margin: 5px;margin-top: 2.5px " src="view/img/empresa/logoBlanco.png">
       <!--<img style=" width: 80px; height: 30px; margin: 0px;margin-top: 0px " src="view/img/empresa/LetrasStock.png">-->
       
     </div>

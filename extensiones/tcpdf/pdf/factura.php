@@ -16,6 +16,10 @@ require_once "../../../model/productModel.php";
 require_once "../../../controller/sucursalController.php";
 require_once "../../../model/sucursalModel.php";
 
+require_once "../../../controller/detalleFacturaController.php";
+require_once "../../../model/detalleFacturaModel.php";
+
+
 class imprimirFactura{
 
 public $codigo;
@@ -29,8 +33,9 @@ $valorVenta = $this->codigo;
 
 $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
 
+
+
 $fecha = substr($respuestaVenta["fechaFactura"],0,-8);
-//$productos = json_decode($respuestaVenta["productos"], true);
 $subTotal = number_format($respuestaVenta["subTotal"],2);
 $impuesto = number_format($respuestaVenta["impuesto"],2);
 $descuento = number_format($respuestaVenta["descuento"],2);
@@ -61,6 +66,41 @@ $respuestaSucursal =  ControllerSucursal::ctrShowSucursal($itemSucursal, $valorS
 
 
 
+
+///////////////////////////////////////////////////////////
+
+
+//TRAEMOS LA INFORMACIÓN DEL DETALLE FACTURA
+$itemFac = "idFactura";
+$valorFac = $this->codigo;//codigo es el id de la factura
+
+$respuestaDetalle = ControllerDetalle::ctrShowDetalleFactura($itemFac, $valorFac);
+
+//$productos = json_decode($respuestaDetalle, true);
+
+
+
+
+/*
+
+$itemDetalle = "codigoDetalle";
+$valorDetalle = $respuestaDetalle["codigoDetalle"];
+$respuestaDetalle =  ControllerDetalle::ctrShowDetalleFactura($itemDetalle, $valorDetalle);
+
+$productos = json_decode($respuestaDetalle["idFactura"], true);
+*/
+
+///////////////////////////////////////////////////////////
+//TRAEMOS LA INFORMACIÓN DE LOS PRODUCTOS
+
+
+/*
+$itemProduc = "codigo";
+$valorProduc = $respuestaDetalle[idProducto];
+$respuestaProduc=  ControllerProduct::ctrShowProduct($itemProduc, $valorProduc);
+*/
+
+
 //REQUERIMOS LA CLASE TCPDF
 
 require_once('tcpdf_include.php');
@@ -71,7 +111,8 @@ $pdf->setPrintHeader(false); //para eliminar la linea superio del pdf por defect
 $pdf->startPageGroup();
 $pdf->SetTitle('Factura de compra');
 $pdf->AddPage();
-$pdf->Image('images/ratonAzul22.jpg', '', '', 40, 40, '', '', 'T', false, 300, '', false, false, 1, false, false, false);
+$pdf->Image('images/Logo2.jpg');
+//$pdf->Image('images/Logo2.jpg', '', '', 40, 40, '', '', 'T', false, 300, '', false, false, 1, false, false, false);
 // ---------------------------------------------------------
 
 
@@ -79,24 +120,13 @@ $pdf->Image('images/ratonAzul22.jpg', '', '', 40, 40, '', '', 'T', false, 300, '
 $bloque1 = <<<EOF
 
 
-<h2>MOUSE LAMP</h2>
-
-	<table>
+<table>
 		
 		<tr>
-		   <img style=" width: 45px; margin: 5px;margin-top: 2.5px " src="view/img/empresa/LogoRaton2.png">
-		   <img style=" width: 45px; margin: 5px;margin-top: 2.5px " src="imagen/ratonAzul2.png">
 
-
-
-		   <td style="width:150px"><img src="images/logo-negro-bloque.png"></td>
-			<td style="width:150px"><img src="imagen/ratonAzul2.png"></td>
 			<td style="background-color:white; width:140px">
 				
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
-				<br>
-				<img src="imagen/ratonAzul2.png"
-				class="img-responsive" style="padding:0px 100px 0px 110px">
 
 				</div>
 
@@ -105,7 +135,15 @@ $bloque1 = <<<EOF
 			<td style="background-color:white; width:140px">
 
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
+				<br>
+					codigo factura: $respuestaDetalle[idFactura]
 					<br>
+					
+					Vendedor: $respuestaVendedor[nombre] $respuestaVendedor[apellidos]
+					<br>
+					Sucursal de venta: $respuestaSucursal[nombre]
+
+				<br>
 					Dirección: Sardinal centro
 
 					<br>
@@ -113,6 +151,7 @@ $bloque1 = <<<EOF
 					
 					<br>
 					info@mouselamp.com
+				
 
 				</div>
 				
@@ -122,6 +161,11 @@ $bloque1 = <<<EOF
 
 	</table>
 
+	<br>
+	<br>
+	
+	<!---–<h2>MOUSE LAMP</h2>--->
+
 EOF;
 
 $pdf->writeHTML($bloque1, false, false, false, false, '');
@@ -130,23 +174,22 @@ $pdf->writeHTML($bloque1, false, false, false, false, '');
 
 $bloque2 = <<<EOF
 
-	<table>
-		
-		<tr>
-			
-			<td style="width:540px"><img src="images/back.jpg"></td>
-		
-		</tr>
 
-	</table>
 
 	<table style="font-size:10px; padding:5px 10px;">
+	<br>
+	<br>
+	<br>
 	
-		<tr>
+	
+	<tr>
 		
+
+
+
 			<td style="border: 1px solid #666; background-color:white; width:390px">
 
-				Cedula cliente: $respuestaCliente[cedula]
+				Cedula cliente: $respuestaCliente[cedula] 
 
 			</td>	
 			
@@ -166,17 +209,6 @@ $bloque2 = <<<EOF
 
 		<tr>
 		
-			<td style="border: 1px solid #666; background-color:white; width:540px">Vendedor: $respuestaVendedor[nombre] $respuestaVendedor[apellidos]</td>
-		</tr>
-		
-		<tr>
-		
-		<td style="border: 1px solid #666; background-color:white; width:540px">Sucursal de venta: $respuestaSucursal[nombre] $respuestaSucursal[codigo]</td>
-
-		</tr>
-
-		<tr>
-		
 		<td style="border-bottom: 1px solid #666; background-color:white; width:540px"></td>
 
 		</tr>
@@ -190,18 +222,15 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 // ---------------------------------------------------------
 
 $bloque3 = <<<EOF
-
+<br>
 	<table style="font-size:10px; padding:5px 10px;">
 
-		<tr>
-		
+		<tr>	
 		<td style="border: 1px solid #666; background-color:white; width:260px; text-align:center">Producto</td>
 		<td style="border: 1px solid #666; background-color:white; width:80px; text-align:center">Cantidad</td>
-		<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">Valor Unit.</td>
+		<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">Valor Unitario.</td>
 		<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">Valor Total</td>
-
 		</tr>
-
 	</table>
 
 EOF;
@@ -213,40 +242,102 @@ $pdf->writeHTML($bloque3, false, false, false, false, '');
 
 
 
-/*------------------------------------ TABLA DE LOS PRODUCTOS COMPRADOS ---------------------
 
-foreach ($productos as $key => $item) {
 
-$itemProducto = "descripcion";
-$valorProducto = $item["descripcion"];
-$orden = null;
 
-$respuestaProducto = ControllerProduct::ctrShowProduct($itemProducto, $valorProducto, $orden);
 
-$valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
 
-$precioTotal = number_format($item["total"], 2);
+
+
+/*
+
+foreach($respuestaDetalle as $key => $venta1){
+$bloque9 = <<<EOF
+
+
+
+
+<table style="font-size:10px; padding:5px 10px;">
+		<tr>
+
+
+		
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
+			$respuestaDetalle[idProducto]
+			</td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:80px; text-align:center">
+			$respuestaDetalle[cantidad]
+			</td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[precUnit]
+			</td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[subTotal]
+			</td>
+		</tr>
+
+	</table>
+ 
+EOF;
+$pdf->writeHTML($bloque9, false, false, false, false, '');
+
+}
+
+
+*/
+
+
+/*
+
+foreach($respuestaDetalle as $key => $venta1){
+$bloque9 = <<<EOF
+$venta1[idProducto]
+ 
+//EOF;
+//$pdf->writeHTML($bloque9, false, false, false, false, '');
+
+}
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+for($i = 0; $i <= $productos; $i++){
 
 $bloque4 = <<<EOF
 
 	<table style="font-size:10px; padding:5px 10px;">
 
 		<tr>
-			
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-				$item[descripcion]
+			$respuestaDetalle[idProducto]
 			</td>
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:80px; text-align:center">
-				$item[cantidad]
+			$respuestaDetalle[cantidad]
 			</td>
 
-			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">$ 
-				$valorUnitario
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[precUnit]
 			</td>
 
-			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">$ 
-				$precioTotal
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[subTotal]
 			</td>
 
 
@@ -259,9 +350,11 @@ EOF;
 
 $pdf->writeHTML($bloque4, false, false, false, false, '');
 
+
 }
 
-// ---------------------------------------------------------*/
+
+
 
 $bloque5 = <<<EOF
 
@@ -286,7 +379,7 @@ $bloque5 = <<<EOF
 			</td>
 
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-				$ $subTotal
+			¢ $subTotal
 			</td>
 
 		</tr>
@@ -300,7 +393,7 @@ $bloque5 = <<<EOF
 			</td>
 		
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-				$ $impuesto
+			¢ $impuesto
 			</td>
 
 		</tr>
@@ -315,7 +408,7 @@ $bloque5 = <<<EOF
 			</td>
 			
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-				$ $descuento
+			¢ $descuento
 			</td>
 
 		</tr>
@@ -330,7 +423,7 @@ $bloque5 = <<<EOF
 			</td>
 			
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">
-				$ $total
+				¢ $total
 			</td>
 
 		</tr>

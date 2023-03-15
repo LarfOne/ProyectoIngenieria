@@ -1,33 +1,26 @@
 <?php
-#CLASES
-#**********************************************************************
 
-class Ajax{
 
-    #EJECUTA LA FUNCION 1
-    #******************************************************************
+class AjaxDetalle{
+    public $idFactura;
 
-    public function accion1(){
+    public function ajaxUpdateDetalle(){
 
-        //Se ejecuta lo que quiero en la funcion 1
-   }
+        $item = "idFactura";
+        $valor = $this->codigo;
 
-   #EJECUTA LA FUNCION 2
-    #******************************************************************
+        $respuesta =ControladorVentas::ctrMostrarVentas($item, $valor);
 
-    public function accion2(){
+        echo json_encode($respuesta);
 
-        //Se ejecuta lo que quiero en la funcion 2
-   }
+    }
+
 }
+if(isset($_POST["idFactura"])){
 
-#OBJETOS
-#************************************************************************
-
-$a = new Ajax();
-$a -> accion1();
-
-$b = new Ajax();
-$b -> accion2();
+    $update =  new AjaxDetalle();
+    $update->idFactura = $_POST["idFactura"];
+    $update->ajaxUpdateDetalle();
+}
 
 ?>

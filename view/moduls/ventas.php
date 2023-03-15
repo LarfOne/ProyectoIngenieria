@@ -119,13 +119,13 @@
 
                   <td>'.$value["fechaFactura"].'</td>
 
-                  <td>$ '.number_format($value["subTotal"],2).'</td>
+                  <td>¢ '.number_format($value["subTotal"],2).'</td>
 
-                  <td>$ '.number_format($value["impuesto"],2).'</td>
+                  <td>¢ '.number_format($value["impuesto"],2).'</td>
 
-                  <td>$ '.number_format($value["descuento"],2).'</td>
+                  <td>¢ '.number_format($value["descuento"],2).'</td>
                   
-                  <td>$ '.number_format($value["total"],2).'</td>
+                  <td>¢ '.number_format($value["total"],2).'</td>
                   
                   
 

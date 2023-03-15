@@ -59,9 +59,9 @@
                             <span class="hidden-sm"><?php  echo $_SESSION["nombre"]; ?></span>
                             <span class="hidden-sm"><?php  echo $_SESSION["apellidos"]; ?></span>
                             
-                             <!--<input type="file" id="input-imagen" accept="image/*">-->
+                            <!--<input type="file" id="input-imagen" accept="image/*">-->
                             
-                             
+                    
                         </div>
                         
 
@@ -74,8 +74,8 @@
                             <img src="imagen/cantidad-productos.png" alt="Imagen de productos." class="cantidad-productos">
                             <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Cantidad de Productos Almacenados: 60</h1>
                             
-                             
-                             <button></button>
+                            
+                            <button></button>
                         </div>
 
                       
@@ -84,5 +84,37 @@
                 </div>
 
             </div>
+
+            
+            <div class="container">
+		    <div class="row">
+			<div class="col-sm-12">
+				<h1>Graficos.</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="columna">
+				<h2>Columna 1</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet orci non risus luctus euismod. Aliquam erat volutpat. Nam nec ex eu felis vestibulum commodo id eu dolor. Vestibulum sit amet nibh nec lectus bibendum commodo eu eget ex.</p>
+			</div>
+			<div class="columna">
+				<h2>Columna 2</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet orci non risus luctus euismod. Aliquam erat volutpat. Nam nec ex eu felis vestibulum commodo id eu dolor. Vestibulum sit amet nibh nec lectus bibendum commodo eu eget ex.</p>
+			</div>
+			<div class="columna">
+				<h2>Columna 3</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet orci non risus luctus euismod. Aliquam erat volutpat. Nam nec ex eu felis vestibulum commodo id eu dolor. Vestibulum sit amet nibh nec lectus bibendum commodo eu eget ex.</p>
+			</div>
+		</div>
+	</div>        
+
+
+
+
+
+
+
+
+            
     </div>
 </div>

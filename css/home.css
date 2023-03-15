@@ -412,3 +412,30 @@ position: relative;
     border-color: white white white #0c335d;
 
 }
+.columna {
+    display: inline-block;
+    width: 30%;
+    margin-right: 5%;
+    vertical-align: top;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+.columna:last-child {
+    margin-right: 0;
+}
+
+.columna {
+			width: 30%;
+			display: inline-block;
+			vertical-align: top;
+			margin-right: 2%;
+		}
+
+		@media only screen and (max-width: 768px) {
+			.columna {
+				width: 100%;
+				margin-right: 0;
+				margin-bottom: 20px;
+			}
+		}

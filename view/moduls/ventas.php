@@ -129,15 +129,23 @@
                   
                   
 
+
+
                   <td>
 
                     <div class="btn-group">
                         
-                    <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+                    <button class="btn btn-success btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+
+                    <i class="fa fa-file"></i>
+
+                    
+                    <button class="btn btn-info btnImprimirTicket" codigoVenta="'.$value["codigo"].'">
 
                     <i class="fa fa-print"></i>
 
-                    
+
+
                       <button class="btn btn-warning btnEditarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-pencil"></i></button>
 
                       <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-times"></i></button>

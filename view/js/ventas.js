@@ -413,6 +413,23 @@ $(".tablas").on("click", ".btnImprimirFactura", function(){
 
 
 /*=============================================
+IMPRIMIR FACTURA
+=============================================*/
+
+$(".tablas").on("click", ".btnImprimirTicket", function(){
+
+	var codigoVenta = $(this).attr("codigoVenta");
+
+	window.open("extensiones/tcpdf/pdf/ticket.php?codigo="+codigoVenta, "_blank");
+})
+
+
+
+
+
+
+
+/*=============================================
 SELECCIONAR PRODUCTO
 =============================================*/
 /*

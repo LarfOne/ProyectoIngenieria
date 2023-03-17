@@ -107,6 +107,12 @@ require_once('tcpdf_include.php');
 
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
+
+//  TICKETE DE COMPRA
+
+//$medidas = array(100, 600); // Ajustar aqui segun los milimetros necesarios;
+//$pdf = new TCPDF('P', 'mm', $medidas, true, 'UTF-8', false);
+
 $pdf->setPrintHeader(false); //para eliminar la linea superio del pdf por defecto y tambien ej hearder
 $pdf->startPageGroup();
 $pdf->SetTitle('Factura de compra');

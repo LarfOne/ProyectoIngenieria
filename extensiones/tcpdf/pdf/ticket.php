@@ -20,11 +20,11 @@ require_once "../../../controller/detalleFacturaController.php";
 require_once "../../../model/detalleFacturaModel.php";
 
 
-class imprimirFactura{
+class imprimirTicket{
 
 public $codigo;
 
-public function traerImpresionFactura(){
+public function traerImpresionTicket(){
 
 //TRAEMOS LA INFORMACIÓN DE LA VENTA
 
@@ -105,19 +105,19 @@ $respuestaProduc=  ControllerProduct::ctrShowProduct($itemProduc, $valorProduc);
 
 require_once('tcpdf_include.php');
 
-$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+//$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
 
 //  TICKETE DE COMPRA
 
-//$medidas = array(100, 600); // Ajustar aqui segun los milimetros necesarios;
-//$pdf = new TCPDF('P', 'mm', $medidas, true, 'UTF-8', false);
+$medidas = array(100, 400); // Ajustar aqui segun los milimetros necesarios;
+$pdf = new TCPDF('P', 'mm', $medidas, true, 'UTF-8', false);
 
 $pdf->setPrintHeader(false); //para eliminar la linea superio del pdf por defecto y tambien ej hearder
 $pdf->startPageGroup();
-$pdf->SetTitle('Factura de compra');
+$pdf->SetTitle('Tikete de compra');
 $pdf->AddPage();
-$pdf->Image('images/Logo2.jpg');
+//$pdf->Image('images/Logo2.jpg');
 //$pdf->Image('images/Logo2.jpg', '', '', 40, 40, '', '', 'T', false, 300, '', false, false, 1, false, false, false);
 // ---------------------------------------------------------
 
@@ -130,17 +130,12 @@ $bloque1 = <<<EOF
 		
 		<tr>
 
-			<td style="background-color:white; width:140px">
-				
-				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 
-				</div>
+			<td style="background-color:white;">
 
-			</td>
+        <h2>MOUSELAMP</h2>
 
-			<td style="background-color:white; width:140px">
-
-				<div style="font-size:8.5px; text-align:right; line-height:15px;">
+				<div style="font-size:8.5px; text-align:left; line-height:15px;">
 				<br>
 					codigo factura: $respuestaDetalle[idFactura]
 					<br>
@@ -168,7 +163,7 @@ $bloque1 = <<<EOF
 	</table>
 
 	<br>
-	<br>
+
 	
 	<!---–<h2>MOUSE LAMP</h2>--->
 
@@ -182,32 +177,31 @@ $bloque2 = <<<EOF
 
 
 
-	<table style="font-size:10px; padding:5px 10px;">
-	<br>
-	<br>
-	<br>
-	
-	
+	<table style="font-size:10px; ">
 	<tr>
 		
+      <h4>Informacion del cliente</h4>
+
+
+      <br>
+
+				Cedula : $respuestaCliente[cedula] 
+       
+	
+        <br>
+
+			Nombre : $respuestaCliente[nomCliente] $respuestaCliente[apellidos]
+
+		
+    <br>
+    Fecha de venta: $fecha
 
 
 
-			<td style="border: 1px solid #666; background-color:white; width:390px">
 
-				Cedula cliente: $respuestaCliente[cedula] 
-
-			</td>	
+			<td style="border: 1px solid #666; background-color:white; width:150px; text-align:center">
 			
-			<td style="border: 1px solid #666; background-color:white; width:390px">
-
-			Nombre cliente: $respuestaCliente[nomCliente] $respuestaCliente[apellidos]
-
-		</td>
-
-			<td style="border: 1px solid #666; background-color:white; width:150px; text-align:right">
-			
-				Fecha de venta: $fecha
+				
 
 			</td>
 
@@ -452,8 +446,8 @@ $pdf->Output('factura.pdf', 'I');
 
 }
 
-$factura = new imprimirFactura();
+$factura = new imprimirTicket();
 $factura -> codigo = $_GET["codigo"];
-$factura -> traerImpresionFactura();
+$factura -> traerImpresionTicket();
 
 ?>

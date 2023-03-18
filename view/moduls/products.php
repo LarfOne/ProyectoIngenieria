@@ -77,12 +77,20 @@
                   </div>
                   <div class="col mt-5 mr-5">
                         <label>Porcentaje de IVA</label>
-                        <input class="form-control input-sm mt-2" type="text" name="porcProducto" placeholder="Ingresar porcentaje" required>
+                        <input class="form-control input-sm mt-2" type="number" id= "porcProducto" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
                   </div>
             </div>
 
-            <!-- Mandar a traer las categorias -->
+
+            
             <?php
+
+            
+            
+
+
+            //Mandar a traer las categorias
+
             $item = null;
             $valor = null;
             $category = ControllerCategories::ctrShowCategories($item, $valor);
@@ -90,20 +98,18 @@
 
             <div class="row align-items-center third">
                   <div class="col mt-5 mr-5">
-                        <label>Precio compra</label>
-                        <input class="form-control input-sm mt-2" type="text" name="precioProducto" placeholder="Ingresar precio" required>
+                        <label>Precio Neto</label>
+                        <input class="form-control input-sm mt-2" type="number" id ="precioNeto" name="precioNeto" placeholder="Ingresar precio" onchange="obtenerPrecioNeto()" required>
                   </div>
+                  
                   <div class="col mt-5 mr-5">
-                        <label>Ganancia</label>
-                        <input class="form-control input-sm mt-2" type="text" name="gananciaProducto" placeholder="Ingresar ganancia" required>
-                  </div>
-                  <div class="col mt-5 mr-5">
-                        <label>Porcentaje de Ganancia</label>
-                        <input class="form-control input-sm mt-2" type="text" name="porGananProducto" placeholder="Ingresar porcentaje" required>
+                        <label>Precio total</label>
+                        <input class="form-control input-sm mt-2" type="text" id="precioTotal" name="precioTotal" value="Precio Total" readonly required>
+
                   </div>
                   <div class="col mt-5 mr-5">
                         <label>Precio IVA</label>
-                        <input class="form-control input-sm mt-2" type="text" name="ivaProducto" placeholder="Ingresar precio" required>
+                        <input class="form-control input-sm mt-2" type="text" id="ivaProducto" name="ivaProducto" value="Ingresar precio" readonly>
                   </div>
                   <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                         <label>Categoria</label>

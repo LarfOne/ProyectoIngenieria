@@ -66,3 +66,41 @@ $(".btnDeleteInventario").click(function(){
 $(".cerrarM").click(function(){
     $("#modalUpdateInventario").modal('hide')
 })
+
+var porcentaje = 0;
+var precioTotal = 0;
+var precioNeto = 0;
+var precioIVA = 0;
+var porc;
+
+function obtenerPorcentaje(){
+    porc = document.getElementById("porcProducto").value;
+    porcentaje = Number.parseFloat(porc) / 100;
+
+    if(porcentaje != 0 && precioNeto != 0){
+
+        precioIVA = precioNeto * porcentaje; //260
+        precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);//2000260
+        
+        $("#ivaProducto").val(precioIVA);
+        $("#precioTotal").val(precioTotal);
+    }
+}
+
+function obtenerPrecioNeto(){
+    precioNeto = document.getElementById("precioNeto").value;
+
+    if(porcentaje != 0 && precioNeto != 0){
+        
+        precioIVA = precioNeto * porcentaje;
+        precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);//2000260
+
+        $("#ivaProducto").val(precioIVA);
+        $("#precioTotal").val(precioTotal);
+
+    }
+}
+
+
+
+

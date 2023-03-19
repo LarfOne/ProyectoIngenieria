@@ -1,6 +1,13 @@
 <?php
 
-    class ControllerDetalle{
+    class ControllerDetalle{      
+        static public function ctrShowDetalleFactura($item, $valor){
+            $tabla = "detallefactura";
+            $respuesta = ModeloDetalle::mdlShow($tabla, $item, $valor);
+            return $respuesta;
+        }
+
+
 
         static public function ctrCreateDetalle(){
             

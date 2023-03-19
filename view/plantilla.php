@@ -82,6 +82,7 @@ session_start(); //para usar variables de session
         $_GET["ruta"] == "salir" ||
         $_GET["ruta"] == "activos" ||
         $_GET["ruta"] == "inventarios" ||
+        $_GET["ruta"] == "crearVentasP" ||
         $_GET["ruta"] == "clients"
       ) {
         include "moduls/" . $_GET["ruta"] . ".php";

@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
@@ -21,7 +22,7 @@
 
       <div class="box-header with-border">
   
-        <a href="createVenta">
+        <a href="crearVentasP">
 
           <button class="btn btn-primary navbar-right" style="margin: 7px;margin-bottom: 20px; " style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
             
@@ -120,25 +121,33 @@
 
                   <td>'.$value["fechaFactura"].'</td>
 
-                  <td>$ '.number_format($value["subTotal"],2).'</td>
+                  <td>¢ '.number_format($value["subTotal"],2).'</td>
 
-                  <td>$ '.number_format($value["impuesto"],2).'</td>
+                  <td>¢ '.number_format($value["impuesto"],2).'</td>
 
-                  <td>$ '.number_format($value["descuento"],2).'</td>
+                  <td>¢ '.number_format($value["descuento"],2).'</td>
                   
-                  <td>$ '.number_format($value["total"],2).'</td>
+                  <td>¢ '.number_format($value["total"],2).'</td>
                   
                   
+
+
 
                   <td>
 
                     <div class="btn-group">
                         
-                    <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+                    <button class="btn btn-success btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+
+                    <i class="fa fa-file"></i>
+
+                    
+                    <button class="btn btn-info btnImprimirTicket" codigoVenta="'.$value["codigo"].'">
 
                     <i class="fa fa-print"></i>
 
-                    
+
+
                       <button class="btn btn-warning btnEditarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-pencil"></i></button>
 
                       <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-times"></i></button>

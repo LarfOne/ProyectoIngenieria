@@ -39,11 +39,18 @@
             
 
         }
+        static public function ctrDetallesPorFactura ($valor){
+            $tabla = "detallefactura";
+            $item = "idFactura";
+            $respuesta = ModeloDetalle::mdlMostrarDetalleporIdFactura($tabla, $item, $valor);
+            return $respuesta;
+        }
 
     }
 
-    
-    
+
+
+
 
 
 ?>  

@@ -522,4 +522,12 @@ class ControladorVentas{
 
 	}
 
+	/**Devolver ventas del mes actual */
+	 static public function ctrVentasMes(){
+		$tabla = "factura";
+		$item = "fechaFactura";
+		$respuesta = ModeloVentas::mdlMostrarVentasMes($tabla, $item);
+		return $respuesta;
+	}
+
 }

@@ -38,6 +38,51 @@ class ModeloDetalle{
         $stmt = null;
 
     }
+
+
+
+	/**MOSTRAR detalle asociado a una factura */
+	static public function mdlMostrarDetalleporIdFactura($tabla, $item, $valor){
+		//Item va a ser fechaFactura. No hay valor debido a que se va a utilizar una funcion de mysql para extraer el mes actual
+		//MONTH(NOW()) Permite extraer el mes actual
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+		
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+    
 }
 
 ?>

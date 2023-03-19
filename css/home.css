@@ -439,3 +439,60 @@ position: relative;
 				margin-bottom: 20px;
 			}
 		}
+.row{
+margin-left: 20px;
+
+
+
+}
+
+
+
+.columnas-juntas2{
+
+    justify-content: center;
+    display: grid;
+    position: relative;
+    
+    }
+    
+#reporte1 {
+    width: 750px;
+    height: 500px;
+    margin-right: 200px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#reporte2 {
+    width: 750px;
+    height: 500px;
+    margin-right: 200px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.textoreporte{
+
+    font-family: 'Roboto Condensed', sans-serif !important;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#miGrafico{
+
+position: absolute;
+
+
+
+}

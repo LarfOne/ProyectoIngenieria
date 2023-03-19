@@ -38,6 +38,45 @@ class ModeloDetalle{
         $stmt = null;
 
     }
+
+
+
+
+static public function mdlMostrarDetalleporIdFactura($tabla, $item, $valor){
+	
+		
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = $item");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+		
+		$stmt -> close();
+
+		$stmt = null;
+
+	
+
 }
+
+
+
+}
+
+
+
+
 
 ?>

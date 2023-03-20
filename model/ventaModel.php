@@ -194,4 +194,33 @@ class ModeloVentas{
 
 	}
 
+	/**MOSTRAR VENTAS DEL MES ACTUAL */
+	static public function mdlMostrarVentasMes($tabla, $item){
+		//Item va a ser fechaFactura. No hay valor debido a que se va a utilizar una funcion de mysql para extraer el mes actual
+		//MONTH(NOW()) Permite extraer el mes actual
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE MONTH($item) = MONTH(NOW())");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+		
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
 }

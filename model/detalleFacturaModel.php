@@ -41,35 +41,43 @@ class ModeloDetalle{
 
 
 
-    static public function mdlShow($tabla, $item, $valor){
 
-        if($item != null){
-            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
+static public function mdlMostrarDetalleporIdFactura($tabla, $item, $valor){
+	
+		
+		if($item != null){
 
-            $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
 
-            $sentenciaSQL -> execute();
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); 
+			$stmt -> execute();
 
-            return $sentenciaSQL -> fetch();
-        
-        }else{
-            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			return $stmt -> fetchAll();
 
-            $sentenciaSQL -> execute();
+		}else{
 
-            return $sentenciaSQL -> fetchAll();
-        }
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
 
-        
+			$stmt -> execute();
 
-        
+			return $stmt -> fetchAll();
 
-        $sentenciaSQL -> close();
+		}
+		
+		$stmt -> close();
 
-        $sentenciaSQL = null;
-        
-    }
+		$stmt = null;
+
+	
 
 }
+
+
+
+}
+
+
+
+
 
 ?>

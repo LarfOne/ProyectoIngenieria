@@ -94,6 +94,18 @@
             
             
         }
+
+
+
+        static public function ctrProductosCantidad (){
+            $tabla = "inventario";
+            $item = "idProducto";
+            $respuesta = Inventario::mdlMostrarCantidadProductosInventario($tabla, $item);
+            return $respuesta;
+        }
+
+
+
     }
     
 

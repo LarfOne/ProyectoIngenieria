@@ -21,57 +21,12 @@
             <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Bienvenido a StockLamp.</h2>
             <h4 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Sistema de inventario.</h4>
 
-            <div> <!-- contenedor de la tabla -->
-                <table class="table table-bordered table-striped dt-responsive tablas">
-                    <thead>
-                        <tr>
-                            <th>Vendedor</th>
-                            <th>Fecha</th>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        /**Extraccion de datos para la tabla de movimientos */
-                        $facturas = ControladorVentas::ctrVentasMes();
-                        foreach ($facturas as $key => $factura) {
-                            /**Se deben buscar todos los detalles que tengan esa factura */
-                            /*Se debe extraer el nombre de el vendedor haciendo una consulta a la tabla ya que la factura ya lleva su id* */
-                            $itemUsuario = "cedula";
-                            $valorUsuario = $factura[3];
-                            $respuestaUsuario = ControllerUser::ctrShowUser($itemUsuario, $valorUsuario);
-                            /**Se le envia el id de la factura */
-                            $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
-                            foreach ($detalles as $key2 => $detalle) {
-                                $producto = ControllerProduct::ctrNameProducts($detalle[2]);
-                                echo ('
-                                <tr>
-                                    <td>' .$respuestaUsuario[2]. '</td>
-                                    <td>' . $factura[4] . '</td>
-                                    <td>' . $producto[1] . '</td>
-                                    <td>' . $detalle[3] . '</td>
-                                    <td>' . $detalle[6] . '</td>
-                                </tr>
-                                
-                                ');
-                            }
-                        }
-                        ?>
-
-                    </tbody>
-
-                </table>
-            </div>
             <?php
 
 
 
 
             ?>
-
-
             <div class="cardCont cards-4">
                 <div class="card card-user">
                     <img src="imagen/user.png" class="card-img">
@@ -129,8 +84,14 @@
 
                     <div id="cantidad-productos">
                         <img src="imagen/cantidad-productos.png" alt="Imagen de productos." class="cantidad-productos">
-                        <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Cantidad de Productos Almacenados: 60</h1>
 
+                        <?php
+                        $productosCantidad = ControllerInventario::ctrProductosCantidad("inventario", "idProducto");
+                        $cantidad = $productosCantidad[0]["COUNT(DISTINCT idProducto)"];
+                        
+                        ?>
+                        <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Cantidad de Productos Almacenados:<?php echo $cantidad; ?></h1>
+                    
 
                         <button></button>
                     </div>
@@ -251,11 +212,53 @@
                 </div>
 
             </div>
+            <h1 style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales</h1>
+            <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
+                <table class="table" id="tabla" data-sort="table">
+                    <thead>
+                        <tr>
+                            <th>Vendedor</th>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        /**Extraccion de datos para la tabla de movimientos */
+                        $facturas = ControladorVentas::ctrVentasMes();
+                        foreach ($facturas as $key => $factura) {
+                            /**Se deben buscar todos los detalles que tengan esa factura */
+                            /*Se debe extraer el nombre de el vendedor haciendo una consulta a la tabla ya que la factura ya lleva su id* */
+                            $itemUsuario = "cedula";
+                            $valorUsuario = $factura[3];
+                            $respuestaUsuario = ControllerUser::ctrShowUser($itemUsuario, $valorUsuario);
+                            /**Se le envia el id de la factura */
+                            $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
+                            foreach ($detalles as $key2 => $detalle) {
+                                $producto = ControllerProduct::ctrNameProducts($detalle[2]);
+                                echo ('
+                                <tr>
+                                    <td>' .$respuestaUsuario[2]. '</td>
+                                    <td>' . $factura[4] . '</td>
+                                    <td>' . $producto[1] . '</td>
+                                    <td>' . $detalle[3] . '</td>
+                                    <td>' . $detalle[6] . '</td>
+                                </tr>
+                                
+                                ');
+                            }
+                        }
+                        ?>
+
+                    </tbody>
+
+                </table>
+            </div>
 
         </div>
-        <div id="chartContainer" style="width: 400px; height: 400px;">
-            <canvas id="myChart"></canvas>
-        </div>
+       
 
 
     </div>

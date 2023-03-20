@@ -1,4 +1,5 @@
 
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 
@@ -48,17 +49,17 @@
          <tr>
            
              
-         <th style="width:10px" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">#</th>
-           <th>Código factura</th>
-           <th>Cliente</th>
-           <th>Sucursal</th>
-           <th>Vendedor</th>
-           <th>Fecha factura</th>
-           <th>Sub total</th>
-           <th>Impuesto</th>
-           <th>Descuenso</th>
-           <th>Total</th>
-           <th>Acciones</th>
+              <th style="width:10px" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">#</th>
+              <th>Código factura</th>
+              <th>Cliente</th>
+              <th>Sucursal</th>
+              <th>Vendedor</th>
+              <th>Fecha factura</th>
+              <th>Sub total</th>
+              <th>Impuesto</th>
+              <th>Descuenso</th>
+              <th>Total</th>
+              <th>Acciones</th>
 
          </tr> 
 
@@ -162,7 +163,6 @@
                
         </tbody>
 
-       </table>
           </div>
 
        <?php

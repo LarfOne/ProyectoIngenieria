@@ -37,14 +37,16 @@
                   $activos = ControllerActivos::ctrShowActivo($item, $valor);
             
 
-            foreach($activos as $key => $activo) { ?>
+            foreach($activos as $key => $activo) {
+              $sucursal = ControllerSucursal::ctrNameSucursal($activo['idSucursal']);
+              $user = ControllerUser::ctrNameUser($activo['empleado_id'])?>
             <tr>
 
                 <td><?php echo $activo['codigo']; ?></td>
-                <td><?php echo $activo['idSucursal']; ?></td>
+                <td><?php echo $sucursal['nombre']; ?></td>
                 <td><?php echo $activo['descripcion']; ?></td>
                 <td><?php echo $activo['estado']; ?></td>
-                <td><?php echo $activo['empleado_id']; ?></td>
+                <td><?php echo $user['nombre']." ".$user['apellidos']; ?></td>
 
                 <td>
 
@@ -93,13 +95,24 @@
           <div class="box-body">
 
             <!--AGREGAR id de sucursal-->
+
+            <?php
+                  $item = null;
+                  $valor = null;
+                  $sucursal = ControllerSucursal::ctrShowSucursal($item, $valor);
+            ?>
+
             <div class="form-group">
 
               <div class="input-group">
 
                   <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                  <input type="text" class="form-control input-lg" name="idSucursal" placeholder="Ingresar id de sucursal" required>
-
+                  <!--<input type="text" class="form-control input-lg" name="idSucursal" placeholder="Ingresar id de sucursal" required>-->
+                  <select class="form-control input-lg" id="idSucursal" name="idSucursal">
+                              <?php foreach ($sucursal as $sucursal1) { ?>
+                                    <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
+                              <?php } ?>
+                  </select>
               </div>
 
             </div>
@@ -127,13 +140,24 @@
 
             </div>
 
+            <?php
+                  $item = null;
+                  $valor = null;
+                  $user = ControllerUser::ctrShowUser($item, $valor);
+            ?>
+
             <!--AGREGAR DE empleadoid-->
             <div class="form-group">
 
               <div class="input-group">
 
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="text" class="form-control input-lg" name="empleado_id" placeholder="Ingresar cédula del empleado">
+                  <!--<input type="text" class="form-control input-lg" name="empleado_id" placeholder="Ingresar cédula del empleado">-->
+                  <select class="form-control input-lg" id="empleado_id" name="empleado_id">
+                            <?php foreach ($user as $user1) { ?>
+                                    <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+                            <?php } ?>
+                   </select>
 
               </div>
 
@@ -197,7 +221,12 @@
                             <div class="input-group">
 
                                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                                <input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" value="Ingresar id de sucursal" required>
+                                <!--<input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" value="Ingresar id de sucursal" required>-->
+                                <select class="form-control input-lg" id="idSucursalm" name="idSucursalm">
+                                  <?php foreach ($sucursal as $sucursal1) { ?>
+                                        <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
+                                  <?php } ?>
+                                </select>
 
                             </div>
 
@@ -227,14 +256,19 @@
                             </div>
 
                         </div>
-
+                        
                         <!--MODIFICAR DE empleado_id-->
                         <div class="form-group">
 
                             <div class="input-group">
 
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="text" class="form-control input-lg" id="empleado_idm" name="empleado_idm" value="Ingresar cédula del empleado" required>
+                                <!--<input type="text" class="form-control input-lg" id="empleado_idm" name="empleado_idm" value="Ingresar cédula del empleado" required>-->
+                                <select class="form-control input-lg" id="empleado_idm" name="empleado_idm">
+                                          <?php foreach ($user as $user1) { ?>
+                                                  <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+                                          <?php } ?>
+                                </select>
 
                             </div>
 

@@ -85,7 +85,7 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header" style="background: #1e6d9b; color:white">
           <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Activos</h4>
         </div>
 
@@ -108,7 +108,7 @@
 
                   <span class="input-group-addon"><i class="fa fa-building"></i></span>
                   <!--<input type="text" class="form-control input-lg" name="idSucursal" placeholder="Ingresar id de sucursal" required>-->
-                  <select class="form-control input-lg" id="idSucursal" name="idSucursal">
+                  <select class="form-control input-lg" id="idSucursal" style="border-radius: 5px;" name="idSucursal">
                               <?php foreach ($sucursal as $sucursal1) { ?>
                                     <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                               <?php } ?>
@@ -122,7 +122,7 @@
 
               <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map"></i></span>
-                  <input type="text" class="form-control input-lg" name="descripcion" placeholder="Ingresar descripción" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="descripcion" placeholder="Ingresar descripción" required>
 
               </div>
 
@@ -134,7 +134,7 @@
               <div class="input-group">
 
                   <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                  <input type="text" class="form-control input-lg" name="estado" placeholder="Ingresar estado" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="estado" placeholder="Ingresar estado" required>
 
               </div>
 
@@ -151,9 +151,9 @@
 
               <div class="input-group">
 
-                  <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                  <span style="border-radius: 5px;" class="input-group-addon"><i class="fa fa-envelope"></i></span>
                   <!--<input type="text" class="form-control input-lg" name="empleado_id" placeholder="Ingresar cédula del empleado">-->
-                  <select class="form-control input-lg" id="empleado_id" name="empleado_id">
+                  <select class="form-control input-lg" id="empleado_id" name="empleado_id" style="border-radius: 5px;">
                             <?php foreach ($user as $user1) { ?>
                                     <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
                             <?php } ?>
@@ -210,7 +210,7 @@
                             <div class="input-group">
 
                                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                                <input type="text" class="form-control input-lg" id="codigom" name="codigom" value="Ingresar el codigo" readonly>
+                                <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="codigom" name="codigom" value="Ingresar el codigo" readonly>
                             </div>
 
                         </div>
@@ -222,7 +222,7 @@
 
                                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
                                 <!--<input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" value="Ingresar id de sucursal" required>-->
-                                <select class="form-control input-lg" id="idSucursalm" name="idSucursalm">
+                                <select class="form-control input-lg" id="idSucursalm" name="idSucursalm" style="border-radius: 5px;">
                                   <?php foreach ($sucursal as $sucursal1) { ?>
                                         <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                                   <?php } ?>
@@ -238,7 +238,7 @@
                             <div class="input-group">
 
                                 <span class="input-group-addon"><i class="fa fa-map"></i></span>
-                                <input type="text" class="form-control input-lg" id="descripcionm" name="descripcionm" value="Ingresar descripción" required>
+                                <input type="text" class="form-control input-lg" id="descripcionm" name="descripcionm" style="border-radius: 5px;" value="Ingresar descripción" required>
 
                             </div>
 
@@ -251,7 +251,7 @@
                             <div class="input-group">
 
                                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                                <input type="text" class="form-control input-lg" id="estadom" name="estadom" value="Ingresar estado" required>
+                                <input type="text" class="form-control input-lg" id="estadom" name="estadom" style="border-radius: 5px;" value="Ingresar estado" required>
 
                             </div>
 
@@ -264,7 +264,7 @@
 
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                 <!--<input type="text" class="form-control input-lg" id="empleado_idm" name="empleado_idm" value="Ingresar cédula del empleado" required>-->
-                                <select class="form-control input-lg" id="empleado_idm" name="empleado_idm">
+                                <select class="form-control input-lg" id="empleado_idm" name="empleado_idm" style="border-radius: 5px;">
                                           <?php foreach ($user as $user1) { ?>
                                                   <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
                                           <?php } ?>

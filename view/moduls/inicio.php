@@ -50,11 +50,11 @@
         </div>
 
 
-        <div class="columnas-juntas">
-            <div class="row justify-content-center" , style="margin: rigth 200px;">
+        <div class="container2">
+            <div class="row no-gutters" style="margin: rigth 200px;">
 
                 <!-- Column 1.x -->
-                <div class="col-sm">
+                <div class="col-md-4 flex-fill">
                     <div id="perfil-usuario">
 
                         <?php
@@ -80,10 +80,10 @@
                 </div>
 
                 <!-- Column 2.x -->
-                <div class="col-sm center">
+                <div class="col-md-4 flex-fill">
 
                     <div id="cantidad-productos">
-                        <img src="imagen/cantidad-productos.png" alt="Imagen de productos." class="cantidad-productos">
+                        <img src="imagen/cantidad-productos.png" alt="Imagen de productos." class="imagen-productos">
 
                         <?php
                         $productosCantidad = ControllerInventario::ctrProductosCantidad("inventario", "idProducto");
@@ -98,14 +98,29 @@
 
 
                 </div>
+                <div class="col-md-4 flex-fill">
+                <div id="cantidad-clientes">
+                        <img src="imagen/clientes.png" alt="Imagen de productos." class="imagen-clientes">
+
+                        <?php
+                        $clientes = ControllerClient::ctrClientesCantidad("cliente", "cedula");
+                        $cantidad = $clientes[0]["COUNT(DISTINCT cedula)"];
+                        
+                        ?>
+                        <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Cantidad de Clientes Almacenados:<?php echo $cantidad; ?></h1>
+                    
+
+                        <button></button>
+                    </div>
+                  
+
+
+                    </div>
+
 
             </div>
 
         </div>
-
-
-
-
 
         <div class="columnas-juntas2">
             <h1 class="textoreporte">Reportes</h1>

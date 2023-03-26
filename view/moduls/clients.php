@@ -87,7 +87,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Agregar Cliente</h4>
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Cliente</h4>
         </div>
 
     </br>
@@ -101,7 +101,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="cedula" placeholder="Ingresar cédula" required>
+                <input type="text" class="form-control input-lg" name="cedula" style="border-radius: 5px;" placeholder="Ingresar cédula" required>
                 <input type="hidden" id="clientId">
               </div>
 
@@ -113,7 +113,7 @@
         <div class="input-group">
 
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
-          <input type="text" class="form-control input-lg" name="nomCliente" placeholder="Ingresar nombre" required>
+          <input type="text" class="form-control input-lg" name="nomCliente" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
           
         </div>
 
@@ -125,7 +125,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="apellidos" placeholder="Ingresar apellidos " required>
+                <input type="text" class="form-control input-lg" name="apellidos" style="border-radius: 5px;" placeholder="Ingresar apellidos " required>
 
               </div>
 
@@ -139,7 +139,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                <input type="text" class="form-control input-lg" name="telefonoCli" placeholder="Ingresar número de telefono" required>
+                <input type="text" class="form-control input-lg" name="telefonoCli" style="border-radius: 5px;" placeholder="Ingresar número de telefono" required>
 
               </div>
 
@@ -151,7 +151,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="email" placeholder="Ingresar correo electrónico" required>
+                <input type="text" class="form-control input-lg" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -163,7 +163,7 @@
            <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                <input type="text" class="form-control input-lg" name="direccion" placeholder="Ingresar dirección " required>
+                <input type="text" class="form-control input-lg" name="direccion" style="border-radius: 5px;" placeholder="Ingresar dirección " required>
 
           </div>
 
@@ -203,7 +203,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Editar Cliente</h4>
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Cliente</h4>
         </div>
 
 
@@ -217,7 +217,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="cedulam" name="cedulam" value="Ingresar Cedula" readonly>
+                <input type="text" class="form-control input-lg" id="cedulam" name="cedulam" style="border-radius: 5px;" value="Ingresar Cedula" readonly>
                 
 
               </div>
@@ -230,7 +230,7 @@
           <div class="input-group">
 
             <span class="input-group-addon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-control input-lg" id="nomClientem" name="nomClientem" value="Ingresar nombre" required>
+            <input type="text" class="form-control input-lg" id="nomClientem" name="nomClientem" style="border-radius: 5px;" value="Ingresar nombre" required>
 
           </div>
 
@@ -245,7 +245,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="apellidosm" name="apellidosm" value="Ingresar los apellidos" required>
+                <input type="text" class="form-control input-lg" id="apellidosm" name="apellidosm" style="border-radius: 5px;" value="Ingresar los apellidos" required>
 
               </div>
 
@@ -259,7 +259,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="telefonoClim" name="telefonoClim" value="Ingresar número de teléfono" required>
+                <input type="text" class="form-control input-lg" id="telefonoClim" name="telefonoClim" style="border-radius: 5px;" value="Ingresar número de teléfono" required>
 
               </div>
 
@@ -271,7 +271,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="emailm" name="emailm" value="Ingresar correo electrónico" required>
+                <input type="text" class="form-control input-lg" id="emailm" name="emailm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
 
               </div>
 
@@ -283,7 +283,7 @@
             <div class="input-group">
 
               <span class="input-group-addon"><i class="fa fa-user"></i></span>
-              <input type="text" class="form-control input-lg" id="direccionm" name="direccionm" value="Ingresar dirección" required>
+              <input type="text" class="form-control input-lg" id="direccionm" name="direccionm" style="border-radius: 5px;" value="Ingresar dirección" required>
 
             </div>
 

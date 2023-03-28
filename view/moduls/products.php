@@ -130,7 +130,7 @@
                   <div class="col mt-5 mr-5">
                         <label>Foto del producto</label>
                         <input type="file" class="image" name="image">
-                        <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
+                        
                   </div>
                   <div class="col mt-5 mr-5 align-self-center">
                         <label>Observaciones</label>

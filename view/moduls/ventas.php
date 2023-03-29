@@ -139,12 +139,12 @@
                         
                     <button class="btn btn-success btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
 
-                    <i class="fa fa-file"></i>
+                    <i class="fa fa-file"></i></button>
 
                     
                     <button class="btn btn-info btnImprimirTicket" codigoVenta="'.$value["codigo"].'">
 
-                    <i class="fa fa-print"></i>
+                    <i class="fa fa-print"></i></button>
 
 
 
@@ -162,7 +162,7 @@
         ?>
                
         </tbody>
-
+        </table>
           </div>
 
        <?php

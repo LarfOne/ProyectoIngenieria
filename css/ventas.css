@@ -1,3 +1,9 @@
+.btnAgregarVentas:hover{
+    color: black;
+    background-color: #06aaeb;
+    border: 1px solid black;       
+}
+
 .contenedor{
     display: flex;
     align-items: center;

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/boton.css">
+<link rel="stylesheet" href="css/categorias.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -10,7 +11,7 @@
 <div class="container mt-3">
   <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Categorias</h2>
 
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddCategories">
+    <button class="btn btn-primary btnAgregarCat" data-bs-toggle="modal" data-bs-target="#modalAddCategories">
         Agregar Categoría
     </button>
   <div class="box-body">
@@ -86,7 +87,7 @@
     </br>
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalCat">
 
             <!--AGREGAR DE CODIGO-->
             <div class="form-group">
@@ -150,7 +151,7 @@
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalCat">
 
             <!--MODIFICAR DE CODIGO-->
             <div class="form-group">

@@ -1,0 +1,12 @@
+.btnUpdateInventario:hover{
+    
+    border: 1.5px solid black;
+}
+
+.btnDeleteInventario:hover{
+    
+    background-color: red;
+    transition: background-color 0.3s ease;
+    border: 1.5px solid black;
+    color: black;
+}

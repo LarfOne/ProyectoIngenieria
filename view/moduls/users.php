@@ -8,7 +8,7 @@
 
 <div id= "container pt-4" style="margin-top: 100px;">
 
-  <div class="container mt-3 fondoUser">
+  <div class="container mt-3">
     <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
 
     <div class="tablaUs" >
@@ -97,7 +97,7 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header modalHeaderU" >
           <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Usuario</h4>
         </div>
 

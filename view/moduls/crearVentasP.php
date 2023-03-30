@@ -5,8 +5,8 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class="contenedor">
-    <div class="content-wrapper contVenta" style="padding: 15px 10px 30px 10px !important;">
+<div id="container pt-4">
+    <div class="container mt-3 contVenta" style="padding: 15px 10px 30px 10px !important;">
 
         <header class="headerVentas">
 
@@ -135,11 +135,11 @@
                         <tr>
                             <th>Codigo</th>
                             <th>Descripcion</th>
-                            <th>Precio Unitario</th>
                             <th>Cantidad</th>
-                            <th>% Descuento</th>
                             <th>Descuento</th>
+                            <th>Precio Unitario</th>
                             <th>SubTotal I.V.I</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody class="tablita">

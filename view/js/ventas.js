@@ -109,6 +109,90 @@ $(".btnAgregarProduct").click(function(){
 })
 
 /*=============================================
+BOTON PARA AGREGAR PRODUCTOS A LA TABLA
+=============================================*/
+
+$(".btnAgregarProducto1").click(function(){
+	//porc = document.getElementById("idProducto").value;
+	//console.log("Hello",porc);
+
+	var idProduct = document.getElementById("idProducto").value;
+	var cantidad = document.getElementById("cantidadProducto").value;
+
+	console.log("idProduct ",idProduct)
+
+	var datas = new FormData();
+
+    datas.append("idProduct", idProduct);
+
+    $.ajax({
+
+        url:"ajax/productAjax.php",
+		method:"POST",
+		data: datas,
+		cache: false,
+		contentType: false,
+		processData: false,
+		dataType: "json",
+
+        success: function(respuesta){ //vienen los datos del producto que se digito
+			
+            console.log("respuesta", respuesta);
+			var codigo = respuesta["codigo"];
+			var descripcion = respuesta["descripcion"];
+			var precio = respuesta["precioTotal"];
+			var porDescuento = "0";
+			var descuento = "0";
+			var subTotal = "0";
+			//var nombre = respuesta["nombre"];
+
+			
+
+			$(".tablita").append( //los datos obtenidos se agrega a la tabla
+
+			'<tr>'+
+	  
+				'<td>'+codigo+'</td>'+
+				'<td>'+descripcion+'</td>'+
+				'<td>'+precio+'</td>'+
+				'<td>'+cantidad+'</td>'+
+				'<td>'+porDescuento+'</td>'+
+				'<td>'+descuento+'</td>'+
+				'<td>'+subTotal+'</td>'+
+
+		  '</tr>') 
+
+        }
+
+    })
+})
+
+$(".btnDeleteUser").click(function(){
+
+    var idEmpleado = $(this).attr("idEmpleado"); 
+      
+    Swal.fire({
+        title: 'Estas seguro de eliminar el usuario?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Borrar'
+    }).then((result) => {
+        if(result.value){
+
+            window.location = "index.php?ruta=users&idEmpleadoE="+idEmpleado;
+        }
+        
+    })
+
+
+
+
+})
+
+/*=============================================
 QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR BOTÓN
 =============================================*/
 

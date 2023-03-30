@@ -87,24 +87,27 @@
 
                 <div class="col mt-5 mr-5">
                     <label>Articulo</label>
-                    <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
+                    <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
+                </div>
+
+                <div class="col mt-5 mr-5">
+                <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
                 </div>
 
                 <div class="col mt-5 mr-5">
                     <label>Cantidad</label>
-                    <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
+                    <input class="form-control input-sm mt-2" type="text" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
                 </div>
 
                 <div class="col mt-5 mr-5 form-group row factura">
                     <label>Tipo Factura</label>
                     <div class="input-group">
-                        <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
+                        <select class="form-control" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
                             <option value="">Tipo Factura</option>
                             <option value="Electronica">Electronica</option>
                             <option value="Normal">Normal</option>                 
                         </select>    
                     </div>
-                   
                 </div>
 
                 <div class="col mt-5 mr-5 form-group row">  
@@ -130,7 +133,7 @@
                 <table class="table tableU" id="tabla" data-sort="table">
                     <thead>
                         <tr>
-                            <th >Codigo</th>
+                            <th>Codigo</th>
                             <th>Descripcion</th>
                             <th>Precio Unitario</th>
                             <th>Cantidad</th>
@@ -138,8 +141,10 @@
                             <th>Descuento</th>
                             <th>SubTotal I.V.I</th>
                         </tr>
-                </thead>
+                    </thead>
+                    <tbody class="tablita">
 
+                    </tbody>
                 
                 </table>
 

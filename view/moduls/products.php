@@ -77,7 +77,7 @@
                   </div>
                   <div class="col mt-5 mr-5">
                         <label>Porcentaje de IVA</label>
-                        <input class="form-control input-sm mt-2" type="number" id= "porcProducto" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
+                        <input class="form-control input-sm mt-2" type="number" id= "porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
                   </div>
             </div>
 

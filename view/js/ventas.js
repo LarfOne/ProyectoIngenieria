@@ -150,22 +150,45 @@ $(".btnAgregarProducto1").click(function(){
 
 			$(".tablita").append( //los datos obtenidos se agrega a la tabla
 
-			'<tr>'+
+			'<tr id="listaP'+codigo+'">'+
 	  
 				'<td>'+codigo+'</td>'+
 				'<td>'+descripcion+'</td>'+
-				'<td>'+precio+'</td>'+
 				'<td>'+cantidad+'</td>'+
-				'<td>'+porDescuento+'</td>'+
 				'<td>'+descuento+'</td>'+
+				'<td>'+precio+'</td>'+
 				'<td>'+subTotal+'</td>'+
+				'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigo+'"><i class="fa fa-times fa-xs"></i></button></td>'+
 
-		  '</tr>') 
+		  	'</tr>') 
 
         }
 
     })
 })
+
+
+
+/*=============================================
+QUITAR PRODUCTOS DE LA VENTA
+=============================================*/
+
+$(".tableU").on("click", "button.quitarProducto", function(){
+
+	var idProduct = $(this).attr("idProduct");
+
+	console.log("Codigo del producto",idProduct);
+
+	let tr = document.querySelector('#listaP'+idProduct);
+
+	console.log("tr",tr);
+
+	tr.remove();
+
+})
+
+
+
 
 $(".btnDeleteUser").click(function(){
 
@@ -186,9 +209,6 @@ $(".btnDeleteUser").click(function(){
         }
         
     })
-
-
-
 
 })
 

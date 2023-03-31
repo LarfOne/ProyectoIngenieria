@@ -175,13 +175,13 @@ QUITAR PRODUCTOS DE LA VENTA
 
 $(".tableU").on("click", "button.quitarProducto", function(){
 
-	var idProduct = $(this).attr("idProduct");
+	var idProduct = $(this).attr("idProduct");// se obtiene el id del codigo del producto selecionado
 
-	console.log("Codigo del producto",idProduct);
+	//console.log("Codigo del producto",idProduct);
 
-	let tr = document.querySelector('#listaP'+idProduct);
+	let tr = document.querySelector('#listaP'+idProduct);// se selecciona el tr con el codigo seleccionado
 
-	console.log("tr",tr);
+	//console.log("tr",tr);
 
 	tr.remove();
 

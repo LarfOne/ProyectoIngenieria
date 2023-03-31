@@ -5,15 +5,15 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div id="container pt-4">
-    <div class="container mt-3 contVenta" style="padding: 15px 10px 30px 10px !important;">
+<div id="container pt-4" >
+    <div class="container mt-3 contVenta" style="padding: 15px 10px 15px 10px !important;">
 
         <header class="headerVentas">
 
             <div class="info">
-                <img src="view/img/empresa/logoEmpresa.png" style="width: 150px;">
-                <div class="">
-                    <h1>MOUSE LAMP TECNOLOGIES</h1>
+                <img src="view/img/empresa/logoEmpresa.png" style="width: 110px;">
+                <div class="about">
+                    <h2>MOUSE LAMP TECNOLOGIES</h2>
                     <h3>CEDULA FISICA: 50389093520</h3>
                     <h3>TELEFONO: 87170007</h3>
                 </div>
@@ -85,7 +85,7 @@
         <div class="articulo">
             <div class="arti">
 
-                <div class="col mt-5 mr-5">
+                <div class="col mt-3 mr-5">
                     <label>Articulo</label>
                     <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
                 </div>
@@ -94,15 +94,15 @@
                 <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
                 </div>
 
-                <div class="col mt-5 mr-5">
+                <div class="col mt-3 mr-5">
                     <label>Cantidad</label>
                     <input class="form-control input-sm mt-2" type="text" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
                 </div>
 
-                <div class="col mt-5 mr-5 form-group row factura">
+                <div class="col mt-3 mr-5 form-group row factura">
                     <label>Tipo Factura</label>
                     <div class="input-group">
-                        <select class="form-control" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
+                        <select class="form-control input-sm mt-2" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
                             <option value="">Tipo Factura</option>
                             <option value="Electronica">Electronica</option>
                             <option value="Normal">Normal</option>                 
@@ -110,10 +110,10 @@
                     </div>
                 </div>
 
-                <div class="col mt-5 mr-5 form-group row">  
+                <div class="col mt-3 mr-5 form-group row">  
                     <label>Tipo Factura</label>                                      
                         <div class="input-group">                  
-                            <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
+                            <select class="form-control input-sm mt-2" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
                                 <option value="">Seleccione método de pago</option>
                                 <option value="Efectivo">Efectivo</option>
                                 <option value="TC">Tarjeta Crédito</option>
@@ -130,7 +130,7 @@
 
         <section class="tablaVenta"> 
             <div class="tablaVendidos">
-                <table class="table tableU" id="tabla" data-sort="table">
+                <table class="table tableU" data-sort="table">
                     <thead>
                         <tr>
                             <th>Codigo</th>
@@ -151,43 +151,37 @@
             </div>
         </section>
 
-        <section class="valores">
-
-            <div class="col-xs-8 pull-right">
-                    
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Total</th>      
-                        </tr>
-                    </thead>
-
-                    <tbody>                   
-                        <tr>
-                           <td style="width: 50%">                            
-                                <div class="input-group">                          
-                                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-
-                                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
-
-                                    <input type="hidden" name="totalVenta" id="totalVenta">                                                  
-                                </div>
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
 
         <div class="botonesVenta">
-  
-            <button type="submit" class="btnVentaGuardar">Guardar venta</button>
+
+          <div class="col-xs-8 pull-right">
+                      
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Total</th>      
+                </tr>
+              </thead>
+      
+              <tbody>                   
+                <tr>
+                  <td style="width: 50%">                            
+                     <div class="input-group">                          
+                        <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                        <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
+                        <input type="hidden" name="totalVenta" id="totalVenta">                                                  
+                      </div>
+                  </td>
+                </tr>
+      
+              </tbody>
+            </table>
+      
+          </div>
            
-            <button type="button" class="btnVentaCancelar">Cancelar</button>
+          <button type="button" class="btnVentaCancelar">Cancelar</button>
+
+          <button type="submit" class="btnVentaGuardar">Guardar venta</button>
             
         </div>
 

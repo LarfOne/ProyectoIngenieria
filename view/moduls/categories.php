@@ -9,7 +9,7 @@
 <div id= "container pt-4" style="margin-top: 100px;">
 
 <div class="container mt-3">
-  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Categorias</h2>
+  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Categorías</h2>
 
     <button class="btn btn-primary btnAgregarCat" data-bs-toggle="modal" data-bs-target="#modalAddCategories">
         Agregar Categoría
@@ -81,7 +81,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Agregar Categories</h4>
+          <h4 class="modal-title">Agregar Categorías</h4>
         </div>
 
     </br>
@@ -135,7 +135,7 @@
   </div>
 </div>
 
-<!--*************************** MODAL MODIFICAR Categories ***************************-->
+<!--*************************** MODAL MODIFICAR Categorias ***************************-->
 
 <div class="modal fade" id="modalUpdateCategories" role="dialog">
   <div class="modal-dialog">
@@ -145,7 +145,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Editar Categories</h4>
+          <h4 class="modal-title">Editar Categorías</h4>
         </div>
 
 

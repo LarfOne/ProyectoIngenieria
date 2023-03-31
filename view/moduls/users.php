@@ -325,7 +325,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-building"></i></span>
                 <!--<input type="text" class="form-control input-lg" id="sucursalUserm" name="sucursalUserm" value="Ingresar sucursal a la que pertenece" required>-->
                 <select class="form-control input-lg" id="sucursalUserm" name="sucursalUserm">
                     <?php foreach ($sucursal as $sucursal1) { ?>
@@ -342,7 +342,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="text" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
 
               </div>
@@ -370,7 +370,7 @@
             <!--MODIFICAR DE PASSWORD-->
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                 
                 <input type="password" class="form-control input-lg" id="passwordUserm" name="passwordUserm" placeholder="Ingresar la nueva contrasena">
                 <input type="hidden" id="passwordActual" name="passwordActual">
@@ -393,7 +393,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-credit-card-alt"></i></span>
                 <input type="text" class="form-control input-lg" id="cuentaUserm" name="cuentaUserm" value="Ingresar cuenta bancaria" required>
                 
               </div>
@@ -405,7 +405,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                 <input type="text" class="form-control input-lg" id="directionUserm" name="directionUserm" value="Ingresar dirección" required>
 
               </div>
@@ -415,7 +415,7 @@
             <!--MODIFICAR DE FOTO-->
             <div class="form-group">
 
-              <div class="panel">Subir Foto</div>
+            <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir nueva foto</span>
               <input type="file" class="image" name="imageUpdate">
 
               <p class="help-block">Peso maximo de la foto 10MB</p>

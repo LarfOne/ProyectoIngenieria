@@ -81,22 +81,22 @@
                 </div>          
             </div>
         </header>
-
+        
         <div class="articulo">
-            <div class="arti">
-
+            <form>
+              <div class="arti">
                 <div class="col mt-3 mr-5">
                     <label>Articulo</label>
                     <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
                 </div>
 
                 <div class="col mt-5 mr-5">
-                <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
+                  <button type="submmit" class="btn btn-primary btnAgregarProducto1">Agregar</button>
                 </div>
 
                 <div class="col mt-3 mr-5">
                     <label>Cantidad</label>
-                    <input class="form-control input-sm mt-2" type="text" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
+                    <input class="form-control input-sm mt-2" type="number" value="1" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
                 </div>
 
                 <div class="col mt-3 mr-5 form-group row factura">
@@ -125,7 +125,9 @@
                             <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
                         </div>      
                 </div>
+              
             </div>
+            </form>
         </div>
 
         <section class="tablaVenta"> 
@@ -138,7 +140,7 @@
                             <th>Cantidad</th>
                             <th>Descuento</th>
                             <th>Precio Unitario</th>
-                            <th>SubTotal I.V.I</th>
+                            <th>SubTotal</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>

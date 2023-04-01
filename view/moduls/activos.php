@@ -86,8 +86,8 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Activos</h4>
+        <div class="modal-header modalHeaderColor">
+          <h4 class="modal-title">Agregar Activos</h4>
         </div>
 
     </br>
@@ -196,8 +196,8 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Activos</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Editar Activos</h4>
         </div>
 
 

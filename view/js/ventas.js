@@ -1,8 +1,7 @@
 var stock;
+var codigoProducto = "";
 
-var precioTotalP = 0;
-
-$(".btnAgregarProduct").click(function(){
+/*$(".btnAgregarProducto1").click(function(){
     var idInventario = $(this).attr("idInventario");
     var datas = new FormData();
 
@@ -23,7 +22,7 @@ $(".btnAgregarProduct").click(function(){
         }
 
     })
-})
+})*/
 
 //se agrega los productos
 $(".btnAgregarProduct").click(function(){
@@ -142,8 +141,8 @@ $(".btnAgregarProducto1").click(function(){
 
 			success: function(respuesta){ //vienen los datos del producto que se digito
 				
-				console.log("respuesta", respuesta);
-				var codigo = respuesta["codigo"];
+				//console.log("respuesta", respuesta);
+				codigoProducto = respuesta["codigo"];
 				var descripcion = respuesta["descripcion"];
 				var precio = respuesta["precioTotal"];
 				var porDescuento = "0";
@@ -154,15 +153,15 @@ $(".btnAgregarProducto1").click(function(){
 
 				$(".tablita").append( //los datos obtenidos se agrega a la tabla
 
-				'<tr id="listaP'+codigo+'">'+
+				'<tr id="listaP'+codigoProducto+'">'+
 		
-					'<td>'+codigo+'</td>'+
+					'<td>'+codigoProducto+'</td>'+
 					'<td>'+descripcion+'</td>'+
 					'<td>'+cantidad+'</td>'+
 					'<td>'+descuento+'</td>'+
 					'<td>'+precio+'</td>'+
 					'<td class="precioP">'+subTotal+'</td>'+
-					'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigo+'"><i class="fa fa-times fa-xs"></i></button></td>'+
+					'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
 
 				'</tr>') 
 
@@ -172,6 +171,36 @@ $(".btnAgregarProducto1").click(function(){
 
     	})
 	}
+})
+
+
+$(".btnAgregarProducto1").click(function(){
+    
+	var idProducto = document.getElementById("idProducto").value;
+	
+	console.log("Id del productooooo",idProducto);
+
+	/*var idInventario = $(this).attr("idInventario");*/
+    var datas = new FormData();
+
+    datas.append("idProducto", idProducto);
+
+    $.ajax({
+
+        url:"ajax/inventarioAjax.php",
+        method:"POST",
+        data: datas,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){
+			console.log("HELLO",idProducto);
+			stock = respuesta["cantidad"];
+			console.log("cantidad", stock);
+        }
+
+    })
 })
 
 

@@ -30,6 +30,17 @@
             
         }
 
+        static public function codigoInventarioPorProducto($tabla, $item, $valor){
+
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+                
+            $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+                
+            $sentenciaSQL -> execute();
+                
+            return $sentenciaSQL -> fetch();
+        }
+
         static public function mdlAdd($table, $datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (codigo, idSucursal, idProducto, cantidad, existencia, minimo) VALUES

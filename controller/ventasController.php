@@ -39,9 +39,9 @@ class ControladorVentas{
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					if(isset($_POST["arrayProductos"])){
+					if(isset($_POST["listaProductos"])){
 						
-						$array = json_decode($_POST['arrayProductos'],true);
+						$array = json_decode($_POST['listaProductos'],true);
 						
 						$idFactura = $_POST["nuevaVenta"];
 						$table = "detallefactura";

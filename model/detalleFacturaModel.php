@@ -14,11 +14,9 @@ class ModeloDetalle{
                 $stmt->bindParam(":idFactura", $idFactura, PDO::PARAM_INT);
                 $stmt->bindParam(":idProducto", $datos[$i]["id"], PDO::PARAM_INT);
                 $stmt->bindParam(":cantidad", $datos[$i]["cantidad"], PDO::PARAM_INT);
-                //$stmt->bindParam(":fechaFactura", $datos["fechaFactura"], PDO::PARAM_STR);
-                $stmt->bindParam(":precUnit", $datos[$i]["precio"], PDO::PARAM_INT);
-                $stmt->bindParam(":subTotal", $datos[$i]["total"], PDO::PARAM_INT);
-                //$stmt->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
-                //$stmt->bindParam(":descuento", $datos["descuento"], PDO::PARAM_STR);
+                $stmt->bindParam(":precUnit", $datos[$i]["precioUnitario"], PDO::PARAM_INT);
+                $stmt->bindParam(":subTotal", $datos[$i]["subTotal"], PDO::PARAM_INT);
+
                 if($stmt->execute()){
 
                     $response = "ok";

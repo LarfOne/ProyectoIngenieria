@@ -1,5 +1,9 @@
 var stock;
 var codigoProducto = "";
+let cantidadTr = 0;
+
+// Creamos un array vacío
+const arrayProductos = [];
 
 $(".btnAgregarProducto1").click(function(){
     
@@ -72,8 +76,8 @@ $(".btnAgregarProducto1").click(function(){
 				var descuento = "0";
 				var subTotal = parseInt(precio)*cantidad;
 				
-				if ($('.tablita #listaP'+codigoProducto).length) {
-
+				//verifica si existe el cosigo del producto en la tabla de ventas
+				if ($('.tablita #listaP'+codigoProducto).length) { 
 					let tr = document.querySelector('#listaP'+codigoProducto);
 
 					let td = tr.querySelector('.cantidadProducto');
@@ -84,6 +88,7 @@ $(".btnAgregarProducto1").click(function(){
 
 					subTotal = parseInt(precio)*cantidadProducto;
 
+					//se modifica el contenido de la tabla
 					$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
 
 					$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
@@ -97,26 +102,33 @@ $(".btnAgregarProducto1").click(function(){
 						'<tr id="listaP'+codigoProducto+'">'+
 				
 							'<td>'+codigoProducto+'</td>'+
-							'<td>'+descripcion+'</td>'+
+							'<td class="descripcionProducto">'+descripcion+'</td>'+
 							'<td class="cantidadProducto">'+cantidad+'</td>'+
-							'<td>'+descuento+'</td>'+
-							'<td>'+precio+'</td>'+
-							'<td class="precioP">'+subTotal+'</td>'+
+							'<td class="descuentoProducto">'+descuento+'</td>'+
+							'<td class="precioProducto">'+precio+'</td>'+
+							'<td class="subTotalProducto">'+subTotal+'</td>'+
 							'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
 	
 						'</tr>')
 
 				}
 
-					cantidadMayorStock();
+					cantidadMayorStock()
 
-					sumarTotalPrecios();
+					sumarTotalPrecios()
+
+					//contarFilas()
+
+					listarProductos()
 
         	}
 
     	})
 	}
 })
+
+
+
 
 /*=============================================
 QUITAR PRODUCTOS DE LA TABLA
@@ -145,7 +157,7 @@ SUMAR LOS PRECIOS DE LOS PRODUCTOS PARA EL TOTAL
 
 function sumarTotalPrecios(){
 
-	var precios = document.querySelectorAll(".tableU td.precioP"); //se coloca la class de la tabla y la class del td
+	var precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
 
 	var total = 0;
 
@@ -216,201 +228,53 @@ $(".btnDeleteUser").click(function(){
 })
 
 /*=============================================
-QUITAR PRODUCTOS DE LA VENTA Y RECUPERAR BOTÓN
+VERIFICAR LOS TR QUE HAY EN LA TABLA
 =============================================*/
 
-var idQuitarProducto = [];
-
-$(".formularioVenta").on("click", "button.quitarProducto", function(){
-
-	$(this).parent().parent().parent().parent().remove();
-
-	var idProduct = $(this).attr("idProduct");
-
-	if(localStorage.getItem("quitarProducto") == null){
-
-		idQuitarProducto = [];
-	
-	}else{
-
-		idQuitarProducto.concat(localStorage.getItem("quitarProducto"))
-
-	}
-
-	$("button.recuperarBoton[idProduct='"+idProduct+"']").removeClass('btn-default');
-
-	$("button.recuperarBoton[idProduct='"+idProduct+"']").addClass('btn-primary btnAgregarProduct');
-
-
-	if($(".nuevoProducto").children().length == 0){
-
-		$("#nuevoImpuestoVenta").val(0);
-		$("#nuevoTotalVenta").val(0);
-		$("#totalVenta").val(0);
-		$("#nuevoTotalVenta").attr("total",0);
-
-	}else{
-
-		// SUMAR TOTAL DE PRECIOS
-
-    	sumarTotalPrecios()
-
-    	// AGREGAR IMPUESTO
-	        
-        agregarImpuesto()
-
-        // AGRUPAR PRODUCTOS EN FORMATO JSON
-
-        listarProductos()
-
-	}
-
-})
-
-
-$(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
-
-	var precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
-
-	var precioFinal = $(this).val() * precio.attr("precioReal");
-	
-	precio.val(precioFinal);
-
-	var nuevoStock = Number($(this).attr("stock")) - $(this).val();
-
-	$(this).attr("nuevoStock", nuevoStock);
-
-	if(Number($(this).val()) > Number($(this).attr("stock"))){
-
-		/*=============================================
-		SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
-		=============================================*/
-
-		$(this).val(1);
-
-		var precioFinal = $(this).val() * precio.attr("precioReal");
-
-		precio.val(precioFinal);
-
-		sumarTotalPrecios();
-
-		swal({
-	      title: "La cantidad supera el Stock",
-	      text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
-
-	    return;
-
-	}
-
-	// SUMAR TOTAL DE PRECIOS
-
-	sumarTotalPrecios()
-
-    // AGRUPAR PRODUCTOS EN FORMATO JSON
-
-    listarProductos()
-
-})
-
-/*function sumarTotalPrecios(){
-
-	var precioItem = $(".nuevoPrecioProducto");
-	var arraySumaPrecio = [];  
-
-	for(var i = 0; i < precioItem.length; i++){
-
-		 arraySumaPrecio.push(Number($(precioItem[i]).val()));
-		 
-	}
-
-	function sumaArrayPrecios(total, numero){
-
-		return total + numero;
-
-	}
-
-	var sumaTotalPrecio = arraySumaPrecio.reduce(sumaArrayPrecios);
-	
-	$("#nuevoTotalVenta").val(sumaTotalPrecio);
-	$("#totalVenta").val(sumaTotalPrecio);
-	$("#nuevoTotalVenta").attr("total",sumaTotalPrecio);
-
-
+/*function contarFilas() {
+	let tabla = document.getElementById("tablitaC"); 
+	//console.log("TABLAAAAAA",tabla)
+	let filas = tabla.getElementsByTagName("tr");
+	//console.log("filas de la tabla",filas)
+	cantidadTr =  filas.length - 1;
 }*/
 
-/*function listarMetodos(){
-
-	var listaMetodos = "";
-
-	if($("#nuevoMetodoPago").val() == "Efectivo"){
-
-		$("#listaMetodoPago").val("Efectivo");
-
-	}else{
-
-		$("#listaMetodoPago").val($("#nuevoMetodoPago").val()+"-"+$("#nuevoCodigoTransaccion").val());
-
-	}
-
-}
-*/
 /*=============================================
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
 
 function listarProductos(){
 
-	var listaProductos = [];
+	let tr = document.querySelector('#listaP' + codigoProducto); //3 23
 
-	var codigo = $(".codigoProducto");
+	//console.log("listar Productos", tr);
 
-	var descripcion = $(".nuevaDescripcionProducto");
+	let codigo = codigoProducto;
+	let descripcion = tr.querySelector('.descripcionProducto');
+	let cantidad = tr.querySelector('.cantidadProducto');
+	let precioUnitario = tr.querySelector('.precioProducto');
+	let subTotal = tr.querySelector('.subTotalProducto');
 
-	var cantidad = $(".nuevaCantidadProducto");
+	// Buscamos el objeto en el array de arrayProductos con el mismo id
+	let index = arrayProductos.findIndex(producto => producto.id === codigo);
 
-	var precio = $(".nuevoPrecioProducto");
-	
-	for(var i = 0; i < descripcion.length; i++){
-
-		listaProductos.push({ "id" : $(codigo[i]).val(), 
-							  "descripcion" : $(descripcion[i]).val(),
-							  "cantidad" : $(cantidad[i]).val(),
-							  "stock" : $(cantidad[i]).attr("nuevoStock"),
-							  "precio" : $(precio[i]).attr("precioReal"),
-							  "total" : $(precio[i]).val()})
-
-		//console.log(listaProductos[i].descripcion);
-		
-		var datas = [];
-
-    	datas.push("detalleData", listaProductos[i]);
-
-		console.log(datas[i]);
-
-		$.ajax({
-
-			url:"view/moduls/createVenta.php",
-			method:"POST",
-			data: datas,
-			cache: false,
-			contentType: false,
-			processData: false,
-			dataType: "json",
-			success: function(respuesta){
-				
-	
-			}
-	
-		})
-		
+	if (index !== -1) {
+		// Si el objeto ya existe, actualizamos su propiedad cantidad
+		arrayProductos[index].cantidad = cantidad.textContent;
+	} else {
+		// Si el objeto no existe, lo agregamos al array
+		arrayProductos.push({
+			id: codigo,
+			descripcion: descripcion.textContent,
+			cantidad: cantidad.textContent,
+			stock: cantidad.textContent,
+			precioUnitario: precioUnitario.textContent,
+			subTotal: subTotal.textContent,
+		});
 	}
-	
 
-	$("#listaProductos").val(JSON.stringify(listaProductos));
-
+	console.log("lista de productos JSON", arrayProductos);
+	$("#listaProductos").val(JSON.stringify(arrayProductos));
 
 }
 

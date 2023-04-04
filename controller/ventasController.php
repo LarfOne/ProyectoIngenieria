@@ -21,25 +21,27 @@ class ControladorVentas{
 	=============================================*/
 
 	static public function ctrCrearVenta(){
-
+		
 		if(isset($_POST["nuevaVenta"])){
-
-				$table = "factura";	
-				$fecha = date('y-m-d h:i:s');
+		
+				$table = "factura";
+				date_default_timezone_set("America/Costa_Rica");	
+				$fecha = date('Y-m-d H:i:s');
 
                     $datas = array( "codigo" => $_POST["nuevaVenta"],
 									"idEmpleado" => $_POST["idEmpleado"],
 									"idSucursal" => $_POST["idSucursal"],
 									"idCliente"=>$_POST["idCliente"],
-                                    "subTotal" => $_POST["totalVenta"],
+                                    "subTotal" => $_POST["nuevoTotalVenta"],
 									"fechaFactura" => $fecha,
-                                    "total" => $_POST["totalVenta"]
+                                    "total" => $_POST["nuevoTotalVenta"]
                                     );
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					if(isset($_POST["listaProductos"])){
-						$array = json_decode($_POST['listaProductos'],true);
+					if(isset($_POST["arrayProductos"])){
+						
+						$array = json_decode($_POST['arrayProductos'],true);
 						
 						$idFactura = $_POST["nuevaVenta"];
 						$table = "detallefactura";

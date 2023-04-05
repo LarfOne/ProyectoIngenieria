@@ -41,9 +41,18 @@ class ControladorVentas{
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					if(isset($_POST["arrayProductos"])){
+					
 						
-						$array = json_decode($_POST['arrayProductos'],true);
+						$array = json_decode($_POST['listaProductos'],true);
+
+						foreach ($array as $key => $value) { 
+							$tabla = "inventario";
+							$item1 = "cantidad";
+							$valor1 = $value["stock"] - $value["cantidad"];
+							$valor2 = $value["idInvetario"];
+
+							$nuevoStock = Inventario::actualizarStockProducto($tabla, $item1, $valor1, $valor2);
+						}
 						
 						$idFactura = $_POST["nuevaVenta"];
 						$table = "detallefactura";

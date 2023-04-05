@@ -92,7 +92,7 @@
                           </div>
 
                           <div class="col mt-5 mr-5">
-                            <button type="submmit" class="btn btn-primary btnAgregarProducto1">Agregar</button>
+                            <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
                           </div>
 
                           <div class="col mt-3 mr-5">

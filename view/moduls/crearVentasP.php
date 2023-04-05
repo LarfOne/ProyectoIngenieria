@@ -88,7 +88,7 @@
                         <div class="arti">
                           <div class="col mt-3 mr-5">
                               <label>Articulo</label>
-                              <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
+                              <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo">
                           </div>
 
                           <div class="col mt-5 mr-5">

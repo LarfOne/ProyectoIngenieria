@@ -12,7 +12,7 @@ class ModeloDetalle{
                 $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idFactura,idProducto, cantidad, precUnit, subTotal) VALUES (:idFactura, :idProducto, :cantidad, :precUnit, :subTotal)");
 
                 $stmt->bindParam(":idFactura", $idFactura, PDO::PARAM_INT);
-                $stmt->bindParam(":idProducto", $datos[$i]["id"], PDO::PARAM_INT);
+                $stmt->bindParam(":idProducto", $datos[$i]["idProducto"], PDO::PARAM_INT);
                 $stmt->bindParam(":cantidad", $datos[$i]["cantidad"], PDO::PARAM_INT);
                 $stmt->bindParam(":precUnit", $datos[$i]["precioUnitario"], PDO::PARAM_INT);
                 $stmt->bindParam(":subTotal", $datos[$i]["subTotal"], PDO::PARAM_INT);

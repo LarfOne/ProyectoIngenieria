@@ -22,8 +22,10 @@ class ControladorVentas{
 
 	static public function ctrCrearVenta(){
 		
-		if(isset($_POST["nuevaVenta"])){
-		
+		if(isset($_POST["nuevaVenta"])){	
+
+			if(!empty($_POST["listaProductos"])){
+
 				$table = "factura";
 				date_default_timezone_set("America/Costa_Rica");	
 				$fecha = date('Y-m-d H:i:s');
@@ -39,15 +41,15 @@ class ControladorVentas{
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					if(isset($_POST["listaProductos"])){
+					if(isset($_POST["arrayProductos"])){
 						
-						$array = json_decode($_POST['listaProductos'],true);
+						$array = json_decode($_POST['arrayProductos'],true);
 						
 						$idFactura = $_POST["nuevaVenta"];
 						$table = "detallefactura";
 		
 						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
-					}
+					
                     
                     if($respuesta == "ok"){
                         echo "<script>
@@ -72,6 +74,7 @@ class ControladorVentas{
 						})
 						</script>";
 					}
+			}
 		}
 
 	}

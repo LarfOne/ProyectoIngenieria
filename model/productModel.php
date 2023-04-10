@@ -54,19 +54,18 @@ class Product{
 	=============================================*/
 	static public function mdlAdd($tabla, $datos){
 
-		$sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo,nombre,marca, descripcion, precio, categoria, unidadmedida, porcentajeIva, ganancia, porcentajeGanancia, observaciones)
-		VALUES (:codigo, :nombre, :marca, :descripcion, :precio, :categoria, :unidadmedida, :porcentajeIva, :ganancia, :porcentajeGanancia, :observaciones)");
+		$sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo,nombre,marca, descripcion, precioNeto, categoria, unidadmedida, porcentajeIva, precioTotal, observaciones)
+		VALUES (:codigo, :nombre, :marca, :descripcion, :precioNeto, :categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones)");
 
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":precio", $datos["precio"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":precioNeto", $datos["precioNeto"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":unidadmedida", $datos["unidadmedida"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":porcentajeIva", $datos["porcentajeIva"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":ganancia", $datos["ganancia"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":porcentajeGanancia", $datos["porcentajeGanancia"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
 
 
@@ -103,8 +102,6 @@ class Product{
 		$sentenciaSQL = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, marca = :marca, descripcion = :descripcion,
 		precio = :precio, categoria = :categoria, unidadmedida = :unidadmedida, porcentajeiva = :porcentajeiva, 
 		ganancia = :ganancia, porcentajeGanancia = :porcentajeGanancia, observaciones = :observaciones WHERE codigo = :codigo");
-
-       
 		
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);

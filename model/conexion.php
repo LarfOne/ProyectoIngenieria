@@ -2,6 +2,8 @@
 
     class Conexion{
 
+        public $conexion;
+
         public static function conectar(){
 
             $host="localhost";
@@ -19,6 +21,13 @@
 
             return $conexion;
         }
+        function cerrar(){
+
+         $this->conexion->close();
+
+        }
+
+
     }
 
 ?>

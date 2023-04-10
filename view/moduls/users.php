@@ -41,10 +41,11 @@
               $valor = null;
       
               $empleados = ControllerUser::ctrShowUser($item, $valor);
-      
-
-              foreach($empleados as $key => $empleado1) { ?>
               
+
+              foreach($empleados as $key => $empleado1) { 
+
+              $sucursal = ControllerSucursal::ctrNameSucursal($empleado1['idSucursal'])?>
               <tr>
 
                 <td><?php echo $empleado1['cedula']; ?></td>
@@ -53,7 +54,7 @@
                 <td><?php echo $empleado1['email']; ?></td>
                 <td><?php echo $empleado1['role']; ?></td>
                 <td><?php echo $empleado1['cuentaBancaria']; ?></td>
-                <td><?php echo $empleado1['idSucursal']; ?></td>
+                <td><?php echo $sucursal['nombre']; ?></td>
                 <td><?php echo $empleado1['direccion']; ?></td>
                 <?php 
                 
@@ -110,7 +111,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="idUser" placeholder="Ingresar cédula" required>
+                <input type="text" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" name="idUser" placeholder="Ingresar cédula" required>
                 
               </div>
 
@@ -140,14 +141,23 @@
 
             </div>
 
-
+            <?php
+                  $item = null;
+                  $valor = null;
+                  $sucursal = ControllerSucursal::ctrShowSucursal($item, $valor);
+            ?>
             <!--AGREGAR DE sucursal-->
             <div class="form-group">
 
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
-                <input type="text" class="form-control input-lg" name="sucursalUser" placeholder="Ingresar sucursal a la que pertenece" required>
+                <!--<input type="text" class="form-control input-lg" name="sucursalUser" placeholder="Ingresar sucursal a la que pertenece" required>-->
+                <select class="form-control input-lg" id="sucursalUser" name="sucursalUser">
+                              <?php foreach ($sucursal as $sucursal1) { ?>
+                                    <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
+                              <?php } ?>
+                  </select>
 
               </div>
 
@@ -291,7 +301,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameUserm" name="nameUserm" placeholder="Ingresar nombre" required>
+                <input type="text" data-bs-toggle="tooltip" title="Nombre del empleado" class="form-control input-lg" id="nameUserm" name="nameUserm" placeholder="Ingresar nombre" required>
 
               </div>
 
@@ -316,7 +326,12 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="sucursalUserm" name="sucursalUserm" value="Ingresar sucursal a la que pertenece" required>
+                <!--<input type="text" class="form-control input-lg" id="sucursalUserm" name="sucursalUserm" value="Ingresar sucursal a la que pertenece" required>-->
+                <select class="form-control input-lg" id="sucursalUserm" name="sucursalUserm">
+                    <?php foreach ($sucursal as $sucursal1) { ?>
+                                <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
+                    <?php } ?>
+                </select>
 
               </div>
 

@@ -24,7 +24,7 @@ overflow:visible;
 }
 
 .main-menu {
-background:#000839;
+background:rgb(0, 80, 146);
 border-right:1px solid #64839e;
 position: fixed;
 top: 70px;
@@ -53,7 +53,7 @@ position:relative;
 display:table;
 border-collapse:collapse;
 border-spacing:0;
-color:#999;
+color:#ffffff;
  font-family: 'Roboto Condensed', sans-serif !important;
 font-size: 14px;
 text-decoration:none;

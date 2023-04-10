@@ -144,7 +144,7 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Sucursal</label>
-                        <select class="form-control input-lg" name="idSucursal">
+                        <select class="form-control input-lg" id="idSucursal" name="idSucursal">
                               <?php foreach ($sucursal as $sucursal1) { ?>
                                     <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                               <?php } ?>

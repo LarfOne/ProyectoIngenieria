@@ -44,13 +44,13 @@ class ModeloDetalle{
     static public function mdlShow($tabla, $item, $valor){
 
         if($item != null){
-            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT idProducto, cantidad,precUnit,subTotal FROM $tabla WHERE $item =:$item");
 
             $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
             $sentenciaSQL -> execute();
 
-            return $sentenciaSQL -> fetch();
+            return $sentenciaSQL -> fetchAll();
         
         }else{
             $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");

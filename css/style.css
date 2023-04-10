@@ -24,6 +24,13 @@
     grid-area: footer;
 }
 
+.modalHeaderU{
+    background: #43cea2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+}
+
 input::file-selector-button {
     border: thin solid grey;
     border-radius: 50px;
@@ -227,19 +234,8 @@ border: 1px solid black;
     color: black;
 }
 
-.fondoUser{
-    background: #eee;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-
 @media screen and (max-width: 1032px){
 
-    .fondoUser{
-        background: none;
-   
-    }
     
     .tablaUs{
         width: 850px;
@@ -258,11 +254,6 @@ border: 1px solid black;
 
 @media screen and (max-width: 991px){
 
-    .fondoUser{
-        background: none;
-   
-    }
-
     .tablaUs{
         width: 820px;
         margin-left: -40px;
@@ -280,10 +271,6 @@ border: 1px solid black;
 
 @media screen and (max-width: 900px){
 
-    .fondoUser{
-        background: none;
-   
-    }
     .tablaUs{
         width: 750px;
         margin-left: 10px;
@@ -301,10 +288,6 @@ border: 1px solid black;
 
 @media screen and (max-width: 800px){
 
-    .fondoUser{
-        background: none;
-   
-    }
     .tablaUs{
         width: 690px;
         margin-left: 25px ;
@@ -321,10 +304,6 @@ border: 1px solid black;
 }
 
 @media screen and (max-width: 767px){
-    .fondoUser{
-        background: none;
-   
-    }
 
     .tablaUs{
         width: 630px;
@@ -342,10 +321,6 @@ border: 1px solid black;
 }
 
 @media screen and (max-width: 670px){
-    .fondoUser{
-        background: none;
-   
-    }
 
     .tablaUs{
         width: 560px;
@@ -362,10 +337,6 @@ border: 1px solid black;
 }
 
 @media screen and (max-width: 594px){
-    .fondoUser{
-        background: none;
-   
-    }
 
     .tablaUs{
         width: 475px;
@@ -382,10 +353,7 @@ border: 1px solid black;
 }
 
 @media screen and (max-width: 500px){
-    .fondoUser{
-        background: none;
-   
-    }
+
     .tablaUs{
         width: 410px;
         margin-left: 55px ;

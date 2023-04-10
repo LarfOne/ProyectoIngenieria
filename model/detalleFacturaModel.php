@@ -12,13 +12,11 @@ class ModeloDetalle{
                 $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idFactura,idProducto, cantidad, precUnit, subTotal) VALUES (:idFactura, :idProducto, :cantidad, :precUnit, :subTotal)");
 
                 $stmt->bindParam(":idFactura", $idFactura, PDO::PARAM_INT);
-                $stmt->bindParam(":idProducto", $datos[$i]["id"], PDO::PARAM_INT);
+                $stmt->bindParam(":idProducto", $datos[$i]["idProducto"], PDO::PARAM_INT);
                 $stmt->bindParam(":cantidad", $datos[$i]["cantidad"], PDO::PARAM_INT);
-                //$stmt->bindParam(":fechaFactura", $datos["fechaFactura"], PDO::PARAM_STR);
-                $stmt->bindParam(":precUnit", $datos[$i]["precio"], PDO::PARAM_INT);
-                $stmt->bindParam(":subTotal", $datos[$i]["total"], PDO::PARAM_INT);
-                //$stmt->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
-                //$stmt->bindParam(":descuento", $datos["descuento"], PDO::PARAM_STR);
+                $stmt->bindParam(":precUnit", $datos[$i]["precioUnitario"], PDO::PARAM_INT);
+                $stmt->bindParam(":subTotal", $datos[$i]["subTotal"], PDO::PARAM_INT);
+
                 if($stmt->execute()){
 
                     $response = "ok";
@@ -41,35 +39,43 @@ class ModeloDetalle{
 
 
 
-    static public function mdlShow($tabla, $item, $valor){
 
-        if($item != null){
-            $sentenciaSQL = Conexion::conectar()->prepare("SELECT idProducto, cantidad,precUnit,subTotal FROM $tabla WHERE $item =:$item");
+static public function mdlMostrarDetalleporIdFactura($tabla, $item, $valor){
+	
+		
+		if($item != null){
 
-            $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
 
-            $sentenciaSQL -> execute();
+            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); 
+			$stmt -> execute();
 
-            return $sentenciaSQL -> fetchAll();
-        
-        }else{
-            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			return $stmt -> fetchAll();
 
-            $sentenciaSQL -> execute();
+		}else{
 
-            return $sentenciaSQL -> fetchAll();
-        }
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
 
-        
+			$stmt -> execute();
 
-        
+			return $stmt -> fetchAll();
 
-        $sentenciaSQL -> close();
+		}
+		
+		$stmt -> close();
 
-        $sentenciaSQL = null;
-        
-    }
+		$stmt = null;
+
+	
 
 }
+
+
+
+}
+
+
+
+
 
 ?>

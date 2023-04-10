@@ -1,5 +1,4 @@
-
-
+<link rel="stylesheet" href="css/ventas.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 
@@ -24,7 +23,7 @@
   
         <a href="crearVentasP">
 
-          <button class="btn btn-primary navbar-right" style="margin: 7px;margin-bottom: 20px; " style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
+          <button class="btn btn-primary navbar-right btnAgregarVentas" style="margin: 7px;margin-bottom: 20px; " style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
             
             Agregar venta
 
@@ -139,12 +138,12 @@
                         
                     <button class="btn btn-success btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
 
-                    <i class="fa fa-file"></i>
+                    <i class="fa fa-file"></i></button>
 
                     
                     <button class="btn btn-info btnImprimirTicket" codigoVenta="'.$value["codigo"].'">
 
-                    <i class="fa fa-print"></i>
+                    <i class="fa fa-print"></i></button>
 
 
 
@@ -162,7 +161,11 @@
         ?>
                
         </tbody>
+<<<<<<< HEAD
 
+=======
+        </table>
+>>>>>>> origin/luisBranch
           </div>
 
        <?php

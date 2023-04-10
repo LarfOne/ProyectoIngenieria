@@ -1,13 +1,12 @@
 <link rel="stylesheet" href="css/boton.css">
-
 <link rel="stylesheet" href="css/style.css">
 
-<div id="container pt-4" style="margin-top:100px;">
+<div id="container pt-4" style="margin-top:90px;">
       <div class="container mt-3">
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
-            </br>
-      <form class="col-md-12" role="form" method="POST" style="padding-top:30px;">
+            
+      <form class="col-md-12" role="form" method="POST" style="margin-top: -30px; !important">
 
       <div class="row align-items-center first">
                   <div class="col mt-5 mr-5">
@@ -24,7 +23,7 @@
                   </div>
                   <div class="col mt-5 mr-5">
                         <label>Descripcion</label>
-                        <textarea class="form-control" name="descriptionProducto" rows="2" placeholder="Descripcion"></textarea>
+                        <textarea class="form-control input-sm mt-2" name="descriptionProducto" rows="2" placeholder="Descripcion"></textarea>
                   </div>
                   <div class="col mt-5 mr-5">
                         <label>Cantidad</label>
@@ -51,7 +50,7 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Sucursal</label>
-                        <select class="form-control input-lg" name="idSucursal">
+                        <select class="form-control input-lg mt-2" name="idSucursal">
                               <?php foreach ($sucursal as $sucursal1) { ?>
                                     <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                               <?php } ?>
@@ -66,7 +65,7 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Unidad</label>
-                        <select class="form-control input-lg" name="unitProducto">
+                        <select class="form-control input-lg mt-2" name="unitProducto">
 
                               <?php foreach ($unit as $unit1) { ?>
                                     <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
@@ -77,6 +76,7 @@
                   </div>
                   <div class="col mt-5 mr-5">
                         <label>Porcentaje de IVA</label>
+<<<<<<< HEAD
                         <input class="form-control input-sm mt-2" type="number" id= "porcProducto" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
                   </div>
             </div>
@@ -89,6 +89,14 @@
             
 
 
+=======
+                        <input class="form-control input-sm mt-2" type="number" id= "porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
+                  </div>
+            </div>
+
+            <?php
+
+>>>>>>> origin/luisBranch
             //Mandar a traer las categorias
 
             $item = null;
@@ -113,7 +121,7 @@
                   </div>
                   <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                         <label>Categoria</label>
-                        <select class="form-control input-lg selectC" name="cateProducto">
+                        <select class="form-control input-lg mt-2 selectC" name="cateProducto">
 
                               <?php foreach ($category as $category1) { ?>
                                     <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
@@ -124,17 +132,15 @@
                   </div>
             </div>
             
-            
-
             <div class="row align-items-center four">
                   <div class="col mt-5 mr-5">
                         <label>Foto del producto</label>
-                        <input type="file" class="image" name="image">
+                        <input type="file" class="form-control input-sm mt-2 image" name="image">
                         <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
                   </div>
                   <div class="col mt-5 mr-5 align-self-center">
                         <label>Observaciones</label>
-                        <textarea class="form-control" name="obsProducto" rows="2" placeholder="Observaciones"></textarea>
+                        <textarea class="form-control input-lg mt-2" name="obsProducto" rows="2" placeholder="Observaciones"></textarea>
                   </div>
             </div>
 

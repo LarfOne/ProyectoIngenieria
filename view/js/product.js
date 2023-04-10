@@ -90,6 +90,10 @@ function obtenerPorcentaje(){
 function obtenerPrecioNeto(){
     precioNeto = document.getElementById("precioNeto").value;
 
+    porc = document.getElementById("porcProducto").value;
+    porcentaje = Number.parseFloat(porc) / 100;
+
+
     if(porcentaje != 0 && precioNeto != 0){
         
         precioIVA = precioNeto * porcentaje;

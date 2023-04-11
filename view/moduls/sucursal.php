@@ -98,7 +98,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="idSucursal" placeholder="Ingresar código de la sucursal" required>
+                <input type="text" class="form-control input-lg" name="idSucursal" style="border-radius: 5px;" placeholder="Ingresar código de la sucursal" required>
                 
               </div>
 
@@ -110,7 +110,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nameSucursal" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nameSucursal" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
                 <input type="hidden" id="sucursalId">
               </div>
 
@@ -122,7 +122,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                <input type="text" class="form-control input-lg" name="direccionSucursal" placeholder="Ingresar dirección" required>
+                <input type="text" class="form-control input-lg" name="direccionSucursal" style="border-radius: 5px;" placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -135,7 +135,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                <input type="text" class="form-control input-lg" name="telefonoSucursal" placeholder="Ingresar numero de telefono " required>
+                <input type="text" class="form-control input-lg" name="telefonoSucursal" style="border-radius: 5px;" placeholder="Ingresar numero de telefono " required>
 
               </div>
 
@@ -147,7 +147,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="emailSucursal" placeholder="Ingresar correo electrónico" required>
+                <input type="text" class="form-control input-lg" name="emailSucursal" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -198,7 +198,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" value="" readonly>
+                <input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" style="border-radius: 5px;" value="" readonly>
                 
 
               </div>
@@ -211,7 +211,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameSucursalm" name="nameSucursalm" value="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nameSucursalm" name="nameSucursalm" style="border-radius: 5px;" value="Ingresar nombre" required>
 
               </div>
 
@@ -223,7 +223,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="direccionSucursalm" name="direccionSucursalm" value="Ingresar la direccion" required>
+                <input type="text" class="form-control input-lg" id="direccionSucursalm" name="direccionSucursalm" style="border-radius: 5px;" value="Ingresar la direccion" required>
 
               </div>
 
@@ -236,7 +236,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="telefonoSucursalm" name="telefonoSucursalm" value="Ingresar el numero de telefono" required>
+                <input type="text" class="form-control input-lg" id="telefonoSucursalm" name="telefonoSucursalm" style="border-radius: 5px;" value="Ingresar el numero de telefono" required>
 
               </div>
 
@@ -248,7 +248,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="emailSucursalm" name="emailSucursalm" value="Ingresar correo electrónico" required>
+                <input type="text" class="form-control input-lg" id="emailSucursalm" name="emailSucursalm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
 
               </div>
 

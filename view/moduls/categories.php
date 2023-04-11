@@ -19,7 +19,7 @@
   <table class="table" id="tabla" data-sort="table">
     <thead>
                 <tr>
-                    <th>Codigo</th>
+                    <th>Código</th>
                     <th>Nombre</th>
                     <th>Acciones</th>
                     
@@ -80,7 +80,7 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header modalHeaderColor">
           <h4 class="modal-title">Agregar Categorías</h4>
         </div>
 
@@ -144,7 +144,7 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header modalHeaderColor" >
           <h4 class="modal-title">Editar Categorías</h4>
         </div>
 

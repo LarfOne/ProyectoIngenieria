@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/style.css">
 
-<div id="container pt-4" style="margin-top:90px;">
+<div id="container pt-4" class="contenedorProducts" style="margin-top:90px;">
       <div class="container mt-3">
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>

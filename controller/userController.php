@@ -14,7 +14,7 @@
             if(isset($_POST["ingUser"])){
                 
                 if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUser"]) &&
-                   preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
                     
                     $tabla = "empleado";
 
@@ -25,15 +25,8 @@
                     $incrypt = crypt($_POST["ingPassword"], '$2a$07$usesomesillystringforsalt$');
 
                     $respuesta = User::mdlShow($tabla, $item, $valor);
-
-
-
-
-                    if($respuesta != null){
-
-
+                    if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
                     if(($respuesta["nombre"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
-
                         $_SESSION["iniciarSesion"] = "ok";
                         $_SESSION["cedula"] = $respuesta["cedula"];
                         $_SESSION["nombre"] = $respuesta["nombre"];
@@ -42,6 +35,7 @@
                         $_SESSION["idSucursal"] = $respuesta["idSucursal"];
                         $_SESSION["email"] = $respuesta["email"];
                         $_SESSION["image"] = $respuesta["image"];
+                        $_SESSION["estado"] = $respuesta["estado"];
                         
                         echo '<script>
                                 window.location = "inicio"
@@ -63,8 +57,8 @@
             if(isset($_POST["idUser"])){
 
                 if(preg_match('/^[0-9]+$/', $_POST["idUser"]) && 
-                   preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
-                   preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
+                preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
+                preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
 
                     $table = "empleado";
 
@@ -118,8 +112,8 @@
                                     "cuentaBancaria" => $_POST["cuentaUser"],
                                     "idSucursal" => $_POST["sucursalUser"],
                                     "direccion" => $_POST["directionUser"],
+                                    "estado" => $_POST["estadoUser"],
                                     "image" =>$ruta);
-  
                                     $respuesta = User::mdlAdd($table, $datas);
 
                                     if($respuesta == "ok"){
@@ -156,6 +150,10 @@
             $respuesta = User::mdlShow($tabla, $item, $valor);
             return $respuesta;
         }
+
+
+
+        
 
         static public function ctrUpdateUser(){
 
@@ -233,11 +231,35 @@
                                     "cuentaBancaria" => $_POST["cuentaUserm"],
                                     "idSucursal" => $_POST["sucursalUserm"],
                                     "direccion" => $_POST["directionUserm"],
+                                    "estado" => $_POST["estadoUserm"],
                                     "image" =>$ruta);
-
+                    
                     $respuesta = User::mdlUpdate($table, $datas);
                     
-                    if($respuesta == "ok"){
+                    if($respuesta == "ok"){  
+ 
+                        $item = "empleado_id";
+                        $valor = $_POST["idUserm"];                
+                        $activos = ControllerActivos::ctrSpecificActivo($item, $valor);
+                    
+                    
+                        foreach($activos as $key => $activo) {
+                        $codigoA=$activo['codigo'];
+                        ControllerActivos::ctrUpdateOneActivo($activo,$codigoA);
+                        }
+
+
+
+
+
+                        if( $_SESSION['cedula'] ==$_POST["idUserm"] ){//Guarda los nuevos datos de las variables session y los actualiza
+
+                            $_SESSION['nombre'] = $_POST['nameUserm'];
+                            $_SESSION['apellidos'] = $_POST['lastNameUserm'];
+                            $_SESSION['estado'] = $_POST['estadoUserm'];
+                        }
+                                    
+
                         echo "<script>
                         
                             Swal.fire({

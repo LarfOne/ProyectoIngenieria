@@ -47,7 +47,21 @@
                 <td><?php echo $sucursal['nombre']; ?></td>
                 <td><?php echo $activo['descripcion']; ?></td>
                 <td><?php echo $activo['estado']; ?></td>
-                <td><?php echo $user['nombre']." ".$user['apellidos']; ?></td>
+                
+
+                <?php if ($activo['empleado_id']!=NULL) { ?>
+                  <td><?php echo $user['nombre']." ".$user['apellidos']; ?></td>
+                <?php } ?>
+
+                <?php if ($activo['empleado_id']==NULL) { ?>
+                <td>Libre</td>
+                <?php } ?>
+
+
+
+
+  
+
 
                 <td>
 
@@ -158,7 +172,7 @@
                             <?php foreach ($user as $user1) { ?>
                                     <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
                             <?php } ?>
-                   </select>
+                  </select>
 
               </div>
 

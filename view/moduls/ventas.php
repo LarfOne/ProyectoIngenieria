@@ -161,11 +161,7 @@
         ?>
                
         </tbody>
-<<<<<<< HEAD
-
-=======
         </table>
->>>>>>> origin/luisBranch
           </div>
 
        <?php

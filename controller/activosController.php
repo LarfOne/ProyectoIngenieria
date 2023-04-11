@@ -58,6 +58,29 @@
             return $respuesta;
         }
 
+
+        static public function ctrSpecificActivo($item, $valor){
+
+            $tabla = "activos";
+            
+            $respuesta =Activo::mdlSpecificShow($tabla, $item, $valor);
+            return $respuesta;
+        }
+
+
+
+
+        static public function ctrUpdateOneActivo($activo,$codigoA){
+
+            $table = "activos";
+            
+            $respuesta =Activo::mdlUpdateEmployer($table, $activo,$codigoA);
+            return $respuesta;
+        }
+
+
+
+
         static public function ctrUpdateActivo(){
 
             if(isset($_POST["codigom"])){
@@ -67,10 +90,10 @@
                     $table = "activos";
 
                     $datas = array("codigo" => $_POST["codigom"],
-                                     "idSucursal" => $_POST["idSucursalm"], 
-                                     "descripcion" => $_POST["descripcionm"],
-                                     "estado" => $_POST["estadom"],
-                                     "empleado_id" => $_POST["empleado_idm"]);
+                                    "idSucursal" => $_POST["idSucursalm"], 
+                                    "descripcion" => $_POST["descripcionm"],
+                                    "estado" => $_POST["estadom"],
+                                    "empleado_id" => $_POST["empleado_idm"]);
 
                     $respuesta = Activo::mdlUpdate($table, $datas);
                     

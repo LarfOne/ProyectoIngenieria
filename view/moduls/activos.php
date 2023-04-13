@@ -170,7 +170,12 @@
                   <!--<input type="text" class="form-control input-lg" name="empleado_id" placeholder="Ingresar cédula del empleado">-->
                   <select class="form-control input-lg" id="empleado_id" name="empleado_id">
                             <?php foreach ($user as $user1) { ?>
-                                    <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+
+                              <?php if ($user1['estado']!='Inactivo') { ?>
+
+                                <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+
+                                <?php } ?>                                
                             <?php } ?>
                   </select>
 
@@ -281,10 +286,11 @@
                                 <!--<input type="text" class="form-control input-lg" id="empleado_idm" name="empleado_idm" value="Ingresar cédula del empleado" required>-->
                                 <select class="form-control input-lg" id="empleado_idm" name="empleado_idm">
                                           <?php foreach ($user as $user1) { ?>
-                                                  <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+                                              <?php if ($user1['estado']!='Inactivo') { ?>
+                                                <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+                                              <?php } ?>
                                           <?php } ?>
                                 </select>
-
                             </div>
 
                         </div>

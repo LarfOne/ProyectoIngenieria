@@ -237,22 +237,22 @@
                     $respuesta = User::mdlUpdate($table, $datas);
                     
                     if($respuesta == "ok"){  
- 
-                        $item = "empleado_id";
-                        $valor = $_POST["idUserm"];                
-                        $activos = ControllerActivos::ctrSpecificActivo($item, $valor);
                     
-                    
-                        foreach($activos as $key => $activo) {
-                        $codigoA=$activo['codigo'];
-                        ControllerActivos::ctrUpdateOneActivo($activo,$codigoA);
+                        //elimina todos los activos que tenga relacionado y los pone libre si el empleado es inactivo
+                        if($_POST["estadoUserm"]=='Inactivo'){
+                            $item = "empleado_id";
+                            $valor = $_POST["idUserm"];                
+                            $activos = ControllerActivos::ctrSpecificActivo($item, $valor);
+                        
+                        
+                            foreach($activos as $key => $activo) {
+                            $codigoA=$activo['codigo'];
+                            ControllerActivos::ctrUpdateOneActivo($activo,$codigoA);
+                            }
                         }
 
-
-
-
-
-                        if( $_SESSION['cedula'] ==$_POST["idUserm"] ){//Guarda los nuevos datos de las variables session y los actualiza
+                        //Guarda los nuevos datos de las variables session y los actualiza
+                        if( $_SESSION['cedula'] ==$_POST["idUserm"] ){
 
                             $_SESSION['nombre'] = $_POST['nameUserm'];
                             $_SESSION['apellidos'] = $_POST['lastNameUserm'];

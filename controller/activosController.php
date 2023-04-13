@@ -1,7 +1,7 @@
 <?php
     class ControllerActivos{
         
-   
+
         /**REGISTRO DE ACTIVOS */
         static public function ctrCreateActivo(){
             if(isset($_POST["idSucursal"])){

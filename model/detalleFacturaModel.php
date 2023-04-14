@@ -54,4 +54,52 @@ class ModeloDetalle{
             $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
         }
     }
+
+    static function mdlMostrarDetalleporIdFactura($tabla, $item, $valor)
+    {
+
+        if ($item != null) {
+
+
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
+            $sentenciaSQL->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+
+            $sentenciaSQL->execute();
+
+            return $sentenciaSQL->fetchAll();
+
+
+        } else {
+
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+        
+            $sentenciaSQL->execute();
+
+            return $sentenciaSQL->fetchAll();
+
+        }
+
+
+        $sentenciaSQL ->close();
+
+        $sentenciaSQL = null;
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

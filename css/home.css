@@ -400,6 +400,7 @@ height: 230px;
     padding: 60px;
     margin-top: 40px;
     margin-bottom: 20px;
+    border-radius: 10px;
 }
 
 #perfil-usuario img {
@@ -511,8 +512,7 @@ height: 230px;
 
     width: 250px;
     height: 250px;
-   
-    
+
 
 }
 #cantidad-productos {
@@ -528,6 +528,7 @@ height: 230px;
     margin-bottom: 20px;
     border-style:solid;
     border-width: 4px;
+    border-radius: 10px;
     border-color: white white white #0c335d;
 
 
@@ -548,6 +549,7 @@ height: 230px;
     border-style:solid;
     border-width: 4px;
     border-color: white white white #0c335d;
+    border-radius: 10px
 
 
 }
@@ -556,10 +558,8 @@ height: 230px;
 /***************Contenedor de 2 divs reportes ventas y stock******************/
 
 .row-venta{
-    display: flex;
-    grid-gap: 20px;
-
-
+display: flex;
+ grid-gap: 20px;
 flex-direction: row;
 margin: auto;
 width: 90%;
@@ -645,7 +645,7 @@ align-items: center;
 
 
 .columnas-juntas2{
-   flex-direction: column;
+    flex-direction: column;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -696,6 +696,15 @@ margin-bottom: 50px;
         float: right;
         flex-basis: 90%;
 }
+
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background-color: #555;
+  }
+  
+  .table-responsive::-webkit-scrollbar-track {
+    background-color: #132d94;
+  }
 .texto-imagen{
     flex-basis: 10%;
     float: left;

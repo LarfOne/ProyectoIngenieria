@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="css/boton.css">
+<link rel="stylesheet" href="css/style.css"> 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">  
-<link rel="stylesheet" href="css/style.css">  
-
+ 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 <div id= "container pt-4" style="margin-top: 100px;">
 
-  <div class="container mt-3 fondoUser">
+  <div class="container mt-3">
     <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
 
     <div class="tablaUs" >
@@ -97,8 +97,8 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Usuario</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Agregar Usuario</h4>
         </div>
 
         <div class="modal-body">
@@ -273,14 +273,14 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Usuario</h4>
+        <div class="modal-header modalHeaderColor">
+          <h4 class="modal-title">Editar Usuario</h4>
         </div>
 
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalC">
 
             <!--MODIFICAR DE Cedula-->
             <div class="form-group">
@@ -325,7 +325,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-building"></i></span>
                 <!--<input type="text" class="form-control input-lg" id="sucursalUserm" name="sucursalUserm" value="Ingresar sucursal a la que pertenece" required>-->
                 <select class="form-control input-lg" id="sucursalUserm" name="sucursalUserm">
                     <?php foreach ($sucursal as $sucursal1) { ?>
@@ -342,7 +342,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="text" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
 
               </div>
@@ -370,7 +370,7 @@
             <!--MODIFICAR DE PASSWORD-->
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                 
                 <input type="password" class="form-control input-lg" id="passwordUserm" name="passwordUserm" placeholder="Ingresar la nueva contrasena">
                 <input type="hidden" id="passwordActual" name="passwordActual">
@@ -393,7 +393,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-credit-card-alt"></i></span>
                 <input type="text" class="form-control input-lg" id="cuentaUserm" name="cuentaUserm" value="Ingresar cuenta bancaria" required>
                 
               </div>
@@ -405,7 +405,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                 <input type="text" class="form-control input-lg" id="directionUserm" name="directionUserm" value="Ingresar dirección" required>
 
               </div>
@@ -415,7 +415,7 @@
             <!--MODIFICAR DE FOTO-->
             <div class="form-group">
 
-              <div class="panel">Subir Foto</div>
+            <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir nueva foto</span>
               <input type="file" class="image" name="imageUpdate">
 
               <p class="help-block">Peso maximo de la foto 10MB</p>

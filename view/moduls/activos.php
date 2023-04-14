@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/boton.css">
+<link rel="stylesheet" href="css/activos.css"> 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -10,7 +11,7 @@
   <div class="container mt-3">
       <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Activos</h2>
       
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddActivo" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
+      <button class="btn btn-primary btnAgregarAct" data-bs-toggle="modal" data-bs-target="#modalAddActivo" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
             Agregar Activos
         </button>
 
@@ -85,14 +86,14 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background: #1e6d9b; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Activos</h4>
+        <div class="modal-header modalHeaderColor">
+          <h4 class="modal-title">Agregar Activos</h4>
         </div>
 
     </br>
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalAct">
 
             <!--AGREGAR id de sucursal-->
 
@@ -195,14 +196,14 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Activos</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Editar Activos</h4>
         </div>
 
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalAct">
 
                         <!--MODIFICAR DE Codigo-->
                         <div class="form-group">

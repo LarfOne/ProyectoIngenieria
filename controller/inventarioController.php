@@ -9,6 +9,14 @@
             return $respuesta;
         }
 
+        static public function ctrCodigoInventarioPorProducto($item, $valor){
+
+            $tabla = "inventario";
+            
+            $respuesta = Inventario::codigoInventarioPorProducto($tabla, $item, $valor);
+            return $respuesta;
+        }
+
         static public function ctrCreateInventario()
 	    {
             if (isset($_POST["idProducto"])) {

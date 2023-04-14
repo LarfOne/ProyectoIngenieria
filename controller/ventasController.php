@@ -21,31 +21,44 @@ class ControladorVentas{
 	=============================================*/
 
 	static public function ctrCrearVenta(){
+		
+		if(isset($_POST["nuevaVenta"])){	
 
-		if(isset($_POST["nuevaVenta"])){
+			if(!empty($_POST["listaProductos"])){
 
-				$table = "factura";	
-				$fecha = date('y-m-d h:i:s');
+				$table = "factura";
+				date_default_timezone_set("America/Costa_Rica");	
+				$fecha = date('Y-m-d H:i:s');
 
                     $datas = array( "codigo" => $_POST["nuevaVenta"],
 									"idEmpleado" => $_POST["idEmpleado"],
 									"idSucursal" => $_POST["idSucursal"],
 									"idCliente"=>$_POST["idCliente"],
-                                    "subTotal" => $_POST["totalVenta"],
+                                    "subTotal" => $_POST["nuevoTotalVenta"],
 									"fechaFactura" => $fecha,
-                                    "total" => $_POST["totalVenta"]
+                                    "total" => $_POST["nuevoTotalVenta"]
                                     );
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					if(isset($_POST["listaProductos"])){
+					
+						
 						$array = json_decode($_POST['listaProductos'],true);
+
+						foreach ($array as $key => $value) { 
+							$tabla = "inventario";
+							$item1 = "cantidad";
+							$valor1 = $value["stock"] - $value["cantidad"];
+							$valor2 = $value["idInvetario"];
+
+							$nuevoStock = Inventario::actualizarStockProducto($tabla, $item1, $valor1, $valor2);
+						}
 						
 						$idFactura = $_POST["nuevaVenta"];
 						$table = "detallefactura";
 		
 						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
-					}
+					
                     
                     if($respuesta == "ok"){
                         echo "<script>
@@ -70,6 +83,7 @@ class ControladorVentas{
 						})
 						</script>";
 					}
+			}
 		}
 
 	}

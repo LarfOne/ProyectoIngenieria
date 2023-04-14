@@ -5,188 +5,194 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div class="contenedor">
-    <div class="content-wrapper contVenta" style="padding: 15px 10px 30px 10px !important;">
+<div id="container pt-4">
+  <form role="form" method="post" class="formularioVenta">
+    <div class="container mt-3 contVenta" style="padding: 15px 10px 15px 10px !important;">
+              <header class="headerVentas">
 
-        <header class="headerVentas">
+                  <div class="info">
+                      <img src="view/img/empresa/logoEmpresa.png" style="width: 110px;">
+                      <div class="about">
+                          <h2>MOUSE LAMP TECNOLOGIES</h2>
+                          <h3>CEDULA FISICA: 50389093520</h3>
+                          <h3>TELEFONO: 87170007</h3>
+                      </div>
+                  </div>
 
-            <div class="info">
-                <img src="view/img/empresa/logoEmpresa.png" style="width: 150px;">
-                <div class="">
-                    <h1>MOUSE LAMP TECNOLOGIES</h1>
-                    <h3>CEDULA FISICA: 50389093520</h3>
-                    <h3>TELEFONO: 87170007</h3>
-                </div>
-            </div>
+                  <div class="datosVenta">
 
-            <div class="datosVenta">
+                      <!--Seleccionar cliente que efectua la compra -->
+                      <div class="form-group">                   
+                          <div class="input-group">                    
+                              <span class="input-group-addon"><i class="fa fa-users"></i></span>                    
+                              <select class="form-control" id="idCliente" name="idCliente" required>
+                              <option value="">Seleccionar cliente</option>
 
-                <!--Seleccionar cliente que efectua la compra -->
-                <div class="form-group">                   
-                    <div class="input-group">                    
-                        <span class="input-group-addon"><i class="fa fa-users"></i></span>                    
-                        <select class="form-control" id="idCliente" name="idCliente" required>
-                        <option value="">Seleccionar cliente</option>
+                              <?php
+                              $item = null;
+                              $valor = null;
+                              $categorias = ControllerClient::ctrShowClient($item, $valor);
+                              foreach ($categorias as $key => $value) {?>
 
-                        <?php
-                        $item = null;
-                        $valor = null;
-                        $categorias = ControllerClient::ctrShowClient($item, $valor);
-                        foreach ($categorias as $key => $value) {?>
+                                  <option value=<?php echo $value['cedula']?>><?php echo $value['nomCliente']?></option>
 
-                            <option value=<?php echo $value['cedula']?>><?php echo $value['nomCliente']?></option>
+                              <?php }
+                              ?>
+                              </select>                      
+                              <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs botonCli" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>                    
+                          </div>                  
+                      </div>
 
-                        <?php }
-                        ?>
-                        </select>                      
-                        <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs botonCli" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>                    
-                    </div>                  
-                </div>
+                      <!--Datos del dependiente que efectua la venta -->
+                      <div class="form-group">                   
+                          <div class="input-group">                 
+                              <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+                              <input type="text" class="form-control" id="nombre" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
+                              <input type="hidden" id = "idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
+                              <input type="hidden" id = "idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
+                          </div>
+                      </div> 
 
-                <!--Datos del dependiente que efectua la venta -->
-                <div class="form-group">                   
-                    <div class="input-group">                 
-                        <span class="input-group-addon"><i class="fa fa-user"></i></span> 
-                        <input type="text" class="form-control" id="nombre" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-                        <input type="hidden" id = "idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
-                        <input type="hidden" id = "idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
-                    </div>
-                </div> 
+                      <!--Codigo incrementable de la factura -->
+                      <div class="form-group">                 
+                        <div class="input-group">                   
+                          <span class="input-group-addon"><i class="fa fa-key"></i></span>
 
-                <!--Codigo incrementable de la factura -->
-                <div class="form-group">                 
-                  <div class="input-group">                   
-                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                          <?php
+                          $item = null;
+                          $valor = null;
+                          $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
 
-                    <?php
-                    $item = null;
-                    $valor = null;
-                    $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
+                          if(!$ventas){
 
-                    if(!$ventas){
-
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1" readonly>';
-                  
-                    }else{
+                            echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1" readonly>';
                         
-                      foreach ($ventas as $key => $value) { 
+                          }else{
+                              
+                            foreach ($ventas as $key => $value) { 
 
-                      }
-                      $codigo = $value["codigo"] + 1;
-                      echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-                    }
-                    ?>      
+                            }
+                            $codigo = $value["codigo"] + 1;
+                            echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
+                          }
+                          ?>      
 
-                  </div>               
-                </div>          
-            </div>
-        </header>
+                        </div>               
+                      </div>          
+                  </div>
+              </header>
+              
+              <div class="articulo">
+                  
+                        <div class="arti">
+                          <div class="col mt-3 mr-5">
+                              <label>Articulo</label>
+                              <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo">
+                          </div>
 
-        <div class="articulo">
-            <div class="arti">
+                          <div class="col mt-5 mr-5">
+                            <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
+                          </div>
 
-                <div class="col mt-5 mr-5">
-                    <label>Articulo</label>
-                    <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
-                </div>
+                          <div class="col mt-3 mr-5">
+                              <label>Cantidad</label>
+                              <input class="form-control input-sm mt-2" type="number" value="1" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
+                          </div>
 
-                <div class="col mt-5 mr-5">
-                    <label>Cantidad</label>
-                    <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
-                </div>
+                          <div class="col mt-3 mr-5 form-group row factura">
+                              <label>Tipo Factura</label>
+                              <div class="input-group">
+                                  <select class="form-control input-sm mt-2" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
+                                      <option value="">Tipo Factura</option>
+                                      <option value="Electronica">Electronica</option>
+                                      <option value="Normal">Normal</option>                 
+                                  </select>    
+                              </div>
+                          </div>
 
-                <div class="col mt-5 mr-5 form-group row factura">
-                    <label>Tipo Factura</label>
-                    <div class="input-group">
-                        <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-                            <option value="">Tipo Factura</option>
-                            <option value="Electronica">Electronica</option>
-                            <option value="Normal">Normal</option>                 
-                        </select>    
-                    </div>
-                   
-                </div>
+                          <div class="col mt-3 mr-5 form-group row">  
+                              <label>Tipo Factura</label>                                      
+                                  <div class="input-group">                  
+                                      <select class="form-control input-sm mt-2" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
+                                          <option value="">Seleccione método de pago</option>
+                                          <option value="Efectivo">Efectivo</option>
+                                          <option value="TC">Tarjeta Crédito</option>
+                                          <option value="TD">Tarjeta Débito</option>                  
+                                      </select>    
+                                  </div>
 
-                <div class="col mt-5 mr-5 form-group row">  
-                    <label>Tipo Factura</label>                                      
-                        <div class="input-group">                  
-                            <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-                                <option value="">Seleccione método de pago</option>
-                                <option value="Efectivo">Efectivo</option>
-                                <option value="TC">Tarjeta Crédito</option>
-                                <option value="TD">Tarjeta Débito</option>                  
-                            </select>    
+                                  <div class="cajasMetodoPago">
+                                      <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
+                                  </div>      
+                          </div>
+                        
                         </div>
+                  
+              </div>
 
-                        <div class="cajasMetodoPago">
-                            <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
-                        </div>      
-                </div>
-            </div>
-        </div>
+              <section class="tablaVenta"> 
+                  <div class="tablaVendidos">
+                      <table class="table tableU" id="tablitaC" data-sort="table">
+                          <thead>
+                              <tr>
+                                  <th>Codigo</th>
+                                  <th>Descripcion</th>
+                                  <th>Cantidad</th>
+                                  <th>Descuento</th>
+                                  <th>Precio Unitario</th>
+                                  <th>SubTotal</th>
+                                  <th>Acciones</th>
+                              </tr>
+                          </thead>
+                          <tbody class="tablita">
 
-        <section class="tablaVenta"> 
-            <div class="tablaVendidos">
-                <table class="table tableU" id="tabla" data-sort="table">
-                    <thead>
-                        <tr>
-                            <th >Codigo</th>
-                            <th>Descripcion</th>
-                            <th>Precio Unitario</th>
-                            <th>Cantidad</th>
-                            <th>% Descuento</th>
-                            <th>Descuento</th>
-                            <th>SubTotal I.V.I</th>
-                        </tr>
-                </thead>
+                          </tbody>
+                      
+                      </table>
 
-                
-                </table>
+                  </div>
+              </section>
 
-            </div>
-        </section>
-
-        <section class="valores">
-
-            <div class="col-xs-8 pull-right">
-                    
-                <table class="table">
-                    <thead>
-                        <tr>
+              <input type="hidden" id="listaProductos" name="listaProductos">
+              
+              <div class="botonesVenta">
+                  <div class="col-xs-8 pull-right">
+                              
+                      <table class="table">
+                        <thead>
+                          <tr>
                             <th>Total</th>      
-                        </tr>
-                    </thead>
-
-                    <tbody>                   
-                        <tr>
-                           <td style="width: 50%">                            
-                                <div class="input-group">                          
-                                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-
-                                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
-
-                                    <input type="hidden" name="totalVenta" id="totalVenta">                                                  
+                          </tr>
+                        </thead>
+                
+                        <tbody>                   
+                          <tr>
+                            <td style="width: 50%">                            
+                              <div class="input-group">                          
+                                  <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                                  <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
+                                  <input type="hidden" name="totalVenta" id="totalVenta">                                                  
                                 </div>
                             </td>
-                        </tr>
+                          </tr>
+                
+                        </tbody>
+                      </table>
+              
+                  </div>
+                  
+                  <button type="button" class="btnVentaCancelar">Cancelar</button>
+                  
+                  <button type="submit" class="btnVentaGuardar">Guardar venta</button>
+                  
+              </div>
+              </div>
+        </form>
+          <?php
 
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </section>
-
-        <div class="botonesVenta">
-  
-            <button type="submit" class="btnVentaGuardar">Guardar venta</button>
-           
-            <button type="button" class="btnVentaCancelar">Cancelar</button>
-            
-        </div>
-
-    </div>
+            $crearVenta = new ControladorVentas();
+            $crearVenta -> ctrCrearVenta();
+          ?>
 </div>
 
 <!--=====================================

@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="css/boton.css">
+<link rel="stylesheet" href="css/sucursal.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -10,7 +11,7 @@
   <div class="container mt-3">
       <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Sucursal</h2>
       
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddSucursal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
+        <button class="btn btn-primary btnAgregarSuc" data-bs-toggle="modal" data-bs-target="#modalAddSucursal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
             Agregar Sucursal
         </button>
         <div class="table-responsive roboto">
@@ -82,14 +83,14 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Sucursal</h4>
+        <div class="modal-header modalHeaderColor">
+          <h4 class="modal-title">Agregar Sucursal</h4>
         </div>
 
     </br>
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalSuc">
 
             <!--AGREGAR DE CODIGO-->
             <div class="form-group">
@@ -182,14 +183,14 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Sucursal</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title" >Editar Sucursal</h4>
         </div>
 
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalSuc">
 
             <!--MODIFICAR DE CODIGO-->
             <div class="form-group">

@@ -1,0 +1,22 @@
+.btnAgregarSuc:hover{
+    color: black;
+    background-color: #06aaeb;
+    border: 1px solid black;
+}
+
+.btnUpdateSucursal:hover{
+    border: 1.5px solid black;
+}
+
+.btnDeleteSucursal:hover{
+    background-color: red;
+    transition: background-color 0.3s ease;
+    border: 1.5px solid black;
+    color: black;
+}
+
+.modalSuc{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

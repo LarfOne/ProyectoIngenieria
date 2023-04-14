@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/boton.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="css/clients.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
@@ -10,8 +11,8 @@
   <div class="container mt-3">
     <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Clientes</h2>
 
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddClient" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
-      Agregar Cliente
+    <button class="btn btn-primary btnAgregarCli" data-bs-toggle="modal" data-bs-target="#modalAddClient" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
+        Agregar Cliente
     </button>
     <div class="box-body">
       <div class="table-responsive roboto">
@@ -84,14 +85,14 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Cliente</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Agregar Cliente</h4>
         </div>
 
         </br>
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalCli">
 
             <!--AGREGAR DE CEDULA-->
             <div class="form-group">
@@ -200,14 +201,14 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Cliente</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Editar Cliente</h4>
         </div>
 
 
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalCli">
 
             <!--MODIFICAR DE CEDULA-->
             <div class="form-group">

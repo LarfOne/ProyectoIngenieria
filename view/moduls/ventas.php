@@ -1,7 +1,5 @@
-
-
+<link rel="stylesheet" href="css/ventas.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
-
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
@@ -24,7 +22,7 @@
   
         <a href="crearVentasP">
 
-          <button class="btn btn-primary navbar-right" style="margin: 7px;margin-bottom: 20px; " style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
+          <button class="btn btn-primary navbar-right btnAgregarVentas" style="margin: 7px;margin-bottom: 20px; " style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
             
             Agregar venta
 
@@ -162,7 +160,7 @@
         ?>
                
         </tbody>
-       </table>
+        </table>
           </div>
 
        <?php

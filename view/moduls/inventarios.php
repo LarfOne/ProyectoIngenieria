@@ -1,12 +1,10 @@
 <link rel="stylesheet" href="css/boton.css">
+<link rel="stylesheet" href="css/inventario.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
-
-
-<link rel="stylesheet" href="css/boton.css">
 
 <div id= "container pt-4" style="margin-top: 100px;">
 
@@ -92,8 +90,8 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ajuste Inventario</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Ajuste Inventario</h4>
         </div>
 
 

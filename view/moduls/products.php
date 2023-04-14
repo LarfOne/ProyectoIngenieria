@@ -76,27 +76,12 @@
                   </div>
                   <div class="col mt-5 mr-5">
                         <label>Porcentaje de IVA</label>
-<<<<<<< HEAD
-                        <input class="form-control input-sm mt-2" type="number" id= "porcProducto" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
-                  </div>
-            </div>
-
-
-            
-            <?php
-
-            
-            
-
-
-=======
                         <input class="form-control input-sm mt-2" type="number" id= "porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
                   </div>
             </div>
 
             <?php
 
->>>>>>> origin/luisBranch
             //Mandar a traer las categorias
 
             $item = null;
@@ -135,8 +120,8 @@
             <div class="row align-items-center four">
                   <div class="col mt-5 mr-5">
                         <label>Foto del producto</label>
-                        <input type="file" class="form-control input-sm mt-2 image" name="image">
-                        <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
+                        <input type="file" class="image" name="image">
+                        
                   </div>
                   <div class="col mt-5 mr-5 align-self-center">
                         <label>Observaciones</label>

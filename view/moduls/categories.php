@@ -81,7 +81,11 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
+<<<<<<< HEAD
           <h4 class="modal-title">Agregar Categorías</h4>
+=======
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Categories</h4>
+>>>>>>> origin/laryBranch
         </div>
 
     </br>
@@ -95,7 +99,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="idCategories" placeholder="Ingresar código de la categoría" required>
+                <input type="text" class="form-control input-lg" name="idCategories" style="border-radius: 5px;" placeholder="Ingresar código de la categoría" required>
                 
               </div>
 
@@ -107,7 +111,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nameCategories" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
                 <input type="hidden" id="categoriesId">
               </div>
 
@@ -145,7 +149,11 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
+<<<<<<< HEAD
           <h4 class="modal-title">Editar Categorías</h4>
+=======
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Categories</h4>
+>>>>>>> origin/laryBranch
         </div>
 
 
@@ -159,7 +167,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="idCategoriesm" name="idCategoriesm" value="" readonly>
+                <input type="text" class="form-control input-lg" id="idCategoriesm" style="border-radius: 5px;" name="idCategoriesm" value="" readonly>
                 
 
               </div>
@@ -172,7 +180,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameCategoriesm" name="nameCategoriesm" value="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nameCategoriesm" style="border-radius: 5px;" name="nameCategoriesm" value="Ingresar nombre" required>
 
               </div>
 

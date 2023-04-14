@@ -267,45 +267,25 @@ $bloque9 = <<<EOF
 
 		
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-			 $venta1[idProducto]
+			$venta1[idProducto]
 			</td>
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
 			$venta1[cantidad]
-		   </td>
-		   <td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-			 $venta1[precUnit]
+		    </td>
+		    <td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
+			    $venta1[precUnit]
 			</td>
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
 			$venta1[subTotal]
-		   </td>
+		    </td>
 		</tr>
 
 	</table>
- 
+
 EOF;
 $pdf->writeHTML($bloque9, false, false, false, false, '');
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

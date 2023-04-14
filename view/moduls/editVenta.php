@@ -388,7 +388,7 @@ MODAL AGREGAR CLIENTE
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4 class="modal-title">Agregar cliente</h4>
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar cliente</h4>
 
         </div>
 

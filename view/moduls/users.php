@@ -110,8 +110,12 @@
 <!--MODAL PARA AGREGAR USUARIO-->
 
 
+<<<<<<< HEAD
 
 <div class="modal fade" id="modalAddUser" role="dialog">
+=======
+<div class="modal fade" id="modalAddUser" role="dialog" >
+>>>>>>> origin/laryBranch
   <div class="modal-dialog">
     <div class="modal-content ">
 
@@ -132,7 +136,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" name="idUser" placeholder="Ingresar cédula" required>
+                <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" name="idUser" placeholder="Ingresar cédula" required>
                 
               </div>
 
@@ -144,7 +148,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nameUser" placeholder="Ingresar nombre" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="nameUser" placeholder="Ingresar nombre" required>
                 <input type="hidden" id="userId">
               </div>
 
@@ -156,7 +160,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="lastNameUser" placeholder="Ingresar apellidos" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="lastNameUser" placeholder="Ingresar apellidos" required>
 
               </div>
 
@@ -172,7 +176,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-building"></i></span>
                 <!--<input type="text" class="form-control input-lg" name="sucursalUser" placeholder="Ingresar sucursal a la que pertenece" required>-->
                 <select class="form-control input-lg" id="sucursalUser" name="sucursalUser">
                               <?php foreach ($sucursal as $sucursal1) { ?>
@@ -190,7 +194,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -202,7 +206,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="roleUser">
+                <select class="form-control input-lg" style="border-radius: 5px;" name="roleUser">
 
                   <option value="">Selecionar Perfil</option>
                   <option value="Administrador">Administrador</option>
@@ -220,7 +224,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
+                <input type="password" style="border-radius: 5px;" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
 
               </div>
 
@@ -232,7 +236,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-credit-card-alt"></i></span>
-                <input type="text" class="form-control input-lg" name="cuentaUser" placeholder="Ingresar cuenta bancaria" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="cuentaUser" placeholder="Ingresar cuenta bancaria" required>
 
               </div>
 
@@ -244,7 +248,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                <input type="text" class="form-control input-lg" name="directionUser" placeholder="Ingresar dirección" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="directionUser" placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -313,7 +317,7 @@
       <form role="form" method="POST" enctype="multipart/form-data">
 
         <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title">Editar Usuario</h4>
+          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Usuario</h4>
         </div>
 
 

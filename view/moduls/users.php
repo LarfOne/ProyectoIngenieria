@@ -110,12 +110,8 @@
 <!--MODAL PARA AGREGAR USUARIO-->
 
 
-<<<<<<< HEAD
 
 <div class="modal fade" id="modalAddUser" role="dialog">
-=======
-<div class="modal fade" id="modalAddUser" role="dialog" >
->>>>>>> origin/laryBranch
   <div class="modal-dialog">
     <div class="modal-content ">
 

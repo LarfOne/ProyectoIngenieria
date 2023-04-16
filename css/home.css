@@ -134,6 +134,11 @@ section {
     display:grid;
     grid-template-columns: repeat(2, 1fr);
 }
+.card-grafic{
+    padding: 0 0 0 0 !important;
+    border-style: solid;
+    border-color: white white white yellow;
+}
 .card-user{
     border-style: solid;
     border-color: white white white yellow;

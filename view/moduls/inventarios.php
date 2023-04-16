@@ -90,8 +90,8 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ajuste Inventario</h4>
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Ajuste Inventario</h4>
         </div>
 
 

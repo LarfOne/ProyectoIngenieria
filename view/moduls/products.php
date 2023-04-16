@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/style.css">
 
-<div id="container pt-4" style="margin-top:90px;">
+<div id="container pt-4" class="contenedorProducts" style="margin-top:90px;">
       <div class="container mt-3">
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
@@ -120,8 +120,8 @@
             <div class="row align-items-center four">
                   <div class="col mt-5 mr-5">
                         <label>Foto del producto</label>
-                        <input type="file" class="image" name="image">
-                        
+                        <input type="file" class="form-control input-sm mt-2 image" name="image">
+                        <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
                   </div>
                   <div class="col mt-5 mr-5 align-self-center">
                         <label>Observaciones</label>

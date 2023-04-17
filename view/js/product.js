@@ -21,12 +21,11 @@ $(".btnUpdateInventario").click(function(){
             localStorage.setItem("nameProducto", respuesta["nombre"]);
             localStorage.setItem("marcaProducto", respuesta["marca"]);
             localStorage.setItem("descriptionProducto", respuesta["descripcion"]);
-            localStorage.setItem("precioProducto", respuesta["precio"]);
+            localStorage.setItem("precioProducto", respuesta["precioNeto"]);
             localStorage.setItem("cateProducto", respuesta["categoria"]);
             localStorage.setItem("unitProducto", respuesta["unidadmedida"]);
             localStorage.setItem("porcProducto", respuesta["porcentajeIVA"]);
-            localStorage.setItem("gananciaProducto", respuesta["ganancia"]);
-            localStorage.setItem("porGananProducto", respuesta["porcentajeGanancia"]);
+            localStorage.setItem("precioTotal", respuesta["PrecioTotal"]);
             localStorage.setItem("obsProducto", respuesta["observaciones"]);
         }
 
@@ -44,8 +43,7 @@ $(document).ready(function(){
     var cateProducto = localStorage.getItem("cateProducto");
     var unitProducto = localStorage.getItem("unitProducto");
     var porcProducto = localStorage.getItem("porcProducto");
-    var gananciaProducto = localStorage.getItem("gananciaProducto");
-    var porGananProducto = localStorage.getItem("porGananProducto");
+    var gananciaProducto = localStorage.getItem("precioTotal");
     var obsProducto = localStorage.getItem("obsProducto");
 
     // Asignar los datos a los campos correspondientes
@@ -53,12 +51,11 @@ $(document).ready(function(){
     $("#nameProducto").val(nameProducto);
     $("#marcaProducto").val(marcaProducto);
     $("#descriptionProducto").val(descriptionProducto);
-    $("#precioProducto").val(precioProducto);
+    $("#precioNeto").val(precioProducto);
     $("#cateProducto").val(cateProducto);
     $("#unitProducto").val(unitProducto);
     $("#porcProducto").val(porcProducto);
-    $("#gananciaProducto").val(gananciaProducto);
-    $("#porGananProducto").val(porGananProducto);
+    $("#precioTotal").val(gananciaProducto);
     $("#obsProducto").val(obsProducto);
     //$("#idSucursal").val(idSucursal);
     //$("#cantProducto").val(cantProducto);

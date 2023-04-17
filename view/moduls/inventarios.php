@@ -54,7 +54,7 @@
 
           <div class="btn-group">
             <button class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>>
-            <a href="editarInventario"><i class="fa fa-pencil"></i></a>
+            <a class="probar" href="editarInventario"><i class="fa fa-pencil"></i></a>
             </button>
 
             <!--<button  class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>

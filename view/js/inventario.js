@@ -36,35 +36,20 @@ $(".btnUpdateInventario").click(function(){
 $(document).ready(function(){
 
     // Obtener los datos del localStorage
-    var idProducto = localStorage.getItem("idProducto");
-    var nameProducto = localStorage.getItem("nameProducto");
-    var marcaProducto = localStorage.getItem("marcaProducto");
-    var descriptionProducto = localStorage.getItem("descriptionProducto");
-    var precioProducto = localStorage.getItem("precioProducto");
-    var cateProducto = localStorage.getItem("cateProducto");
-    var unitProducto = localStorage.getItem("unitProducto");
-    var porcProducto = localStorage.getItem("porcProducto");
-    var gananciaProducto = localStorage.getItem("gananciaProducto");
-    var porGananProducto = localStorage.getItem("porGananProducto");
-    var obsProducto = localStorage.getItem("obsProducto");
+    var codigoInventario = localStorage.getItem("codigoInventario");
+    var idSucursal = localStorage.getItem("idSucursal");
+    var cantProducto = localStorage.getItem("cantProducto");
+    var existProducto = localStorage.getItem("existProducto");
+    var minProducto = localStorage.getItem("minProducto");
 
     // Asignar los datos a los campos correspondientes
-    $("#idProducto").val(idProducto);
-    $("#nameProducto").val(nameProducto);
-    $("#marcaProducto").val(marcaProducto);
-    $("#descriptionProducto").val(descriptionProducto);
-    $("#precioProducto").val(precioProducto);
-    $("#cateProducto").val(cateProducto);
-    $("#unitProducto").val(unitProducto);
-    $("#porcProducto").val(porcProducto);
-    $("#gananciaProducto").val(gananciaProducto);
-    $("#porGananProducto").val(porGananProducto);
-    $("#obsProducto").val(obsProducto);
-    //$("#idSucursal").val(idSucursal);
-    //$("#cantProducto").val(cantProducto);
-    //$("#existProducto").val(existProducto);
-    //$("#minProducto").val(minProducto);
-    //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
+    $("#codigoInventario").val(codigoInventario);
+    $("#idSucursal").val(idSucursal);
+    $("#cantProducto").val(cantProducto);
+    $("#existProducto").val(existProducto);
+    $("#minProducto").val(minProducto);
+
+    localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
 })
 
 $(".btnDeleteInventario").click(function(){

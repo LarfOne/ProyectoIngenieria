@@ -28,9 +28,7 @@
                     $datas = array(
                         "idSucursal" => $_POST["idSucursal"],
                         "idProducto" => $_POST["idProducto"],
-                        "cantidad" => $_POST["cantProducto"],
-                        "existencia" => $_POST["existProducto"],
-                        "minimo" => $_POST["minProducto"]
+                        "cantidad" => $_POST["cantProducto"]
                     );
 
                     $respuesta = Inventario::mdlAdd($table, $datas);
@@ -49,9 +47,7 @@
                     $datas = array("codigo" => $_POST["codigoInventario"], 
                                     "idSucursal" => $_POST["idSucursal"], 
                                     "idProducto" =>  $_POST["idProducto"],    
-                                    "cantidad" => $_POST["cantProducto"],
-                                    "existencia" => $_POST["existProducto"],
-                                    "minimo" => $_POST["minProducto"]);
+                                    "cantidad" => $_POST["cantProducto"]);
 
                     $respuesta = Inventario::mdlUpdateInventario($table, $datas);
                     

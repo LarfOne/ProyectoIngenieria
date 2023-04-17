@@ -49,7 +49,7 @@ $(document).ready(function(){
     $("#existProducto").val(existProducto);
     $("#minProducto").val(minProducto);
 
-    localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
+    //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
 })
 
 $(".btnDeleteInventario").click(function(){

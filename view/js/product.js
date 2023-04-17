@@ -24,8 +24,8 @@ $(".btnUpdateInventario").click(function(){
             localStorage.setItem("precioProducto", respuesta["precioNeto"]);
             localStorage.setItem("cateProducto", respuesta["categoria"]);
             localStorage.setItem("unitProducto", respuesta["unidadmedida"]);
-            localStorage.setItem("porcProducto", respuesta["porcentajeIVA"]);
-            localStorage.setItem("precioTotal", respuesta["PrecioTotal"]);
+            localStorage.setItem("porcProducto", respuesta["porcentajeIva"]);
+            localStorage.setItem("precioTotal", respuesta["precioTotal"]);
             localStorage.setItem("obsProducto", respuesta["observaciones"]);
         }
 
@@ -43,7 +43,7 @@ $(document).ready(function(){
     var cateProducto = localStorage.getItem("cateProducto");
     var unitProducto = localStorage.getItem("unitProducto");
     var porcProducto = localStorage.getItem("porcProducto");
-    var gananciaProducto = localStorage.getItem("precioTotal");
+    var precioTotal = localStorage.getItem("precioTotal");
     var obsProducto = localStorage.getItem("obsProducto");
 
     // Asignar los datos a los campos correspondientes
@@ -55,12 +55,9 @@ $(document).ready(function(){
     $("#cateProducto").val(cateProducto);
     $("#unitProducto").val(unitProducto);
     $("#porcProducto").val(porcProducto);
-    $("#precioTotal").val(gananciaProducto);
+    $("#precioTotal").val(precioTotal);
     $("#obsProducto").val(obsProducto);
-    //$("#idSucursal").val(idSucursal);
-    //$("#cantProducto").val(cantProducto);
-    //$("#existProducto").val(existProducto);
-    //$("#minProducto").val(minProducto);
+
     //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
 })
 

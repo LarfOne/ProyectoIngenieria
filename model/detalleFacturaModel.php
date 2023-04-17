@@ -52,7 +52,12 @@ class ModeloDetalle{
         
         }else{
             $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $sentenciaSQL -> execute();
+            return $sentenciaSQL -> fetchAll();
         }
+        $sentenciaSQL -> close();
+
+        $sentenciaSQL = null;
     }
 
     static function mdlMostrarDetalleporIdFactura($tabla, $item, $valor)
@@ -89,7 +94,18 @@ class ModeloDetalle{
 
 
 
+	static public function mdlSumaProcuctosVendidos($tabla){
 
+		$stmt = Conexion::conectar()->prepare("SELECT SUM(idProducto) as total FROM $tabla GROUP BY idProducto");
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
+		$stmt -> close();
+
+		$stmt = null;
+	}
 
 
 

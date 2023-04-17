@@ -8,6 +8,22 @@
         }
 
 
+	/*=============================================
+	MOSTRAR SUMA VENTAS
+	=============================================*/
+
+	static public function ctrMostrarSumaVentas(){
+
+		$tabla = "detallefactura";
+
+		$respuesta = ModeloDetalle::mdlSumaProcuctosVendidos ($tabla);
+
+		return $respuesta;
+
+	}
+
+
+    
 
         static public function ctrCreateDetalle(){
             

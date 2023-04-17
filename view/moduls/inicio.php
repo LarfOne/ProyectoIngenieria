@@ -102,7 +102,7 @@
                             <span></span> <b class="caret"></b>
                 </div>
 
-                <input class="cancelBtnR" type="button" value="Hoy">
+                <input class="cancelBtnR" type="button" value="Restablecer">
 
     
                     </div>
@@ -114,7 +114,7 @@
 
 
             <!--columnas grafico  -->
-            <div  class="row1">
+            <div  class="row2">
 
             
 
@@ -124,11 +124,25 @@
                 <div class="row">
                 <div class="col s4 l10">
                 <?php
-                    include "grafico-ventas.php";
+                    include "graficos/graficoVentas.php";
                 ?>
                 </div>
                 </div>
                     
+                </div>
+
+
+                <div id="datos" style="background-color:#ffe0e9" >
+
+                <div class="row">
+                <div class="col s4 l10">
+                <h3 class="box-title">Total de ventas de los empleados</h3>
+                <div id="bar-chart1" style="height: 250px;"></div>
+                <?php
+                include "graficos/productosMasVendidos.php";
+                ?>
+                </div>
+                </div>
                 </div>
             </div>
             <div class="row2">

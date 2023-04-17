@@ -20,13 +20,13 @@ $arrayVentas = array();
 $sumaPagosMes = array();
 foreach ($respuesta as $key => $values) {
 
-        #Capturamos sólo el año y el mes
+        #Captura el año y el mes
         $fecha = substr($values["fechaFactura"],0,7);
-        #Introducir las fechas en arrayFechas
+        #mete las fechas en el  arrayFechas
         array_push($arrayFechas,$fecha);
-	    #Capturamos las ventas
+	    #todas las ventas las ventas
 	    $arrayVentas = array($fecha => $values["total"]);
-        #Sumamos los pagos que ocurrieron el mismo mes
+        #Suma los pagos que ocurrieron el mismo mes
 	    foreach ($arrayVentas as $ke => $values) {
             $sumaPagosMes[$ke]+=$values;	
 	    }
@@ -56,7 +56,7 @@ GRÁFICO DE VENTAS
 
 <script>
 	
- var line = new Morris.Line({
+var line = new Morris.Line({
     element          : 'line-chart-ventas',
     resize           : true,
     data             : [
@@ -76,7 +76,7 @@ GRÁFICO DE VENTAS
 
     }else{
 
-       echo "{ y: '0', ventas: '0' }";
+      echo "{ y: '0', ventas: '0' }";
 
     }
 

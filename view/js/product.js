@@ -58,7 +58,7 @@ $(document).ready(function(){
     $("#precioTotal").val(precioTotal);
     $("#obsProducto").val(obsProducto);
 
-    //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
+    localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
 })
 
 
@@ -97,8 +97,11 @@ var porc;
 function obtenerPorcentaje(){
     porc = document.getElementById("porcProducto").value;
     porcentaje = Number.parseFloat(porc) / 100;
+    precioNeto = document.getElementById("precioNeto").value
 
-    if(porcentaje != 0 && precioNeto != 0){
+    console.log(porcentaje);
+
+    if(porc != "" && precioNeto != ""){
 
         precioIVA = precioNeto * porcentaje; //260
         precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);//2000260
@@ -109,13 +112,13 @@ function obtenerPorcentaje(){
 }
 
 function obtenerPrecioNeto(){
-    precioNeto = document.getElementById("precioNeto").value;
-
     porc = document.getElementById("porcProducto").value;
     porcentaje = Number.parseFloat(porc) / 100;
+    precioNeto = document.getElementById("precioNeto").value;
 
+    console.log("Pecio Neto", precioNeto);
 
-    if(porcentaje != 0 && precioNeto != 0){
+    if(porc != "" && precioNeto != ""){
         
         precioIVA = precioNeto * porcentaje;
         precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);//2000260

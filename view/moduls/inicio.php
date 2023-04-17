@@ -9,6 +9,17 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="https://code.jquery.com/jquery-1.8.2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
 
 
 <!DOCTYPE html>
@@ -83,26 +94,57 @@
 
                 </div>
 
-
-                <!-- Column 2.x -->
-
-
-                <div id="datos">
-
-                    <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;"></h1>
-
-
-                    <button></button>
+                <div class="cardCont cards-1">
+                    <div class="card card-grafic">
+                <div id="daterange-btn2" class="pull" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                <h4> Rango fechas de los graficos</h4>        
+                <i class="glyphicon glyphicon-calendar "></i>&nbsp;
+                            <span></span> <b class="caret"></b>
                 </div>
 
+                <input class="cancelBtnR" type="button" value="Restablecer">
 
+    
+                    </div>
+                </div>
 
+                
 
             </div>
 
 
-            <!--3 columnas, perfil, cantidad de productos y cantidad de cientes -->
+            <!--columnas grafico  -->
+            <div  class="row2">
 
+            
+
+
+            <div id="datos" style="background-color:#91AAF9" >
+
+                <div class="row">
+                <div class="col s4 l10">
+                <?php
+                    include "graficos/graficoVentas.php";
+                ?>
+                </div>
+                </div>
+                    
+                </div>
+
+
+                <div id="datos" style="background-color:#ffe0e9" >
+
+                <div class="row">
+                <div class="col s4 l10">
+                <h3 class="box-title">Total de ventas de los empleados</h3>
+                <div id="bar-chart1" style="height: 250px;"></div>
+                <?php
+                include "graficos/productosMasVendidos.php";
+                ?>
+                </div>
+                </div>
+                </div>
+            </div>
             <div class="row2">
 
                 <!-- Column 1.x -->

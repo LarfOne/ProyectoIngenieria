@@ -16,30 +16,54 @@ $(".btnUpdateInventario").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-
-            $("#idProducto").val(respuesta["codigo"]);
-            $("#nameProducto").val(respuesta["nombre"]);
-            $("#marcaProducto").val(respuesta["marca"]);
-            $("#descriptionProducto").val(respuesta["descripcion"]);
-            $("#precioProducto").val(respuesta["precio"]);
-            $("#cateProducto").val(respuesta["categoria"]);
-            //$("#idSucursal").val(respuesta["idSucursal"]);
-            $("#unitProducto").val(respuesta["unidadmedida"]);
-            $("#porcProducto").val(respuesta["porcentajeIVA"]);
-            //$("#cantProducto").val(respuesta["cantidad"]);
-            $("#gananciaProducto").val(respuesta["ganancia"]);
-            $("#porGananProducto").val(respuesta["porcentajeGanancia"]);
-            //$("#existProducto").val(respuesta["existencia"]);
-            //$("#minProducto").val(respuesta["minimo"]);
-            $("#obsProducto").val(respuesta["observaciones"]);
-
-
-            //console.log("respuesta", respuesta);
-
+            //Ingresar los datos al localStorage
+            localStorage.setItem("idProducto", respuesta["codigo"]);
+            localStorage.setItem("nameProducto", respuesta["nombre"]);
+            localStorage.setItem("marcaProducto", respuesta["marca"]);
+            localStorage.setItem("descriptionProducto", respuesta["descripcion"]);
+            localStorage.setItem("precioProducto", respuesta["precioNeto"]);
+            localStorage.setItem("cateProducto", respuesta["categoria"]);
+            localStorage.setItem("unitProducto", respuesta["unidadmedida"]);
+            localStorage.setItem("porcProducto", respuesta["porcentajeIVA"]);
+            localStorage.setItem("precioTotal", respuesta["PrecioTotal"]);
+            localStorage.setItem("obsProducto", respuesta["observaciones"]);
         }
 
     })
 })
+
+$(document).ready(function(){
+
+    // Obtener los datos del localStorage
+    var idProducto = localStorage.getItem("idProducto");
+    var nameProducto = localStorage.getItem("nameProducto");
+    var marcaProducto = localStorage.getItem("marcaProducto");
+    var descriptionProducto = localStorage.getItem("descriptionProducto");
+    var precioProducto = localStorage.getItem("precioProducto");
+    var cateProducto = localStorage.getItem("cateProducto");
+    var unitProducto = localStorage.getItem("unitProducto");
+    var porcProducto = localStorage.getItem("porcProducto");
+    var gananciaProducto = localStorage.getItem("precioTotal");
+    var obsProducto = localStorage.getItem("obsProducto");
+
+    // Asignar los datos a los campos correspondientes
+    $("#idProducto").val(idProducto);
+    $("#nameProducto").val(nameProducto);
+    $("#marcaProducto").val(marcaProducto);
+    $("#descriptionProducto").val(descriptionProducto);
+    $("#precioNeto").val(precioProducto);
+    $("#cateProducto").val(cateProducto);
+    $("#unitProducto").val(unitProducto);
+    $("#porcProducto").val(porcProducto);
+    $("#precioTotal").val(gananciaProducto);
+    $("#obsProducto").val(obsProducto);
+    //$("#idSucursal").val(idSucursal);
+    //$("#cantProducto").val(cantProducto);
+    //$("#existProducto").val(existProducto);
+    //$("#minProducto").val(minProducto);
+    //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
+})
+
 
 $(".btnDeleteInventario").click(function(){
 

@@ -95,7 +95,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="idCategories" placeholder="Ingresar código de la categoría" required>
+                <input type="text" class="form-control input-lg" name="idCategories" style="border-radius: 5px;" placeholder="Ingresar código de la categoría" required>
                 
               </div>
 
@@ -107,7 +107,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nameCategories" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
                 <input type="hidden" id="categoriesId">
               </div>
 
@@ -159,7 +159,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="idCategoriesm" name="idCategoriesm" value="" readonly>
+                <input type="text" class="form-control input-lg" id="idCategoriesm" style="border-radius: 5px;" name="idCategoriesm" value="" readonly>
                 
 
               </div>
@@ -172,7 +172,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameCategoriesm" name="nameCategoriesm" value="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nameCategoriesm" style="border-radius: 5px;" name="nameCategoriesm" value="Ingresar nombre" required>
 
               </div>
 

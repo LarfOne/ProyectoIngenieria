@@ -63,12 +63,14 @@ input::file-selector-button {
     border: none;
     color: white;
     font-size: 30px;
+    
 }
 
 .button-save:hover{
-    border: 2px solid black;
-    color: black;
-    text-decoration: underline;
+    border: 1px solid rgb(22, 117, 6);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background-color: #2b800e;
 }
 
 .button-cancel {
@@ -84,10 +86,20 @@ input::file-selector-button {
 }
 
 .button-cancel:hover{
-    border: 2px solid black;
-    color: black;
-    text-decoration: underline;
+    border: 1px solid rgb(112, 0, 0);
+    color: rgb(255, 255, 255);
+    background-color: #990021;
+    text-decoration: none;
 }
+.image {
+    background-color:#005092;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    
+  }
 
 .roboto{
     font-family: 'Roboto Condensed', sans-serif !important;

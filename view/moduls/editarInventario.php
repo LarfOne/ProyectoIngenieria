@@ -9,24 +9,24 @@
             <div class="row align-items-center first">
                 <div class="col mt-5 mr-5">
                         <label>Codigo del producto</label>
-                        <input type="text" class="form-control input-lg" id="idProducto" name="idProducto" placeholder="Ingresar Codigo" required readonly>
+                        <input type="text" class="form-control input-lg mt-2" id="idProducto" name="idProducto" placeholder="Ingresar Codigo" required readonly>
                         <input type="hidden" id="codigoInventario" name="codigoInventario">
                 </div>
                 <div class="col mt-5 mr-5">
                         <label>Nombre del producto</label>
-                        <input type="text" class="form-control input-lg" id="nameProducto" name="nameProducto" placeholder="Ingresar Nombre" required>
+                        <input type="text" class="form-control input-lg mt-2" id="nameProducto" name="nameProducto" placeholder="Ingresar Nombre" required>
                 </div>
                 <div class="col mt-5 mr-5">
                         <label>Marca</label>
-                        <input type="text" class="form-control input-lg" id="marcaProducto" name="marcaProducto" placeholder="Ingresar la marca" required>
+                        <input type="text" class="form-control input-lg mt-2" id="marcaProducto" name="marcaProducto" placeholder="Ingresar la marca" required>
                 </div>
                 <div class="col mt-5 mr-5">
                         <label>Descripcion</label>
-                        <textarea class="form-control rounded-0" id="descriptionProducto" name="descriptionProducto" rows="3"></textarea>
+                        <textarea class="form-control rounded-0 mt-2" id="descriptionProducto" name="descriptionProducto" rows="3"></textarea>
                 </div>
                 <div class="col mt-5 mr-5">
-                        <label>Cantidad</label>
-                        <input type="text" class="form-control input-lg" id="cantProducto" name="cantProducto" placeholder="Cantidad Productos" required>
+                        <label>Cantidad de productos nuevos</label>
+                        <input type="text" class="form-control input-lg mt-2" data-toggle="tooltip" title="Ingrese la cantidad de productos nuevos que va a agregar al inventario" id="cantProducto" name="cantProducto" value="0" placeholder="Productos Nuevos">
                 </div>
             </div>
 
@@ -34,11 +34,7 @@
             <div class="row align-items-center second">
                   <div class="col mt-5 mr-5">
                         <label>Existencia</label>
-                        <input class="form-control input-sm mt-2" type="text" name="existProducto" placeholder="Existencia actual" required>
-                  </div>
-                  <div class="col mt-5 mr-5">
-                        <label>Minimo de producto</label>
-                        <input class="form-control input-sm mt-2" type="text" name="minProducto" placeholder="Minimo" required>
+                        <input class="form-control input-sm mt-2" type="text" id="existProducto" name="existProducto" placeholder="Existencia actual" required readonly>
                   </div>
                   <!-- Mandar a traer las sucursales -->
                   <?php
@@ -49,7 +45,7 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Sucursal</label>
-                        <select class="form-control input-lg mt-2" name="idSucursal">
+                        <select class="form-control input-lg mt-2" id="idSucursal" name="idSucursal">
                               <?php foreach ($sucursal as $sucursal1) { ?>
                                     <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                               <?php } ?>
@@ -64,7 +60,7 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Unidad</label>
-                        <select class="form-control input-lg mt-2" name="unitProducto">
+                        <select class="form-control input-lg mt-2" id="unitProducto" name="unitProducto">
 
                               <?php foreach ($unit as $unit1) { ?>
                                     <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
@@ -106,7 +102,7 @@
         </div>
         <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                 <label>Categoria</label>
-                <select class="form-control input-lg mt-2 selectC" name="cateProducto">
+                <select class="form-control input-lg mt-2 selectC" id="cateProducto" name="cateProducto">
 
                         <?php foreach ($category as $category1) { ?>
                                 <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
@@ -125,7 +121,7 @@
         </div>
         <div class="col mt-5 mr-5 align-self-center">
                 <label>Observaciones</label>
-                <textarea class="form-control input-lg mt-2" name="obsProducto" rows="2" placeholder="Observaciones"></textarea>
+                <textarea class="form-control input-lg mt-2" id="obsProducto" name="obsProducto" rows="2" placeholder="Observaciones"></textarea>
         </div>
         </div>
 

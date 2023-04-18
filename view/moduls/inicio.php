@@ -57,24 +57,34 @@
 
 
                 ?>
-                <div class="cardCont cards-4">
-                    <div class="card card-user">
-                        <img src="imagen/user.png" class="card-img">
-                        <a href="users" class="btn-perso btn-user">Usuarios</a>
-                    </div>
-                    <div class="card card-inventory">
-                        <img src="imagen/inventario.png" class="card-img">
-                        <a href="inventarios" class="btn-perso btn-inventory">Inventario</a>
-                    </div>
-                    <div class="card card-clients">
-                        <img src="imagen/clientes.png" class="card-img">
-                        <a href="clients" class="btn-perso btn-clients">Clientes</a>
-                    </div>
-                    <div class="card card-sells">
-                        <img src="imagen/ventas.png" class="card-img">
-                        <a href="ventas" class="btn-perso btn-sells">Ventas</a>
-                    </div>
-                </div>
+<div class="cardCont">
+  <div class="card card-user">
+    <img src="imagen/user.png" class="card-img">
+    <a href="users" class="btn-perso btn-user">Usuarios</a>
+  </div>
+  <div class="card card-inventory">
+    <img src="imagen/inventario.png" class="card-img">
+    <a href="inventarios" class="btn-perso btn-inventory">Inventario</a>
+  </div>
+  <div class="card card-clients">
+    <img src="imagen/clientes.png" class="card-img">
+    <a href="clients" class="btn-perso btn-clients">Clientes</a>
+  </div>
+  <div class="card card-sells">
+    <img src="imagen/ventas.png" class="card-img">
+    <a href="ventas" class="btn-perso btn-sells">Ventas</a>
+  </div>
+  <div class="card card-grafic">
+    <div id="daterange-btn2" class="pull" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+      <h4> Rango fechas de los graficos</h4>        
+      <i class="glyphicon glyphicon-calendar "></i>&nbsp;
+      <span></span> <b class="caret"></b>
+    </div>
+    <input class="cancelBtnR" type="button" value="Restablecer">
+  </div>
+</div>
+
+
 
 
             </div>
@@ -94,19 +104,7 @@
 
                 </div>
 
-                <div class="cardCont cards-1">
-                    <div class="card card-grafic">
-                <div id="daterange-btn2" class="pull" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                <h4> Rango fechas de los graficos</h4>        
-                <i class="glyphicon glyphicon-calendar "></i>&nbsp;
-                            <span></span> <b class="caret"></b>
-                </div>
 
-                <input class="cancelBtnR" type="button" value="Restablecer">
-
-    
-                    </div>
-                </div>
 
                 
 
@@ -139,7 +137,7 @@
                 <h3 class="box-title">Total de ventas de los empleados</h3>
                 <div id="bar-chart1" style="height: 250px;"></div>
                 <?php
-                include "graficos/productosMasVendidos.php";
+                include "graficos/ventasEmpleados.php";
                 ?>
                 </div>
                 </div>

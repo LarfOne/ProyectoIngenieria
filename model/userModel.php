@@ -49,17 +49,18 @@
         static public function mdlAdd($table, $datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (cedula, idSucursal, nombre, apellidos, email,
-                                                                                role, password, cuentaBancaria, direccion, image) VALUES
+                                                                                role, password, cuentaBancaria, direccion, estado, image) VALUES
                                                                                 (:cedula, :idSucursal, :nombre, :apellidos, :email,
-                                                                                :role, :password, :cuentaBancaria, :direccion, :image)");
+                                                                                :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
 
-            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
-            $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_INT);
+            $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':apellidos', $datas["apellidos"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':email', $datas["email"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':cuentaBancaria', $datas["cuentaBancaria"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);
@@ -90,7 +91,7 @@
         static public function mdlUpdate($table, $datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET idSucursal = :idSucursal, nombre = :nombre, apellidos = :apellidos, email = :email,
-                                                            role = :role, password = :password, cuentaBancaria = :cuentaBancaria, direccion = :direccion, image = :image WHERE cedula = :cedula");
+                                                            role = :role, password = :password, cuentaBancaria = :cuentaBancaria, direccion = :direccion, estado = :estado, image = :image WHERE cedula = :cedula");
             
             
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
@@ -99,6 +100,7 @@
             $sentenciaSQL->bindParam(':email', $datas["email"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':cuentaBancaria', $datas["cuentaBancaria"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);

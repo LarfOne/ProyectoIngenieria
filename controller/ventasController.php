@@ -169,10 +169,6 @@ class ControladorVentas{
 				ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
 				=============================================*/
 
-				/*=============================================
-				ACTUALIZAR LAS COMPRAS DEL CLIENTE Y REDUCIR EL STOCK Y AUMENTAR LAS VENTAS DE LOS PRODUCTOS
-				=============================================*/
-
 				$listaProductos_2 = json_decode($listaProductos, true);
 
 				$totalProductosComprados_2 = array();

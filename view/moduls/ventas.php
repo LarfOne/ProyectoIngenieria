@@ -1,18 +1,16 @@
 <link rel="stylesheet" href="css/ventas.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 
 <div class= "container pt-4" style="margin-top: 100px">
+<div class="container mt-3">
 <div class="content-wrapper" style="padding: 15px !important;">
 <div class="content-wrapper">
-
-  <section class="content-header">
-    
-  </section>
 
   <section class="content">
     <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Facturas</h2>
@@ -30,11 +28,6 @@
 
         </a>
 
-      </div>
-
-
-      <div class="box" style="margin: 0px;">
-      
       </div>
 
       <div class="box-body">
@@ -177,17 +170,6 @@
   </section>
 
 </div>
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
+</div>
 </div>

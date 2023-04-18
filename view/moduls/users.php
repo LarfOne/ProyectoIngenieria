@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/style.css"> 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">  
- 
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
@@ -10,6 +10,12 @@
 
   <div class="container mt-3">
     <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
+
+
+
+
+
+
 
     <div class="tablaUs" >
       <button class="btn btn-primary btnAgregarU" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
@@ -20,16 +26,18 @@
           <table class="table tableU" id="tabla" data-sort="table">
             <thead>
                 <tr>
-                  <th >Cedula</th>
+                  <th>Cedula</th>
                   <th>Nombre</th>
                   <th>Apellidos</th>
                   <th>Email</th>
                   <th>Role</th>
                   <th>C.C</th>
                   <th>Sucursal</th>
-                  <th>direccion</th>
+                  <th>direccion</th>  
+                  <th>Estado</th>
                   <th>Imagen</th>
                   <th>Acciones</th>
+                  
                       
                 </tr>
             </thead>
@@ -56,7 +64,19 @@
                 <td><?php echo $empleado1['cuentaBancaria']; ?></td>
                 <td><?php echo $sucursal['nombre']; ?></td>
                 <td><?php echo $empleado1['direccion']; ?></td>
+              
+
                 <?php 
+                
+                if($empleado1['estado'] == 'Activo'){?>
+                  <td style=" padding: 5px !important;margin: 5% auto; ">✔️</td>
+                  <?php } ?>
+                  <?php
+                  if($empleado1['estado'] == 'Inactivo'){?>
+                    <td>❌</td>
+                  <?php } ?>
+              
+              <?php 
                 
                 if($empleado1['image'] != null){?>
                   <td><img src="<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
@@ -80,7 +100,7 @@
 
             <?php } ?>
 
-              </tbody>
+            </tbody>
           </table>
     </div>
   </div>
@@ -88,6 +108,7 @@
 
 
 <!--MODAL PARA AGREGAR USUARIO-->
+
 
 
 <div class="modal fade" id="modalAddUser" role="dialog">
@@ -111,7 +132,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" name="idUser" placeholder="Ingresar cédula" required>
+                <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" name="idUser" placeholder="Ingresar cédula" required>
                 
               </div>
 
@@ -123,7 +144,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nameUser" placeholder="Ingresar nombre" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="nameUser" placeholder="Ingresar nombre" required>
                 <input type="hidden" id="userId">
               </div>
 
@@ -135,7 +156,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="lastNameUser" placeholder="Ingresar apellidos" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="lastNameUser" placeholder="Ingresar apellidos" required>
 
               </div>
 
@@ -151,7 +172,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-building"></i></span>
+                <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-building"></i></span>
                 <!--<input type="text" class="form-control input-lg" name="sucursalUser" placeholder="Ingresar sucursal a la que pertenece" required>-->
                 <select class="form-control input-lg" id="sucursalUser" name="sucursalUser">
                               <?php foreach ($sucursal as $sucursal1) { ?>
@@ -169,7 +190,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -181,7 +202,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="roleUser">
+                <select class="form-control input-lg" style="border-radius: 5px;" name="roleUser">
 
                   <option value="">Selecionar Perfil</option>
                   <option value="Administrador">Administrador</option>
@@ -199,7 +220,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
+                <input type="password" style="border-radius: 5px;" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
 
               </div>
 
@@ -211,7 +232,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-credit-card-alt"></i></span>
-                <input type="text" class="form-control input-lg" name="cuentaUser" placeholder="Ingresar cuenta bancaria" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="cuentaUser" placeholder="Ingresar cuenta bancaria" required>
 
               </div>
 
@@ -223,11 +244,29 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                <input type="text" class="form-control input-lg" name="directionUser" placeholder="Ingresar dirección" required>
+                <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="directionUser" placeholder="Ingresar dirección" required>
 
               </div>
 
             </div>
+
+
+            <!--AGREGAR ESTADO-->
+            <div class="form-group">
+              <div class="input-group" > 
+                  <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
+                  <select class="form-control input-lg" id="estadoUser" name="estadoUser">
+                  <option value="Activo">Activo</option>
+                  <option value="Inactivo">Inactivo</option>
+                  </select>
+              </div>
+            </div>
+
+
+
+
+
+
 
             <!--AGREGAR DE FOTO-->
             <div class="form-group subirFoto">
@@ -289,7 +328,6 @@
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
                 <input type="text" class="form-control input-lg" id="idUserm" name="idUserm" value="" readonly>
-                
 
               </div>
 
@@ -377,16 +415,6 @@
               </div>
             </div>
 
-            <!--MODIFICAR DE PASSWORD
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                
-                <input type="text" class="form-control input-lg" id="passwordActual" name="passwordActual" value="Ingresar la nueva contrasena" required>
-                
-              </div>
-            </div>
--->
 
             <!--MODIFICAR DE CUENTA BANCARIA-->
             <div class="form-group">
@@ -411,6 +439,21 @@
               </div>
 
             </div>
+
+          <!--MODIFICAR DE ESTADO-->
+          <div class="form-group">
+
+            <div class="input-group" > 
+
+              <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
+              <select class="form-control input-lg" id="estadoUserm" name="estadoUserm">
+              <option value="Activo">Activo</option>
+              <option value="Inactivo">Inactivo</option>
+            </select>
+
+          </div>
+        </div>
+
 
             <!--MODIFICAR DE FOTO-->
             <div class="form-group">
@@ -438,6 +481,17 @@
                 $updateUser = new ControllerUser;
                 $updateUser -> ctrUpdateUser();
 
+                
+
+
+
+                if($_SESSION["estado"] == "Inactivo"){
+                  session_destroy();
+                  echo '<script>
+                  window.location = "ingreso"
+                  </script>';
+                }
+                
             ?>
 
       </form>

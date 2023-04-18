@@ -17,7 +17,7 @@ $(".btnUpdateInventario").click(function(){
         dataType: "json",
         success: function(respuesta){
             //Ingresar los datos al localStorage
-            localStorage.setItem("idProducto", respuesta["codigo"]);
+            /*localStorage.setItem("idProducto", respuesta["codigo"]);
             localStorage.setItem("nameProducto", respuesta["nombre"]);
             localStorage.setItem("marcaProducto", respuesta["marca"]);
             localStorage.setItem("descriptionProducto", respuesta["descripcion"]);
@@ -26,13 +26,32 @@ $(".btnUpdateInventario").click(function(){
             localStorage.setItem("unitProducto", respuesta["unidadmedida"]);
             localStorage.setItem("porcProducto", respuesta["porcentajeIva"]);
             localStorage.setItem("precioTotal", respuesta["precioTotal"]);
-            localStorage.setItem("obsProducto", respuesta["observaciones"]);
+            localStorage.setItem("obsProducto", respuesta["observaciones"]);*/
+
+            $("#idProducto").val(respuesta["codigo"]);
+            $("#nameProducto").val(respuesta["nombre"]);
+            $("#marcaProducto").val(respuesta["marca"]);
+            $("#descriptionProducto").val(respuesta["descripcion"]);
+            $("#precioNeto").val(respuesta["precioNeto"]);
+            $("#cateProducto").val(respuesta["categoria"]);
+            //$("#idSucursal").val(respuesta["idSucursal"]);
+            $("#unitProducto").val(respuesta["unidadmedida"]);
+            $("#porcProducto").val(respuesta["porcentajeIVA"]);
+            //$("#cantProducto").val(respuesta["cantidad"]);
+            $("#precioTotal").val(respuesta["precioTotal"]);
+            //$("#existProducto").val(respuesta["existencia"]);
+            //$("#minProducto").val(respuesta["minimo"]);
+            $("#obsProducto").val(respuesta["observaciones"]);
+
+
+            //console.log("respuesta", respuesta);
+
         }
 
     })
 })
 
-$(document).ready(function(){
+/*$(document).ready(function(){
 
     // Obtener los datos del localStorage
     var idProducto = localStorage.getItem("idProducto");
@@ -58,8 +77,8 @@ $(document).ready(function(){
     $("#precioTotal").val(precioTotal);
     $("#obsProducto").val(obsProducto);
 
-    localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
-})
+    //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
+})*/
 
 
 $(".btnDeleteInventario").click(function(){

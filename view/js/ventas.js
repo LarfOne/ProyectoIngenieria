@@ -26,7 +26,7 @@ $(".btnAgregarProducto1").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-			//console.log("respuestaAa",respuesta);
+			console.log("respuestaAa",respuesta);
 			stock = respuesta["cantidad"];
 			codigoInventario = respuesta["codigo"];
 			//console.log("cantidad", stock);
@@ -199,7 +199,7 @@ function cantidadMayorStock(){
 			icon: 'warning'
 		  })
 
-		//eliminarFila(codigoProducto)
+		eliminarFila(codigoProducto)
 	}
 
 	cantidades = "";

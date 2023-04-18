@@ -69,11 +69,12 @@ class ControllerProduct
 					"nombre" => $_POST["nameProducto"],
 					"marca" => $_POST["marcaProducto"],
 					"descripcion" => $_POST["descriptionProducto"],
-					"precioNeto" => $_POST["precioNeto"],
+					"precio" => $_POST["precioProducto"],
 					"categoria" => $_POST["cateProducto"],
 					"unidadmedida" => $_POST["unitProducto"],
 					"porcentajeIva" => $_POST["porcProducto"],
-					"precioTotal" => $_POST["precioTotal"],
+					"ganancia" => $_POST["gananciaProducto"],
+					"porcentajeGanancia" => $_POST["porGananProducto"],
 					"observaciones" => $_POST["obsProducto"]
 				);
 
@@ -121,8 +122,8 @@ class ControllerProduct
 					"nombre" => $_POST["nameProducto"],
 					"marca" => $_POST["marcaProducto"],
 					"descripcion" => $_POST["descriptionProducto"],
-					"categoria" => $_POST["cateProducto"],
 					"precioNeto" => $_POST["precioNeto"],
+					"categoria" => $_POST["cateProducto"],
 					"unidadmedida" => $_POST["unitProducto"],
 					"porcentajeIva" => $_POST["porcProducto"],
 					"precioTotal" => $_POST["precioTotal"],

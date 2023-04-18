@@ -53,12 +53,8 @@
         <td>
 
           <div class="btn-group">
-            <button class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>>
-            <a class="probar" href="editarInventario"><i class="fa fa-pencil"></i></a>
-            </button>
-
-            <!--<button  class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>
-              data-bs-toggle="modal" data-bs-target="#modalUpdateInventario"><i class="fa fa-pencil"></i></button>-->
+            <button  class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>
+              data-bs-toggle="modal" data-bs-target="#modalUpdateInventario"><i class="fa fa-pencil"></i></button>
 
               <!--<button  class="btn btn-warning btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>
               data-toggle="modal" data-target="#modalUpdateInventario"><i class="fa fa-pencil"></i></button>-->
@@ -86,8 +82,7 @@
 
 
 <!--*************************** MODAL MODIFICAR INVENTARIO ***************************-->
-<?php
-/*
+
 <div class="modal fade" id="modalUpdateInventario" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content mProducto">
@@ -263,10 +258,7 @@
   $deleteProduct -> ctrDeleteProduct();
 
 
-
-
-?>
-
-*/
+  
 
 ?>
+

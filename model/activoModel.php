@@ -17,25 +17,6 @@ class Activo{
         return $sentenciaSQL -> fetch();
     }
 
-    static public function mdlSpecificShow($tabla, $item, $valor){
-
-        if($item != null){
-            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
-
-            $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
-
-            $sentenciaSQL -> execute();
-
-            return $sentenciaSQL -> fetchAll();
-        }
-        $sentenciaSQL -> close();
-
-        $sentenciaSQL = null;
-        
-    }
-
-
-
 
 
     static public function mdlShow($tabla, $item, $valor){
@@ -102,34 +83,10 @@ class Activo{
 
     }
 
-
-    
-    static public function mdlUpdateEmployer($table, $data,$codigoA){
-        $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET empleado_id = :empleado_id WHERE codigo = :codigo");
-    
-        $sentenciaSQL->bindParam(':empleado_id', $data[null], PDO::PARAM_STR);    
-        $sentenciaSQL->bindParam(':codigo', $data["codigo"], PDO::PARAM_STR);    
-        if($sentenciaSQL->execute()){
-            
-            return "ok";
-        }else{
-            return "error";
-        }
-
-        $sentenciaSQL -> close();
-
-        $sentenciaSQL = null;
-
-    }
-
-
-
-
-
     static public function mdlUpdate($table, $datas){
 
         $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET idSucursal = :idSucursal, descripcion = :descripcion, estado = :estado,
-                                                        empleado_id = :empleado_id WHERE codigo = :codigo");
+                                                         empleado_id = :empleado_id WHERE codigo = :codigo");
         
         
         $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
@@ -137,6 +94,9 @@ class Activo{
         $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':empleado_id', $datas["empleado_id"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
+
+
+
 
         if($sentenciaSQL->execute()){
             

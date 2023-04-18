@@ -26,7 +26,7 @@ $(".btnAgregarProducto1").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-			//console.log("respuestaAa",respuesta);
+			console.log("respuestaAa",respuesta);
 			stock = respuesta["cantidad"];
 			codigoInventario = respuesta["codigo"];
 			//console.log("cantidad", stock);
@@ -69,59 +69,56 @@ $(".btnAgregarProducto1").click(function(){
 
 			success: function(respuesta){ //vienen los datos del producto que se digito
 				
-				if(respuesta != false){//comprueba que existe el producto
+				//console.log("respuesta", respuesta);
+				codigoProducto = respuesta["codigo"];
+				var descripcion = respuesta["descripcion"];
+				var precio = respuesta["precioTotal"];
+				var porDescuento = "0";
+				var descuento = "0";
+				var subTotal = parseInt(precio)*cantidad;
+				
+				//verifica si existe el codigo del producto en la tabla de ventas
+				if ($('.tablita #listaP'+codigoProducto).length) { 
+					let tr = document.querySelector('#listaP'+codigoProducto);
 
-					//console.log("respuesta", respuesta);
-					codigoProducto = respuesta["codigo"];
-					var descripcion = respuesta["descripcion"];
-					var precio = respuesta["precioTotal"];
-					var porDescuento = "0";
-					var descuento = "0";
-					var subTotal = parseInt(precio)*cantidad;
+					let td = tr.querySelector('.cantidadProducto');
+
+					let cantidadProducto = parseInt(td.textContent) + parseInt(cantidad);
+
+					subTotal = parseInt(precio)*cantidadProducto;
+
+					//se modifica el contenido de la tabla
+					$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
+
+					$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
+
 					
-					//verifica si existe el codigo del producto en la tabla de ventas
-					if ($('.tablita #listaP'+codigoProducto).length) { 
-						let tr = document.querySelector('#listaP'+codigoProducto);
 
-						let td = tr.querySelector('.cantidadProducto');
-
-						let cantidadProducto = parseInt(td.textContent) + parseInt(cantidad);
-
-						subTotal = parseInt(precio)*cantidadProducto;
-
-						//se modifica el contenido de la tabla
-						$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
-
-						$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
-
-						
-
-					}else{
-						
-						$(".tablita").append(
-
-							'<tr id="listaP'+codigoProducto+'">'+
+				}else{
 					
-								'<td>'+codigoProducto+'</td>'+
-								'<td class="descripcionProducto">'+descripcion+'</td>'+
-								'<td class="cantidadProducto">'+cantidad+'</td>'+
-								'<td class="descuentoProducto">'+descuento+'</td>'+
-								'<td class="precioProducto">'+precio+'</td>'+
-								'<td class="subTotalProducto">'+subTotal+'</td>'+
-								'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
-		
-							'</tr>')
+					$(".tablita").append(
 
-					}
+						'<tr id="listaP'+codigoProducto+'">'+
+				
+							'<td>'+codigoProducto+'</td>'+
+							'<td class="descripcionProducto">'+descripcion+'</td>'+
+							'<td class="cantidadProducto">'+cantidad+'</td>'+
+							'<td class="descuentoProducto">'+descuento+'</td>'+
+							'<td class="precioProducto">'+precio+'</td>'+
+							'<td class="subTotalProducto">'+subTotal+'</td>'+
+							'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
+	
+						'</tr>')
 
-						cantidadMayorStock()
-
-						sumarTotalPrecios()
-
-						listarProductos()
 				}
 
-			}
+					cantidadMayorStock()
+
+					sumarTotalPrecios()
+
+					listarProductos()
+
+        	}
 
     	})
 	}
@@ -180,7 +177,7 @@ function cantidadMayorStock(){
 
 	let tr = document.querySelector('#listaP'+codigoProducto);
 
-	//console.log("TR", tr);
+	console.log("TR", tr);
 
 	let td = tr.querySelector('.cantidadProducto');
 
@@ -199,7 +196,7 @@ function cantidadMayorStock(){
 			icon: 'warning'
 		  })
 
-		//eliminarFila(codigoProducto)
+		eliminarFila(codigoProducto)
 	}
 
 	cantidades = "";

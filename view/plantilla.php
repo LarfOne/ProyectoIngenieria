@@ -13,8 +13,7 @@ session_start(); //para usar variables de session
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="css/style.css">
-
-
+  <!--LINK TABLA-->
 
 
   <!--SCRIPT TABLA-->
@@ -84,7 +83,6 @@ session_start(); //para usar variables de session
         $_GET["ruta"] == "activos" ||
         $_GET["ruta"] == "inventarios" ||
         $_GET["ruta"] == "crearVentasP" ||
-        $_GET["ruta"] == "editarInventario" ||
         $_GET["ruta"] == "clients"
       ) {
         include "moduls/" . $_GET["ruta"] . ".php";
@@ -115,7 +113,6 @@ session_start(); //para usar variables de session
   <script src="view/js/clients.js"></script>
   <script src="view/js/product.js"></script>
   <script src="view/js/menu.js"></script>
-  <script src="view/js/reporte.js"></script>
 </body>
 
 </html>

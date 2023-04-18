@@ -25,16 +25,22 @@
                         <label>Descripcion</label>
                         <textarea class="form-control input-sm mt-2" name="descriptionProducto" rows="2" placeholder="Descripcion"></textarea>
                   </div>
-            </div>
-
-
-            <div class="row align-items-center second">
-
                   <div class="col mt-5 mr-5">
                         <label>Cantidad</label>
                         <input class="form-control input-sm mt-2" type="text" name="cantProducto" placeholder="Cantidad de productos" required>
                   </div>
+            </div>
 
+
+            <div class="row align-items-center second">
+                  <div class="col mt-5 mr-5">
+                        <label>Existencia</label>
+                        <input class="form-control input-sm mt-2" type="text" name="existProducto" placeholder="Existencia actual" required>
+                  </div>
+                  <div class="col mt-5 mr-5">
+                        <label>Minimo de producto</label>
+                        <input class="form-control input-sm mt-2" type="text" name="minProducto" placeholder="Minimo" required>
+                  </div>
                   <!-- Mandar a traer las sucursales -->
                   <?php
                   $item = null;

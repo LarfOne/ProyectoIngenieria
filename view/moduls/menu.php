@@ -120,22 +120,23 @@
                     
                 </li>';
         }
-
-        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") { 
-        
-            echo '<li class="has-subnav">
-                        <a href="auditoria">
-                            <i class="fa fa-database fa-2x"></i>
-                            <span class="nav-text">
-                                auditoria
-                            </span>
-                        </a>
-                        
-                    </li>';
-        }
         ?>
     </ul>
 
+    <?php
+    if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") { 
+        //en el archivo de respaldo hacer el llamado al proc y tirar el swwet alert
+        echo '<li class="has-subnav">
+                    <a href="Respaldo">
+                        <i class="fa fa-database fa-2x"></i>
+                        <span class="nav-text">
+                            Respaldo
+                        </span>
+                    </a>
+                    
+                </li>';
+    }
+    ?>
     
     <ul class="logout" style="margin-bottom: 71px;">
         <?php

@@ -14,7 +14,7 @@
             if(isset($_POST["ingUser"])){
                 
                 if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUser"]) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
+                   preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
                     
                     $tabla = "empleado";
 
@@ -25,8 +25,15 @@
                     $incrypt = crypt($_POST["ingPassword"], '$2a$07$usesomesillystringforsalt$');
 
                     $respuesta = User::mdlShow($tabla, $item, $valor);
-                    if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
+
+
+
+
+                    if($respuesta != null){
+
+
                     if(($respuesta["nombre"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
+
                         $_SESSION["iniciarSesion"] = "ok";
                         $_SESSION["cedula"] = $respuesta["cedula"];
                         $_SESSION["nombre"] = $respuesta["nombre"];
@@ -35,7 +42,6 @@
                         $_SESSION["idSucursal"] = $respuesta["idSucursal"];
                         $_SESSION["email"] = $respuesta["email"];
                         $_SESSION["image"] = $respuesta["image"];
-                        $_SESSION["estado"] = $respuesta["estado"];
                         
                         echo '<script>
                                 window.location = "inicio"
@@ -57,8 +63,8 @@
             if(isset($_POST["idUser"])){
 
                 if(preg_match('/^[0-9]+$/', $_POST["idUser"]) && 
-                preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
-                preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
+                   preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
+                   preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
 
                     $table = "empleado";
 
@@ -104,18 +110,16 @@
                     }
 
                                     $datas = array("cedula" => $_POST["idUser"], 
-                                                    "nombre" => $_POST["nameUser"], 
-                                                    "password" => $incrypt,
-                                                    "apellidos" => $_POST["lastNameUser"],
-                                                    "email" => $_POST["emailUser"],
-                                                    "role" => $_POST["roleUser"],
-                                                    "cuentaBancaria" => $_POST["cuentaUser"],
-                                                    "idSucursal" => $_POST["sucursalUser"],
-                                                    "direccion" => $_POST["directionUser"],
-                                                    "estado" => $_POST["estadoUser"],
-                                                    "image" =>$ruta);
-                                    echo($datas);
-                                
+                                    "nombre" => $_POST["nameUser"], 
+                                    "password" => $incrypt,
+                                    "apellidos" => $_POST["lastNameUser"],
+                                    "email" => $_POST["emailUser"],
+                                    "role" => $_POST["roleUser"],
+                                    "cuentaBancaria" => $_POST["cuentaUser"],
+                                    "idSucursal" => $_POST["sucursalUser"],
+                                    "direccion" => $_POST["directionUser"],
+                                    "image" =>$ruta);
+  
                                     $respuesta = User::mdlAdd($table, $datas);
 
                                     if($respuesta == "ok"){
@@ -152,10 +156,6 @@
             $respuesta = User::mdlShow($tabla, $item, $valor);
             return $respuesta;
         }
-
-
-
-        
 
         static public function ctrUpdateUser(){
 
@@ -233,35 +233,11 @@
                                     "cuentaBancaria" => $_POST["cuentaUserm"],
                                     "idSucursal" => $_POST["sucursalUserm"],
                                     "direccion" => $_POST["directionUserm"],
-                                    "estado" => $_POST["estadoUserm"],
                                     "image" =>$ruta);
-                    
+
                     $respuesta = User::mdlUpdate($table, $datas);
                     
-                    if($respuesta == "ok"){  
-                    
-                        //elimina todos los activos que tenga relacionado y los pone libre si el empleado es inactivo
-                        if($_POST["estadoUserm"]=='Inactivo'){
-                            $item = "empleado_id";
-                            $valor = $_POST["idUserm"];                
-                            $activos = ControllerActivos::ctrSpecificActivo($item, $valor);
-                        
-                        
-                            foreach($activos as $key => $activo) {
-                            $codigoA=$activo['codigo'];
-                            ControllerActivos::ctrUpdateOneActivo($activo,$codigoA);
-                            }
-                        }
-
-                        //Guarda los nuevos datos de las variables session y los actualiza
-                        if( $_SESSION['cedula'] ==$_POST["idUserm"] ){
-
-                            $_SESSION['nombre'] = $_POST['nameUserm'];
-                            $_SESSION['apellidos'] = $_POST['lastNameUserm'];
-                            $_SESSION['estado'] = $_POST['estadoUserm'];
-                        }
-                                    
-
+                    if($respuesta == "ok"){
                         echo "<script>
                         
                             Swal.fire({

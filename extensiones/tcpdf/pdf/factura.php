@@ -255,10 +255,12 @@ $pdf->writeHTML($bloque3, false, false, false, false, '');
 
 
 
-
+/*
 
 foreach($respuestaDetalle as $key => $venta1){
 $bloque9 = <<<EOF
+
+
 
 
 <table style="font-size:10px; padding:5px 10px;">
@@ -267,25 +269,96 @@ $bloque9 = <<<EOF
 
 		
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-			$venta1[idProducto]
+			$respuestaDetalle[idProducto]
 			</td>
-			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-			$venta1[cantidad]
-		    </td>
-		    <td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-			    $venta1[precUnit]
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:80px; text-align:center">
+			$respuestaDetalle[cantidad]
 			</td>
-			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-			$venta1[subTotal]
-		    </td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[precUnit]
+			</td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[subTotal]
+			</td>
 		</tr>
 
 	</table>
-
+ 
 EOF;
 $pdf->writeHTML($bloque9, false, false, false, false, '');
 
 }
+
+
+*/
+
+
+/*
+
+foreach($respuestaDetalle as $key => $venta1){
+$bloque9 = <<<EOF
+$venta1[idProducto]
+ 
+//EOF;
+//$pdf->writeHTML($bloque9, false, false, false, false, '');
+
+}
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+for($i = 0; $i <= $productos; $i++){
+
+$bloque4 = <<<EOF
+
+	<table style="font-size:10px; padding:5px 10px;">
+
+		<tr>
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
+			$respuestaDetalle[idProducto]
+			</td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:80px; text-align:center">
+			$respuestaDetalle[cantidad]
+			</td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[precUnit]
+			</td>
+
+			<td style="border: 1px solid #666; color:#333; background-color:white; width:100px; text-align:center">¢ 
+			$respuestaDetalle[subTotal]
+			</td>
+
+
+		</tr>
+
+	</table>
+
+
+EOF;
+
+$pdf->writeHTML($bloque4, false, false, false, false, '');
+
+
+}
+
 
 
 

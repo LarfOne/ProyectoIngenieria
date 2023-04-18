@@ -131,36 +131,5 @@ class Client{
 		$sentenciaSQL = null;
 
 	}
-    
-    static public function mdlMostrarCantidadCliente($tabla, $item){
-	
-		
-        if($item != null){
-
-            $stmt = Conexion::conectar()->prepare("SELECT COUNT(DISTINCT $item)  FROM $tabla");
-
-           
-            $stmt -> execute();
-
-            return $stmt -> fetchAll();
-
-        }else{
-
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
-
-            $stmt -> execute();
-
-            return $stmt -> fetchAll();
-
-        }
-        
-        $stmt -> close();
-
-        $stmt = null;
-
-    
-
-}
-
 
 }

@@ -29,7 +29,7 @@
       
       <div class="row">
         
-        <button style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important; border-radius: 7px;"">Ingresar</button>
+        <button style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important; border-radius: 7px;">Ingresar</button>
         
       </div>
 

@@ -104,16 +104,18 @@
                     }
 
                                     $datas = array("cedula" => $_POST["idUser"], 
-                                    "nombre" => $_POST["nameUser"], 
-                                    "password" => $incrypt,
-                                    "apellidos" => $_POST["lastNameUser"],
-                                    "email" => $_POST["emailUser"],
-                                    "role" => $_POST["roleUser"],
-                                    "cuentaBancaria" => $_POST["cuentaUser"],
-                                    "idSucursal" => $_POST["sucursalUser"],
-                                    "direccion" => $_POST["directionUser"],
-                                    "estado" => $_POST["estadoUser"],
-                                    "image" =>$ruta);
+                                                    "nombre" => $_POST["nameUser"], 
+                                                    "password" => $incrypt,
+                                                    "apellidos" => $_POST["lastNameUser"],
+                                                    "email" => $_POST["emailUser"],
+                                                    "role" => $_POST["roleUser"],
+                                                    "cuentaBancaria" => $_POST["cuentaUser"],
+                                                    "idSucursal" => $_POST["sucursalUser"],
+                                                    "direccion" => $_POST["directionUser"],
+                                                    "estado" => $_POST["estadoUser"],
+                                                    "image" =>$ruta);
+                                    echo($datas);
+                                
                                     $respuesta = User::mdlAdd($table, $datas);
 
                                     if($respuesta == "ok"){

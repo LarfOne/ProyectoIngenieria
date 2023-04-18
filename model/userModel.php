@@ -53,8 +53,8 @@
                                                                                 (:cedula, :idSucursal, :nombre, :apellidos, :email,
                                                                                 :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
 
-            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
-            $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_INT);
+            $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':apellidos', $datas["apellidos"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':email', $datas["email"], PDO::PARAM_STR);

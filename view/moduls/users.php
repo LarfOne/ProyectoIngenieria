@@ -255,7 +255,7 @@
             <div class="form-group">
               <div class="input-group" > 
                   <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
-                  <select class="form-control input-lg" id="estadoUserm" name="estadoUserm">
+                  <select class="form-control input-lg" id="estadoUser" name="estadoUser">
                   <option value="Activo">Activo</option>
                   <option value="Inactivo">Inactivo</option>
                   </select>

@@ -10,6 +10,10 @@
 
 }
 
+.contenedorProducts{
+    height: 100vh;
+}
+
 .footer {
     position: fixed;
     bottom: 0;
@@ -24,11 +28,16 @@
     grid-area: footer;
 }
 
-.modalHeaderU{
+.modalHeaderColor{
     background: #43cea2;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #185a9d, #43cea2);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #185a9d, #43cea2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
+}
+
+.modal-title{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align:left;
 }
 
 input::file-selector-button {
@@ -54,12 +63,14 @@ input::file-selector-button {
     border: none;
     color: white;
     font-size: 30px;
+    
 }
 
 .button-save:hover{
-    border: 2px solid black;
-    color: black;
-    text-decoration: underline;
+    border: 1px solid rgb(22, 117, 6);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background-color: #2b800e;
 }
 
 .button-cancel {
@@ -75,10 +86,20 @@ input::file-selector-button {
 }
 
 .button-cancel:hover{
-    border: 2px solid black;
-    color: black;
-    text-decoration: underline;
+    border: 1px solid rgb(112, 0, 0);
+    color: rgb(255, 255, 255);
+    background-color: #990021;
+    text-decoration: none;
 }
+.image {
+    background-color:#005092;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    
+  }
 
 .roboto{
     font-family: 'Roboto Condensed', sans-serif !important;

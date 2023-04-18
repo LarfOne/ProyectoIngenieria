@@ -155,6 +155,13 @@ class ControllerClient{
 		}
 		   
 	}
+	
+	static public function ctrClientesCantidad (){
+		$tabla = "cliente";
+		$item = "cedula";
+		$respuesta = Client::mdlMostrarCantidadCliente($tabla, $item);
+		return $respuesta;
+	}
 }
 
 

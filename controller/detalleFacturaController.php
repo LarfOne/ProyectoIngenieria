@@ -8,6 +8,22 @@
         }
 
 
+	/*=============================================
+	MOSTRAR SUMA VENTAS
+	=============================================*/
+
+	static public function ctrMostrarSumaVentas(){
+
+		$tabla = "detallefactura";
+
+		$respuesta = ModeloDetalle::mdlSumaProcuctosVendidos ($tabla);
+
+		return $respuesta;
+
+	}
+
+
+    
 
         static public function ctrCreateDetalle(){
             
@@ -35,7 +51,7 @@
                     echo "<script>
                     
                     Swal.fire({
-                        title: 'No se puede realizar la factura',
+                        title: 'No se puede realizar la facturaDetalle',
                         icon: 'error',
                     }).then((result) => {
                         window.location = 'ventas';

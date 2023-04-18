@@ -6,9 +6,8 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 <div id="container pt-4">
+  <form role="form" method="post" class="formularioVenta">
     <div class="container mt-3 contVenta" style="padding: 15px 10px 15px 10px !important;">
-    <div class="row">
-      <form role="form" method="post" class="formularioVenta">
               <header class="headerVentas">
 
                   <div class="info">
@@ -92,7 +91,7 @@
                           </div>
 
                           <div class="col mt-5 mr-5">
-                            <button type="submmit" class="btn btn-primary btnAgregarProducto1">Agregar</button>
+                            <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
                           </div>
 
                           <div class="col mt-3 mr-5">
@@ -187,14 +186,13 @@
                   <button type="submit" class="btnVentaGuardar">Guardar venta</button>
                   
               </div>
+              </div>
         </form>
           <?php
 
             $crearVenta = new ControladorVentas();
             $crearVenta -> ctrCrearVenta();
           ?>
-      </div>
-    </div>
 </div>
 
 <!--=====================================

@@ -39,43 +39,83 @@ class ModeloDetalle{
 
 
 
+    static public function mdlShow($tabla, $item, $valor){
 
-static public function mdlMostrarDetalleporIdFactura($tabla, $item, $valor){
-	
-		
-		if($item != null){
+        if($item != null){
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT idProducto, cantidad,precUnit,subTotal FROM $tabla WHERE $item =:$item");
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
+            $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
-            $stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR); 
-			$stmt -> execute();
+            $sentenciaSQL -> execute();
 
-			return $stmt -> fetchAll();
+            return $sentenciaSQL -> fetchAll();
+        
+        }else{
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $sentenciaSQL -> execute();
+            return $sentenciaSQL -> fetchAll();
+        }
+        $sentenciaSQL -> close();
 
-		}else{
+        $sentenciaSQL = null;
+    }
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+    static function mdlMostrarDetalleporIdFactura($tabla, $item, $valor)
+    {
 
-			$stmt -> execute();
+        if ($item != null) {
 
-			return $stmt -> fetchAll();
 
-		}
-		
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
+            $sentenciaSQL->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+
+            $sentenciaSQL->execute();
+
+            return $sentenciaSQL->fetchAll();
+
+
+        } else {
+
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+        
+            $sentenciaSQL->execute();
+
+            return $sentenciaSQL->fetchAll();
+
+        }
+
+
+        $sentenciaSQL ->close();
+
+        $sentenciaSQL = null;
+
+
+    }
+
+
+
+	static public function mdlSumaProcuctosVendidos($tabla){
+
+		$stmt = Conexion::conectar()->prepare("SELECT SUM(idProducto) as total FROM $tabla GROUP BY idProducto");
+
+		$stmt -> execute();
+
+		return $stmt -> fetchAll();
+
 		$stmt -> close();
 
 		$stmt = null;
+	}
 
-	
+
+
+
+
+
+
+
+
+
+
 
 }
-
-
-
-}
-
-
-
-
-
-?>

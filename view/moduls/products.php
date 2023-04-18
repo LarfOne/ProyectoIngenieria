@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/style.css">
 
-<div id="container pt-4" style="margin-top:90px;">
+<div id="container pt-4" class="contenedorProducts" style="margin-top:90px;">
       <div class="container mt-3">
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
@@ -25,22 +25,16 @@
                         <label>Descripcion</label>
                         <textarea class="form-control input-sm mt-2" name="descriptionProducto" rows="2" placeholder="Descripcion"></textarea>
                   </div>
-                  <div class="col mt-5 mr-5">
-                        <label>Cantidad</label>
-                        <input class="form-control input-sm mt-2" type="text" name="cantProducto" placeholder="Cantidad de productos" required>
-                  </div>
             </div>
 
 
             <div class="row align-items-center second">
+
                   <div class="col mt-5 mr-5">
-                        <label>Existencia</label>
-                        <input class="form-control input-sm mt-2" type="text" name="existProducto" placeholder="Existencia actual" required>
+                        <label>Cantidad</label>
+                        <input class="form-control input-sm mt-2" type="text" name="cantProducto" placeholder="Cantidad de productos" required>
                   </div>
-                  <div class="col mt-5 mr-5">
-                        <label>Minimo de producto</label>
-                        <input class="form-control input-sm mt-2" type="text" name="minProducto" placeholder="Minimo" required>
-                  </div>
+
                   <!-- Mandar a traer las sucursales -->
                   <?php
                   $item = null;

@@ -16,6 +16,12 @@ class ControladorVentas{
 
 	}
 
+
+
+	
+
+
+
 	/*=============================================
 	CREAR VENTA
 	=============================================*/
@@ -43,7 +49,7 @@ class ControladorVentas{
 
 					
 						
-						$array = json_decode($_POST['listaProductos'],true);
+						/*$array = json_decode($_POST['listaProductos'],true);
 
 						foreach ($array as $key => $value) { 
 							$tabla = "inventario";
@@ -52,12 +58,12 @@ class ControladorVentas{
 							$valor2 = $value["idInvetario"];
 
 							$nuevoStock = Inventario::actualizarStockProducto($tabla, $item1, $valor1, $valor2);
-						}
+						}*/
 						
-						$idFactura = $_POST["nuevaVenta"];
-						$table = "detallefactura";
+						//$idFactura = $_POST["nuevaVenta"];
+						//$table = "detallefactura";
 		
-						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
+						//$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
 					
                     
                     if($respuesta == "ok"){

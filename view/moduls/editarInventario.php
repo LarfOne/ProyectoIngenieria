@@ -25,8 +25,8 @@
                         <textarea class="form-control rounded-0 mt-2" id="descriptionProducto" name="descriptionProducto" rows="3"></textarea>
                 </div>
                 <div class="col mt-5 mr-5">
-                        <label>Cantidad</label>
-                        <input type="text" class="form-control input-lg mt-2" id="cantProducto" name="cantProducto" placeholder="Cantidad Productos" required>
+                        <label>Cantidad de productos nuevos</label>
+                        <input type="text" class="form-control input-lg mt-2" data-toggle="tooltip" title="Ingrese la cantidad de productos nuevos que va a agregar al inventario" id="cantProducto" name="cantProducto" value="0" placeholder="Productos Nuevos">
                 </div>
             </div>
 
@@ -34,11 +34,7 @@
             <div class="row align-items-center second">
                   <div class="col mt-5 mr-5">
                         <label>Existencia</label>
-                        <input class="form-control input-sm mt-2" type="text" name="existProducto" placeholder="Existencia actual" required>
-                  </div>
-                  <div class="col mt-5 mr-5">
-                        <label>Minimo de producto</label>
-                        <input class="form-control input-sm mt-2" type="text" name="minProducto" placeholder="Minimo" required>
+                        <input class="form-control input-sm mt-2" type="text" id="existProducto" name="existProducto" placeholder="Existencia actual" required readonly>
                   </div>
                   <!-- Mandar a traer las sucursales -->
                   <?php
@@ -64,7 +60,7 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Unidad</label>
-                        <select class="form-control input-lg mt-2" name="unitProducto">
+                        <select class="form-control input-lg mt-2" id="unitProducto" name="unitProducto">
 
                               <?php foreach ($unit as $unit1) { ?>
                                     <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>

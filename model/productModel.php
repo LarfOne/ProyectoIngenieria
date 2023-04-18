@@ -100,18 +100,17 @@ class Product{
 	static public function mdlUpdateProduct($tabla, $datos){
 
 		$sentenciaSQL = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, marca = :marca, descripcion = :descripcion,
-		precio = :precio, categoria = :categoria, unidadmedida = :unidadmedida, porcentajeiva = :porcentajeiva, 
-		ganancia = :ganancia, porcentajeGanancia = :porcentajeGanancia, observaciones = :observaciones WHERE codigo = :codigo");
+		precioNeto = :precioNeto, categoria = :categoria, unidadmedida = :unidadmedida, porcentajeiva = :porcentajeiva, 
+		precioTotal = :precioTotal, observaciones = :observaciones WHERE codigo = :codigo");
 		
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":precio", $datos["precio"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":precioNeto", $datos["precioNeto"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":categoria", $datos["categoria"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":unidadmedida", $datos["unidadmedida"], PDO::PARAM_INT);
-		$sentenciaSQL->bindParam(":porcentajeiva", $datos["porcentajeiva"], PDO::PARAM_INT);
-		$sentenciaSQL->bindParam(":ganancia", $datos["ganancia"], PDO::PARAM_INT);
-		$sentenciaSQL->bindParam(":porcentajeGanancia", $datos["porcentajeGanancia"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":porcentajeiva", $datos["porcentajeIva"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 

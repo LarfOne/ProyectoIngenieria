@@ -35,7 +35,7 @@
                         $_SESSION["idSucursal"] = $respuesta["idSucursal"];
                         $_SESSION["email"] = $respuesta["email"];
                         $_SESSION["image"] = $respuesta["image"];
-                        //$_SESSION["estado"] = $respuesta["estado"];
+                        $_SESSION["estado"] = $respuesta["estado"];
                         
                         echo '<script>
                                 window.location = "inicio"

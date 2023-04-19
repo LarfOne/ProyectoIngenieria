@@ -1,19 +1,17 @@
-let stock;
+let stock = "";
 let codigoProducto = "";
-let codigoInventario;
+let codigoInventario = "";
+
 
 // Creamos un array vacío
 const arrayProductos = [];
 
 $(".btnAgregarProducto1").click(function(){
     
-	var idProducto = document.getElementById("idProducto").value;
+	let idProducto = document.getElementById("idProducto").value;
 	
-	//console.log("Id del productooooo",idProducto);
-
-	/*var idInventario = $(this).attr("idInventario");*/
     var datas = new FormData();
-
+	
     datas.append("idProducto", idProducto);
 
     $.ajax({
@@ -27,23 +25,22 @@ $(".btnAgregarProducto1").click(function(){
         dataType: "json",
         success: function(respuesta){
 			console.log("respuestaAa",respuesta);
-			stock = respuesta["cantidad"];
 			codigoInventario = respuesta["codigo"];
-			//console.log("cantidad", stock);
+			stock = respuesta["cantidad"];
+
+			llenarTablaVentas();
+			
         }
 
     })
+	
 })
-
-
 
 /*=============================================
 BOTON PARA AGREGAR PRODUCTOS A LA TABLA
 =============================================*/
 
-$(".btnAgregarProducto1").click(function(){
-	//porc = document.getElementById("idProducto").value;
-	//console.log("Hello",porc);
+function llenarTablaVentas(){
 
 	var idProduct = document.getElementById("idProducto").value;
 	var cantidad = document.getElementById("cantidadProducto").value;
@@ -114,18 +111,20 @@ $(".btnAgregarProducto1").click(function(){
 
 					}
 
+							
 						cantidadMayorStock()
-
+							
 						sumarTotalPrecios()
-
+							
 						listarProductos()
+						
 				}
 
 			}
 
     	})
 	}
-})
+}
 
 
 
@@ -136,9 +135,15 @@ QUITAR PRODUCTOS DE LA TABLA
 
 function eliminarFila(idProduct) {
 	let tr = document.querySelector('#listaP' + idProduct);
-	if (tr) {
-	  tr.remove();
-	  sumarTotalPrecios();
+
+	let index = arrayProductos.findIndex(producto => producto.idProducto === idProduct);
+
+	if (index !== -1) {
+		if (tr) {
+			arrayProductos.splice(index, 1);
+			tr.remove();
+			sumarTotalPrecios();
+		  }
 	}
   }
 
@@ -239,36 +244,40 @@ function listarProductos(){
 	let tr = document.querySelector('#listaP' + codigoProducto); //selecionamos el tr por el codigo
 
 	//console.log("listar Productos", tr);
-	let idInvetario = codigoInventario;
+	let idInventario = codigoInventario;
 	let stockProducto = stock;
 	let codigo = codigoProducto;
-	let descripcion = tr.querySelector('.descripcionProducto');
-	let cantidad = tr.querySelector('.cantidadProducto');
-	let precioUnitario = tr.querySelector('.precioProducto');
-	let subTotal = tr.querySelector('.subTotalProducto');
+	let descripcion = tr.querySelector('.descripcionProducto').textContent;
+	let cantidad = tr.querySelector('.cantidadProducto').textContent;
+	let precioUnitario = tr.querySelector('.precioProducto').textContent;
+	let subTotal = tr.querySelector('.subTotalProducto').textContent;
 
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
-	let index = arrayProductos.findIndex(producto => producto.id === codigo);
+	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);
+	console.log("índice encontrado:", index);
 
 	if (index !== -1) {
+		console.log("Entra el if");
 		// Si el objeto ya existe, actualizamos su propiedad cantidad
-		arrayProductos[index].cantidad = cantidad.textContent;
+		arrayProductos[index].cantidad = cantidad;
 	} else {
 		// Si el objeto no existe, lo agregamos al array
 		arrayProductos.push({
-			idInvetario: idInvetario,
+			idInventario: idInventario,
 			idProducto: codigo,
-			descripcion: descripcion.textContent,
-			cantidad: cantidad.textContent,
-			stock: stockProducto,
-			precioUnitario: precioUnitario.textContent,
-			subTotal: subTotal.textContent,
+			descripcion: descripcion,
+			cantidad: cantidad,
+			stockProducto: stockProducto,
+			precioUnitario: precioUnitario,
+			subTotal: subTotal,
 		});
 	}
 
 	console.log("lista de productos JSON", arrayProductos);
 	$("#listaProductos").val(JSON.stringify(arrayProductos));
 
+	stock = "";
+	codigoInventario = "";
 }
 
 /*=============================================

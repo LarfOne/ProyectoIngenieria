@@ -53,6 +53,10 @@
         <td>
 
           <div class="btn-group">
+            <!--<button class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>>
+            <a class="probar" href="editarInventario"><i class="fa fa-pencil"></i></a>
+            </button>-->
+
             <button  class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>
               data-bs-toggle="modal" data-bs-target="#modalUpdateInventario"><i class="fa fa-pencil"></i></button>
 
@@ -258,7 +262,7 @@
   $deleteProduct -> ctrDeleteProduct();
 
 
-  
+
 
 ?>
 

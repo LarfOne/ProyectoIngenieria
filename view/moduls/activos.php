@@ -47,7 +47,21 @@
                 <td><?php echo $sucursal['nombre']; ?></td>
                 <td><?php echo $activo['descripcion']; ?></td>
                 <td><?php echo $activo['estado']; ?></td>
-                <td><?php echo $user['nombre']." ".$user['apellidos']; ?></td>
+                
+
+                <?php if ($activo['empleado_id']!=NULL) { ?>
+                  <td><?php echo $user['nombre']." ".$user['apellidos']; ?></td>
+                <?php } ?>
+
+                <?php if ($activo['empleado_id']==NULL) { ?>
+                <td>Libre</td>
+                <?php } ?>
+
+
+
+
+  
+
 
                 <td>
 
@@ -156,9 +170,14 @@
                   <!--<input type="text" class="form-control input-lg" name="empleado_id" placeholder="Ingresar cédula del empleado">-->
                   <select class="form-control input-lg" id="empleado_id" name="empleado_id" style="border-radius: 5px;">
                             <?php foreach ($user as $user1) { ?>
-                                    <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+
+                              <?php if ($user1['estado']!='Inactivo') { ?>
+
+                                <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+
+                                <?php } ?>                                
                             <?php } ?>
-                   </select>
+                  </select>
 
               </div>
 
@@ -267,10 +286,11 @@
                                 <!--<input type="text" class="form-control input-lg" id="empleado_idm" name="empleado_idm" value="Ingresar cédula del empleado" required>-->
                                 <select class="form-control input-lg" id="empleado_idm" name="empleado_idm" style="border-radius: 5px;">
                                           <?php foreach ($user as $user1) { ?>
-                                                  <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+                                              <?php if ($user1['estado']!='Inactivo') { ?>
+                                                <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
+                                              <?php } ?>
                                           <?php } ?>
                                 </select>
-
                             </div>
 
                         </div>

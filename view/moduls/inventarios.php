@@ -146,10 +146,12 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Sucursal</label>
-                        <select class="form-control input-lg" id="idSucursal" name="idSucursal">
+                        <select class="form-select input-lg" id="idSucursal" name="idSucursal">
+                        <option value="" >Seleccionar sucursal.</option>
                               <?php foreach ($sucursal as $sucursal1) { ?>
                                     <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                               <?php } ?>
+                              
                         </select>
                   </div>
                   <!-- Mandar a traer las unidades -->
@@ -161,8 +163,8 @@
 
                   <div class="col mt-5 mr-5">
                         <label>Unidad</label>
-                        <select class="form-control input-lg" name="unitProducto">
-
+                        <select class="form-select input-lg" name="unitProducto">
+                        <option value="">Seleccionar unidad.</option>
                               <?php foreach ($unit as $unit1) { ?>
                                     <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
                               <?php } ?>
@@ -211,8 +213,8 @@
             <div class="row align-items-center four">
                   <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                         <label>Categoria</label>
-                        <select class="form-control input-lg selectC" name="cateProducto">
-
+                        <select class="form-select input-lg selectC" name="cateProducto">
+                        <option value="" >Seleccionar categoría.</option>
                               <?php foreach ($category as $category1) { ?>
                                     <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
                               <?php } ?>

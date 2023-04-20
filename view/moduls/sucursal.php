@@ -222,7 +222,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
                 <input type="text" class="form-control input-lg" id="direccionSucursalm" name="direccionSucursalm" style="border-radius: 5px;" value="Ingresar la direccion" required>
 
               </div>
@@ -235,7 +235,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                 <input type="text" class="form-control input-lg" id="telefonoSucursalm" name="telefonoSucursalm" style="border-radius: 5px;" value="Ingresar el numero de telefono" required>
 
               </div>
@@ -247,7 +247,7 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                 <input type="text" class="form-control input-lg" id="emailSucursalm" name="emailSucursalm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
 
               </div>

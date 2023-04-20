@@ -13,6 +13,7 @@ session_start(); //para usar variables de session
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-3jAmQXxn7tj3Pq3in8Wb0Dyj/BYtGdCtGKM8aDDnbDgIP/n1yeiHewIv+8WxYgjRSiITstSYff5z5ch8W5DhBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 

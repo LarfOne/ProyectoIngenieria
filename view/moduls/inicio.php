@@ -96,53 +96,53 @@
 
                 <div class="cardCont cards-1">
                     <div class="card card-grafic">
-                <div id="daterange-btn2" class="pull" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                <h4> Rango fechas de los graficos</h4>        
-                <i class="glyphicon glyphicon-calendar "></i>&nbsp;
+                        <div id="daterange-btn2" class="pull" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
+                            <h4> Rango fechas de los graficos</h4>
+                            <i class="glyphicon glyphicon-calendar "></i>&nbsp;
                             <span></span> <b class="caret"></b>
-                </div>
+                        </div>
 
-                <input class="cancelBtnR" type="button" value="Restablecer">
+                        <input class="cancelBtnR" type="button" value="Restablecer">
 
-    
+
                     </div>
                 </div>
 
-                
+
 
             </div>
 
 
             <!--columnas grafico  -->
-            <div  class="row2">
-
-            
+            <div class="row2">
 
 
-            <div id="datos" style="background-color:#91AAF9" >
 
-                <div class="row">
-                <div class="col s4 l10">
-                <?php
-                    include "graficos/graficoVentas.php";
-                ?>
+
+                <div id="datos" style="background-color:#91AAF9">
+
+                    <div class="row">
+                        <div class="col s4 l10">
+                            <?php
+                            include "graficos/graficoVentas.php";
+                            ?>
+                        </div>
+                    </div>
+
                 </div>
-                </div>
-                    
-                </div>
 
 
-                <div id="datos" style="background-color:#ffe0e9" >
+                <div id="datos" style="background-color:#ffe0e9">
 
-                <div class="row">
-                <div class="col s4 l10">
-                <h3 class="box-title">Total de ventas de los empleados</h3>
-                <div id="bar-chart1" style="height: 250px;"></div>
-                <?php
-                include "graficos/productosMasVendidos.php";
-                ?>
-                </div>
-                </div>
+                    <div class="row">
+                        <div class="col s4 l10">
+                            <h3 class="box-title">Total de ventas de los empleados</h3>
+                            <div id="bar-chart1" style="height: 250px;"></div>
+                            <?php
+                            include "graficos/productosMasVendidos.php";
+                            ?>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row2">

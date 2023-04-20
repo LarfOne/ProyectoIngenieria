@@ -80,17 +80,10 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-<<<<<<< HEAD
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-<<<<<<< HEAD
-          <h4 class="modal-title">Agregar Categorías</h4>
-=======
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Agregar Categories</h4>
->>>>>>> origin/laryBranch
-=======
+
         <div class="modal-header modalHeaderColor">
           <h4 class="modal-title">Agregar Categorías</h4>
->>>>>>> origin/laryBranch
+
         </div>
 
     </br>
@@ -153,17 +146,10 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
-<<<<<<< HEAD
-        <div class="modal-header" style="background:#3c8dbc; color:white">
-<<<<<<< HEAD
-          <h4 class="modal-title">Editar Categorías</h4>
-=======
-          <h4 class="modal-title" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Editar Categories</h4>
->>>>>>> origin/laryBranch
-=======
+
         <div class="modal-header modalHeaderColor" >
           <h4 class="modal-title">Editar Categorías</h4>
->>>>>>> origin/laryBranch
+
         </div>
 
 

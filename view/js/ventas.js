@@ -254,12 +254,13 @@ function listarProductos(){
 
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
 	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);
-	console.log("índice encontrado:", index);
+	console.log("subTOTAL encontrado:", subTotal);
 
 	if (index !== -1) {
 		console.log("Entra el if");
 		// Si el objeto ya existe, actualizamos su propiedad cantidad
 		arrayProductos[index].cantidad = cantidad;
+		arrayProductos[index].subTotal = subTotal;
 	} else {
 		// Si el objeto no existe, lo agregamos al array
 		arrayProductos.push({
@@ -269,7 +270,7 @@ function listarProductos(){
 			cantidad: cantidad,
 			stockProducto: stockProducto,
 			precioUnitario: precioUnitario,
-			subTotal: subTotal,
+			subTotal: subTotal
 		});
 	}
 

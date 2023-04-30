@@ -153,7 +153,7 @@
                   </div>
               </section>
 
-              <input type="hidden" id="listaProductos" name="listaProductos">
+              <input type="text" id="listaProductos" name="listaProductos">
               
               <div class="botonesVenta">
                   <div class="col-xs-8 pull-right">

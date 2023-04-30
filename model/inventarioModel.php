@@ -3,7 +3,7 @@
     require_once "conexion.php";
 
         class Inventario{
-                                                    //inventario, cantidad, 5, 23 
+                                                    //inventario, cantidad, resta, codigo
             static public function actualizarStockProducto($tabla, $item1, $valor1, $valor){
 
                 $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE codigo = :codigo");

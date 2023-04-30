@@ -48,8 +48,9 @@ class ControladorVentas{
 						foreach ($array as $key => $value) { 
 							$tabla = "inventario";
 							$item1 = "cantidad";
-							$valor1 = $value["stock"] - $value["cantidad"];
-							$valor2 = $value["idInvetario"];
+							$resta = intval($value["stockProducto"]) - intval($value["cantidad"]);
+							$valor1 = strval($resta);
+							$valor2 = $value["idInventario"];
 
 							$nuevoStock = Inventario::actualizarStockProducto($tabla, $item1, $valor1, $valor2);
 						}

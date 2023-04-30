@@ -283,7 +283,6 @@ function listarProductos(){
 
 /*=============================================
 SELECCIONAR MÉTODO DE PAGO
-=============================================*/
 
 $("#nuevoMetodoPago").change(function(){
 
@@ -352,7 +351,7 @@ $("#nuevoMetodoPago").change(function(){
 	
 
 })
-
+=============================================*/
 
 /*=============================================
 CAMBIO EN EFECTIVO

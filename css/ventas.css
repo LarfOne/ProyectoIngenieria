@@ -1,24 +1,152 @@
+.contVenta{
+
+    width: 80%;
+    height: 100%;
+    
+    top: 0;
+    left: 0;
+   
+    justify-content: center;
+    align-items: center;
+
+}
+
+.rowVenta{
+
+    display: flex;
+    grid-gap: 0px;
+    flex-wrap:nowrap;
+    flex-direction: row;
+    margin: auto;
+    width: 100%;
+    align-items: center;
+    margin-top: 100px;
+    justify-content: center;
+    margin-left:220px;
+    background-color:rgb(227, 227, 227);
+    border-radius: 10px;
+   
+
+
+
+
+}
+.col-lg-6{
+
+    display: flex;
+    flex-direction: row;
+
+}
+.col-sm-2 {
+    flex: 1;
+}
+
+.col-sm-2 {
+    flex: 1;
+}
+h2 , h3{
+
+font-family: 'Roboto Condensed', sans-serif !important;
+}
+
+
+.articulo{
+    
+    display: grid;
+    border: solid 1px rgb(255, 255, 255);
+    border-radius: 10px;
+    align-items: center;
+    flex-wrap:nowrap;
+    background-color: rgb(52, 71, 128);
+    flex-direction: row;
+    margin: auto;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+    margin-left:220px;
+    padding: 7px;
+    grid-template-columns: 1fr 85px 1fr 1fr 1fr;
+    grid-template-rows: repeat(1, 1fr);
+    gap: 5px;
+   
+   
+}
+#campos{
+color: white;
+
+}
+.tablaVenta{
+    overflow: auto;
+    height: 400px;
+    display: table;
+    border: solid 1px rgb(205, 207, 212);
+    border-radius: 10px;
+    align-items: center;
+    background-color: rgb(202, 204, 210);
+    margin: auto;
+    width: 100%;
+    margin-top: 20px;
+    margin-left:220px;
+    padding: 7px;
+    gap: 5px;
+    padding: 7px;
+    border: solid 1px rgb(51, 57, 144);
+}
+.tablaVendidos{
+
+    display: flex;
+    order: 0;
+
+}
+
+
 .btnAgregarVentas:hover{
     color: black;
     background-color: #06aaeb;
     border: 1px solid black;       
 }
 
-.contVenta{
-    background-color: whitesmoke;
-    border: solid 15px rgb(224, 224, 224);
-    height: 100vh;
-    display: grid;
-    gap: 1px;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: 200px 100px 1fr 100px;
+.botonesVenta{
+    
+    border: solid 1px rgb(133, 78, 78);
+    gap: 10px;
+    display: flow-root;
+    border: solid 1px rgb(47, 56, 89);
+    border-radius: 10px;
+    align-items: center;
+    background-color: #344780;
+    margin: auto;
+    width: 100%;
+    margin-top: 20px;
+    margin-left:220px;
+    padding: 7px;
+    position: relative;
+    
+}
+.total-texto {
+    color: white;
+  }
+  
+
+.containerV{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 800px;
+    height: 200px;
+    background-color: #ddd;
+    margin: 0 auto;
+    height: 800px;
+    width: 1900px;
 }
 
 .headerVentas{
     padding: 7px;
     border: solid 1px black;
     margin-top: 35px;
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, 1fr);
 }
@@ -28,11 +156,10 @@
     padding-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-.articulo{
-    display: grid;
+.tablaVenta{
+    padding: 7px;
     border: solid 1px black;
-    align-items: center;
+    overflow: auto;
 }
 
 .arti{
@@ -46,6 +173,7 @@
 }
 
 .info{
+    
     display: flex;
     flex-direction: row;
 }
@@ -57,40 +185,60 @@
 
 .botonCli{
     margin-left: 5px;
-    background-color: green;
+    background-color: #00A652;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
-
-.tablaVenta{
-    padding: 7px;
-    border: solid 1px black;
-    overflow: auto;
+.botonCli:hover{
+    border: 1px solid rgb(22, 117, 6);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background-color: #2b800e;
 }
 
-.botonesVenta{
-    border: solid 1px black;
-    gap: 10px;
-}
+
+
 
 .btnVentaGuardar{
-    background-color: green;
-    color: white;
-    border-radius: 5px;
+    margin-right: 50px;
     width: 200px;
-    height: 65px;
-    font-size: 25px;
+    border-radius: 10px;
+    background-color: #00A652;
+    font-size:larger;
+    border: none;
+    color: white;
+    height: 80px;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 25px;
+ 
+    
 }
 
 .btnVentaCancelar{
-    background-color: red;
-    color: white;
-    border-radius: 5px;
+    margin-right: 50px;
+    height: 80px;
     width: 200px;
-    height: 65px;
-    font-size: 25px;
+    border-radius: 10px;
+    background-color: #EF2A31;
+    font-size: larger;
+    border: none;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 25px;
+
+    
+   
 }
+.btnVentaGuardar:hover{
+    border: 1px solid rgb(22, 117, 6);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background-color: #2b800e;
+}
+
+.btnVentaCancelar:hover {
+   
+    border: 1px solid  #FF0038;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    background-color:#ab0a2d;
+}
+

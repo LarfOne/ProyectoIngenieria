@@ -745,6 +745,7 @@ margin-bottom: 50px;
     margin-top: 40px;
     margin-bottom: 20px;
     position: relative;
+    overflow-y: auto;
 }
 
 #reporte2 {
@@ -758,6 +759,7 @@ margin-bottom: 50px;
     padding: 20px;
     margin-top: 40px;
     margin-bottom: 20px;
+    overflow-y: auto;
 }
 .textoreporte{
 

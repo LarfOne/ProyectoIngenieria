@@ -51,61 +51,13 @@
               </div>
             </div>
 
-              <section class="tablaVenta"> 
-                  <div class="tablaVendidos">
-                      <table class="table tableU" id="tablitaC" data-sort="table">
-                          <thead>
-                              <tr>
-                                  <th>Codigo</th>
-                                  <th>Descripcion</th>
-                                  <th>Cantidad</th>
-                                  <th>Descuento</th>
-                                  <th>Precio Unitario</th>
-                                  <th>SubTotal</th>
-                                  <th>Acciones</th>
-                              </tr>
-                          </thead>
-                          <tbody class="tablita">
-
-                          </tbody>
-                      
-                      </table>
-
-                  </div>
-              </section>
-
-              <input type="text" id="listaProductos" name="listaProductos">
-              
-              <div class="botonesVenta">
-                  <div class="col-xs-8 pull-right">
-                              
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Total</th>      
-                          </tr>
-                        </thead>
-                
-                        <tbody>                   
-                          <tr>
-                            <td style="width: 50%">                            
-                              <div class="input-group">                          
-                                  <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                                  <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
-                                  <input type="hidden" name="totalVenta" id="totalVenta">                                                  
-                                </div>
-                            </td>
-                          </tr>
-                
-                        </tbody>
-                      </table>
-              
-                  </div>
-                  
-                  <button type="button" class="btnVentaCancelar">Cancelar</button>
-                  
-                  <button type="submit" class="btnVentaGuardar">Guardar venta</button>
-                  
+            <!--Datos del dependiente que efectua la venta -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" style="border-radius: 10px;" class="form-control" id="nombre" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
+                <input type="hidden" style="border-radius: 10px; id="idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
+                <input type="hidden" style="border-radius: 10px; id="idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
               </div>
             </div>
 

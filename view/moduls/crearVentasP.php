@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="css/ventas.css">
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -7,128 +7,49 @@
 
 <div id="container pt-4">
   <form role="form" method="post" class="formularioVenta">
-    <div class="container mt-3 contVenta" style="padding: 15px 10px 15px 10px !important;">
-              <header class="headerVentas">
+    <div class="contVenta" >
 
-                  <div class="info">
-                      <img src="view/img/empresa/logoEmpresa.png" style="width: 110px;">
-                      <div class="about">
-                          <h2>MOUSE LAMP TECNOLOGIES</h2>
-                          <h3>CEDULA FISICA: 50389093520</h3>
-                          <h3>TELEFONO: 87170007</h3>
-                      </div>
-                  </div>
 
-                  <div class="datosVenta">
+      <header class="rowVenta">
+        <div class="col-lg-6">
 
-                      <!--Seleccionar cliente que efectua la compra -->
-                      <div class="form-group">                   
-                          <div class="input-group">                    
-                              <span class="input-group-addon"><i class="fa fa-users"></i></span>                    
-                              <select class="form-control" id="idCliente" name="idCliente" required>
-                              <option value="">Seleccionar cliente</option>
+          <div id="col-sm-2">
+            <img src="view/img/empresa/logoEmpresa.png" style="width: 110px;">
+          </div>
 
-                              <?php
-                              $item = null;
-                              $valor = null;
-                              $categorias = ControllerClient::ctrShowClient($item, $valor);
-                              foreach ($categorias as $key => $value) {?>
+          <div id="col-sm-2">
 
-                                  <option value=<?php echo $value['cedula']?>><?php echo $value['nomCliente']?></option>
+            <h2>MOUSE LAMP TECNOLOGIES</h2>
+            <h3>CEDULA FISICA: 50389093520</h3>
+            <h3>TELEFONO: 87170007</h3>
+          </div>
 
-                              <?php }
-                              ?>
-                              </select>                      
-                              <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs botonCli" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>                    
-                          </div>                  
-                      </div>
 
-                      <!--Datos del dependiente que efectua la venta -->
-                      <div class="form-group">                   
-                          <div class="input-group">                 
-                              <span class="input-group-addon"><i class="fa fa-user"></i></span> 
-                              <input type="text" class="form-control" id="nombre" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-                              <input type="hidden" id = "idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
-                              <input type="hidden" id = "idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
-                          </div>
-                      </div> 
+        </div>
+        <div class="col-md-6">
+          <div class="datosVenta">
 
-                      <!--Codigo incrementable de la factura -->
-                      <div class="form-group">                 
-                        <div class="input-group">                   
-                          <span class="input-group-addon"><i class="fa fa-key"></i></span>
+            <!--Seleccionar cliente que efectua la compra -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                <select class="form-select" id="idCliente" name="idCliente" required>
+                  <option value="">Seleccionar cliente</option>
 
-                          <?php
-                          $item = null;
-                          $valor = null;
-                          $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
+                  <?php
+                  $item = null;
+                  $valor = null;
+                  $categorias = ControllerClient::ctrShowClient($item, $valor);
+                  foreach ($categorias as $key => $value) { ?>
 
-                          if(!$ventas){
+                    <option value=<?php echo $value['cedula'] ?>><?php echo $value['nomCliente'] ?></option>
 
-                            echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1" readonly>';
-                        
-                          }else{
-                              
-                            foreach ($ventas as $key => $value) { 
-
-                            }
-                            $codigo = $value["codigo"] + 1;
-                            echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-                          }
-                          ?>      
-
-                        </div>               
-                      </div>          
-                  </div>
-              </header>
-              
-              <div class="articulo">
-                  
-                        <div class="arti">
-                          <div class="col mt-3 mr-5">
-                              <label>Articulo</label>
-                              <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo">
-                          </div>
-
-                          <div class="col mt-5 mr-5">
-                            <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
-                          </div>
-
-                          <div class="col mt-3 mr-5">
-                              <label>Cantidad</label>
-                              <input class="form-control input-sm mt-2" type="number" value="1" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
-                          </div>
-
-                          <div class="col mt-3 mr-5 form-group row factura">
-                              <label>Tipo Factura</label>
-                              <div class="input-group">
-                                  <select class="form-control input-sm mt-2" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
-                                      <option value="">Tipo Factura</option>
-                                      <option value="Electronica">Electronica</option>
-                                      <option value="Normal">Normal</option>                 
-                                  </select>    
-                              </div>
-                          </div>
-
-                          <div class="col mt-3 mr-5 form-group row">  
-                              <label>Tipo Factura</label>                                      
-                                  <div class="input-group">                  
-                                      <select class="form-control input-sm mt-2" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-                                          <option value="">Seleccione método de pago</option>
-                                          <option value="Efectivo">Efectivo</option>
-                                          <option value="TC">Tarjeta Crédito</option>
-                                          <option value="TD">Tarjeta Débito</option>                  
-                                      </select>    
-                                  </div>
-
-                                  <div class="cajasMetodoPago">
-                                      <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
-                                  </div>      
-                          </div>
-                        
-                        </div>
-                  
+                  <?php }
+                  ?>
+                </select>
+                <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs botonCli" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>
               </div>
+            </div>
 
               <section class="tablaVenta"> 
                   <div class="tablaVendidos">
@@ -186,13 +107,151 @@
                   <button type="submit" class="btnVentaGuardar">Guardar venta</button>
                   
               </div>
-              </div>
-        </form>
-          <?php
+            </div>
 
-            $crearVenta = new ControladorVentas();
-            $crearVenta -> ctrCrearVenta();
-          ?>
+            <!--Codigo incrementable de la factura -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon" style="border-radius: 10px;"><i class="fa fa-key"></i></span>
+
+                <?php
+                $item = null;
+                $valor = null;
+                $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
+
+                if (!$ventas) {
+
+                  echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1" readonly>';
+                } else {
+
+                  foreach ($ventas as $key => $value) {
+                  }
+                  $codigo = $value["codigo"] + 1;
+                  echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="' . $codigo . '" readonly>';
+                }
+                ?>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+
+      <div class="articulo">
+
+
+        <div class="col mt-3 mr-5">
+          <label id="campos">Articulo</label>
+          <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo">
+        </div>
+
+        <div class="col mt-5 mr-5">
+          <button type="button" class="btn btn-primary btnAgregarProducto1">Agregar</button>
+        </div>
+
+        <div class="col mt-3 mr-5">
+          <label id="campos">Cantidad</label>
+          <input class="form-control input-sm mt-2" type="number" value="1" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
+        </div>
+
+        <div class="col mt-3 mr-5 form-group row factura">
+          <label id="campos">Tipo Factura</label>
+          <div class="input-group">
+            <select class="form-select input-sm mt-2" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
+              <option value="">Tipo Factura</option>
+              <option value="Electronica">Electronica</option>
+              <option value="Normal">Normal</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col mt-3 mr-5 form-group row">
+          <label id="campos">Método de pago.</label>
+          <div class="input-group">
+            <select class="form-select input-sm mt-2" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
+              <option value="">Seleccione método de pago</option>
+              <option value="Efectivo">Efectivo</option>
+              <option value="TC">Tarjeta Crédito</option>
+              <option value="TD">Tarjeta Débito</option>
+            </select>
+          </div>
+
+          <div class="cajasMetodoPago">
+            <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
+          </div>
+        </div>
+
+
+
+      </div>
+
+      <section class="tablaVenta">
+        <div class="tablaVendidos">
+          <table class="table tableU" id="tablitaC" data-sort="table">
+            <thead>
+              <tr>
+                <th>Codigo</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Descuento</th>
+                <th>Precio Unitario</th>
+                <th>SubTotal</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="tablita">
+
+            </tbody>
+
+          </table>
+
+        </div>
+      </section>
+      <input type="hidden" id="listaProductos" name="listaProductos">
+
+      <div class="botonesVenta">
+        <div class="col-xs-8 pull-right">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th class="total-texto">Total</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td style="width: 50%">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
+                    <input type="hidden" name="totalVenta" id="totalVenta">
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+
+        <button type="button" class="btnVentaCancelar">Cancelar</button>
+
+        <button type="submit" class="btnVentaGuardar">Guardar venta</button>
+
+      </div>
+
+
+    </div>
+  </form>
+  <?php
+
+  $crearVenta = new ControladorVentas();
+  $crearVenta->ctrCrearVenta();
+  ?>
+
+
 </div>
 
 <!--=====================================
@@ -200,7 +259,7 @@ MODAL AGREGAR CLIENTE
 ======================================-->
 
 <div id="modalAgregarCliente" class="modal fade" role="dialog">
-  
+
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -228,12 +287,12 @@ MODAL AGREGAR CLIENTE
           <div class="box-body">
 
             <!-- ENTRADA PARA EL NOMBRE -->
-            
+
             <div class="form-group">
-              
+
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-user"></i></span> 
+
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
                 <input type="text" class="form-control input-lg" name="nuevoCliente" placeholder="Ingresar nombre" required>
 
@@ -242,12 +301,12 @@ MODAL AGREGAR CLIENTE
             </div>
 
             <!-- ENTRADA PARA EL DOCUMENTO ID -->
-            
+
             <div class="form-group">
-              
+
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-key"></i></span> 
+
+                <span class="input-group-addon"><i class="fa fa-key"></i></span>
 
                 <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
 
@@ -256,12 +315,12 @@ MODAL AGREGAR CLIENTE
             </div>
 
             <!-- ENTRADA PARA EL EMAIL -->
-            
+
             <div class="form-group">
-              
+
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span> 
+
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 
                 <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
 
@@ -270,12 +329,12 @@ MODAL AGREGAR CLIENTE
             </div>
 
             <!-- ENTRADA PARA EL TELÉFONO -->
-            
+
             <div class="form-group">
-              
+
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-phone"></i></span> 
+
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
 
                 <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
 
@@ -284,12 +343,12 @@ MODAL AGREGAR CLIENTE
             </div>
 
             <!-- ENTRADA PARA LA DIRECCIÓN -->
-            
+
             <div class="form-group">
-              
+
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span> 
+
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
 
                 <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección" required>
 
@@ -297,20 +356,20 @@ MODAL AGREGAR CLIENTE
 
             </div>
 
-             <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
-            
+            <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
+
             <div class="form-group">
-              
+
               <div class="input-group">
-              
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span> 
+
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 
                 <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
               </div>
 
             </div>
-  
+
           </div>
 
         </div>
@@ -331,8 +390,8 @@ MODAL AGREGAR CLIENTE
 
       <?php
 
-        $crearCliente = new ControllerClient();
-        $crearCliente -> ctrCreateClient();
+      $crearCliente = new ControllerClient();
+      $crearCliente->ctrCreateClient();
 
       ?>
 

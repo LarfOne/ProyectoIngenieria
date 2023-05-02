@@ -8,7 +8,7 @@ class AjaxActivo{
     /*EDITAR SUCURSAL*/
 
     public $codigo;
-
+    
     public function ajaxUpdateActivo(){
 
         $item = "codigo";

@@ -1,3 +1,6 @@
+let datosProductos = [];
+//localStorage.setItem('datosProductos', datosProductos);
+
 $(".btnUpdateInventario").click(function(){
     var idProduct = $(this).attr("idProduct");
     //console.log("idEmpleado", idEmpleado);
@@ -16,40 +19,39 @@ $(".btnUpdateInventario").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            //Ingresar los datos al localStorage
-            /*localStorage.setItem("idProducto", respuesta["codigo"]);
-            localStorage.setItem("nameProducto", respuesta["nombre"]);
-            localStorage.setItem("marcaProducto", respuesta["marca"]);
-            localStorage.setItem("descriptionProducto", respuesta["descripcion"]);
-            localStorage.setItem("precioProducto", respuesta["precioNeto"]);
-            localStorage.setItem("cateProducto", respuesta["categoria"]);
-            localStorage.setItem("unitProducto", respuesta["unidadmedida"]);
-            localStorage.setItem("porcProducto", respuesta["porcentajeIva"]);
-            localStorage.setItem("precioTotal", respuesta["precioTotal"]);
-            localStorage.setItem("obsProducto", respuesta["observaciones"]);*/
 
-            $("#idProducto").val(respuesta["codigo"]);
-            $("#nameProducto").val(respuesta["nombre"]);
-            $("#marcaProducto").val(respuesta["marca"]);
-            $("#descriptionProducto").val(respuesta["descripcion"]);
-            $("#precioNeto").val(respuesta["precioNeto"]);
-            $("#cateProducto").val(respuesta["categoria"]);
-            //$("#idSucursal").val(respuesta["idSucursal"]);
-            $("#unitProducto").val(respuesta["unidadmedida"]);
-            $("#porcProducto").val(respuesta["porcentajeIVA"]);
-            //$("#cantProducto").val(respuesta["cantidad"]);
-            $("#precioTotal").val(respuesta["precioTotal"]);
-            //$("#existProducto").val(respuesta["existencia"]);
-            //$("#minProducto").val(respuesta["minimo"]);
-            $("#obsProducto").val(respuesta["observaciones"]);
+            const infoProductos = {
+                codigo: respuesta["codigo"],
+                nombre: respuesta["nombre"],
+                marca: respuesta["marca"],
+                descripcion: respuesta["descripcion"],
+                precioNeto: respuesta["precioNeto"],
+                categoria: respuesta["categoria"],
+                unidadMedida: respuesta["unidadmedida"],
+                porcentajeIva: respuesta["porcentajeIva"],
+                precioTotal: respuesta["precioTotal"],
+                observaciones: respuesta["observaciones"]
+            }
 
+            datosProductos = [...datosProductos, infoProductos];
 
-            //console.log("respuesta", respuesta);
+            let productos = JSON.stringify(datosProductos);
+            localStorage.setItem("datosProductos",productos);
 
+            const dataArray = JSON.parse(localStorage.getItem("datosProductos"));
+
+            mostrarValores(dataArray);
         }
 
     })
 })
+
+
+function mostrarValores(dataArray){
+
+    $("#idProducto").val(dataArray[0].codigo);
+
+}
 
 /*$(document).ready(function(){
 

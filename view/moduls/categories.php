@@ -91,25 +91,13 @@
 
           <div class="box-body modalCat">
 
-            <!--AGREGAR DE CODIGO-->
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="idCategories" style="border-radius: 5px;" placeholder="Ingresar código de la categoría" required>
-                
-              </div>
-
-            </div>
-
             <!--AGREGAR DE NOMBRE-->
             <div class="form-group">
 
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nameCategories" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
                 <input type="hidden" id="categoriesId">
               </div>
 

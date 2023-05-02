@@ -13,6 +13,7 @@ session_start(); //para usar variables de session
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-3jAmQXxn7tj3Pq3in8Wb0Dyj/BYtGdCtGKM8aDDnbDgIP/n1yeiHewIv+8WxYgjRSiITstSYff5z5ch8W5DhBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
 
@@ -23,7 +24,7 @@ session_start(); //para usar variables de session
   
   <!--SCRIPT CHARTJS--->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.2.1/chart.min.js" integrity="sha512-v3ygConQmvH0QehvQa6gSvTE2VdBZ6wkLOlmK7Mcy2mZ0ZF9saNbbk19QeaoTHdWIEiTlWmrwAL4hS8ElnGFbA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+ 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!--LINKcabecera-->
@@ -84,6 +85,7 @@ session_start(); //para usar variables de session
         $_GET["ruta"] == "activos" ||
         $_GET["ruta"] == "inventarios" ||
         $_GET["ruta"] == "crearVentasP" ||
+        $_GET["ruta"] == "editarInventario" ||
         $_GET["ruta"] == "clients"
       ) {
         include "moduls/" . $_GET["ruta"] . ".php";
@@ -114,7 +116,7 @@ session_start(); //para usar variables de session
   <script src="view/js/clients.js"></script>
   <script src="view/js/product.js"></script>
   <script src="view/js/menu.js"></script>
-  <script src="view/js/reporte.js"></script>
+  <!--<script src="view/js/reporte.js"></script>-->
 </body>
 
 </html>

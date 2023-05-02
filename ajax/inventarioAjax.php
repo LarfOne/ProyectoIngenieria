@@ -8,6 +8,7 @@ class AjaxInventario{
     /*EDITAR SUCURSAL*/
 
     public $idInventario;
+    public $idProducto;
 
     public function ajaxUpdateInventario(){ 
 
@@ -24,7 +25,7 @@ class AjaxInventario{
 
         $item = "idProducto";
 
-        $valor = $this->idInventario;
+        $valor = $this->idProducto;
 
         $respuesta = ControllerInventario::ctrCodigoInventarioPorProducto($item, $valor);
 
@@ -44,8 +45,9 @@ if(isset($_POST["idInventario"])){
 }
 
 if(isset($_POST["idProducto"])){
+    
     $obtener =  new AjaxInventario();
-    $obtener->idInventario = $_POST["idProducto"];
+    $obtener->idProducto = $_POST["idProducto"];
     $obtener->ajaxInventarioPorProducto();
 
 }

@@ -51,7 +51,7 @@
                     echo "<script>
                     
                     Swal.fire({
-                        title: 'No se puede realizar la factura',
+                        title: 'No se puede realizar la facturaDetalle',
                         icon: 'error',
                     }).then((result) => {
                         window.location = 'ventas';

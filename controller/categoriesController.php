@@ -11,20 +11,13 @@
 
         /**REGISTRO DE Categorias */
         static public function ctrCreateCategories(){
-            if(isset($_POST["idCategories"])){
+            if(isset($_POST["nameCategories"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["idCategories"]) && 
-                   preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameCategories"]) 
-                   ){
+                if( preg_match('/^[0-9-a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameCategories"])){
 
                     $table = "categoria";
 
-                   
-
-                    $datas = array("codigo" => $_POST["idCategories"], 
-                                    "nombre" => $_POST["nameCategories"]
-                                    
-                                    );
+                    $datas = array("nombre" => $_POST["nameCategories"]);
 
                     $respuesta = Categories::mdlAdd($table, $datas);
                     
@@ -38,6 +31,16 @@
                                 window.location = 'categories';
                             })
 
+                        </script>";
+                    }else{
+                        echo "<script>
+                    
+                            Swal.fire({
+                                title: 'Error al agregar la categoria',
+                                icon: 'error',
+                            }).then((result) => {
+                                window.location = 'categories';
+                            })
                         </script>";
                     }
 

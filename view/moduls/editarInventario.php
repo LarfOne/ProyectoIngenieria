@@ -11,7 +11,8 @@
                 <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
                               <label>Codigo del producto.</label>
-                              <input class="form-control input-sm mt-2" type="text" id="idProductoAjuste" name="idProductoAjuste" placeholder="Ingresar codigo" required>
+                              <input class="form-control input-sm mt-2" type="text" id="idProductoAjuste" name="idProductoAjuste" placeholder="Ingresar codigo" required readonly>
+                              <input type="hidden" id="codigoInventarioAjuste" id="codigoInventarioAjuste" name="codigoInventarioAjuste">
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Nombre del producto.</label>
@@ -27,7 +28,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Cantidad.</label>
-                              <input class="form-control input-sm mt-2" type="text" id="cantProductoAjuste" name="cantProductoAjuste" value="0" placeholder="Nuevos productos" required>
+                              <input class="form-control input-sm mt-2" type="number" id="cantProductoAjuste" name="cantProductoAjuste" value="0" placeholder="Nuevos productos" required>
                         </div>
                   </div>
 
@@ -36,7 +37,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Existencia.</label>
-                              <input class="form-control input-sm mt-2" type="text" id="existenciaAjuste" name="existenciaAjuste" placeholder="Existencia de productos" required>
+                              <input class="form-control input-sm mt-2" type="number" id="existenciaAjuste" name="existenciaAjuste" placeholder="Existencia de productos" required>
                         </div>
 
                         <!-- Mandar a traer las sucursales -->
@@ -134,7 +135,7 @@
 
                   <div class="button-container">
 
-                        <button type="submit" class="button-save">Modificar</button>
+                        <button type="submit" class="button-save botonAjusteInventario">Modificar</button>
 
                         <button type="button" class="button-cancel">Cancelar</button>
                   </div>

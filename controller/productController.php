@@ -58,23 +58,23 @@ class ControllerProduct
 
 	static public function ctrUpdateProduct(){
 
-		if (isset($_POST["idProducto"])) {
+		if (isset($_POST["idProductoAjuste"])) {
 
-			if (preg_match('/^[0-9]+$/', $_POST["idProducto"])) {
+			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
 
 				$table = "producto";
 
 				$datas = array(
-					"codigo" => $_POST["idProducto"],
-					"nombre" => $_POST["nameProducto"],
-					"marca" => $_POST["marcaProducto"],
-					"descripcion" => $_POST["descriptionProducto"],
-					"precioNeto" => $_POST["precioNeto"],
-					"categoria" => $_POST["cateProducto"],
-					"unidadmedida" => $_POST["unitProducto"],
-					"porcentajeIva" => $_POST["porcProducto"],
-					"precioTotal" => $_POST["precioTotal"],
-					"observaciones" => $_POST["obsProducto"]
+					"codigo" => $_POST["idProductoAjuste"],
+					"nombre" => $_POST["nameProductoAjuste"],
+					"marca" => $_POST["marcaProductoAjuste"],
+					"descripcion" => $_POST["descriptionProductoAjuste"],
+					"precioNeto" => $_POST["precioNetoAjuste"],
+					"categoria" => $_POST["cateProductoAjuste"],
+					"unidadmedida" => $_POST["unitProductoAjuste"],
+					"porcentajeIva" => $_POST["porcProductoAjuste"],
+					"precioTotal" => $_POST["precioTotalAjuste"],
+					"observaciones" => $_POST["obsProductoAjuste"]
 				);
 
 

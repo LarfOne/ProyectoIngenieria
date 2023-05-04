@@ -1,6 +1,7 @@
 let stock = "";
 let codigoProducto = "";
 let codigoInventario = "";
+let descuento = "";
 
 
 // Creamos un array vacío
@@ -70,11 +71,11 @@ function llenarTablaVentas(){
 
 					//console.log("respuesta", respuesta);
 					codigoProducto = respuesta["codigo"];
-					var descripcion = respuesta["descripcion"];
-					var precio = respuesta["precioTotal"];
-					var porDescuento = "0";
-					var descuento = "0";
-					var subTotal = parseInt(precio)*cantidad;
+					let descripcion = respuesta["descripcion"];
+					let precio = respuesta["precioTotal"];
+					let porDescuento = "0";
+					let descuento = "0";
+					let subTotal = parseInt(precio)*cantidad;
 					
 					//verifica si existe el codigo del producto en la tabla de ventas
 					if ($('.tablita #listaP'+codigoProducto).length) { 
@@ -89,7 +90,7 @@ function llenarTablaVentas(){
 						//se modifica el contenido de la tabla
 						$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
 
-						$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
+						$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(	);
 
 						
 
@@ -102,7 +103,7 @@ function llenarTablaVentas(){
 								'<td>'+codigoProducto+'</td>'+
 								'<td class="descripcionProducto">'+descripcion+'</td>'+
 								'<td class="cantidadProducto">'+cantidad+'</td>'+
-								'<td class="descuentoProducto">'+descuento+'</td>'+
+								'<td class="descuentoProducto"><input type="number" min="0" max="100" step="1" value="'+0+'" class="descuentoInput"></td>'+
 								'<td class="precioProducto">'+precio+'</td>'+
 								'<td class="subTotalProducto">'+subTotal+'</td>'+
 								'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
@@ -202,7 +203,7 @@ function cantidadMayorStock(){
 			confirmButtonText: 'Cerrar',
 			closeOnConfirm: false,
 			icon: 'warning'
-		  })
+		})
 
 		eliminarFila(codigoProducto)
 	}
@@ -251,6 +252,7 @@ function listarProductos(){
 	let cantidad = tr.querySelector('.cantidadProducto').textContent;
 	let precioUnitario = tr.querySelector('.precioProducto').textContent;
 	let subTotal = tr.querySelector('.subTotalProducto').textContent;
+	let descuento = tr.querySelector('.descuentoProducto input').value;
 
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
 	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);
@@ -261,6 +263,7 @@ function listarProductos(){
 		// Si el objeto ya existe, actualizamos su propiedad cantidad
 		arrayProductos[index].cantidad = cantidad;
 		arrayProductos[index].subTotal = subTotal;
+		arrayProductos[index].descuento = descuento;
 	} else {
 		// Si el objeto no existe, lo agregamos al array
 		arrayProductos.push({
@@ -270,7 +273,8 @@ function listarProductos(){
 			cantidad: cantidad,
 			stockProducto: stockProducto,
 			precioUnitario: precioUnitario,
-			subTotal: subTotal
+			subTotal: subTotal,
+			descuento: descuento
 		});
 	}
 

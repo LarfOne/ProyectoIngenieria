@@ -149,6 +149,7 @@
 
                       <button class="btn btn-warning btnEditarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-pencil"></i></button>
 
+                      <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-times"></i></button>
 
                     </div>  
 
@@ -158,11 +159,17 @@
             }
 
         ?>
-              
+               
         </tbody>
         </table>
           </div>
 
+       <?php
+
+      $eliminarVenta = new ControladorVentas();
+      $eliminarVenta -> ctrEliminarVenta();
+
+      ?>       
 
       </div>
 

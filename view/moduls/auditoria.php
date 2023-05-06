@@ -1,61 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/home.css">
-    <title>Tablas de movimiento</title>
-</head>
-<body>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">  
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
+
 
 <div id="container pt-4" style="margin-top:100px;">
-    <div id="container mt-3">
-    <h3>Movimiento de productos</h3>
+    <div class="container mt-3" >
+        <h2>Movimiento de productos</h2>
 
-    <div class="box-body">
-      <div class="table-responsive" style="width:1000px; margin-left:auto; margin-right:auto;">
-        <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
-            <thead>
-                <tr>
-                    <th style="color:green;">Codigo</th>
-                    <th>Nombre</th>
-                    <th>Marca</th>
-                    <th>Descripcion</th>
-                    <th>Precio total</th>
-                    <th>Fecha de ingreso</th>
-                </tr>
-            </thead>
+        <div class="table-responsive roboto" >
+            <table class="table" id="tabla" data-sort="table">
+                <thead>
+                    <tr>
+                        <th >Codigo</th>
+                        <th>Nombre</th>
+                        <th>Marca</th>
+                        <th>Descripcion</th>
+                        <th>Precio Neto</th>
+                        <th>Precio Total</th>
+                        <th>Fecha de ingreso</th>
+                    </tr>
+                </thead>
 
-            <tbody>
+                <tbody>
 
-            <?php
-            $item = null;
-            $valor = null;
+                    <?php
+                    $item = null;
+                    $valor = null;
 
-            $productos = ControllerAudit::ctrShowAuditProducts($item, $valor);
-            //$productos = ControllerUser::ctrShowUser($item, $valor);
-            //$productos = ControllerUser::ctrShowUser($item, $valor);
+                    $productosAudit = ControllerAudit::ctrShowAuditProducts($item, $valor);
 
-            foreach($productos as $key => $auditProducts1) { ?>
-            <tr>
-                <td><?php echo $auditProducts1['codigo']; ?></td>
-                <td><?php echo $auditProducts1['nombre']; ?></td>
-                <td><?php echo $auditProducts1['marca']; ?></td>
-                <td><?php echo $auditProducts1['descripcion']; ?></td>
-                <td><?php echo $auditProducts1['precioTotal']; ?></td>
-                <td><?php echo $auditProducts1['fecgaIngreso']; ?></td>
-            </tr>
+                    foreach($productosAudit as $key => $auditProducts1) { ?>
+                    <tr>
+                        <td><?php echo $auditProducts1['codigo']; ?></td>
+                        <td><?php echo $auditProducts1['nombre']; ?></td>
+                        <td><?php echo $auditProducts1['marca']; ?></td>
+                        <td><?php echo $auditProducts1['descripcion']; ?></td>
+                        <td><?php echo $auditProducts1['precioNeto']; ?></td>
+                        <td><?php echo $auditProducts1['precioTotal']; ?></td>
+                        <td><?php echo $auditProducts1['fechaIngreso']; ?></td>
+                    </tr>
 
-            <?php } ?>
+                    <?php } ?>
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
         </div>
-        </div>
+
+        
     </div>
-
 </div>
-</body>
-</html>

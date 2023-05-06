@@ -15,12 +15,8 @@ session_start(); //para usar variables de session
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-3jAmQXxn7tj3Pq3in8Wb0Dyj/BYtGdCtGKM8aDDnbDgIP/n1yeiHewIv+8WxYgjRSiITstSYff5z5ch8W5DhBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-
-
   <!--SCRIPT TABLA-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-  
   
   <!--SCRIPT CHARTJS--->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -32,8 +28,6 @@ session_start(); //para usar variables de session
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
 
   <!--SCRIPT CABECERA-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -50,18 +44,13 @@ session_start(); //para usar variables de session
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-
 </head>
 
-
-
 <!--CUERPO DEL DOCUMENTO-->
-
 
 <!--sidebar-collapse= para que inicie en mini-->
 
 <body class="hold-transition skin-blue sidebar-mini login-page">
-
 
   <?php
 
@@ -86,6 +75,8 @@ session_start(); //para usar variables de session
         $_GET["ruta"] == "inventarios" ||
         $_GET["ruta"] == "crearVentasP" ||
         $_GET["ruta"] == "editarInventario" ||
+        $_GET["ruta"] == "auditoria" ||
+        $_GET["ruta"] == "auditView" ||
         $_GET["ruta"] == "clients"
       ) {
         include "moduls/" . $_GET["ruta"] . ".php";

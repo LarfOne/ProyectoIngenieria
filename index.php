@@ -12,6 +12,7 @@
     require_once "controller/inventarioController.php";
     require_once "controller/unitController.php";
     require_once "controller/detalleFacturaController.php";
+    require_once "controller/auditoriaController.php";
     
 
     /** MODELOS */
@@ -25,6 +26,7 @@
     require_once "model/inventarioModel.php";
     require_once "model/unitModel.php";
     require_once "model/detalleFacturaModel.php";
+    require_once "model/auditoriaModel.php";
 
     $plantilla = new ControllerPlantilla();
     $plantilla -> ctrPlantilla();

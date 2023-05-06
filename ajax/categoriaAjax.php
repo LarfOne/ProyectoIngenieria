@@ -1,7 +1,7 @@
 <?php
 
-require_once "../controller/categoriesController.php";
-require_once "../model/categoriesModel.php";
+require_once "../controller/categoriaControlador.php";
+require_once "../model/categoriaModelo.php";
 
 class AjaxCategories{
 

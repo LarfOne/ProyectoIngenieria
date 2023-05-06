@@ -1,6 +1,6 @@
 <?php
 
-require_once "../controller/activosController.php";
+require_once "../controller/activoControlador.php";
 require_once "../model/activoModel.php";
 
 class AjaxActivo{

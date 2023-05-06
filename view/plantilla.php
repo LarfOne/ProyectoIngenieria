@@ -86,7 +86,7 @@ session_start(); //para usar variables de session
         $_GET["ruta"] == "inventarios" ||
         $_GET["ruta"] == "crearVentasP" ||
         $_GET["ruta"] == "editarInventario" ||
-        $_GET["ruta"] == "clients"
+        $_GET["ruta"] == "cliente"
       ) {
         include "moduls/" . $_GET["ruta"] . ".php";
       } else {
@@ -111,9 +111,9 @@ session_start(); //para usar variables de session
   <script src="view/js/sucursal.js"></script>
   <script src="view/js/inventario.js"></script>
   <script src="view/js/table.js"></script>
-  <script src="view/js/categories.js"></script>
+  <script src="view/js/categoria.js"></script>
   <script src="view/js/activo.js"></script>
-  <script src="view/js/clients.js"></script>
+  <script src="view/js/cliente.js"></script>
   <script src="view/js/product.js"></script>
   <script src="view/js/menu.js"></script>
   <!--<script src="view/js/reporte.js"></script>-->

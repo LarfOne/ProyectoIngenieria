@@ -73,7 +73,7 @@
 
         if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") {
             echo '<li>
-                    <a href="clients">
+                    <a href="cliente">
                         <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
                            Clientes

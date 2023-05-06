@@ -52,22 +52,22 @@
 
                 ?>
 <div class="cardCont">
-  <div class="card card-user">
+<div class="card card-user">
     <img src="imagen/user.png" class="card-img">
     <a href="users" class="btn-perso btn-user">Usuarios</a>
-  </div>
-  <div class="card card-inventory">
+</div>
+<div class="card card-inventory">
     <img src="imagen/inventario.png" class="card-img">
     <a href="inventarios" class="btn-perso btn-inventory">Inventario</a>
-  </div>
-  <div class="card card-cliente">
+</div>
+<div class="card card-cliente">
     <img src="imagen/clientes.png" class="card-img">
     <a href="cliente" class="btn-perso btn-clients">Clientes</a>
-  </div>
-  <div class="card card-sells">
+</div>
+<div class="card card-sells">
     <img src="imagen/ventas.png" class="card-img">
     <a href="ventas" class="btn-perso btn-sells">Ventas</a>
-  </div>
+</div>
 
 </div>
 
@@ -176,32 +176,32 @@
 
 
 <div class="row columnas-juntas2-2 ">
-  <div class="col-sm-12 col-md-6">
+<div class="col-sm-12 col-md-6">
     <h3 class="box-title">Ventas</h3>
     <?php include "graficos/graficoVentas.php"; ?>
-  </div>
-  <div class="col-sm-12 col-md-6">
+</div>
+<div class="col-sm-12 col-md-6">
     <h3 class="box-title">Total de ventas de los empleados</h3>
     <div id="bar-chart1" style="height: 250px;"></div>
     <?php include "graficos/ventasEmpleados.php"; ?>
-  </div>
+</div>
 </div>
 
 
 <div class="container">
-  <div class="row align-items-center justify-content-between">
+<div class="row align-items-center justify-content-between">
     <div class="col-md-9">
-      <h3 class="mb-0 text-left">Seleccione el rango de fecha para mostrar en los graficos</h3>
+    <h3 class="mb-0 text-left">Seleccione el rango de fecha para mostrar en los graficos</h3>
     </div>
     <div class="col-md-3 mb-3 mb-md-0 text-right">
-      <div class="card card-grafic1 border border-primary">
+    <div class="card card-grafic1 border border-primary">
         <div id="daterange-btn2">
-          <i class="glyphicon glyphicon-calendar"></i>&nbsp;
-          <span></span> <b class="caret"></b>
+        <i class="glyphicon glyphicon-calendar"></i>&nbsp;
+        <span></span> <b class="caret"></b>
         </div>
-      </div>
     </div>
-  </div>
+    </div>
+</div>
 </div>
 
 

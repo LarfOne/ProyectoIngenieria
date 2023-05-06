@@ -142,13 +142,10 @@ class ModeloVentas{
 
 		}else if($fechaInicial == $fechaFinal){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura like '%$fechaFinal%'");
-
-			$stmt -> bindParam(":fechaFactura", $fechaFinal, PDO::PARAM_STR);
-
-			$stmt -> execute();
-
-			return $stmt -> fetchAll();
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura = :fechaFactura");
+    $stmt->bindParam(":fechaFactura", $fechaInicial, PDO::PARAM_STR);
+    $stmt->execute();
+    return $stmt->fetchAll();
 
 		}else{
 

@@ -96,6 +96,7 @@ var line = new Morris.Line({
     gridLineColor    : '#0332C8',
     gridTextFamily   : 'Open Sans',
     preUnits         : '¢',
+    backgroundColor: '#fff',
     gridTextSize     : 10
   });
 

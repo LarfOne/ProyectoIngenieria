@@ -9,13 +9,15 @@ class ModeloDetalle{
 
         for($i = 0; $i < count($datos); $i++){
 
-                $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idFactura,idProducto, cantidad, precUnit, subTotal) VALUES (:idFactura, :idProducto, :cantidad, :precUnit, :subTotal)");
+                $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idFactura,idProducto, cantidad, precUnit, descuento,subTotal) VALUES (:idFactura, :idProducto, :cantidad, :precUnit, :descuento,:subTotal)");
 
                 $stmt->bindParam(":idFactura", $idFactura, PDO::PARAM_INT);
                 $stmt->bindParam(":idProducto", $datos[$i]["idProducto"], PDO::PARAM_INT);
                 $stmt->bindParam(":cantidad", $datos[$i]["cantidad"], PDO::PARAM_INT);
                 $stmt->bindParam(":precUnit", $datos[$i]["precioUnitario"], PDO::PARAM_INT);
+                $stmt->bindParam(":descuento", $datos[$i]["descuento"], PDO::PARAM_INT);
                 $stmt->bindParam(":subTotal", $datos[$i]["subTotal"], PDO::PARAM_INT);
+                
 
                 if($stmt->execute()){
 

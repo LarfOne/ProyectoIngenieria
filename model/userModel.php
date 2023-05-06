@@ -4,6 +4,14 @@
 
     class User{   
         
+        /**
+         * Obtener todos los datos de un usuario
+         * 
+         * @param recibe como parametro el identificador del usuario que se consulta
+         * 
+         * @return retorna una fila de todos los datos del usuario
+        */
+
         static public function mdlNameUser($valor){
             //SELECT nombre FROM `sucursal` WHERE codigo = 1
     
@@ -15,36 +23,48 @@
     
             return $sentenciaSQL -> fetch();
         }
-    
+        
+        
+        /**
+         * Muestra todos los datos de un usuario o muestra todos los datos de todos los usuarios
+         * 
+         * 
+         * @param recibe como parametro la tabla para consultar los datos de los usuarios, recibe un 
+         * item que es el identificador del usuario y recibe el valor que es el dato del identificador 
+         * 
+         * 
+         * @return retorna una fila de todos los datos del usuario o retorna todos 
+         * los datos de todos los usuarios
+         * 
+        */
 
         static public function mdlShow($tabla, $item, $valor){
-
             if($item != null){
                 $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
-
                 $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
-
                 $sentenciaSQL -> execute();
-
                 return $sentenciaSQL -> fetch();
             
             }else{
                 $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
-
                 $sentenciaSQL -> execute();
-
                 return $sentenciaSQL -> fetchAll();
             }
-
-            
-
-            
-
             $sentenciaSQL -> close();
 
             $sentenciaSQL = null;
             
         }
+
+        /**
+         * agregar todos los datos de un usuario
+         * 
+         * @param recibe un array llamado datas con todos los datos de un usuario y recibe la en 
+         * en la que se va a agregar
+         * 
+         * @return retorna un OK si los datos se agregaron correctamente o un error si los 
+         * datos no se agregaron
+        */
 
         static public function mdlAdd($table, $datas){
 
@@ -79,6 +99,14 @@
 
         }
 
+        /**
+         * Obtener todos los datos de un usuario
+         * 
+         * @param recibe el identificador del usuario que se consulta
+         * 
+         * @return retorna una fila de todos los datos del usuario
+        */
+
         static public function mdlRead(){
             $sentenciaSQL= Conexion::conectar()->prepare("SELECT * FROM empleado");
             $sentenciaSQL->execute();
@@ -87,6 +115,15 @@
             return $listaEmpleados;
 
         }
+
+
+        /**
+         * Obtener todos los datos de un usuario
+         * 
+         * @param recibe el identificador del usuario que se consulta
+         * 
+         * @return retorna una fila de todos los datos del usuario
+        */
 
         static public function mdlUpdate($table, $datas){
 

@@ -1,7 +1,7 @@
 <?php
 
-require_once "../controller/sucursalController.php";
-require_once "../model/sucursalModel.php";
+require_once "../controller/sucursalControlador.php";
+require_once "../model/sucursalModelo.php";
 
 class AjaxSucursal{
 

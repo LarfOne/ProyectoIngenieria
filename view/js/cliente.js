@@ -7,7 +7,7 @@ $(".btnUpdateClient").click(function(){
   
     $.ajax({
   
-        url:"ajax/clientAjax.php",
+        url:"ajax/clienteAjax.php",
         method:"POST",
         data: datas,
         cache: false,
@@ -46,7 +46,7 @@ $(".btnUpdateClient").click(function(){
     }).then((result) => {
         if(result.value){
   
-            window.location = "index.php?ruta=clients&codigoE="+codigoC;
+            window.location = "index.php?ruta=cliente&codigoE="+codigoC;
         }
   
     })

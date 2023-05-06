@@ -60,9 +60,9 @@
     <img src="imagen/inventario.png" class="card-img">
     <a href="inventarios" class="btn-perso btn-inventory">Inventario</a>
   </div>
-  <div class="card card-clients">
+  <div class="card card-cliente">
     <img src="imagen/clientes.png" class="card-img">
-    <a href="clients" class="btn-perso btn-clients">Clientes</a>
+    <a href="cliente" class="btn-perso btn-clients">Clientes</a>
   </div>
   <div class="card card-sells">
     <img src="imagen/ventas.png" class="card-img">

@@ -6,7 +6,7 @@ $(".btnUpdateCategories").click(function(){
 
     $.ajax({
 
-        url:"ajax/categoriesAjax.php",
+        url:"ajax/categoriaAjax.php",
         method:"POST",
         data: datas,
         cache: false,

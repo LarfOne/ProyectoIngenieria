@@ -41,7 +41,7 @@ class ControllerClient{
 							title: 'El cliente se agregó correctamente',
 							icon: 'success',
 						}).then((result) => {
-							window.location = 'clients';
+							window.location = 'cliente';
 						})
 
 					</script>";
@@ -58,7 +58,7 @@ class ControllerClient{
 					title: 'No se puede agregar el Cliente',
 					icon: 'error',
 				}).then((result) => {
-					window.location = 'clients';
+					window.location = 'cliente';
 				})
 				</script>";
 			}
@@ -101,7 +101,7 @@ class ControllerClient{
 							title: 'El Cliente se modificó correctamente',
 							icon: 'success',
 						}).then((result) => {
-							window.location = 'clients';
+							window.location = 'cliente';
 						})
 					</script>";
 				}
@@ -117,7 +117,7 @@ class ControllerClient{
 					title: 'No se puede modificar el Cliente',
 					icon: 'error',
 				}).then((result) => {
-					window.location = 'clients';
+					window.location = 'cliente';
 				})
 				</script>";
 			}
@@ -144,7 +144,7 @@ class ControllerClient{
 						icon: 'success',
 					}).then((result) => {
 						if(result.value){
-							window.location = 'clients';
+							window.location = 'cliente';
 						}
 						
 					})

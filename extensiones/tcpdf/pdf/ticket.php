@@ -3,8 +3,8 @@
 require_once "../../../controller/ventasController.php";
 require_once "../../../model/ventaModel.php";
 
-require_once "../../../controller/clientController.php";
-require_once "../../../model/clientModel.php";
+require_once "../../../controller/clienteControlador.php";
+require_once "../../../model/clienteModelo.php";
 
 require_once "../../../controller/userController.php";
 require_once "../../../model/userModel.php";
@@ -13,8 +13,8 @@ require_once "../../../controller/productController.php";
 require_once "../../../model/productModel.php";
 
 
-require_once "../../../controller/sucursalController.php";
-require_once "../../../model/sucursalModel.php";
+require_once "../../../controller/sucursalControlador.php";
+require_once "../../../model/sucursalModelo.php";
 
 require_once "../../../controller/detalleFacturaController.php";
 require_once "../../../model/detalleFacturaModel.php";
@@ -80,63 +80,39 @@ $respuestaDetalle = ControllerDetalle::ctrShowDetalleFactura($itemFac, $valorFac
 
 
 
-
-/*
-
-$itemDetalle = "codigoDetalle";
-$valorDetalle = $respuestaDetalle["codigoDetalle"];
-$respuestaDetalle =  ControllerDetalle::ctrShowDetalleFactura($itemDetalle, $valorDetalle);
-
-$productos = json_decode($respuestaDetalle["idFactura"], true);
-*/
-
-///////////////////////////////////////////////////////////
-//TRAEMOS LA INFORMACIÓN DE LOS PRODUCTOS
-
-
-/*
-$itemProduc = "codigo";
-$valorProduc = $respuestaDetalle[idProducto];
-$respuestaProduc=  ControllerProduct::ctrShowProduct($itemProduc, $valorProduc);
-*/
-
-
 //REQUERIMOS LA CLASE TCPDF
 
 require_once('tcpdf_include.php');
 
-//$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
 
 
 //  TICKETE DE COMPRA
 
-$medidas = array(100, 400); // Ajustar aqui segun los milimetros necesarios;
-$pdf = new TCPDF('P', 'mm', $medidas, true, 'UTF-8', false);
+$medidas = array(80, 150); // Ajustar aqui segun los milimetros necesarios;
 
+$pdf = new TCPDF('P', 'mm', $medidas, true, 'UTF-8', false);
+$ancho_maximo = 80; // en mm
+$tamano_fuente = 10; // tamaño de fuente inicial
+$pdf->SetMargins(5, 0, 5);
+$pdf->SetFont('helvetica', '', $tamano_fuente);
+$pdf->Cell(0, 10, $texto, 0, 1);
 $pdf->setPrintHeader(false); //para eliminar la linea superio del pdf por defecto y tambien ej hearder
 $pdf->startPageGroup();
 $pdf->SetTitle('Tikete de compra');
+
 $pdf->AddPage();
-//$pdf->Image('images/Logo2.jpg');
-//$pdf->Image('images/Logo2.jpg', '', '', 40, 40, '', '', 'T', false, 300, '', false, false, 1, false, false, false);
-// ---------------------------------------------------------
 
 
 
 $bloque1 = <<<EOF
 
 
-<table>
-		
+<table>	
 		<tr>
-
-
 			<td style="background-color:white;">
-
         <h2>MOUSELAMP</h2>
-
 				<div style="font-size:8.5px; text-align:left; line-height:15px;">
-				<br>
 					codigo factura: $respuestaDetalle[idFactura]
 					<br>
 					

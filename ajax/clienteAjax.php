@@ -1,7 +1,7 @@
 <?php
 
-require_once "../controller/clientController.php";
-require_once "../model/clientModel.php";
+require_once "../controller/clienteControlador.php";
+require_once "../model/clienteModelo.php";
 
 class AjaxClient{
 	/*=============================================

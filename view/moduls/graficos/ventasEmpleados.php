@@ -62,9 +62,6 @@ $noRepetirNombres = array_unique($arrayVendedores);
 
 <script>
 
-
-
-	
 //BAR CHART
 var bar = new Morris.Bar({
   element: 'bar-chart1',
@@ -78,22 +75,21 @@ var bar = new Morris.Bar({
             echo "{y: '".$value."', a: '".$sumaTotalVendedores[$value]."'},";
       
           }
-
     }else{
 
         echo "{ y: '0', ventas: '0' }";
-  
       }
-  
-
   ?>
   ],
-  barColors: ['#e00068'],
+
+  barColors: ['#0332C8'],
   xkey: 'y',
   ykeys: ['a'],
   labels: ['ventas'],
   preUnits: '¢',
-  hideHover: 'auto'
+  hideHover: 'auto',
+  gridTextFamily   : 'Open Sans',
+  backgroundColor: '#fff'
 });
 
 

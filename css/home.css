@@ -652,6 +652,35 @@ width: 90%;
 align-items: center;
 margin-bottom: 50px;
 }
+
+
+.columnas-juntas2-2{
+    cursor: pointer;
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background: white;
+    border-style:solid;
+    border-width: 4px;
+    border-color: white white white #0c335d;
+    border-radius: 10px;
+    display: flex;
+    grid-gap: 20px;
+    flex-wrap:nowrap;
+    overflow: auto;
+flex-direction: row;
+margin: auto;
+width: 90%;
+align-items: center;
+margin-bottom: 50px;
+padding-bottom: 45px; /* Añadir un padding inferior */
+}
+
+
+
+
+
 .imagen-venta1{
         justify-content: left;
         margin: 0 auto;
@@ -759,3 +788,16 @@ position: absolute;
 
 
 }
+
+.card-grafic1{
+    cursor: pointer;
+    top: 5px;
+    left: 25%;
+    width: 200px;
+    
+  }
+  .col-sm-12.col-md-3{
+
+justify-content: center;
+    
+  }

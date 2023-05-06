@@ -117,7 +117,7 @@ session_start(); //para usar variables de session
   <script src="view/js/product.js"></script>
   <script src="view/js/menu.js"></script>
   <script src="view/js/ajusteInventario.js"></script>
-  <!--<script src="view/js/reporte.js"></script>-->
+  <script src="view/js/reporte.js"></script>
 </body>
 
 </html>

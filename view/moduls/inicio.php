@@ -40,12 +40,6 @@
 
         <div id="container mt-3">
 
-            <!-------------------------------Saludo ---->
-            <!----- <div class="notification">
-            <p> Bienvenido, <span class="hidden-xs"><?php echo $_SESSION["nombre"]; ?>
-                    <span class="hidden-xs"><?php echo $_SESSION["apellidos"]; ?></span></span></p>
-            <span class="progress"></span>
-        </div>---->
 
             <div class="cards" style="margin-left:80px">
                 <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Bienvenido a StockLamp.</h2>
@@ -74,14 +68,7 @@
     <img src="imagen/ventas.png" class="card-img">
     <a href="ventas" class="btn-perso btn-sells">Ventas</a>
   </div>
-  <div class="card card-grafic">
-    <div id="daterange-btn2" class="pull" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-      <h4> Rango fechas de los graficos</h4>        
-      <i class="glyphicon glyphicon-calendar "></i>&nbsp;
-      <span></span> <b class="caret"></b>
-    </div>
-    <input class="cancelBtnR" type="button" value="Restablecer">
-  </div>
+
 </div>
 
 
@@ -104,57 +91,17 @@
 
                 </div>
 
-                <div class="cardCont cards-1">
-                    <div class="card card-grafic">
-                        <div id="daterange-btn2" class="pull" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
-                            <h4> Rango fechas de los graficos</h4>
-                            <i class="glyphicon glyphicon-calendar "></i>&nbsp;
-                            <span></span> <b class="caret"></b>
-                        </div>
-
-                        <input class="cancelBtnR" type="button" value="Restablecer">
 
 
-                    </div>
-                </div>
-
-
+                
 
             </div>
 
 
-            <!--columnas grafico  -->
-            <div class="row2">
+            
 
 
 
-
-                <div id="datos" style="background-color:#91AAF9">
-
-                    <div class="row">
-                        <div class="col s4 l10">
-                            <?php
-                            include "graficos/graficoVentas.php";
-                            ?>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div id="datos" style="background-color:#ffe0e9">
-
-                    <div class="row">
-                        <div class="col s4 l10">
-                            <h3 class="box-title">Total de ventas de los empleados</h3>
-                            <div id="bar-chart1" style="height: 250px;"></div>
-                            <?php
-                            include "graficos/productosMasVendidos.php";
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="row2">
 
                 <!-- Column 1.x -->
@@ -223,55 +170,44 @@
 
 
             </div>
-            <!-- Termina-->
-
-            <!--2 divs de reportes-->
-
-            <!--<h1 class="textoreporte">Reportes</h1>
-
-
-            <div class="row-venta">
-
-            
-                <div id="reporte-venta">
-
-
-                    <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas mensuales.</h1>
-                    <img src="imagen/ventas.png" alt="  Logo ventas" class="imagen-venta">
-                
-                    <h2>Reporte de ventas</h2>
-                    <hr>
-                    <h3>Ventas por mes</h3>
-                    
-                    <script src="/view/js/funciones.js"></script>
-                    <button id="btnMostrarTabla" onclick="">Mostrar tabla</button>
-
-                    <div id="tablaVentasContainer"></div>
-
-                </div>
-
-                <div id="datosStock">
-
-                    
-                    <h1 style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas mensuales.</h1>
-                    <img src="imagen/ventas.png" alt="  Logo ventas" class="imagen-venta">
-                    
-                    <div id="contenido"></div>
-
-                    <button id="cargar-tabla">Cargar tabla</button>
-
-
-                </div>
-
-
-
-
-
-            </div> -->
 
 
             <h1 style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important; ">Reportes.</h1>
 
+
+<div class="row columnas-juntas2-2 ">
+  <div class="col-sm-12 col-md-6">
+    <h3 class="box-title">Ventas</h3>
+    <?php include "graficos/graficoVentas.php"; ?>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <h3 class="box-title">Total de ventas de los empleados</h3>
+    <div id="bar-chart1" style="height: 250px;"></div>
+    <?php include "graficos/ventasEmpleados.php"; ?>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row align-items-center justify-content-between">
+    <div class="col-md-9">
+      <h3 class="mb-0 text-left">Seleccione el rango de fecha para mostrar en los graficos</h3>
+    </div>
+    <div class="col-md-3 mb-3 mb-md-0 text-right">
+      <div class="card card-grafic1 border border-primary">
+        <div id="daterange-btn2">
+          <i class="glyphicon glyphicon-calendar"></i>&nbsp;
+          <span></span> <b class="caret"></b>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+            <br>
             <div class="columnas-juntas2">
 
                 <div class="texto-imagen">

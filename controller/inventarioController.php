@@ -40,14 +40,14 @@
 
         static public function ctrUpdateInventario(){
 
-            if(isset($_POST["codigoInventario"])){
+            if(isset($_POST["codigoInventarioAjuste"])){
 
                     $table = "inventario";
-                    $nuevaCantidad = intval($_POST["existProducto"]) + intval($_POST["cantProducto"]);
+                    $nuevaCantidad = intval($_POST["existenciaAjuste"]) + intval($_POST["cantProductoAjuste"]);
 
-                    $datas = array("codigo" => $_POST["codigoInventario"], 
-                                    "idSucursal" => $_POST["idSucursal"], 
-                                    "idProducto" =>  $_POST["idProducto"],    
+                    $datas = array("codigo" => $_POST["codigoInventarioAjuste"], 
+                                    "idSucursal" => $_POST["idSucursalAjuste"], 
+                                    "idProducto" =>  $_POST["idProductoAjuste"],    
                                     "cantidad" => $nuevaCantidad);
 
                     $respuesta = Inventario::mdlUpdateInventario($table, $datas);

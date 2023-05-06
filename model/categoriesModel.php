@@ -46,14 +46,9 @@ class Categories{
 
     static public function mdlAdd($table, $datas){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (codigo, nombre) VALUES
-                                                                            (:codigo, :nombre )");
+        $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (nombre) VALUES (:nombre )");
 
-        $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
-
-
-
 
         if($sentenciaSQL->execute()){
             

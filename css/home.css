@@ -99,77 +99,61 @@ section {
 
 
 /******************CARDS DEL INICIO*************************************/
-.cards{
 
-    
-    grid-gap: 20px;
-    flex-wrap:nowrap;
-    flex-direction: row;
-    margin: auto;
-    width: 90%;
-    align-items: center;
-}
-
-.cardCont {
-    display: grid;
-    grid-gap: 20px;
-    flex-wrap:nowrap;
-    flex-direction: row;
-    margin: auto;
-}
-
-.cards-4 {
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.card {
-    border: solid;
-    height: 150px;
-    width: 378px;
-    padding: 0 20px 0px 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    /* overflow: hidden; */
-    margin: auto;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-}
+.card-img {
+    width: 25%; /* ajuste el tamaño de las imágenes */
+    margin: 0 auto; /* centrar la imagen dentro de su contenedor */
+  }
+  
+  .btn-perso {
+    width: 80%; /* ajuste el tamaño de los botones */
+    margin-top: 10px; /* agregar un margen superior de 10 píxeles al botón */
+    transform: scale(0.8); /* reducir la escala de los botones */
+  }
+  
+  .cardCont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .card {
+    flex: 1 1 200px; /* ajuste el tamaño de las tarjetas */
+    margin: 10px;  /* agregar un margen de 10 píxeles entre las cards */
+    text-align: center; /* centrar el contenido dentro de las cards */
+    margin-bottom: 20px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .card {
+      flex-basis: 100%; /* mostrar las tarjetas en una columna en pantallas pequeñas */
+    }
+  }
 .card-grafic{
+    border-left: 3px;
     padding: 0 0 0 0 !important;
     border-style: solid;
     border-color: white white white yellow;
 }
 .card-user{
+    border-left: 3px;
     border-style: solid;
     border-color: white white white yellow;
 }
 .card-inventory{
+    border-left: 3px;
     border-style: solid;
     border-color: white white white #EF5350;
 }
 .card-clients{
+    border-left: 3px;
     border-style: solid;
     border-color:  white white white #4FC1E9;
 }
 .card-sells{
+    border-left: 3px;
     border-style: solid;
     border-color: white white white #26CFAD;
-}
-.card-img{
-    margin-top: 0px;
-    padding-top: 0px;
-    width:90px;
-    margin-top: 0px;
-}
-.btn-perso{
-    margin-top:70px;
-    margin-left:100px;
-    width:100px;
-    height:50px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-family: 'Roboto Condensed', sans-serif !important;
-    text-decoration: none;
 }
 
 

@@ -119,7 +119,7 @@ function llenarTablaVentas(){
 							
 						cantidadMayorStock()
 							
-						sumarTotalPrecios()
+						getTotalSale()
 							
 						listarProductos(descuento, codigoProducto, subTotal);
 						
@@ -174,9 +174,7 @@ function sumarTotalPrecios(){
 		total += parseFloat(precio.textContent);
 	});
 
-	//console.log("El total es",total);
-
-	$("#nuevoTotalVenta").val(total);
+	return total;
 
 }
 
@@ -189,18 +187,9 @@ $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
 
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
-		let precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
+		let totalTaxt = parseFloat(sumarTotalPrecios()) + getTax();
 
-		let total = 0;
-
-		precios.forEach(function(precio) {
-			total += parseFloat(precio.textContent);
-		});
-
-		let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
-		let porcentajeDescuento = descuentoVenta / 100;
-		let descuentoTotal = porcentajeDescuento * parseFloat(total);
-		let totalFinal = parseFloat(total) - descuentoTotal;
+		let totalFinal = parseFloat(totalTaxt) - getDiscount();
 		console.log(totalFinal);
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
@@ -216,23 +205,45 @@ $('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
 
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
-		let precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
+		let totalDiscount = parseFloat(sumarTotalPrecios()) - getDiscount();
 
-		let total = 0;
-
-		precios.forEach(function(precio) {
-			total += parseFloat(precio.textContent);
-		});
-
-		let impuestoVenta = parseInt(document.getElementById("nuevoImpuestoVenta").value);
-		let porcentajeImpuesto= impuestoVenta / 100;
-		let impuestoTotal = parseFloat(total) * porcentajeImpuesto;
-		let totalFinal = parseFloat(total) + impuestoTotal;
+		let totalFinal = parseFloat(totalDiscount) + getTax();
 		console.log(totalFinal);
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
+
 });
 
+
+function getTax(){
+
+	let impuestoVenta = parseInt(document.getElementById("nuevoImpuestoVenta").value);
+	let porcentajeImpuesto= impuestoVenta / 100;
+	let impuestoTotal = parseFloat(sumarTotalPrecios()) * porcentajeImpuesto;
+
+	return impuestoTotal;
+}
+
+function getDiscount(){
+
+	let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
+	let porcentajeDescuento = descuentoVenta / 100;
+	let descuentoTotal = porcentajeDescuento * parseFloat(sumarTotalPrecios());
+
+	return descuentoTotal;
+
+}
+
+function getTotalSale(){
+	let total = parseFloat(sumarTotalPrecios());
+
+	total = total + getTax();
+
+	total = total - getDiscount();
+	//console.log("El total es",total);
+
+	$("#nuevoTotalVenta").val(total);
+}
 
 /*================================================================
 FUNCION PARA VERIFICAR SI HAY LOS SUFICIENTES PRODUCTOS EN STOCK
@@ -278,7 +289,7 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 
 	console.log('blur',idProduct);										
 	listarProductos(descuentoProducto, idProduct,subTotal);
-	sumarTotalPrecios();
+	getTotalSale();
 });
 
 

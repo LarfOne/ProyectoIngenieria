@@ -166,9 +166,9 @@ SUMAR LOS PRECIOS DE LOS PRODUCTOS PARA EL TOTAL
 
 function sumarTotalPrecios(){
 
-	var precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
+	let precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
 
-	var total = 0;
+	let total = 0;
 
 	precios.forEach(function(precio) {
 		total += parseFloat(precio.textContent);
@@ -179,6 +179,59 @@ function sumarTotalPrecios(){
 	$("#nuevoTotalVenta").val(total);
 
 }
+
+
+/*======================================================
+	EVENTO PARA DESCUENTO DE TODA LA VENTA
+========================================================*/
+
+$('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
+
+	if(document.getElementById("nuevoTotalVenta").value !="0"){
+
+		let precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
+
+		let total = 0;
+
+		precios.forEach(function(precio) {
+			total += parseFloat(precio.textContent);
+		});
+
+		let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
+		let porcentajeDescuento = descuentoVenta / 100;
+		let descuentoTotal = porcentajeDescuento * parseFloat(total);
+		let totalFinal = parseFloat(total) - descuentoTotal;
+		console.log(totalFinal);
+		$("#nuevoTotalVenta").val(totalFinal);
+	}
+		
+});
+
+
+/*======================================================
+	EVENTO PARA IMPUESTO DE TODA LA VENTA
+========================================================*/
+
+$('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
+
+	if(document.getElementById("nuevoTotalVenta").value !="0"){
+
+		let precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
+
+		let total = 0;
+
+		precios.forEach(function(precio) {
+			total += parseFloat(precio.textContent);
+		});
+
+		let impuestoVenta = parseInt(document.getElementById("nuevoImpuestoVenta").value);
+		let porcentajeImpuesto= impuestoVenta / 100;
+		let impuestoTotal = parseFloat(total) * porcentajeImpuesto;
+		let totalFinal = parseFloat(total) + impuestoTotal;
+		console.log(totalFinal);
+		$("#nuevoTotalVenta").val(totalFinal);
+	}
+});
 
 
 /*================================================================
@@ -292,3 +345,4 @@ $("#nuevoMetodoPago").change(function(){
 	console.log("Metodo de pago", metodo);
 
 })
+

@@ -165,7 +165,7 @@
       <div class="botonesVenta">
         <div class="col-xs-8 pull-right">
 
-          <table class="table">
+          <table class="table tablaD">
             <thead>
               <tr>
                 <th class="total-texto">Descuento %</th>
@@ -196,7 +196,7 @@
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
+                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
                     <input type="hidden" name="totalVenta" id="totalVenta">
                   </div>
                 </td>

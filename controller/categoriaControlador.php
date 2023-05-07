@@ -4,7 +4,6 @@
             
             $respuesta = Categories::mdlNameCategories($codigo);
             return $respuesta;
-
         }
 
         /**REGISTRO DE Categorias */

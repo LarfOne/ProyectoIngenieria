@@ -53,35 +53,6 @@ function mostrarValores(dataArray){
 
 }
 
-/*$(document).ready(function(){
-
-    // Obtener los datos del localStorage
-    var idProducto = localStorage.getItem("idProducto");
-    var nameProducto = localStorage.getItem("nameProducto");
-    var marcaProducto = localStorage.getItem("marcaProducto");
-    var descriptionProducto = localStorage.getItem("descriptionProducto");
-    var precioProducto = localStorage.getItem("precioProducto");
-    var cateProducto = localStorage.getItem("cateProducto");
-    var unitProducto = localStorage.getItem("unitProducto");
-    var porcProducto = localStorage.getItem("porcProducto");
-    var precioTotal = localStorage.getItem("precioTotal");
-    var obsProducto = localStorage.getItem("obsProducto");
-
-    // Asignar los datos a los campos correspondientes
-    $("#idProducto").val(idProducto);
-    $("#nameProducto").val(nameProducto);
-    $("#marcaProducto").val(marcaProducto);
-    $("#descriptionProducto").val(descriptionProducto);
-    $("#precioNeto").val(precioProducto);
-    $("#cateProducto").val(cateProducto);
-    $("#unitProducto").val(unitProducto);
-    $("#porcProducto").val(porcProducto);
-    $("#precioTotal").val(precioTotal);
-    $("#obsProducto").val(obsProducto);
-
-    //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
-})*/
-
 
 $(".btnDeleteInventario").click(function(){
 

@@ -205,11 +205,8 @@
           </table>
 
         </div>
-        <a href="ventas">
 
         <button type="button" class="btnVentaCancelar">Cancelar</button>
-
-        </a>
 
         <button type="submit" class="btnVentaGuardar">Guardar venta</button>
 

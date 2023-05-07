@@ -240,6 +240,7 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	//console.log("listar Productos", tr);
 	let idInventario = codigoInventario;
 	let stockProducto = stock;
+	console.log("stock",stock);
 	let codigo = codigoProducto;
 	let descripcion = tr.querySelector('.descripcionProducto').textContent;
 	let cantidad = tr.querySelector('.cantidadProducto').textContent;
@@ -283,3 +284,11 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	stock = "";
 	codigoInventario = "";
 }
+
+$("#nuevoMetodoPago").change(function(){
+
+	let metodo = $(this).val();
+
+	console.log("Metodo de pago", metodo);
+
+})

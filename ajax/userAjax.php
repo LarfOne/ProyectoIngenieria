@@ -28,7 +28,6 @@ if(isset($_POST["idEmpleado"])){
     $update =  new AjaxUser();
     $update->idEmpleado = $_POST["idEmpleado"];
     $update->ajaxUpdateUser();
-
 }
 
 ?>

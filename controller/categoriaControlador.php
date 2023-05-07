@@ -1,7 +1,5 @@
 <?php
     class ControllerCategories{
-
-
         static public function ctrNameCategories($codigo){
             
             $respuesta = Categories::mdlNameCategories($codigo);

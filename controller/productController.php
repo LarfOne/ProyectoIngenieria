@@ -15,9 +15,7 @@ class ControllerProduct
 	=============================================*/
 	static public function ctrShowProduct($item, $valor){
 
-		$tabla = "producto";
-
-		$respuesta = Product::mdlShow($tabla, $item, $valor);
+		$respuesta = Product::mdlShow($item, $valor);
 		return $respuesta;
 	}
 
@@ -30,7 +28,7 @@ class ControllerProduct
 			$table = "producto";
 			$data = $_GET["idProductE"];
 
-			$respuesta = Product::mdlDelete($table, $data);
+			$respuesta = Product::mdlDelete($data);
 			//$respuesta = User::mdlPrueba($data);
 
 			if ($respuesta == "ok") {
@@ -62,8 +60,6 @@ class ControllerProduct
 
 			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
 
-				$table = "producto";
-
 				$datas = array(
 					"codigo" => $_POST["idProductoAjuste"],
 					"nombre" => $_POST["nameProductoAjuste"],
@@ -79,7 +75,7 @@ class ControllerProduct
 
 
 			
-				$respuesta = Product::mdlUpdateProduct($table, $datas);
+				$respuesta = Product::mdlUpdateProduct($datas);
 
 				if ($respuesta == "ok") {
 					echo "<script>
@@ -129,7 +125,7 @@ class ControllerProduct
 					"observaciones" => $_POST["obsProducto"]
 				);
 
-				$respuesta = Product::mdlAdd($table, $datas);
+				$respuesta = Product::mdlAdd($datas);
 
 				if ($respuesta == "ok") {
 					echo "<script>

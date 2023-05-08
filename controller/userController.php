@@ -15,16 +15,12 @@
                 
                 if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingUser"]) &&
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
-                    
-                    $tabla = "empleado";
-
-                    $item = "nombre";
 
                     $valor = $_POST["ingUser"];
 
                     $incrypt = crypt($_POST["ingPassword"], '$2a$07$usesomesillystringforsalt$');
 
-                    $respuesta = User::mdlShow($tabla, $item, $valor);
+                    $respuesta = User::loginUser($valor);
                     if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
                     if(($respuesta["nombre"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
                         $_SESSION["iniciarSesion"] = "ok";
@@ -59,8 +55,6 @@
                 if(preg_match('/^[0-9]+$/', $_POST["idUser"]) && 
                 preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
                 preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
-
-                    $table = "empleado";
 
                     $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
                     
@@ -116,7 +110,7 @@
                                                     "image" =>$ruta);
                                     echo($datas);
                                 
-                                    $respuesta = User::mdlAdd($table, $datas);
+                                    $respuesta = User::mdlAdd($datas);
 
                                     if($respuesta == "ok"){
                                         echo "<script>
@@ -146,10 +140,8 @@
         }
 
         static public function ctrShowUser($item, $valor){
-
-            $tabla = "empleado";
             
-            $respuesta = User::mdlShow($tabla, $item, $valor);
+            $respuesta = User::mdlShow($item, $valor);
             return $respuesta;
         }
 
@@ -236,7 +228,7 @@
                                     "estado" => $_POST["estadoUserm"],
                                     "image" =>$ruta);
                     
-                    $respuesta = User::mdlUpdate($table, $datas);
+                    $respuesta = User::mdlUpdate($datas);
                     
                     if($respuesta == "ok"){  
                     
@@ -298,7 +290,7 @@
                 $table = "empleado";
                 $data = $_GET["idEmpleadoE"];
                 
-                $respuesta = User::mdlDelete($table, $data);
+                $respuesta = User::mdlDelete($data);
                 //$respuesta = User::mdlPrueba($data);
 
                 if($respuesta == "ok"){

@@ -57,7 +57,7 @@
 
                 $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
                     
-                $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+                $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_INT);
                     
                 $sentenciaSQL -> execute();
                     

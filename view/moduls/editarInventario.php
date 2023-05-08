@@ -172,8 +172,10 @@
                   <div class="button-container">
 
                         <button type="submit" class="button-save botonAjusteInventario">Modificar</button>
-
-                        <button type="button" class="button-cancel">Cancelar</button>
+                        <a href="inventarios">
+                              <button type="button" class="button-cancel">Cancelar</button>
+                        </a>
+                        
                   </div>
             </div>
 

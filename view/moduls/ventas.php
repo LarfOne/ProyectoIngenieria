@@ -7,7 +7,8 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 
-<div class= "container pt-4" style="margin-top: 100px">
+<div id= "container pt-4" style="margin-top: 100px;">
+<div class="container mt-3">
 <div class="content-wrapper" style="padding: 15px !important;">
 <div class="content-wrapper">
 
@@ -145,10 +146,7 @@
 
                     <i class="fa fa-print"></i></button>
 
-
-
-                      <button class="btn btn-warning btnEditarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-pencil"></i></button>
-
+                      <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-times"></i></button>
 
                     </div>  
 
@@ -158,11 +156,17 @@
             }
 
         ?>
-              
+               
         </tbody>
         </table>
           </div>
 
+       <?php
+
+      $eliminarVenta = new ControladorVentas();
+      $eliminarVenta -> ctrEliminarVenta();
+
+      ?>       
 
       </div>
 
@@ -183,5 +187,5 @@
 
 
 
-
+</div>
 </div>

@@ -119,7 +119,7 @@ function llenarTablaVentas(){
 							
 						cantidadMayorStock()
 							
-						sumarTotalPrecios()
+						getTotalSale()
 							
 						listarProductos(descuento, codigoProducto, subTotal);
 						
@@ -166,20 +166,84 @@ SUMAR LOS PRECIOS DE LOS PRODUCTOS PARA EL TOTAL
 
 function sumarTotalPrecios(){
 
-	var precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
+	let precios = document.querySelectorAll(".tableU td.subTotalProducto"); //se coloca la class de la tabla y la class del td
 
-	var total = 0;
+	let total = 0;
 
 	precios.forEach(function(precio) {
 		total += parseFloat(precio.textContent);
 	});
 
-	//console.log("El total es",total);
-
-	$("#nuevoTotalVenta").val(total);
+	return total;
 
 }
 
+
+/*======================================================
+	EVENTO PARA DESCUENTO DE TODA LA VENTA
+========================================================*/
+
+$('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
+
+	if(document.getElementById("nuevoTotalVenta").value !="0"){
+
+		let totalTaxt = parseFloat(sumarTotalPrecios()) + getTax();
+
+		let totalFinal = parseFloat(totalTaxt) - getDiscount();
+		console.log(totalFinal);
+		$("#nuevoTotalVenta").val(totalFinal);
+	}
+		
+});
+
+
+/*======================================================
+	EVENTO PARA IMPUESTO DE TODA LA VENTA
+========================================================*/
+
+$('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
+
+	if(document.getElementById("nuevoTotalVenta").value !="0"){
+
+		let totalDiscount = parseFloat(sumarTotalPrecios()) - getDiscount();
+
+		let totalFinal = parseFloat(totalDiscount) + getTax();
+		console.log(totalFinal);
+		$("#nuevoTotalVenta").val(totalFinal);
+	}
+
+});
+
+
+function getTax(){
+
+	let impuestoVenta = parseInt(document.getElementById("nuevoImpuestoVenta").value);
+	let porcentajeImpuesto= impuestoVenta / 100;
+	let impuestoTotal = parseFloat(sumarTotalPrecios()) * porcentajeImpuesto;
+
+	return impuestoTotal;
+}
+
+function getDiscount(){
+
+	let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
+	let porcentajeDescuento = descuentoVenta / 100;
+	let descuentoTotal = porcentajeDescuento * parseFloat(sumarTotalPrecios());
+
+	return descuentoTotal;
+
+}
+
+function getTotalSale(){
+	let total = parseFloat(sumarTotalPrecios());
+
+	total = total + getTax();
+
+	total = total - getDiscount();
+	//console.log("El total es",total);
+
+	$("#nuevoTotalVenta").val(total);
+}
 
 /*================================================================
 FUNCION PARA VERIFICAR SI HAY LOS SUFICIENTES PRODUCTOS EN STOCK
@@ -225,7 +289,7 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 
 	console.log('blur',idProduct);										
 	listarProductos(descuentoProducto, idProduct,subTotal);
-	sumarTotalPrecios();
+	getTotalSale();
 });
 
 
@@ -240,6 +304,7 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	//console.log("listar Productos", tr);
 	let idInventario = codigoInventario;
 	let stockProducto = stock;
+	console.log("stock",stock);
 	let codigo = codigoProducto;
 	let descripcion = tr.querySelector('.descripcionProducto').textContent;
 	let cantidad = tr.querySelector('.cantidadProducto').textContent;
@@ -283,3 +348,37 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	stock = "";
 	codigoInventario = "";
 }
+
+$("#nuevoMetodoPago").change(function(){
+
+	let metodo = $(this).val();
+
+	console.log("Metodo de pago", metodo);
+
+})
+
+/*=============================================
+IMPRIMIR FACTURA
+=============================================*/
+
+$(".tablas").on("click", ".btnImprimirFactura", function(){
+
+	var codigoVenta = $(this).attr("codigoVenta");
+
+	window.open("extensiones/tcpdf/pdf/factura.php?codigo="+codigoVenta, "_blank");
+})
+
+
+
+/*=============================================
+IMPRIMIR FACTURA
+=============================================*/
+
+$(".tablas").on("click", ".btnImprimirTicket", function(){
+
+	var codigoVenta = $(this).attr("codigoVenta");
+
+	window.open("extensiones/tcpdf/pdf/ticket.php?codigo="+codigoVenta, "_blank");
+})
+
+

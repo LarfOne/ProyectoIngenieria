@@ -1,12 +1,9 @@
 <?php
     class ControllerCategories{
-
-
         static public function ctrNameCategories($codigo){
             
             $respuesta = Categories::mdlNameCategories($codigo);
             return $respuesta;
-
         }
 
         /**REGISTRO DE Categorias */
@@ -15,11 +12,9 @@
 
                 if( preg_match('/^[0-9-a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameCategories"])){
 
-                    $table = "categoria";
-
                     $datas = array("nombre" => $_POST["nameCategories"]);
 
-                    $respuesta = Categories::mdlAdd($table, $datas);
+                    $respuesta = Categories::mdlAdd($datas);
                     
                     if($respuesta == "ok"){
                         echo "<script>
@@ -76,13 +71,11 @@
 
                 if(preg_match('/^[0-9]+$/', $_POST["idCategoriesm"])){
 
-                    $table = "categoria";
-
                     $datas = array("codigo" => $_POST["idCategoriesm"], 
                                     "nombre" => $_POST["nameCategoriesm"]);
                                    
 
-                    $respuesta = Categories::mdlUpdate($table, $datas);
+                    $respuesta = Categories::mdlUpdate($datas);
                     
                     if($respuesta == "ok"){
                         echo "<script>
@@ -117,11 +110,10 @@
         static public function ctrDeleteCategories(){
 
             if(isset($_GET["codigoE"])){
-
-                $table = "categoria";
+                
                 $data = $_GET["codigoE"];
                 
-                $respuesta = Categories::mdlDelete($table, $data);
+                $respuesta = Categories::mdlDelete($data);
 
                 if($respuesta == "ok"){
                     echo "<script>

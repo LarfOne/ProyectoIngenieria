@@ -154,7 +154,7 @@ class ControllerProduct
 					"porcentajeIva" => $_POST["porcProducto"],
 					"precioTotal" => $_POST["precioTotal"],
 					"observaciones" => $_POST["obsProducto"],
-					"image" => $ruta
+					"image" => $ruta,
 					"usuarioIngresa" => $usuarioIngresa
 				);
 

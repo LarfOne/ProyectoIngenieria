@@ -112,7 +112,6 @@ class ControllerProduct
 	//verifica si se ha enviado una solicitud POST con un valor idProducto
 	{
 		$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
-		echo $usuarioIngresa;
 
 		if (isset($_POST["idProducto"])) {
 

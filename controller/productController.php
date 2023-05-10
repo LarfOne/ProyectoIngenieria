@@ -117,17 +117,17 @@ class ControllerProduct
 
                         list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
                         //var_dump($_FILES["image"]["tmp_name"]);
-                        $directorio = "imagen/productos/".$_POST["idProducto"];
+                        $directorio = "imagen/productos/";
                         mkdir($directorio, 0755);
                         if($_FILES["imageProductos"]["type"] == "image/jpeg"){
-                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
+                            $ruta = "imagen/productos/".$_POST["idProducto"].".jpg";
                             $origen = imagecreatefromjpeg($_FILES["imageProductos"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
                             imagejpeg($destino, $ruta);
                         }
                         if($_FILES["imageProductos"]["type"] == "image/png"){
-                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
+                            $ruta = "imagen/productos/".$_POST["idProducto"].".png";
                             $origen = imagecreatefrompng($_FILES["imageProductos"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);

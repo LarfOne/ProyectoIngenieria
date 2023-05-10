@@ -109,7 +109,11 @@ class ControllerProduct
 	} 
 
 	static public function ctrCreateProduct()
+	
 	{
+		$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
+		echo $usuarioIngresa;
+
 		if (isset($_POST["idProducto"])) {
 
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
@@ -126,7 +130,8 @@ class ControllerProduct
 					"unidadmedida" => $_POST["unitProducto"],
 					"porcentajeIva" => $_POST["porcProducto"],
 					"precioTotal" => $_POST["precioTotal"],
-					"observaciones" => $_POST["obsProducto"]
+					"observaciones" => $_POST["obsProducto"],
+					"usuarioIngresa" => $usuarioIngresa
 				);
 
 				$respuesta = Product::mdlAdd($table, $datas);

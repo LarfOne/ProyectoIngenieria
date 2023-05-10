@@ -54,8 +54,8 @@ class Product{
 	=============================================*/
 	static public function mdlAdd($tabla, $datos){
 
-		$sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo,nombre,marca, descripcion, precioNeto, categoria, unidadmedida, porcentajeIva, precioTotal, observaciones)
-		VALUES (:codigo, :nombre, :marca, :descripcion, :precioNeto, :categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones)");
+		$sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo,nombre,marca, descripcion, precioNeto, categoria, unidadmedida, porcentajeIva, precioTotal, observaciones, usuarioIngresa)
+		VALUES (:codigo, :nombre, :marca, :descripcion, :precioNeto, :categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :usuarioIngresa)");
 
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -67,6 +67,7 @@ class Product{
 		$sentenciaSQL->bindParam(":porcentajeIva", $datos["porcentajeIva"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":usuarioIngresa", $datos["usuarioIngresa"], PDO::PARAM_STR);
 
 
 		if($sentenciaSQL->execute()){

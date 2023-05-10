@@ -3,29 +3,26 @@
 class ControllerProduct
 {
 
-	//Recibe como parámetro el código del producto
 	static public function ctrNameProducts($codigo){
-        //"mdlNameProducts" definido en el modelo "Product" para obtener
-		// la información correspondiente al nombre del producto
+            
 		$respuesta = Product::mdlNameProducts($codigo);
 		return $respuesta;
 
 	}
 
 	/*=============================================
-	PRODUCTO
+	CREAR PRODUCTO
 	=============================================*/
 	static public function ctrShowProduct($item, $valor){
 
 		$respuesta = Product::mdlShow($item, $valor);
-		// devuelve el resultado obtenido a través de la variable $respuesta.
 		return $respuesta;
 	}
 
 
 	static public function ctrDeleteProduct()
 	{
-		//ctrDeleteProduct() verifica si se ha recibido un parámetro idProductE por el método GET
+
 		if (isset($_GET["idProductE"])) {
 
 			$table = "producto";
@@ -33,8 +30,7 @@ class ControllerProduct
 
 			$respuesta = Product::mdlDelete($data);
 			//$respuesta = User::mdlPrueba($data);
-			//Product::mdlDelete($data) para eliminar el producto correspondiente de la base de datos. Si la respuesta es "ok", se muestra un mensaje de éxito utilizando la biblioteca 
-			//SweetAlert y se redirige al usuario a la página de inventarios.
+
 			if ($respuesta == "ok") {
 				echo "<script>
 				
@@ -59,11 +55,11 @@ class ControllerProduct
 
 
 	static public function ctrUpdateProduct(){
-		//verifica si se ha enviado el ID del producto a actualizar a través del método POST
+
 		if (isset($_POST["idProductoAjuste"])) {
 
 			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
-				// se crea un array con los datos del producto a actualizar, que se obtienen a través del método POST.
+
 				$datas = array(
 					"codigo" => $_POST["idProductoAjuste"],
 					"nombre" => $_POST["nameProductoAjuste"],
@@ -78,7 +74,7 @@ class ControllerProduct
 				);
 
 
-			//llama al método "mdlUpdateProduct" de la clase Product para actualizar el producto en la base de datos. 
+			
 				$respuesta = Product::mdlUpdateProduct($datas);
 
 				if ($respuesta == "ok") {
@@ -109,10 +105,7 @@ class ControllerProduct
 	} 
 
 	static public function ctrCreateProduct()
-	//verifica si se ha enviado una solicitud POST con un valor idProducto
 	{
-		$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
-
 		if (isset($_POST["idProducto"])) {
 
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
@@ -153,9 +146,7 @@ class ControllerProduct
 					"porcentajeIva" => $_POST["porcProducto"],
 					"precioTotal" => $_POST["precioTotal"],
 					"observaciones" => $_POST["obsProducto"],
-					"image" => $ruta,
-					"usuarioIngresa" => $usuarioIngresa
-				);
+					"image" => $ruta);
 
 				print_r($datas);
 				$respuesta = Product::mdlAdd($datas);

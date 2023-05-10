@@ -3,10 +3,7 @@
 require_once "../controller/productController.php";
 require_once "../model/productModel.php";
 
-//TablaProductosVentas con un método público llamado mostrarTablaProductosVentas(). 
-//El método muestra una tabla de productos en formato JSON
-//, el código crea una instancia de la clase TablaProductosVentas y llama al método mostrarTablaProductosVentas()
-// para activar la tabla de productos
+
 class TablaProductosVentas{
 
  	/*=============================================

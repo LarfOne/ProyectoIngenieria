@@ -2,8 +2,7 @@
 
 require_once "../controller/inventarioController.php";
 require_once "../model/inventarioModel.php";
-//"ajaxUpdateInventario" recibe el código del inventario y llama al controlador correspondiente
-// para obtener la información del inventario asociado a ese código. Luego, devuelve la respuesta en formato JSON.
+
 class AjaxInventario{
 
     /*EDITAR SUCURSAL*/
@@ -21,8 +20,7 @@ class AjaxInventario{
         echo json_encode($respuesta);
 
     }
-    //recibe el ID de un producto y llama al controlador correspondiente para obtener el código del inventario asociado a ese producto. Luego, devuelve 
-    //la respuesta en formato JSON.
+
     public function ajaxInventarioPorProducto(){ 
 
         $item = "idProducto";
@@ -36,8 +34,8 @@ class AjaxInventario{
     }
 
 }
-// verifica si se ha enviado una solicitud POST con el parámetro "idInventario" o "idProducto"
-//devuelve en JSON
+
+
 if(isset($_POST["idInventario"])){
 
     $update =  new AjaxInventario();

@@ -4,9 +4,7 @@
 
 class ControllerClient{
 
-	//ctrNameClient que recibe de parámetro $cedula, que se utiliza para buscar un cliente por su número de id. 
-	//El método llama al método estático mdlNameClient de la clase Client, pasándole el valor de $cedula como argumento. Luego,
-	// el método devuelve la respuesta de mdlNameClient,
+
 	static public function ctrNameClient($cedula){
 		
 		$respuesta = Client::mdlNameClient($cedula);
@@ -14,9 +12,8 @@ class ControllerClient{
 
 	}
 
-	/**REGISTRO DE CLIENTES*/
+	/**REGISTRO DE Clientes*/
 	static public function ctrCreateClient(){
-		//"ctrCreateClient", la cual es responsable de agregar un nuevo cliente en la base de datos.
 		if(isset($_POST["cedula"])){
 			
 
@@ -26,8 +23,7 @@ class ControllerClient{
 				$table = "cliente";
 
 			   
-				//crea un array asociativo llamado $datas que contiene los datos 
-				//del cliente ingresados en el formulario de registro. 
+
 				$datas = array("cedula" => $_POST["cedula"], 
 								"nomCliente" => $_POST["nomCliente"], 
 								"apellidos" => $_POST["apellidos"],
@@ -35,7 +31,7 @@ class ControllerClient{
 								"email" => $_POST["email"],
 								"direccion" => $_POST["direccion"]
 								);
-				//mdlAddCli ejecuta la consulta SQL para insertar los datos del cliente en la base de datos
+
 				$respuesta = Client::mdlAddCli($table, $datas);
 				
 				if($respuesta == "ok"){
@@ -68,24 +64,23 @@ class ControllerClient{
 			}
 		}
 	}
-	//$item: El campo de la tabla por el cual se buscará el cliente.
-	//$valor: El valor correspondiente al campo por el cual se buscará el cliente.
+
 	static public function ctrShowClient($item, $valor){
 
 		$tabla = "cliente";
-		//que se encarga de hacer la consulta a la base de datos) y se retorna la respuesta obtenida.
+		
 		$respuesta = Client::mdlShow($tabla, $item, $valor);
 		return $respuesta;
 	}
 
 	static public function ctrUpdateClient(){
 
-		if(isset($_POST["cedulam"])){// verifica si se ha enviado un formulario con la información del cliente a actualizar
-			//validación sobre el valor de cedulam para asegurarse de que solo contenga letras, números, espacios y caracteres especiales en español. 
+		if(isset($_POST["cedulam"])){
+
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["cedulam"])){
 
 				$table = "cliente";
-				//$datas que contiene los nuevos datos del cliente
+
 				$datas = array("cedula" => $_POST["cedulam"], 
 				"nomCliente" => $_POST["nomClientem"], 
 				"apellidos" => $_POST["apellidosm"],
@@ -96,9 +91,9 @@ class ControllerClient{
 
 
 
-				//mdlUpdate de la clase Client para actualizar los datos del cliente en la base de datos. Este método recibe como parámetros el nombre de la tabla (cliente) y el array $datas con los nuevos datos del cliente.
+
 				$respuesta = Client::mdlUpdate($table, $datas);
-				//se muestra un mensaje de éxito
+				
 				if($respuesta == "ok"){
 					echo "<script>
 					
@@ -115,7 +110,7 @@ class ControllerClient{
 				
 
 			}else{
-				//se muestra un mensaje de error.
+
 				echo "<script>
 				
 				Swal.fire({

@@ -54,8 +54,8 @@ class Product{
 	=============================================*/
 	static public function mdlAdd($datos){
 
-		$sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_producto(:codigo, :nombre, :marca, :descripcion, :precioNeto, 
-			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :image, :usuarioIngresa)");
+		$sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_producto(:codigo, :nombre, :marca, :descripcion, :precioNeto, 
+			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :image)");
 
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -68,7 +68,6 @@ class Product{
 		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":image", $datos["image"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":usuarioIngresa", $datos["usuarioIngresa"], PDO::PARAM_STR);
 
 
 		if($sentenciaSQL->execute()){
@@ -101,7 +100,7 @@ class Product{
 	=============================================*/
 	static public function mdlUpdateProduct($datos){
 
-		$sentenciaSQL = Conexion::conectar()->prepare("CALL sp_actualizar_producto (:codigo, :nombre, :marca, :descripcion,
+		$sentenciaSQL = Conexion::conectar()->prepare("CALL pa_actualizar_producto (:codigo, :nombre, :marca, :descripcion,
 		:precioNeto, :categoria, :unidadmedida, :porcentajeiva, 
 		:precioTotal, :observaciones)");
 		
@@ -130,7 +129,7 @@ class Product{
     static public function mdlDelete($data)
     {
 
-        $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_eliminar_producto(:codigo)");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_producto(:codigo)");
         $sentenciaSQL->bindParam(':codigo', $data, PDO::PARAM_INT);
 
         if ($sentenciaSQL->execute()) {

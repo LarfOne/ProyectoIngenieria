@@ -39,7 +39,7 @@
         */
 
         static public function loginUser($name){
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_login(:name)");
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_login(:name)");
             $sentenciaSQL -> bindParam(":name", $name, PDO::PARAM_STR);
             $sentenciaSQL -> execute();
             return $sentenciaSQL -> fetch();
@@ -47,7 +47,7 @@
 
         static public function mdlShow($item, $valor){
             if($item != null){
-                $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_obtener_empleado(:cedula)");
+                $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_obtener_empleado(:cedula)");
                 $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_INT);
                 $sentenciaSQL -> execute();
                 return $sentenciaSQL -> fetch();
@@ -75,7 +75,7 @@
 
         static public function mdlAdd($datas){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
@@ -129,7 +129,7 @@
 
         static public function mdlUpdate($datas){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_update_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, 
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_update_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, 
             :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
 
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
@@ -159,7 +159,7 @@
 
         static public function mdlDelete($data){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_eliminar_empleado(:cedula)");
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_empleado(:cedula)");
             $sentenciaSQL -> bindParam(':cedula', $data, PDO::PARAM_INT);
 
             if($sentenciaSQL->execute()){

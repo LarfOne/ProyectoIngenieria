@@ -46,7 +46,7 @@ class Categories{
 
     static public function mdlAdd($datas){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_categoria(:nombre)");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_categoria(:nombre)");
 
         $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
 
@@ -74,7 +74,7 @@ class Categories{
 
     static public function mdlUpdate($datas){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_actualizar_categoria(:codigo,:nombre)");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_actualizar_categoria(:codigo,:nombre)");
         
         
         $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
@@ -96,7 +96,7 @@ class Categories{
 
     static public function mdlDelete($data){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_eliminar_categoria(:codigo)");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_categoria(:codigo)");
         $sentenciaSQL -> bindParam(':codigo', $data, PDO::PARAM_INT);
 
         if($sentenciaSQL->execute()){

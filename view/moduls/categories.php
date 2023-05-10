@@ -7,63 +7,71 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 <div id= "container pt-4" style="margin-top: 100px;">
-  <div class="container mt-3">
 
-    <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Categorías</h2>
+<div class="container mt-3">
+  <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Categorías</h2>
+
     <button class="btn btn-primary btnAgregarCat" data-bs-toggle="modal" data-bs-target="#modalAddCategories">
-      Agregar Categoría
+        Agregar Categoría
     </button>
+  <div class="box-body">
+  <div class="table-responsive roboto">
+  <table class="table" id="tabla" data-sort="table">
+    <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Acciones</th>
+                    
+                </tr>
+                </thead>
 
-    <div class="box-body">
-      <div class="table-responsive roboto">
-        <table class="table" id="tabla" data-sort="table">
-          <thead>
-            <tr>
-              <th>Código</th>
-              <th>Nombre</th>
-              <th>Acciones</th> 
-            </tr>
-          </thead>
+                <tbody>
 
-          <tbody>
+    <?php
+    $item = null;
+    $valor = null;
+    
+    $categories = ControllerCategories::ctrShowCategories($item, $valor);
+    
 
-            <?php
-            $item = null;
-            $valor = null;
-            
-            $categories = ControllerCategories::ctrShowCategories($item, $valor);
-            
-            foreach($categories as $key => $categories1) { ?>
+    foreach($categories as $key => $categories1) { ?>
+    <tr>
 
-              <tr>
-                <td><?php echo $categories1['codigo']; ?></td>
-                <td><?php echo $categories1['nombre']; ?></td>
+        <td><?php echo $categories1['codigo']; ?></td>
+        <td><?php echo $categories1['nombre']; ?></td>
+  
 
-                <td>
-                  <div class="btn-group">
-                    <button style="margin: 5px" class="btn btn-warning btnUpdate btnUpdateCategories" idCategories = <?php echo $categories1['codigo']; ?>
-                      data-bs-toggle="modal" data-bs-target="#modalUpdateCategories"><i class="fa fa-pencil"></i>
-                    </button>
-                      
-                    <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteCategories" codigoM = <?php echo $categories1['codigo']; ?>
-                      ><i class="fa fa-times"></i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
+        <td>
+
+          <div class="btn-group">
+              <button style="margin: 5px" class="btn btn-warning btnUpdate btnUpdateCategories" idCategories = <?php echo $categories1['codigo']; ?>
+              data-bs-toggle="modal" data-bs-target="#modalUpdateCategories"><i class="fa fa-pencil"></i></button>
               
-            <?php } ?>
+              <button style="margin: 5px" class="btn btn-danger btnDelete btnDeleteCategories" codigoM = <?php echo $categories1['codigo']; ?>
+              ><i class="fa fa-times"></i></button>
+          </div>
 
-          </tbody>
+        </td>
 
-        </table>
-      </div>
+
+    </tr>
+
+    <?php } ?>
+
+
+    </tbody>
+
+    </table>
     </div>
   </div>
 </div>
 
+</div>
+
 
 <!--MODAL PARA AGREGAR CATEGORIAS-->
+
 
 <div class="modal fade" id="modalAddCategories" role="dialog">
   <div class="modal-dialog">
@@ -72,8 +80,10 @@
 
       <form role="form" method="POST" enctype="multipart/form-data">
 
+
         <div class="modal-header modalHeaderColor">
           <h4 class="modal-title">Agregar Categorías</h4>
+
         </div>
 
     </br>
@@ -127,6 +137,7 @@
 
         <div class="modal-header modalHeaderColor" >
           <h4 class="modal-title">Editar Categorías</h4>
+
         </div>
 
 

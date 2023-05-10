@@ -2,7 +2,7 @@
 
 class ControllerProduct
 {
-
+	//Recibe como parámetro el código del producto
 	static public function ctrNameProducts($codigo){
             
 		$respuesta = Product::mdlNameProducts($codigo);
@@ -55,6 +55,7 @@ class ControllerProduct
 
 
 	static public function ctrUpdateProduct(){
+		//verifica si se ha enviado el ID del producto a actualizar a través del método POST
 
 		if (isset($_POST["idProductoAjuste"])) {
 
@@ -74,7 +75,7 @@ class ControllerProduct
 				);
 
 
-			
+				//llama al método "mdlUpdateProduct" de la clase Product para actualizar el producto en la base de datos. 
 				$respuesta = Product::mdlUpdateProduct($datas);
 
 				if ($respuesta == "ok") {
@@ -106,6 +107,7 @@ class ControllerProduct
 
 	static public function ctrCreateProduct()
 	{
+		//verifica si se ha enviado una solicitud POST con un valor idProducto
 		if (isset($_POST["idProducto"])) {
 
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
@@ -117,17 +119,17 @@ class ControllerProduct
 
                         list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
                         //var_dump($_FILES["image"]["tmp_name"]);
-                        $directorio = "imagen/productos/";
+                        $directorio = "imagen/productos/".$_POST["idProducto"];
                         mkdir($directorio, 0755);
                         if($_FILES["imageProductos"]["type"] == "image/jpeg"){
-                            $ruta = "imagen/productos/".$_POST["idProducto"].".jpg";
+                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
                             $origen = imagecreatefromjpeg($_FILES["imageProductos"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
                             imagejpeg($destino, $ruta);
                         }
                         if($_FILES["imageProductos"]["type"] == "image/png"){
-                            $ruta = "imagen/productos/".$_POST["idProducto"].".png";
+                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
                             $origen = imagecreatefrompng($_FILES["imageProductos"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
@@ -149,7 +151,8 @@ class ControllerProduct
 					"observaciones" => $_POST["obsProducto"],
 					"image" => $ruta,
 					"usuarioIngresa" => $usuarioIngresa);
-
+					//mdlAdd() y se le pasa $datas como argumento. Si el método mdlAdd() devuelve "ok", 
+				//el producto se agregó con éxito a la base de datos y se muestra una alerta de éxito. Si el método devuelve otra cosa, se muestra una alerta de error.
 				$respuesta = Product::mdlAdd($datas);
 
 				if ($respuesta == "ok") {

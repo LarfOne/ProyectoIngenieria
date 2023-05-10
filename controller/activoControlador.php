@@ -3,19 +3,25 @@
         
 
         /**REGISTRO DE ACTIVOS */
+        //se encarga de crear un nuevo activo en una base de datos, a través del envío de un formulario vía POST
         static public function ctrCreateActivo(){
             if(isset($_POST["idSucursal"])){
-
+                  //Se verifica si existe la variable $_POST["idSucursal"], lo que indica que se ha enviado el 
+                //formulario con los datos del activo a crear.
                 if(preg_match('/^[0-9]+$/', $_POST["idSucursal"])){
 
                     $table = "activos";
 
                     
-
+                     
+                    //Se define un array $datas que contiene los datos del activo a insertar en la base de datos, estos datos son: el idSucursal, descripcion, estado y empleado_id,
+                    // que son valores obtenidos de $_POST.
                     $datas = array("idSucursal" => $_POST["idSucursal"], 
                                     "descripcion" => $_POST["descripcion"],
                                     "estado" => $_POST["estado"],
                                     "empleado_id" => $_POST["empleado_id"]);
+                       //Se llama al método mdlAdd de la clase Activo, pasando como parámetros $table y $datas, para realizar la inserción en la base de datos.
+                     //Si la inserción fue exitosa ($respuesta es igual a "ok"), se muestra un mensaje de éxito utilizando la librería SweetAlert2 y se redirige al usuario a la página 
 
                     $respuesta = Activo::mdlAdd($table, $datas);
                     
@@ -49,7 +55,9 @@
                 }
             }
         }
-
+         //ctrShowActivo($item, $valor): Esta función recibe dos parámetros: $item, que es una cadena de texto que indica el campo de la tabla a buscar, y $valor, que es el valor a buscar en ese campo. La función utiliza el modelo Activo::mdlShow para buscar los datos en la tabla "activos"
+        // y devuelve la respuesta obtenida.ctrShowActivo($item, $valor): Esta función recibe dos parámetros: $item,
+        // que es una cadena de texto que indica el campo de la tabla a buscar, y $valor, que es el valor a buscar en ese campo. La función utiliza el modelo Activo::mdlShow para buscar los datos en la tabla "activos" y devuelve la respuesta obtenida.
         static public function ctrShowActivo($item, $valor){
 
             $tabla = "activos";
@@ -58,7 +66,8 @@
             return $respuesta;
         }
 
-
+         //ctrSpecificActivo($item, $valor): Esta función también recibe dos parámetros: $item y $valor, 
+        //que se utilizan para buscar un registro específico en la tabla "activos". Al igual que en la función anterior,
         static public function ctrSpecificActivo($item, $valor){
 
             $tabla = "activos";
@@ -69,7 +78,13 @@
 
 
 
-
+        
+        //Esta función recibe dos parámetros: $activo y $codigoA. $activo es un arreglo con nuevos valores que se desean actualizar en la base de datos, y 
+        //$codigoA es el código del activo que se desea actualizar.
+        //se define una variable $table que contiene el nombre de la tabla donde
+        // se encuentran los activos en la base de datos. Luego se llama al método mdlUpdateEmployer del modelo Activo y
+        // se le pasan los parámetros $table, $activo y $codigoA
+        //devuelve la respuesta del modelo a quien la haya llamado.
         static public function ctrUpdateOneActivo($activo,$codigoA){
 
             $table = "activos";
@@ -80,7 +95,8 @@
 
 
 
-
+        
+        //ctrUpdateActivo actualiza un activo en la base de datos. Primero se verifica que se haya enviado el parámetro
         static public function ctrUpdateActivo(){
 
             if(isset($_POST["codigom"])){
@@ -94,9 +110,12 @@
                                     "descripcion" => $_POST["descripcionm"],
                                     "estado" => $_POST["estadom"],
                                     "empleado_id" => $_POST["empleado_idm"]);
-
+                     //se crea un array con los datos actualizados del activo y
+                    // se llama al método mdlUpdate de la clase Activo
                     $respuesta = Activo::mdlUpdate($table, $datas);
                     
+                    //Si la respuesta es "ok", se muestra un mensaje de éxito con la librería SweetAlert y se redirecciona al usuario a la página de activos. Si hay un error, se muestra un mensaje de error con SweetAlert
+                    // y se redirecciona también a la página de activos.
                     if($respuesta == "ok"){
                         echo "<script>
                         

@@ -1,10 +1,11 @@
 <?php
     class ControllerUnit{
 
-        /**REGISTRO DE EMPLEADOS */
+        /**REGISTRO DE UNIDADES */
+        //"ctrCreateUnit" que se encarga de agregar una unidad de medida en la base de datos.
             static public function ctrCreateUnit()
             {
-
+                    //La función recibe los datos enviados desde un formulario HTML mediante el método POST,
                     $table = "unidadmedida";
 
                     $datas = array("codigo" => $_POST["idUnit"], 
@@ -41,7 +42,7 @@
             
 
         static public function ctrShowUnit($item, $valor){
-
+             //. Estos parámetros son utilizados para realizar una búsqueda en la tabla unidadmedida de la base de datos y devolver el resultado de la búsqueda
             $tabla = "unidadmedida";
             
             $respuesta = Unit::mdlShowUnit($tabla, $item, $valor);
@@ -49,6 +50,7 @@
         }
 
         static public function ctrUpdateUnit(){
+            //actualiza una unidad de medida en una base de datos. 
 
             if(isset($_POST["idUnitm"])){
 
@@ -62,6 +64,7 @@
                     $respuesta = Unit::mdlUpdateUnit($table, $datas);
                     
                     if($respuesta == "ok"){
+                        // Si la actualización se realiza correctamente, se muestra un mensaje de éxito
                         echo "<script>
                         
                             Swal.fire({
@@ -90,17 +93,18 @@
                 }
             }
         }
-
+         //ctrDeleteUnit, que elimina una unidad de medida de la base de datos.
         static public function ctrDeleteUnit(){
 
             if(isset($_GET["idUnitE"])){
 
                 $table = "unidadmedida";
                 $data = $_GET["idUnitE"];
-                
+                // llama al método mdlDeleteUnit de la clase Unit para eliminar la unidad de medida de la base de datos. 
                 $respuesta = Unit::mdlDeleteUnit($table, $data);
 
                 if($respuesta == "ok"){
+                     //Si se eliminó correctamente, se muestra un mensaje de éxito
                     echo "<script>
                     
                         Swal.fire({

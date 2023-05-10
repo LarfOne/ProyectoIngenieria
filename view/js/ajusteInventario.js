@@ -1,6 +1,8 @@
 const dataArrayProductos = JSON.parse(localStorage.getItem("datosProductos"));
 const dataArrayInventario = JSON.parse(localStorage.getItem("datosInventario"));
 
+console.log("HOLA SI ESTOY", dataArrayProductos);
+console.log("HOLA SI ESTOY2", dataArrayInventario);
 
 //dataArrayProductos[0].codigo
 

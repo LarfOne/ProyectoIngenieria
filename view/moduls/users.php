@@ -6,11 +6,9 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div id="container pt-4" style="margin-top: 100px;" >
-
+<div id="container pt-4" style="margin-top: 100px;">
   <div class="container mt-3">
     <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
-
     <div class="tablaUs">
       <button class="btn btn-primary btnAgregarU" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Usuario
@@ -185,7 +183,7 @@
               <!--AGREGAR DE FOTO-->
               <div class="form-group subirFoto">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
-                <input type="file" class="image" name="image">
+                <input type="file" class="imageUser" name="imageUser">
                 <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
                 <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
               </div>

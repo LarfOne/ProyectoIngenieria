@@ -22,6 +22,7 @@ class AjaxUser{
     }
 
 }
+
 //se instancia un objeto de la clase "AjaxUser" y se llama a la función "ajaxUpdateUser" para actualizar la información del usuario 
 //en la base de datos.
 

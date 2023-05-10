@@ -124,10 +124,10 @@
         if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") { 
         
             echo '<li class="has-subnav">
-                        <a href="auditView">
+                        <a href="auditoria">
                             <i class="fa fa-database fa-2x"></i>
                             <span class="nav-text">
-                                Auditoria
+                                auditoria
                             </span>
                         </a>
                         

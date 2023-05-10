@@ -14,9 +14,9 @@ class ControllerClient{
 
 	}
 
-	/**REGISTRO DE CLIENTES*/
+	/**REGISTRO DE Clientes*/
 	static public function ctrCreateClient(){
-		//"ctrCreateClient", la cual es responsable de agregar un nuevo cliente en la base de datos.
+		//"ctrCreateClient", la cual es responsable de agregar un nuevo cliente en la base de datos
 		if(isset($_POST["cedula"])){
 			
 
@@ -81,7 +81,8 @@ class ControllerClient{
 	static public function ctrUpdateClient(){
 
 		if(isset($_POST["cedulam"])){// verifica si se ha enviado un formulario con la información del cliente a actualizar
-			//validación sobre el valor de cedulam para asegurarse de que solo contenga letras, números, espacios y caracteres especiales en español. 
+			//validación sobre el valor de cedulam para asegurarse de que solo contenga letras, números, espacios y caracteres especiales en español
+
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["cedulam"])){
 
 				$table = "cliente";
@@ -96,7 +97,7 @@ class ControllerClient{
 
 
 
-				//mdlUpdate de la clase Client para actualizar los datos del cliente en la base de datos. Este método recibe como parámetros el nombre de la tabla (cliente) y el array $datas con los nuevos datos del cliente.
+				//mdlUpdate de la clase Client para actualizar los datos del cliente en la base de datos. Este método recibe como parámetros el nombre de la tabla (cliente) y el array $datas con los nuevos datos del cliente
 				$respuesta = Client::mdlUpdate($table, $datas);
 				//se muestra un mensaje de éxito
 				if($respuesta == "ok"){

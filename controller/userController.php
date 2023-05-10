@@ -1,7 +1,7 @@
 <?php
     class ControllerUser{
         
-        //recibe como parámetro la cédula de un usuario y retorna el nombre completo del usuario correspondiente a dicha cédula.
+         //recibe como parámetro la cédula de un usuario y retorna el nombre completo del usuario correspondiente a dicha cédula.
         static public function ctrNameUser($cedula){
             
             $respuesta = User::mdlNameUser($cedula);
@@ -17,15 +17,14 @@
                 preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingPassword"])){
 
                     $valor = $_POST["ingUser"];
-
+                    //loginUser para obtener los datos del usuario que se está intentando ingresar
                     $incrypt = crypt($_POST["ingPassword"], '$2a$07$usesomesillystringforsalt$');
-                    //loginUser para obtener los datos del usuario que se está intentando ingresar. 
-                    $respuesta = User::loginUser($valor);
                     // Si el usuario existe y su estado es 'Activo', se comprueba si los datos ingresados coinciden con los almacenados en la base de datos.
-                    if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
+                    $respuesta = User::loginUser($valor);
                     //Si coinciden, se establecen las variables de sesión correspondientes y se redirige al usuario a la página de inicio. Si no coinciden, 
-                    //se muestra un mensaje de error. Si el usuario no existe o su estado no es 'Activo', también se muestra un mensaje de error.
-                        if(($respuesta["nombre"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
+                    //se muestra un mensaje de error. Si el usuario no existe o su estado no es 'Activo', también se muestra un mensaje de error
+                    if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
+                    if(($respuesta["nombre"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
                         $_SESSION["iniciarSesion"] = "ok";
                         $_SESSION["cedula"] = $respuesta["cedula"];
                         $_SESSION["nombre"] = $respuesta["nombre"];
@@ -55,18 +54,19 @@
         static public function ctrCreateUser(){
             // crea un nuevo registro de usuario en una base de datos.
             if(isset($_POST["idUser"])){
-                // verifica que se hayan enviado los datos del formulario y que cumplan con ciertos patrones de validación 
+                 // verifica que se hayan enviado los datos del formulario y que cumplan con ciertos patrones de validación 
+
                 if(preg_match('/^[0-9]+$/', $_POST["idUser"]) && 
                 preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
                 preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
-                    //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
+                     //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
                     $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
-                    
-                    $ruta = null;
                     // función comprueba si se ha cargado una imagen de perfil para el nuevo usuario y si es así, la procesa y la almacena en un directorio en el servidor.
-                    if(isset($_FILES["image"]["tmp_name"])){
+                    $ruta = null;
+                    
+                    if(isset($_FILES["imageUser"]["tmp_name"])){
 
-                        list($ancho, $alto) = getimagesize($_FILES["image"]["tmp_name"]);
+                        list($ancho, $alto) = getimagesize($_FILES["imageUser"]["tmp_name"]);
 
                         //var_dump($_FILES["image"]["tmp_name"]);
 
@@ -74,11 +74,11 @@
 
                         mkdir($directorio, 0755);
 
-                        if($_FILES["image"]["type"] == "image/jpeg"){
+                        if($_FILES["imageUser"]["type"] == "image/jpeg"){
                             
-                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["imageUser"]["name"];
                         
-                            $origen = imagecreatefromjpeg($_FILES["image"]["tmp_name"]);
+                            $origen = imagecreatefromjpeg($_FILES["imageUser"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
 
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
@@ -86,11 +86,11 @@
                             imagejpeg($destino, $ruta);
                         }
 
-                        if($_FILES["image"]["type"] == "image/png"){
+                        if($_FILES["imageUser"]["type"] == "image/png"){
                             
-                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["imageUser"]["name"];
                         
-                            $origen = imagecreatefrompng($_FILES["image"]["tmp_name"]);
+                            $origen = imagecreatefrompng($_FILES["imageUser"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
 
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
@@ -112,10 +112,10 @@
                                                     "direccion" => $_POST["directionUser"],
                                                     "estado" => $_POST["estadoUser"],
                                                     "image" =>$ruta);
-                                    echo($datas);
+
+                                    
                                 
                                     $respuesta = User::mdlAdd($datas);
-
                                     if($respuesta == "ok"){
                                         echo "<script>
                                         
@@ -140,12 +140,15 @@
                                         </script>";
                                     }
                 }
+
             }
         }
 
-        static public function ctrShowUser($item, $valor){//User y permite obtener información de un usuario específico en la base de datos.
+        static public function ctrShowUser($item, $valor){
+            //User y permite obtener información de un usuario específico en la base de datos.
             //parámetros: $item que indica el campo de la tabla donde se buscará la información (por ejemplo, "idUsuario", "nombre", "cedula", etc.), y $valor que es el valor que se buscará en ese campo para 
             //obtener la información específica de ese usuario.
+            
             $respuesta = User::mdlShow($item, $valor);
             return $respuesta;
         }
@@ -155,9 +158,10 @@
         
 
         static public function ctrUpdateUser(){
-            //ctrUpdateUser actualiza los datos de un usuario en la base de datos y su imagen de perfil en caso de haberla modificado.
+             //ctrUpdateUser actualiza los datos de un usuario en la base de datos y su imagen de perfil en caso de haberla modificado.
             //se verifica si se ha enviado un ID de usuario a través del método POST y si su formato es correcto. Luego se establece la tabla de la base de 
             //datos en la que se realizará la actualización.
+
             if(isset($_POST["idUserm"])){
 
                 if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["idUserm"])){
@@ -298,6 +302,7 @@
                 $data = $_GET["idEmpleadoE"];
                 //mdlDelete del modelo User para realizar la eliminación en la base de datos. 
                 //Si la eliminación es exitosa, se muestra un mensaje de éxito usando la librería SweetAlert y se redirecciona al usuario a la página de lista de usuarios.
+                
                 $respuesta = User::mdlDelete($data);
                 //$respuesta = User::mdlPrueba($data);
 

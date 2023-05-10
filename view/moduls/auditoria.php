@@ -15,12 +15,13 @@
             <table class="table" id="tabla" data-sort="table">
                 <thead>
                     <tr>
-                        <th >Codigo</th>
+                        <th>Código</th>
                         <th>Nombre</th>
                         <th>Marca</th>
-                        <th>Descripcion</th>
+                        <th>Descripción</th>
                         <th>Precio Neto</th>
                         <th>Precio Total</th>
+                        <th>Usuario que lo ingresó</th>
                         <th>Fecha de ingreso</th>
                     </tr>
                 </thead>
@@ -41,6 +42,7 @@
                         <td><?php echo $auditProducts1['descripcion']; ?></td>
                         <td><?php echo $auditProducts1['precioNeto']; ?></td>
                         <td><?php echo $auditProducts1['precioTotal']; ?></td>
+                        <td><?php echo $auditProducts1['usuarioIngresa']; ?></td>
                         <td><?php echo $auditProducts1['fechaIngreso']; ?></td>
                     </tr>
 

@@ -109,7 +109,10 @@ class ControllerProduct
 	} 
 
 	static public function ctrCreateProduct()
-	{	//verifica si se ha enviado una solicitud POST con un valor idProducto
+	//verifica si se ha enviado una solicitud POST con un valor idProducto
+	{
+		$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
+
 		if (isset($_POST["idProducto"])) {
 
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
@@ -150,7 +153,9 @@ class ControllerProduct
 					"porcentajeIva" => $_POST["porcProducto"],
 					"precioTotal" => $_POST["precioTotal"],
 					"observaciones" => $_POST["obsProducto"],
-					"image" => $ruta);
+					"image" => $ruta,
+					"usuarioIngresa" => $usuarioIngresa
+				);
 
 				print_r($datas);
 				$respuesta = Product::mdlAdd($datas);

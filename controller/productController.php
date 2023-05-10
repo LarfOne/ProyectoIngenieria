@@ -110,6 +110,7 @@ class ControllerProduct
 
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
 
+				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 				/************************** FOTO PRODUCTO ********************************************/
 				$ruta = null;
                     if(isset($_FILES["imageProductos"]["tmp_name"])){	
@@ -146,9 +147,9 @@ class ControllerProduct
 					"porcentajeIva" => $_POST["porcProducto"],
 					"precioTotal" => $_POST["precioTotal"],
 					"observaciones" => $_POST["obsProducto"],
-					"image" => $ruta);
+					"image" => $ruta,
+					"usuarioIngresa" => $usuarioIngresa);
 
-				print_r($datas);
 				$respuesta = Product::mdlAdd($datas);
 
 				if ($respuesta == "ok") {

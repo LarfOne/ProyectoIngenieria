@@ -103,6 +103,7 @@ section {
 .card-img {
     width: 25%; /* ajuste el tamaño de las imágenes */
     margin: 0 auto; /* centrar la imagen dentro de su contenedor */
+    left: 5px;
   }
   
   .btn-perso {
@@ -122,6 +123,8 @@ section {
     margin: 10px;  /* agregar un margen de 10 píxeles entre las cards */
     text-align: center; /* centrar el contenido dentro de las cards */
     margin-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
   }
   
   @media screen and (max-width: 768px) {
@@ -162,7 +165,7 @@ section {
     background-color: #F5EA07;
     border: 2px solid #b4ac16;
     font-family: 'Roboto Condensed', sans-serif !important;
-    font-size: medium;
+    font-size: larger;
     display: block;
     color: rgb(59, 58, 58);
      padding: 15px;
@@ -181,7 +184,7 @@ section {
     background-color: #EF5350;
     border: 3px solid #ba2421;
     font-family: 'Roboto Condensed', sans-serif !important;
-   font-size: 13px;
+   font-size: 16px;
    display: block;
    color: rgb(59, 58, 58);
     padding: 15px;
@@ -193,13 +196,14 @@ section {
     cursor: pointer;
     text-align: center;
     padding-top: 10px;
+    text-decoration: none;
 }
 .btn-clients{
     
     background-color: #4FC1E9;
     border: 2px solid #1596c1;
     font-family: 'Roboto Condensed', sans-serif !important;
-   font-size: medium;
+   font-size: larger;
    display: block;
    color: rgb(59, 58, 58);
     padding: 15px;
@@ -211,13 +215,14 @@ section {
     cursor: pointer;
     text-align: center;
     padding-top: 10px;
+    text-decoration: none;
 }
 .btn-sells{
     
     background-color: #26CFAD;
     border: 2px solid #0aad8a;
     font-family: 'Roboto Condensed', sans-serif !important;
-   font-size: medium;
+   font-size: larger;
    display: block;
    color: rgb(59, 58, 58);
     padding: 15px;
@@ -229,6 +234,7 @@ section {
     cursor: pointer;
     text-align: center;
     padding-top: 10px;
+    text-decoration: none;
 }
 
 

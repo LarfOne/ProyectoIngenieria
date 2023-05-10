@@ -19,7 +19,7 @@
     
             $sentenciaSQL -> bindParam(":cedula", $valor, PDO::PARAM_STR);
     
-            $sentenciaSQL -> execute();
+            $sentenciaSQL -> execute(); 
     
             return $sentenciaSQL -> fetch();
         }
@@ -38,15 +38,22 @@
          * 
         */
 
-        static public function mdlShow($tabla, $item, $valor){
+        static public function loginUser($name){
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_login(:name)");
+            $sentenciaSQL -> bindParam(":name", $name, PDO::PARAM_STR);
+            $sentenciaSQL -> execute();
+            return $sentenciaSQL -> fetch();
+        }
+
+        static public function mdlShow($item, $valor){
             if($item != null){
-                $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
-                $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+                $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_obtener_empleado(:cedula)");
+                $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_INT);
                 $sentenciaSQL -> execute();
                 return $sentenciaSQL -> fetch();
             
             }else{
-                $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+                $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM vista_empleado");
                 $sentenciaSQL -> execute();
                 return $sentenciaSQL -> fetchAll();
             }
@@ -66,13 +73,9 @@
          * datos no se agregaron
         */
 
-        static public function mdlAdd($table, $datas){
+        static public function mdlAdd($datas){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (cedula, idSucursal, nombre, apellidos, email,
-                                                                                role, password, cuentaBancaria, direccion, estado, image) VALUES
-                                                                                (:cedula, :idSucursal, :nombre, :apellidos, :email,
-                                                                                :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
-
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
@@ -84,7 +87,6 @@
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);
-
 
             if($sentenciaSQL->execute()){
                 
@@ -125,12 +127,11 @@
          * @return retorna una fila de todos los datos del usuario
         */
 
-        static public function mdlUpdate($table, $datas){
+        static public function mdlUpdate($datas){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET idSucursal = :idSucursal, nombre = :nombre, apellidos = :apellidos, email = :email,
-                                                            role = :role, password = :password, cuentaBancaria = :cuentaBancaria, direccion = :direccion, estado = :estado, image = :image WHERE cedula = :cedula");
-            
-            
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_update_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, 
+            :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
+
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':apellidos', $datas["apellidos"], PDO::PARAM_STR);
@@ -156,9 +157,9 @@
 
         }
 
-        static public function mdlDelete($table, $data){
+        static public function mdlDelete($data){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("DELETE FROM $table WHERE cedula = :cedula");
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_empleado(:cedula)");
             $sentenciaSQL -> bindParam(':cedula', $data, PDO::PARAM_INT);
 
             if($sentenciaSQL->execute()){

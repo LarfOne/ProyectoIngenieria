@@ -21,11 +21,11 @@ class Product{
     }
 
 
-	static public function mdlShow($tabla, $item, $valor){
+	static public function mdlShow($item, $valor){
 
 		if($item != null){
 
-			$sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+			$sentenciaSQL = Conexion::conectar()->prepare("CALL pa_obtener_producto(:$item)");
 
 			$sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
 
@@ -35,7 +35,7 @@ class Product{
 
 		}else{
 
-			$sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+			$sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM vista_producto");
 
 			$sentenciaSQL -> execute();
 
@@ -52,21 +52,22 @@ class Product{
 	/*=============================================
 	REGISTRO DE PRODUCTO
 	=============================================*/
-	static public function mdlAdd($tabla, $datos){
+	static public function mdlAdd($datos){
 
-		$sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $tabla(codigo,nombre,marca, descripcion, precioNeto, categoria, unidadmedida, porcentajeIva, precioTotal, observaciones, usuarioIngresa)
-		VALUES (:codigo, :nombre, :marca, :descripcion, :precioNeto, :categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :usuarioIngresa)");
+		$sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_producto(:codigo, :nombre, :marca, :descripcion, :precioNeto, 
+			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :image, :usuarioIngresa)");
 
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":precioNeto", $datos["precioNeto"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":unidadmedida", $datos["unidadmedida"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":porcentajeIva", $datos["porcentajeIva"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":precioNeto", $datos["precioNeto"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":categoria", $datos["categoria"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":unidadmedida", $datos["unidadmedida"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":porcentajeIva", $datos["porcentajeIva"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":image", $datos["image"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":usuarioIngresa", $datos["usuarioIngresa"], PDO::PARAM_STR);
 
 
@@ -98,12 +99,13 @@ class Product{
 	/*=============================================
 	EDITAR PRODUCTO
 	=============================================*/
-	static public function mdlUpdateProduct($tabla, $datos){
+	static public function mdlUpdateProduct($datos){
 
-		$sentenciaSQL = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, marca = :marca, descripcion = :descripcion,
-		precioNeto = :precioNeto, categoria = :categoria, unidadmedida = :unidadmedida, porcentajeiva = :porcentajeiva, 
-		precioTotal = :precioTotal, observaciones = :observaciones WHERE codigo = :codigo");
+		$sentenciaSQL = Conexion::conectar()->prepare("CALL pa_actualizar_producto (:codigo, :nombre, :marca, :descripcion,
+		:precioNeto, :categoria, :unidadmedida, :porcentajeiva, 
+		:precioTotal, :observaciones)");
 		
+		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
@@ -113,11 +115,8 @@ class Product{
 		$sentenciaSQL->bindParam(":porcentajeiva", $datos["porcentajeIva"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
-
-
+		
         if ($sentenciaSQL->execute()) {
-
             return "ok";
         } else {
             return "error";
@@ -128,10 +127,10 @@ class Product{
         $sentenciaSQL = null;
     }
 
-    static public function mdlDelete($table, $data)
+    static public function mdlDelete($data)
     {
 
-        $sentenciaSQL = Conexion::conectar()->prepare("DELETE FROM $table WHERE codigo = :codigo");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_producto(:codigo)");
         $sentenciaSQL->bindParam(':codigo', $data, PDO::PARAM_INT);
 
         if ($sentenciaSQL->execute()) {

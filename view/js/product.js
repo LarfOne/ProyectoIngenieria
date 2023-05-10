@@ -1,6 +1,3 @@
-let datosProductos = [];
-//localStorage.setItem('datosProductos', datosProductos);
-
 $(".btnUpdateInventario").click(function(){
     var idProduct = $(this).attr("idProduct");
     //console.log("idEmpleado", idEmpleado);
@@ -19,28 +16,36 @@ $(".btnUpdateInventario").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
+            //Ingresar los datos al localStorage
+            /*localStorage.setItem("idProducto", respuesta["codigo"]);
+            localStorage.setItem("nameProducto", respuesta["nombre"]);
+            localStorage.setItem("marcaProducto", respuesta["marca"]);
+            localStorage.setItem("descriptionProducto", respuesta["descripcion"]);
+            localStorage.setItem("precioProducto", respuesta["precioNeto"]);
+            localStorage.setItem("cateProducto", respuesta["categoria"]);
+            localStorage.setItem("unitProducto", respuesta["unidadmedida"]);
+            localStorage.setItem("porcProducto", respuesta["porcentajeIva"]);
+            localStorage.setItem("precioTotal", respuesta["precioTotal"]);
+            localStorage.setItem("obsProducto", respuesta["observaciones"]);*/
 
-            const infoProductos = {
-                codigo: respuesta["codigo"],
-                nombre: respuesta["nombre"],
-                marca: respuesta["marca"],
-                descripcion: respuesta["descripcion"],
-                precioNeto: respuesta["precioNeto"],
-                categoria: respuesta["categoria"],
-                unidadMedida: respuesta["unidadmedida"],
-                porcentajeIva: respuesta["porcentajeIva"],
-                precioTotal: respuesta["precioTotal"],
-                observaciones: respuesta["observaciones"]
-            }
+            $("#idProducto").val(respuesta["codigo"]);
+            $("#nameProducto").val(respuesta["nombre"]);
+            $("#marcaProducto").val(respuesta["marca"]);
+            $("#descriptionProducto").val(respuesta["descripcion"]);
+            $("#precioNeto").val(respuesta["precioNeto"]);
+            $("#cateProducto").val(respuesta["categoria"]);
+            //$("#idSucursal").val(respuesta["idSucursal"]);
+            $("#unitProducto").val(respuesta["unidadmedida"]);
+            $("#porcProducto").val(respuesta["porcentajeIVA"]);
+            //$("#cantProducto").val(respuesta["cantidad"]);
+            $("#precioTotal").val(respuesta["precioTotal"]);
+            //$("#existProducto").val(respuesta["existencia"]);
+            //$("#minProducto").val(respuesta["minimo"]);
+            $("#obsProducto").val(respuesta["observaciones"]);
 
-            datosProductos = [...datosProductos, infoProductos];
 
-            let productos = JSON.stringify(datosProductos);
-            localStorage.setItem("datosProductos",productos);
+            //console.log("respuesta", respuesta);
 
-            const dataArray = JSON.parse(localStorage.getItem("datosProductos"));
-
-            mostrarValores(dataArray);
         }
 
     })
@@ -52,35 +57,6 @@ function mostrarValores(dataArray){
     $("#idProducto").val(dataArray[0].codigo);
 
 }
-
-/*$(document).ready(function(){
-
-    // Obtener los datos del localStorage
-    var idProducto = localStorage.getItem("idProducto");
-    var nameProducto = localStorage.getItem("nameProducto");
-    var marcaProducto = localStorage.getItem("marcaProducto");
-    var descriptionProducto = localStorage.getItem("descriptionProducto");
-    var precioProducto = localStorage.getItem("precioProducto");
-    var cateProducto = localStorage.getItem("cateProducto");
-    var unitProducto = localStorage.getItem("unitProducto");
-    var porcProducto = localStorage.getItem("porcProducto");
-    var precioTotal = localStorage.getItem("precioTotal");
-    var obsProducto = localStorage.getItem("obsProducto");
-
-    // Asignar los datos a los campos correspondientes
-    $("#idProducto").val(idProducto);
-    $("#nameProducto").val(nameProducto);
-    $("#marcaProducto").val(marcaProducto);
-    $("#descriptionProducto").val(descriptionProducto);
-    $("#precioNeto").val(precioProducto);
-    $("#cateProducto").val(cateProducto);
-    $("#unitProducto").val(unitProducto);
-    $("#porcProducto").val(porcProducto);
-    $("#precioTotal").val(precioTotal);
-    $("#obsProducto").val(obsProducto);
-
-    //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
-})*/
 
 
 $(".btnDeleteInventario").click(function(){
@@ -150,6 +126,48 @@ function obtenerPrecioNeto(){
     }
 }
 
+
+//AGREGAR IMAGEN AL USUARIO
+$(".imageProductos").change(function() {
+
+    var imagen = this.files[0];
+
+    console.log(this.files[0]);
+
+    /*$target_dir = "imagen/"; //directorio en el que se subira
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
+    */
+    if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
+
+        $(".image").val("");
+
+        Swal.fire(
+            'Error!',
+            'La imagen debe de estar en formato JPG, PNG O JPEG!',
+            'error'
+        );
+    } else if (imagen["size"] > 10000000) {
+
+        $(".image").val("");
+
+        Swal.fire(
+            'Error!',
+            'La imagen no debe de pesar mas de 10MB!',
+            'error'
+        );
+
+    } else {
+
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+
+        $(datosImagen).on("load", function(event) {
+            var rutaImagen = event.target.result;
+            $(".imageTemp").attr("src", rutaImagen);
+        })
+    }
+
+})  
 
 
 

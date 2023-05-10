@@ -1,5 +1,3 @@
-let datosInventario = [];
-
 $(".btnUpdateInventario").click(function(){
     var idInventario = $(this).attr("idInventario");
     var datas = new FormData();
@@ -16,19 +14,13 @@ $(".btnUpdateInventario").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
+            //Ingresar los datos al localStorage
+            /*localStorage.setItem("codigoInventario", respuesta["codigo"]);
+            localStorage.setItem("idSucursal", respuesta["idSucursal"]);
+            localStorage.setItem("cantProducto", respuesta["cantidad"]);
+            localStorage.setItem("existProducto", respuesta["existencia"]);
 
-            const infoInventario = {
-                codigo: respuesta["codigo"],
-                idSucursal: respuesta["idSucursal"],
-                cantidad: respuesta["cantidad"]
-            }
-
-            datosInventario = [...datosInventario, infoInventario];
-
-            let inventario = JSON.stringify(datosInventario);
-            localStorage.setItem("datosInventario",inventario);
-
-            
+            console.log("respuestaInventario", respuesta);*/
 
             $("#codigoInventario").val(respuesta["codigo"]);
             $("#idSucursal").val(respuesta["idSucursal"]);

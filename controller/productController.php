@@ -3,36 +3,38 @@
 class ControllerProduct
 {
 
+	//Recibe como parámetro el código del producto
 	static public function ctrNameProducts($codigo){
-            
+        //"mdlNameProducts" definido en el modelo "Product" para obtener
+		// la información correspondiente al nombre del producto
 		$respuesta = Product::mdlNameProducts($codigo);
 		return $respuesta;
 
 	}
 
 	/*=============================================
-	CREAR PRODUCTO
+	PRODUCTO
 	=============================================*/
 	static public function ctrShowProduct($item, $valor){
 
-		$tabla = "producto";
-
-		$respuesta = Product::mdlShow($tabla, $item, $valor);
+		$respuesta = Product::mdlShow($item, $valor);
+		// devuelve el resultado obtenido a través de la variable $respuesta.
 		return $respuesta;
 	}
 
 
 	static public function ctrDeleteProduct()
 	{
-
+		//ctrDeleteProduct() verifica si se ha recibido un parámetro idProductE por el método GET
 		if (isset($_GET["idProductE"])) {
 
 			$table = "producto";
 			$data = $_GET["idProductE"];
 
-			$respuesta = Product::mdlDelete($table, $data);
+			$respuesta = Product::mdlDelete($data);
 			//$respuesta = User::mdlPrueba($data);
-
+			//Product::mdlDelete($data) para eliminar el producto correspondiente de la base de datos. Si la respuesta es "ok", se muestra un mensaje de éxito utilizando la biblioteca 
+			//SweetAlert y se redirige al usuario a la página de inventarios.
 			if ($respuesta == "ok") {
 				echo "<script>
 				
@@ -57,13 +59,11 @@ class ControllerProduct
 
 
 	static public function ctrUpdateProduct(){
-
+		//verifica si se ha enviado el ID del producto a actualizar a través del método POST
 		if (isset($_POST["idProductoAjuste"])) {
 
 			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
-
-				$table = "producto";
-
+				// se crea un array con los datos del producto a actualizar, que se obtienen a través del método POST.
 				$datas = array(
 					"codigo" => $_POST["idProductoAjuste"],
 					"nombre" => $_POST["nameProductoAjuste"],
@@ -78,8 +78,8 @@ class ControllerProduct
 				);
 
 
-			
-				$respuesta = Product::mdlUpdateProduct($table, $datas);
+			//llama al método "mdlUpdateProduct" de la clase Product para actualizar el producto en la base de datos. 
+				$respuesta = Product::mdlUpdateProduct($datas);
 
 				if ($respuesta == "ok") {
 					echo "<script>
@@ -109,7 +109,7 @@ class ControllerProduct
 	} 
 
 	static public function ctrCreateProduct()
-	
+	//verifica si se ha enviado una solicitud POST con un valor idProducto
 	{
 		$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 		echo $usuarioIngresa;
@@ -118,8 +118,31 @@ class ControllerProduct
 
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
 
-				$table = "producto";
+				/************************** FOTO PRODUCTO ********************************************/
+				$ruta = null;
+                    if(isset($_FILES["imageProductos"]["tmp_name"])){	
 
+                        list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
+                        //var_dump($_FILES["image"]["tmp_name"]);
+                        $directorio = "imagen/productos/".$_POST["idProducto"];
+                        mkdir($directorio, 0755);
+                        if($_FILES["imageProductos"]["type"] == "image/jpeg"){
+                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
+                            $origen = imagecreatefromjpeg($_FILES["imageProductos"]["tmp_name"]);
+                            $destino = imagecreatetruecolor(500, 500);
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+                            imagejpeg($destino, $ruta);
+                        }
+                        if($_FILES["imageProductos"]["type"] == "image/png"){
+                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
+                            $origen = imagecreatefrompng($_FILES["imageProductos"]["tmp_name"]);
+                            $destino = imagecreatetruecolor(500, 500);
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+                            imagepng($destino, $ruta);
+                        }
+                        
+                    }
+					
 				$datas = array(
 					"codigo" => $_POST["idProducto"],
 					"nombre" => $_POST["nameProducto"],
@@ -131,10 +154,12 @@ class ControllerProduct
 					"porcentajeIva" => $_POST["porcProducto"],
 					"precioTotal" => $_POST["precioTotal"],
 					"observaciones" => $_POST["obsProducto"],
+					"image" => $ruta
 					"usuarioIngresa" => $usuarioIngresa
 				);
 
-				$respuesta = Product::mdlAdd($table, $datas);
+				print_r($datas);
+				$respuesta = Product::mdlAdd($datas);
 
 				if ($respuesta == "ok") {
 					echo "<script>

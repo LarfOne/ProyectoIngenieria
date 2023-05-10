@@ -146,7 +146,7 @@
                 <th>Codigo</th>
                 <th>Descripcion</th>
                 <th>Cantidad</th>
-                <th>Descuento</th>
+                <th>Descuento %</th>
                 <th>Precio Unitario</th>
                 <th>SubTotal</th>
                 <th>Acciones</th>
@@ -165,30 +165,51 @@
       <div class="botonesVenta">
         <div class="col-xs-8 pull-right">
 
-          <table class="table">
+          <table class="table tablaD">
             <thead>
               <tr>
+                <th class="total-texto">Descuento %</th>
+                <th class="total-texto">Impuesto %</th>
                 <th class="total-texto">Total</th>
               </tr>
             </thead>
 
             <tbody>
               <tr>
-                <td style="width: 50%">
+                <!--DESCUENTO DE VENTA-->
+                <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
+                    <input type="number" class="form-control input-lg" id="nuevoDescuentoVenta" name="nuevoDescuentoVenta" value=0 min=0 max=100 required>
+                    <input type="hidden" name="descuentoVenta" id="totalVenta">
+                  </div>
+                </td>
+                <!--IMPUESTO DE VENTA-->
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                    <input type="number" class="form-control input-lg" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" value=0 min=0 max=100 required>
+                    <input type="hidden" name="impuestoVenta" id="totalVenta">
+                  </div>
+                </td>
+                <!--TOTAL DE VENTA--> 
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
                     <input type="hidden" name="totalVenta" id="totalVenta">
                   </div>
                 </td>
               </tr>
-
             </tbody>
           </table>
 
         </div>
+        <a href="ventas">
 
         <button type="button" class="btnVentaCancelar">Cancelar</button>
+
+        </a>
 
         <button type="submit" class="btnVentaGuardar">Guardar venta</button>
 

@@ -29,7 +29,7 @@ class Categories{
             return $sentenciaSQL -> fetch();
         
         }else{
-            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM vista_categoria");
 
             $sentenciaSQL -> execute();
 
@@ -44,9 +44,9 @@ class Categories{
         
     }
 
-    static public function mdlAdd($table, $datas){
+    static public function mdlAdd($datas){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (nombre) VALUES (:nombre )");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_categoria(:nombre)");
 
         $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
 
@@ -72,10 +72,9 @@ class Categories{
 
     }
 
-    static public function mdlUpdate($table, $datas){
+    static public function mdlUpdate($datas){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET nombre = :nombre
-                                            WHERE codigo = :codigo");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_actualizar_categoria(:codigo,:nombre)");
         
         
         $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
@@ -95,9 +94,9 @@ class Categories{
 
     }
 
-    static public function mdlDelete($table, $data){
+    static public function mdlDelete($data){
 
-        $sentenciaSQL = Conexion::conectar()->prepare("DELETE FROM $table WHERE codigo = :codigo");
+        $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_categoria(:codigo)");
         $sentenciaSQL -> bindParam(':codigo', $data, PDO::PARAM_INT);
 
         if($sentenciaSQL->execute()){

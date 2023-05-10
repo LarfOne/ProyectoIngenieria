@@ -52,7 +52,7 @@ class Product{
 	/*=============================================
 	REGISTRO DE PRODUCTO
 	=============================================*/
-	static public function mdlAdd($tabla, $datos){
+	static public function mdlAdd( $datos){
 
 		$sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_producto(:codigo, :nombre, :marca, :descripcion, :precioNeto, 
 			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones)");
@@ -125,7 +125,7 @@ class Product{
         $sentenciaSQL = null;
     }
 
-    static public function mdlDelete($table, $data)
+    static public function mdlDelete( $data)
     {
 
         $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_producto(:codigo)");

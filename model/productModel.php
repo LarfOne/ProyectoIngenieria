@@ -52,21 +52,22 @@ class Product{
 	/*=============================================
 	REGISTRO DE PRODUCTO
 	=============================================*/
-	static public function mdlAdd($tabla, $datos){
+	static public function mdlAdd($datos){
 
 		$sentenciaSQL = Conexion::conectar()->prepare("CALL pa_insertar_producto(:codigo, :nombre, :marca, :descripcion, :precioNeto, 
-			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones)");
+			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :image)");
 
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":marca", $datos["marca"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":precioNeto", $datos["precioNeto"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":unidadmedida", $datos["unidadmedida"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":porcentajeIva", $datos["porcentajeIva"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":precioNeto", $datos["precioNeto"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":categoria", $datos["categoria"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":unidadmedida", $datos["unidadmedida"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":porcentajeIva", $datos["porcentajeIva"], PDO::PARAM_INT);
+		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":image", $datos["image"], PDO::PARAM_STR);
 
 
 		if($sentenciaSQL->execute()){
@@ -125,7 +126,7 @@ class Product{
         $sentenciaSQL = null;
     }
 
-    static public function mdlDelete($table, $data)
+    static public function mdlDelete($data)
     {
 
         $sentenciaSQL = Conexion::conectar()->prepare("CALL pa_eliminar_producto(:codigo)");

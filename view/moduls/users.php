@@ -183,7 +183,7 @@
               <!--AGREGAR DE FOTO-->
               <div class="form-group subirFoto">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
-                <input type="file" class="image" name="image">
+                <input type="file" class="imageUser" name="imageUser">
                 <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
                 <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
               </div>

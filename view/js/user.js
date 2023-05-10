@@ -67,7 +67,7 @@ $(".btnDeleteUser").click(function() {
 })
 
 //AGREGAR IMAGEN AL USUARIO
-$(".image").change(function() {
+$(".imageUser").change(function() {
 
     var imagen = this.files[0];
 

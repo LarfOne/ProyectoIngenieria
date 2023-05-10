@@ -60,9 +60,9 @@
                     
                     $ruta = null;
                     
-                    if(isset($_FILES["image"]["tmp_name"])){
+                    if(isset($_FILES["imageUser"]["tmp_name"])){
 
-                        list($ancho, $alto) = getimagesize($_FILES["image"]["tmp_name"]);
+                        list($ancho, $alto) = getimagesize($_FILES["imageUser"]["tmp_name"]);
 
                         //var_dump($_FILES["image"]["tmp_name"]);
 
@@ -70,11 +70,11 @@
 
                         mkdir($directorio, 0755);
 
-                        if($_FILES["image"]["type"] == "image/jpeg"){
+                        if($_FILES["imageUser"]["type"] == "image/jpeg"){
                             
-                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["imageUser"]["name"];
                         
-                            $origen = imagecreatefromjpeg($_FILES["image"]["tmp_name"]);
+                            $origen = imagecreatefromjpeg($_FILES["imageUser"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
 
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
@@ -82,11 +82,11 @@
                             imagejpeg($destino, $ruta);
                         }
 
-                        if($_FILES["image"]["type"] == "image/png"){
+                        if($_FILES["imageUser"]["type"] == "image/png"){
                             
-                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["image"]["name"];
+                            $ruta = "imagen/perfil/".$_POST["idUser"]."/".$_FILES["imageUser"]["name"];
                         
-                            $origen = imagecreatefrompng($_FILES["image"]["tmp_name"]);
+                            $origen = imagecreatefrompng($_FILES["imageUser"]["tmp_name"]);
                             $destino = imagecreatetruecolor(500, 500);
 
                             imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
@@ -108,10 +108,10 @@
                                                     "direccion" => $_POST["directionUser"],
                                                     "estado" => $_POST["estadoUser"],
                                                     "image" =>$ruta);
-                                    echo($datas);
+
+                                    
                                 
                                     $respuesta = User::mdlAdd($datas);
-
                                     if($respuesta == "ok"){
                                         echo "<script>
                                         
@@ -136,6 +136,7 @@
                                         </script>";
                                     }
                 }
+
             }
         }
 

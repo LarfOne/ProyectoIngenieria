@@ -11,7 +11,7 @@
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
 
-            <form class="col-md-12" role="form" method="POST" style="margin-top: -30px; !important">
+            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px; !important">
 
                   <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
@@ -124,8 +124,15 @@
                   <div class="row align-items-center four">
                         <div class="col mt-5 mr-5">
                               <label>Foto del producto.</label>
-                              <input type="file" class="form-control input-sm mt-2 image" name="image">
-                              <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
+                              <!--FOTO-->
+                              <input type="file" class="form-control input-sm mt-2 imageProductos" name="imageProductos">
+                              <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
+                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTemp" width="100px">
+                              <!--
+                              <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
+                              <input type="file" class="image" name="image">
+                              <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
+                              <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">-->
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>

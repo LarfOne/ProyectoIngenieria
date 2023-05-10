@@ -122,5 +122,47 @@ function obtenerPrecioNeto(){
 }
 
 
+//AGREGAR IMAGEN AL USUARIO
+$(".imageProductos").change(function() {
+
+    var imagen = this.files[0];
+
+    console.log(this.files[0]);
+
+    /*$target_dir = "imagen/"; //directorio en el que se subira
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
+    */
+    if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
+
+        $(".image").val("");
+
+        Swal.fire(
+            'Error!',
+            'La imagen debe de estar en formato JPG, PNG O JPEG!',
+            'error'
+        );
+    } else if (imagen["size"] > 10000000) {
+
+        $(".image").val("");
+
+        Swal.fire(
+            'Error!',
+            'La imagen no debe de pesar mas de 10MB!',
+            'error'
+        );
+
+    } else {
+
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+
+        $(datosImagen).on("load", function(event) {
+            var rutaImagen = event.target.result;
+            $(".imageTemp").attr("src", rutaImagen);
+        })
+    }
+
+})  
+
 
 

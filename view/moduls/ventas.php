@@ -144,9 +144,7 @@
                     
                     <button class="btn btn-info btnImprimirTicket" codigoVenta="'.$value["codigo"].'">
 
-                    <i class="fa fa-print"></i></button>
-
-                      <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["codigo"].'"><i class="fa fa-times"></i></button>
+                    <i class="fa fa-print"></i></button>  
 
                     </div>  
 

@@ -103,7 +103,7 @@ class Product{
 
 		$sentenciaSQL = Conexion::conectar()->prepare("CALL sp_actualizar_producto (:codigo, :nombre, :marca, :descripcion,
 		:precioNeto, :categoria, :unidadmedida, :porcentajeiva, 
-		:precioTotal, :observaciones)");
+		:precioTotal, :observaciones, :image, :usuarioIngresa)");
 		
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -115,6 +115,8 @@ class Product{
 		$sentenciaSQL->bindParam(":porcentajeiva", $datos["porcentajeIva"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":image", $datos["image"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":usuarioIngresa", $datos["usuarioIngresa"], PDO::PARAM_STR);
 		
         if ($sentenciaSQL->execute()) {
             return "ok";

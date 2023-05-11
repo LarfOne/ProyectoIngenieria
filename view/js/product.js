@@ -1,16 +1,9 @@
 let datosProductos = [];
-//localStorage.setItem('datosProductos', datosProductos);
-
 $(".btnUpdateInventario").click(function(){
     var idProduct = $(this).attr("idProduct");
-    //console.log("idEmpleado", idEmpleado);
-
     var datas = new FormData();
-
     datas.append("idProduct", idProduct);
-
     $.ajax({
-
         url:"ajax/productAjax.php",
         method:"POST",
         data: datas,
@@ -19,7 +12,6 @@ $(".btnUpdateInventario").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-
             const infoProductos = {
                 codigo: respuesta["codigo"],
                 nombre: respuesta["nombre"],
@@ -30,29 +22,17 @@ $(".btnUpdateInventario").click(function(){
                 unidadMedida: respuesta["unidadmedida"],
                 porcentajeIva: respuesta["porcentajeIva"],
                 precioTotal: respuesta["precioTotal"],
-                observaciones: respuesta["observaciones"]
+                observaciones: respuesta["observaciones"],
+                image: respuesta["image"],
+                usuarioIngresa: respuesta["usuarioIngresa"]
             }
-
             datosProductos = [...datosProductos, infoProductos];
-
             let productos = JSON.stringify(datosProductos);
             localStorage.setItem("datosProductos",productos);
-
-            const dataArray = JSON.parse(localStorage.getItem("datosProductos"));
-
-            mostrarValores(dataArray);
         }
 
     })
 })
-
-
-function mostrarValores(dataArray){
-
-    $("#idProducto").val(dataArray[0].codigo);
-
-}
-
 
 $(".btnDeleteInventario").click(function(){
 
@@ -80,23 +60,21 @@ $(".cerrarM").click(function(){
     $("#modalUpdateInventario").modal('hide')
 })
 
-var porcentaje = 0;
-var precioTotal = 0;
-var precioNeto = 0;
-var precioIVA = 0;
-var porc;
+let porcentaje = 0;
+let precioTotal = 0;
+let precioNeto = 0;
+let precioIVA = 0;
+let porc;
 
 function obtenerPorcentaje(){
     porc = document.getElementById("porcProducto").value;
     porcentaje = Number.parseFloat(porc) / 100;
     precioNeto = document.getElementById("precioNeto").value
 
-    console.log(porcentaje);
-
     if(porc != "" && precioNeto != ""){
 
-        precioIVA = precioNeto * porcentaje; //260
-        precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);//2000260
+        precioIVA = precioNeto * porcentaje;
+        precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);
         
         $("#ivaProducto").val(precioIVA);
         $("#precioTotal").val(precioTotal);
@@ -108,12 +86,10 @@ function obtenerPrecioNeto(){
     porcentaje = Number.parseFloat(porc) / 100;
     precioNeto = document.getElementById("precioNeto").value;
 
-    console.log("Pecio Neto", precioNeto);
-
     if(porc != "" && precioNeto != ""){
         
         precioIVA = precioNeto * porcentaje;
-        precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);//2000260
+        precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);
 
         $("#ivaProducto").val(precioIVA);
         $("#precioTotal").val(precioTotal);
@@ -122,7 +98,7 @@ function obtenerPrecioNeto(){
 }
 
 
-//AGREGAR IMAGEN AL USUARIO
+//AGREGAR IMAGEN AL PRODUCTO
 $(".imageProductos").change(function() {
 
     var imagen = this.files[0];

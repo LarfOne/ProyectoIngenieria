@@ -6,7 +6,7 @@
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ajuste de Inventario</h1>
 
-            <form class="col-md-12" role="form" method="POST" style="margin-top: -30px; !important">
+            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px; !important">
 
                 <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
@@ -79,7 +79,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Porcentaje de IVA</label>
-                              <input class="form-control input-sm mt-2" type="number" id="porcProductoAjuste" value="13" name="porcProductoAjuste" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
+                              <input class="form-control input-sm mt-2" type="number" id="porcProductoAjuste" value="13" name="porcProductoAjuste" placeholder="Ingresar porcentaje" required>
                         </div>
                   </div>
 
@@ -95,7 +95,7 @@
                   <div class="row align-items-center third">
                         <div class="col mt-5 mr-5">
                               <label>Precio Neto.</label>
-                              <input class="form-control input-sm mt-2" type="number" id="precioNetoAjuste" name="precioNetoAjuste" placeholder="Ingresar precio" onchange="obtenerPrecioNeto()" required>
+                              <input class="form-control input-sm mt-2" type="number" id="precioNetoAjuste" name="precioNetoAjuste" placeholder="Ingresar precio" required>
                         </div>
 
                         <div class="col mt-5 mr-5">
@@ -124,8 +124,10 @@
                   <div class="row align-items-center four">
                         <div class="col mt-5 mr-5">
                               <label>Foto del producto.</label>
-                              <input type="file" class="form-control input-sm mt-2 image" id="imageAjuste" name="imageAjuste">
-                              <img src="view/img/plantilla/userDefault.png" class="img-thumbnail" width="100px">
+                              <input type="file" class="form-control input-sm mt-2 imageProductos" id="imageProductosAjuste" name="imageProductosAjuste">
+                              <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
+                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTemp" width="100px">
+                              <input type="hidden" name="fotoActualProducto" id="fotoActualProducto">
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>
@@ -137,7 +139,7 @@
 
                         <button type="submit" class="button-save botonAjusteInventario">Modificar</button>
                         <a href="inventarios">
-                              <button type="button" class="button-cancel">Cancelar</button>
+                              <button type="button" class="button-cancel botonAjusteInventario">Cancelar</button>
                         </a>
                         
                   </div>

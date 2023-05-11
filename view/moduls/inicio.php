@@ -90,6 +90,15 @@
 
 
                 </div>
+                <div id="perfil1">
+                    <h1 class="nota" style="">Acá tengo que hacer algo jeje.</h1>
+                    <img src="imagen/mouseLamp.png" alt="  Logo empresa" class="imagen-empresa">
+                    
+                    <!-- <span class="hidden-sm1"><?php echo $_SESSION["apellidos"]; ?></span>-->
+
+
+
+                </div>
 
 
 

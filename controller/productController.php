@@ -60,6 +60,31 @@ class ControllerProduct
 		if (isset($_POST["idProductoAjuste"])) {
 
 			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
+				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
+
+				$ruta = $_POST["fotoActualProducto"];
+				
+				if(isset($_FILES["imageProductosAjuste"]["tmp_name"])){	
+					list($ancho, $alto) = getimagesize($_FILES["imageProductosAjuste"]["tmp_name"]);
+					//var_dump($_FILES["image"]["tmp_name"]);
+					$directorio = "imagen/productos/";
+					mkdir($directorio, 0755);
+					if($_FILES["imageProductosAjuste"]["type"] == "image/jpeg"){
+						$ruta = "imagen/productos/".$_POST["idProductoAjuste"].".jpg";
+						$origen = imagecreatefromjpeg($_FILES["imageProductosAjuste"]["tmp_name"]);
+						$destino = imagecreatetruecolor(500, 500);
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+						imagejpeg($destino, $ruta);
+					}
+					if($_FILES["imageProductosAjuste"]["type"] == "image/png"){
+						$ruta = "imagen/productos/".$_POST["idProductoAjuste"].".png";
+						$origen = imagecreatefrompng($_FILES["imageProductosAjuste"]["tmp_name"]);
+						$destino = imagecreatetruecolor(500, 500);
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+						imagepng($destino, $ruta);
+					}
+					
+				}
 
 				$datas = array(
 					"codigo" => $_POST["idProductoAjuste"],
@@ -71,8 +96,9 @@ class ControllerProduct
 					"unidadmedida" => $_POST["unitProductoAjuste"],
 					"porcentajeIva" => $_POST["porcProductoAjuste"],
 					"precioTotal" => $_POST["precioTotalAjuste"],
-					"observaciones" => $_POST["obsProductoAjuste"]
-				);
+					"observaciones" => $_POST["obsProductoAjuste"],
+					"image" => $ruta,
+					"usuarioIngresa" => $usuarioIngresa);
 
 
 				//llama al método "mdlUpdateProduct" de la clase Product para actualizar el producto en la base de datos. 
@@ -90,7 +116,6 @@ class ControllerProduct
 					</script>";
 				
 			    } else {
-
 					echo "<script>
 					
 					Swal.fire({
@@ -115,28 +140,28 @@ class ControllerProduct
 				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 				/************************** FOTO PRODUCTO ********************************************/
 				$ruta = null;
-                    if(isset($_FILES["imageProductos"]["tmp_name"])){	
+				if(isset($_FILES["imageProductos"]["tmp_name"])){	
 
-                        list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
-                        //var_dump($_FILES["image"]["tmp_name"]);
-                        $directorio = "imagen/productos/".$_POST["idProducto"];
-                        mkdir($directorio, 0755);
-                        if($_FILES["imageProductos"]["type"] == "image/jpeg"){
-                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
-                            $origen = imagecreatefromjpeg($_FILES["imageProductos"]["tmp_name"]);
-                            $destino = imagecreatetruecolor(500, 500);
-                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
-                            imagejpeg($destino, $ruta);
-                        }
-                        if($_FILES["imageProductos"]["type"] == "image/png"){
-                            $ruta = "imagen/productos/".$_POST["idProducto"]."/".$_FILES["imageProductos"]["name"];
-                            $origen = imagecreatefrompng($_FILES["imageProductos"]["tmp_name"]);
-                            $destino = imagecreatetruecolor(500, 500);
-                            imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
-                            imagepng($destino, $ruta);
-                        }
-                        
-                    }
+					list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
+					//var_dump($_FILES["image"]["tmp_name"]);
+					$directorio = "imagen/productos/";
+					mkdir($directorio, 0755);
+					if($_FILES["imageProductos"]["type"] == "image/jpeg"){
+						$ruta = "imagen/productos/".$_POST["idProducto"].".jpg";
+						$origen = imagecreatefromjpeg($_FILES["imageProductos"]["tmp_name"]);
+						$destino = imagecreatetruecolor(500, 500);
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+						imagejpeg($destino, $ruta);
+					}
+					if($_FILES["imageProductos"]["type"] == "image/png"){
+						$ruta = "imagen/productos/".$_POST["idProducto"].".png";
+						$origen = imagecreatefrompng($_FILES["imageProductos"]["tmp_name"]);
+						$destino = imagecreatetruecolor(500, 500);
+						imagecopyresized($destino, $origen, 0, 0, 0, 0, 500, 500, $ancho, $alto);
+						imagepng($destino, $ruta);
+					}
+					
+				}
 					
 				$datas = array(
 					"codigo" => $_POST["idProducto"],

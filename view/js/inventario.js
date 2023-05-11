@@ -3,11 +3,8 @@ let datosInventario = [];
 $(".btnUpdateInventario").click(function(){
     var idInventario = $(this).attr("idInventario");
     var datas = new FormData();
-
     datas.append("idInventario", idInventario);
-
     $.ajax({
-
         url:"ajax/inventarioAjax.php",
         method:"POST",
         data: datas,
@@ -16,30 +13,15 @@ $(".btnUpdateInventario").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-
             const infoInventario = {
                 codigo: respuesta["codigo"],
                 idSucursal: respuesta["idSucursal"],
                 cantidad: respuesta["cantidad"]
             }
-
             datosInventario = [...datosInventario, infoInventario];
-
             let inventario = JSON.stringify(datosInventario);
             localStorage.setItem("datosInventario",inventario);
-
-            
-
-            $("#codigoInventario").val(respuesta["codigo"]);
-            $("#idSucursal").val(respuesta["idSucursal"]);
-            //$("#idProducto").val(respuesta["idProducto"]);
-            $("#cantProducto").val(respuesta["cantidad"]);
-            $("#existProducto").val(respuesta["existencia"]);
-            $("#minProducto").val(respuesta["minimo"]);
-            console.log("respuesta", respuesta);
-
         }
-
     })
 })
 

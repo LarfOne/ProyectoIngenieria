@@ -1,40 +1,4 @@
-let datosProductos = [];
-$(".btnUpdateInventario").click(function(){
-    var idProduct = $(this).attr("idProduct");
-    var datas = new FormData();
-    datas.append("idProduct", idProduct);
-    $.ajax({
-        url:"ajax/productAjax.php",
-        method:"POST",
-        data: datas,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function(respuesta){
-            const infoProductos = {
-                codigo: respuesta["codigo"],
-                nombre: respuesta["nombre"],
-                marca: respuesta["marca"],
-                descripcion: respuesta["descripcion"],
-                precioNeto: respuesta["precioNeto"],
-                categoria: respuesta["categoria"],
-                unidadMedida: respuesta["unidadmedida"],
-                porcentajeIva: respuesta["porcentajeIva"],
-                precioTotal: respuesta["precioTotal"],
-                observaciones: respuesta["observaciones"],
-                image: respuesta["image"],
-                usuarioIngresa: respuesta["usuarioIngresa"]
-            }
-            datosProductos = [...datosProductos, infoProductos];
-            let productos = JSON.stringify(datosProductos);
-            localStorage.setItem("datosProductos",productos);
-        }
-
-    })
-})
-
-$(".btnDeleteInventario").click(function(){
+    $(".btnDeleteInventario").click(function(){
 
     var codigoProductM = $(this).attr("codigoProductM"); 
 

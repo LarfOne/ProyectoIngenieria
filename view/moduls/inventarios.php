@@ -54,14 +54,8 @@
 
           <div class="btn-group">
             <button class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>>
-            <a class="probar" href="editarInventario"><i class="fa fa-pencil"></i></a>
+            <a class="probar"><i class="fa fa-pencil"></i></a>
             </button>
-
-            <!--<button  class="btn btn-warning btnUpdate btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>  idProduct = <?php echo $inventario1['idProducto']; ?>
-              data-bs-toggle="modal" data-bs-target="#modalUpdateInventario"><i class="fa fa-pencil"></i></button>-->
-
-              <!--<button  class="btn btn-warning btnUpdateInventario" idInventario = <?php echo $inventario1['codigo']; ?>
-              data-toggle="modal" data-target="#modalUpdateInventario"><i class="fa fa-pencil"></i></button>-->
 
               <button class="btn btn-danger btnDelete btnDeleteInventario" codigoIventarioM = <?php echo $inventario1['codigo']; ?> codigoProductM = <?php echo $inventario1['idProducto']; ?>
               ><i class="fa fa-times"></i></button>

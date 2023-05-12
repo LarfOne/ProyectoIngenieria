@@ -186,11 +186,11 @@
 
 <div class="row columnas-juntas2-2 ">
 <div class="col-sm-12 col-md-6">
-    <h3 class="box-title">Ventas</h3>
+    <h3 class="box-title" style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important;">Ventas</h3>
     <?php include "graficos/graficoVentas.php"; ?>
 </div>
 <div class="col-sm-12 col-md-6">
-    <h3 class="box-title">Total de ventas de los empleados</h3>
+    <h3 class="box-title" style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important;">Total de ventas de los empleados</h3>
     <div id="bar-chart1" style="height: 250px;"></div>
     <?php include "graficos/ventasEmpleados.php"; ?>
 </div>
@@ -200,7 +200,7 @@
 <div class="container">
 <div class="row align-items-center justify-content-between">
     <div class="col-md-9">
-    <h3 class="mb-0 text-left">Seleccione el rango de fecha para mostrar en los graficos</h3>
+    <h3 class="mb-0 text-left" style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important;">Seleccione el rango de fecha para mostrar en los graficos</h3>
     </div>
     <div class="col-md-3 mb-3 mb-md-0 text-right">
     <div class="card card-grafic1 border border-primary">

@@ -24,7 +24,7 @@
               <th>Role</th>
               <th>C.C</th>
               <th>Sucursal</th>
-              <th>direccion</th>
+              <th>Direccion</th>
               <th>Estado</th>
               <th>Imagen</th>
               <th>Acciones</th>

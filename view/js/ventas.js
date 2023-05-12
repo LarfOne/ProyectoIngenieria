@@ -350,10 +350,23 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 }
 
 $("#nuevoMetodoPago").change(function(){
+	//let metodo = $(this).val();
 
-	let metodo = $(this).val();
+	/*if(metodo == "Efectivo"){
+		$(".tbody_tableD").append(
+			
+		)
+	}*/
 
-	console.log("Metodo de pago", metodo);
+	/**
+	 * <td>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
+                    <input type="hidden" name="totalVenta" id="totalVenta">
+                  </div>
+                </td>
+	 */
 
 })
 

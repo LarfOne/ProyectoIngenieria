@@ -46,7 +46,7 @@ GRÁFICO DE VENTAS
 <div class="box box-solid bg-teal-gradient">
 	
 	<div class="box-header">
-		<h3 class="box-title">Gráfico de Ventas</h3>
+		<h3 class="box-title" style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important;">Gráfico de Ventas</h3>
 
 	</div>
 	<div class="box-body border-radius-none nuevoGraficoVentas">

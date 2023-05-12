@@ -72,6 +72,13 @@ class ControladorVentas{
                             })
 
                         </script>";
+
+						echo "<script>
+
+						window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo='+$idFactura;
+
+						</script>";
+
 					}else{
 
 						echo "<script>

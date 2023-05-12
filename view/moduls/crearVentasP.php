@@ -174,7 +174,7 @@
               </tr>
             </thead>
 
-            <tbody>
+            <tbody class = "tbody_tableD">
               <tr>
                 <!--DESCUENTO DE VENTA-->
                 <td>
@@ -196,10 +196,11 @@
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
+                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
                     <input type="hidden" name="totalVenta" id="totalVenta">
                   </div>
                 </td>
+                
               </tr>
             </tbody>
           </table>

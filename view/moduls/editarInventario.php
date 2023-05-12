@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/style.css">
-
+<?php $codigo = $_GET['codigo'] ?>
 <div id="container pt-4" class="contenedorProducts" style="margin-top:90px;">
       <div class="container mt-3">
 

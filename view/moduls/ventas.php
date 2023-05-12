@@ -42,7 +42,7 @@
       <div class="box-body">
       <div class="table-responsive roboto">
         
-       <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+       <table id="tabla" class="table table-bordered table-striped dt-responsive tablas" width="100%">
          
         <thead>
          

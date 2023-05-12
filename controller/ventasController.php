@@ -68,7 +68,7 @@ class ControladorVentas{
                                 title: 'La Venta se realizo correctamente!',
                                 icon: 'success',
                             }).then((result) => {
-                                window.location = 'ventas';
+                                
                             })
 
                         </script>";

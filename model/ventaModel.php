@@ -206,7 +206,7 @@ class ModeloVentas{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo DESC");
 
 			$stmt -> execute();
 

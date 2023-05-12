@@ -243,10 +243,9 @@
 
           </div>
 
-          <div class="box-footer">
+          <div class="box-footer">                                                             
 
-            <button type="submit" class="btn btn-primary pull-right">Guardar venta</button>
-
+            <button type="submit" class="btn btn-primary pull-right btnImprimirTicket" codigoVenta="'.$codigo.'">Guardar venta</button>
           </div>
 
 
@@ -336,7 +335,7 @@
                       <td>
  
                         <button type="button" class="btn btn-primary btnAgregarProduct" idProduct = <?php echo $producto['codigo'];?>>Agregar</button>
-
+                        <button class="btn btn-success btnImprimirFactura" codigoVenta="'.$value["codigo"].'"> <i class="fa fa-file"></i></button>
                       </td>
         
         

@@ -209,7 +209,6 @@
         <div class="btn-container">
         <a type="button" href="ventas" class="btnVentaCancelar">Cancelar</a>
         <button type="submit" class="btnVentaGuardar">Guardar venta</button>
-        <a class="btn btn-info btnTicketVenta" href="/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo=<?php echo $codigo; ?>">Ticket</a>
         </div>
 
       </div>

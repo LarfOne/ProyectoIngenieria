@@ -59,19 +59,24 @@ class ControladorVentas{
 						$table = "detallefactura";
 		
 						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
-					
-                    
-                    if($respuesta == "ok"){
-                        echo "<script>
-                        
-                            Swal.fire({
-                                title: 'La Venta se realizo correctamente!',
-                                icon: 'success',
-                            }).then((result) => {
-                                
-                            })
+						
+				
 
-                        </script>";
+                    if($respuesta == "ok"){
+						echo "<script>
+						
+						Swal.fire({
+							title: 'La Venta se realizo correctamente!',
+							icon: 'success',
+						}).then((result) => {
+							
+						})
+
+					</script>";
+						echo "<script>";
+						echo "window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo=" . $idFactura . "';";
+						echo "</script>";
+						
 					}else{
 
 						echo "<script>

@@ -142,7 +142,7 @@ $bloque1 = <<<EOF
 
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 				<br>
-					codigo factura: $respuestaDetalle[idFactura]
+					codigo factura: $valorFac
 					<br>
 					
 					Vendedor: $respuestaVendedor[nombre] $respuestaVendedor[apellidos]

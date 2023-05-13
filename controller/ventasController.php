@@ -34,8 +34,10 @@ class ControladorVentas{
 									"idEmpleado" => $_POST["idEmpleado"],
 									"idSucursal" => $_POST["idSucursal"],
 									"idCliente"=>$_POST["idCliente"],
-                                    "subTotal" => $_POST["nuevoTotalVenta"],
+                                    "subTotal" => $_POST["nuevoSubTotalVenta"],
 									"fechaFactura" => $fecha,
+									"descuento" => $_POST["descuentoVenta"],
+									"impuesto" => $_POST["impuestoVenta"],
                                     "total" => $_POST["nuevoTotalVenta"]
                                     );
 

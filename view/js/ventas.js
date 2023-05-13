@@ -174,6 +174,8 @@ function sumarTotalPrecios(){
 		total += parseFloat(precio.textContent);
 	});
 
+
+	$("#nuevoSubTotalVenta").val(total);
 	return total;
 
 }
@@ -191,6 +193,7 @@ $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
 
 		let totalFinal = parseFloat(totalTaxt) - getDiscount();
 		console.log(totalFinal);
+		$("#descuentoVenta").val(getDiscount());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
 		
@@ -209,6 +212,7 @@ $('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
 
 		let totalFinal = parseFloat(totalDiscount) + getTax();
 		console.log(totalFinal);
+		$("#impuestoVenta").val(getTax());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
 

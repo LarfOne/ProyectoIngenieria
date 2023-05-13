@@ -56,8 +56,8 @@
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" style="border-radius: 10px;" class="form-control" id="nombre" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-                <input type="hidden" style="border-radius: 10px; id="idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
-                <input type="hidden" style="border-radius: 10px; id="idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
+                <input type="hidden" style="border-radius: 10px;" id="idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
+                <input type="hidden" style="border-radius: 10px;" id="idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
               </div>
             </div>
 
@@ -170,6 +170,7 @@
               <tr>
                 <th class="total-texto">Descuento %</th>
                 <th class="total-texto">Impuesto %</th>
+                <th class="total-texto">SubTotal</th>
                 <th class="total-texto">Total</th>
               </tr>
             </thead>
@@ -181,7 +182,7 @@
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                     <input type="number" class="form-control input-lg" id="nuevoDescuentoVenta" name="nuevoDescuentoVenta" value=0 min=0 max=100 required>
-                    <input type="hidden" name="descuentoVenta" id="totalVenta">
+                    <input type="hidden" name="descuentoVenta" id="descuentoVenta">
                   </div>
                 </td>
                 <!--IMPUESTO DE VENTA-->
@@ -189,7 +190,14 @@
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                     <input type="number" class="form-control input-lg" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" value=0 min=0 max=100 required>
-                    <input type="hidden" name="impuestoVenta" id="totalVenta">
+                    <input type="hidden" name="impuestoVenta" id="impuestoVenta">
+                  </div>
+                </td>
+                <!--SUBTOTAL DE VENTA-->
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                    <input type="number" class="form-control input-lg" id="nuevoSubTotalVenta" name="nuevoSubTotalVenta" value=0 readonly required>
                   </div>
                 </td>
                 <!--TOTAL DE VENTA--> 
@@ -197,7 +205,6 @@
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                     <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
-                    <input type="hidden" name="totalVenta" id="totalVenta">
                   </div>
                 </td>
                 
@@ -244,7 +251,7 @@ MODAL AGREGAR CLIENTE
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header modalHeaderColor" style="background:#3c8dbc; color:white">
 
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 

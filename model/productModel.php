@@ -116,6 +116,7 @@ class Product{
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":image", $datos["image"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":usuarioIngresa", $datos["usuarioIngresa"], PDO::PARAM_STR);
+		
 		//Si la ejecución de la sentencia SQL es exitosa, la función retorna la cadena "ok". De lo contrario, retorna la cadena "error".
         if ($sentenciaSQL->execute()) {
             return "ok";

@@ -111,9 +111,10 @@
           
         </div>
 
-        <div class="col mt-3 mr-5 form-group row">
+        <div class="col mt-3 mr-5 form-group row metodoPago">
+        <label id="campos">Metodos de pago: </label>
           <label id="campos">
-            <input type="checkbox" name="opcion1" value="opcion1"> Efectico
+            <input type="checkbox" name="opcion1" value="opcion1"> Efectivo
           </label>
           <label id="campos">
             <input type="checkbox" name="opcion2" value="opcion2"> Tarjeta

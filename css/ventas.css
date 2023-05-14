@@ -65,7 +65,7 @@ font-family: 'Roboto Condensed', sans-serif !important;
     justify-content: center;
     margin-left:220px;
     padding: 7px;
-    grid-template-columns: 400px 100px 1fr 20px 1fr;
+    grid-template-columns: 400px 100px 400px 20px 1fr;
     grid-template-rows: repeat(1, 1fr);
     gap: 5px;
 }
@@ -73,6 +73,18 @@ font-family: 'Roboto Condensed', sans-serif !important;
 color: white;
 
 }
+
+.metodoPago label {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+}
+
+.metodoPago input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 5px;
+}
+
 
 .tablaVenta{
     overflow: auto;

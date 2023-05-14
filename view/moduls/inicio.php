@@ -18,8 +18,16 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+<script>
+    $('.carousel').carousel({
+        interval: 1000 // Cambia aquí el tiempo en milisegundos entre cada slide
+    });
+</script>
 
 
 <!DOCTYPE html>
@@ -27,14 +35,10 @@
 
 <head>
 
-    <script src="view/moduls/tablas-reporte.php"></script>
-    <!-- Tema del plugin -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/css/theme.bootstrap_4.min.css" integrity="sha512-VVb8DE0ldEd7VLeZlruBzGvO8WgSp4i4y12MKTtyE7vB8WjSVDUiORZkkMZQx6Uymvj6gC/w6AC1Hw/R2G5l5A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
 
 <body>
-    <script src="graph.js"></script>
+    
 
     <div id="container pt-4" style="margin-top:100px;">
 
@@ -76,44 +80,81 @@
                 <!-- CARDS #2 EMPLEADO Y SECUENCIA DE IMAGENES -->
                 <div class="cardCont">
                     <div class="card card-empleado">
-                        <div class="col1">
+                        <div class="col-md-6">
                             <img src="imagen/mouseLamp.png" class="card-img2">
 
                         </div>
-                        <div class="col2">
+                        <div class="col-md-6">
 
                             <span class="hidden-sm1"><?php echo $_SESSION["nombre"] . " " . $_SESSION["apellidos"]; ?></span>
 
                         </div>
                     </div>
-                    <div class="card card-slider">
-                        <section>
+                    <div class="card carrusel">
+                        <div id="carouselExampleIndicators" class="carousel slide w-100" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner mx-auto">
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="imageneshome/diseno-grafico.png" class="tamanoimg img-fluid mr-3" alt="..." "  >
+                                        </div>
+                                        <div class=" col-md-6">
 
-                            <ul>
-                                <li> <img src="imageneshome/web.png"></li>
-                                <li> <img src="imageneshome/Cables.JPG"></li>
-                                <li><img src="imageneshome/computadoras.jpg"></li>
-                            </ul>
+                                            <h5 class="titulo-carrusel">Diseño y desarrollo de software.</h5>
 
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="imageneshome/ethernet.png" class="tamanoimg img-fluid mr-3" alt="...">
+                                        </div>
+                                        <div class="col-md-6">
 
-                        </section>
+                                            <h5 class="titulo-carrusel">Telecomunicaciones.</h5>
 
 
+                                        </div>
 
+
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="imageneshome/dispositivos.png" class="tamanoimg img-fluid mr-3" alt="...">
+                                        </div>
+                                        <div class="col-md-6">
+
+                                            <h5 class="titulo-carrusel">Soporte técnico.</h5>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true" style="color:dimgray; "></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
-
 
                 </div>
 
-
-
-
-
-
                 <!-- CARDS #3 FOTO DE USUARIO, NUMERO DE CLIENTES Y NUMERO DE PRODUCTOS  -->
                 <div class="cardCont">
-                    <div class="card card-usuariologueado">
+                    <div class="card card-usuariologueado2">
                         <?php
 
                         if ($_SESSION['image'] != null) { ?>
@@ -185,9 +226,6 @@
                     </div>
                 </div>
 
-
-
-
                 <br>
                 <div class="columnas-juntas2">
 
@@ -195,14 +233,9 @@
 
                         <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
                         <img src="imagen/ventas.png" alt="  Logo ventas" class="imagen-venta1">
-
-
                     </div>
 
-
-
                     <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
-
                         <table class="table" id="tabla" data-sort="table">
                             <thead>
                                 <tr>
@@ -240,9 +273,7 @@
                                     }
                                 }
                                 ?>
-
                             </tbody>
-
                         </table>
                     </div>
 
@@ -254,12 +285,7 @@
 
                         <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
                         <img src="imagen/imagen-movimiento-stock.png" alt="  Logo movimientos" class="imagen-movimiento">
-
-
                     </div>
-
-
-
                     <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
 
                         <table class="table" id="tabla" data-sort="table">
@@ -286,29 +312,23 @@
                                     $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
                                     foreach ($detalles as $key2 => $detalle) {
                                         $producto = ControllerProduct::ctrNameProducts($detalle[2]);
-                                        echo ('
-                <tr>
-                    <td>' . $respuestaUsuario[2] . '</td>
-                    <td>' . $factura[4] . '</td>
-                    <td>' . $producto[1] . '</td>
-                    <td>' . $detalle[3] . '</td>
-                    <td>' . $detalle[6] . '</td>
-                </tr>
-                
-                ');
+                                                                        echo ('
+                                                <tr>
+                                                    <td>' . $respuestaUsuario[2] . '</td>
+                                                    <td>' . $factura[4] . '</td>
+                                                    <td>' . $producto[1] . '</td>
+                                                    <td>' . $detalle[3] . '</td>
+                                                    <td>' . $detalle[6] . '</td>
+                                                </tr>
+                                                
+                                                ');
                                     }
                                 }
                                 ?>
-
                             </tbody>
-
                         </table>
                     </div>
-
-
                 </div>
-
-
             </div>
 
 </body>

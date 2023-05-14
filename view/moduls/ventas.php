@@ -42,13 +42,11 @@
       <div class="box-body">
       <div class="table-responsive roboto">
         
-       <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
-         
+      <table id="tabla" class="table table-bordered table-striped dt-responsive tablas" width="100%">
+        
         <thead>
-         
-         <tr>
-           
-             
+        
+        <tr>
               <th style="width:10px" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">#</th>
               <th>Código factura</th>
               <th>Cliente</th>
@@ -61,7 +59,7 @@
               <th>Total</th>
               <th>Acciones</th>
 
-         </tr> 
+        </tr> 
 
         </thead>
 

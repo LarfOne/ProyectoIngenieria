@@ -174,6 +174,8 @@ function sumarTotalPrecios(){
 		total += parseFloat(precio.textContent);
 	});
 
+
+	$("#nuevoSubTotalVenta").val(total);
 	return total;
 
 }
@@ -191,6 +193,7 @@ $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
 
 		let totalFinal = parseFloat(totalTaxt) - getDiscount();
 		console.log(totalFinal);
+		$("#descuentoVenta").val(getDiscount());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
 		
@@ -209,6 +212,7 @@ $('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
 
 		let totalFinal = parseFloat(totalDiscount) + getTax();
 		console.log(totalFinal);
+		$("#impuestoVenta").val(getTax());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
 
@@ -350,10 +354,23 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 }
 
 $("#nuevoMetodoPago").change(function(){
+	//let metodo = $(this).val();
 
-	let metodo = $(this).val();
+	/*if(metodo == "Efectivo"){
+		$(".tbody_tableD").append(
+			
+		)
+	}*/
 
-	console.log("Metodo de pago", metodo);
+	/**
+	 * <td>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
+                    <input type="hidden" name="totalVenta" id="totalVenta">
+                  </div>
+                </td>
+	 */
 
 })
 

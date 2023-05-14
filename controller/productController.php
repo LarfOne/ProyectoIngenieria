@@ -68,7 +68,9 @@ class ControllerProduct
 					list($ancho, $alto) = getimagesize($_FILES["imageProductosAjuste"]["tmp_name"]);
 					//var_dump($_FILES["image"]["tmp_name"]);
 					$directorio = "imagen/productos/";
-					mkdir($directorio, 0755);
+					if (!file_exists($directorio)) {
+						mkdir($directorio, 0755);
+					}
 					if($_FILES["imageProductosAjuste"]["type"] == "image/jpeg"){
 						$ruta = "imagen/productos/".$_POST["idProductoAjuste"].".jpg";
 						$origen = imagecreatefromjpeg($_FILES["imageProductosAjuste"]["tmp_name"]);
@@ -146,6 +148,9 @@ class ControllerProduct
 					//var_dump($_FILES["image"]["tmp_name"]);
 					$directorio = "imagen/productos/";
 					mkdir($directorio, 0755);
+					if (!file_exists($directorio)) {
+						mkdir($directorio, 0755);
+					}
 					if($_FILES["imageProductos"]["type"] == "image/jpeg"){
 						$ruta = "imagen/productos/".$_POST["idProducto"].".jpg";
 						$origen = imagecreatefromjpeg($_FILES["imageProductos"]["tmp_name"]);

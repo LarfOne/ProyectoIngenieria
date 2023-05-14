@@ -64,7 +64,7 @@ class ControllerProduct
 
 				$ruta = $_POST["fotoActualProducto"];
 				
-				if(isset($_FILES["imageProductosAjuste"]["tmp_name"])){	
+				if(isset($_FILES["imageProductosAjuste"]["tmp_name"])&& !empty($_FILES["imageProductosAjuste	"]["tmp_name"])){	
 					list($ancho, $alto) = getimagesize($_FILES["imageProductosAjuste"]["tmp_name"]);
 					//var_dump($_FILES["image"]["tmp_name"]);
 					$directorio = "imagen/productos/";

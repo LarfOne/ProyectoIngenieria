@@ -108,35 +108,21 @@
         </div>
 
         <div class="col mt-3 mr-5 form-group row factura">
-          <label id="campos">Tipo Factura</label>
-          <div class="input-group">
-            <select class="form-select input-sm mt-2" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
-              <option value="">Tipo Factura</option>
-              <option value="Electronica">Electronica</option>
-              <option value="Normal">Normal</option>
-            </select>
-          </div>
+          
         </div>
 
         <div class="col mt-3 mr-5 form-group row">
-          <label id="campos">Método de pago.</label>
-          <div class="input-group">
-            <select class="form-select input-sm mt-2" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-              <option value="">Seleccione método de pago</option>
-              <option value="Efectivo">Efectivo</option>
-              <option value="TC">Tarjeta Crédito</option>
-              <option value="TD">Tarjeta Débito</option>
-            </select>
-          </div>
-
-          <div class="cajasMetodoPago">
-            <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
+          <label id="campos">
+            <input type="checkbox" name="opcion1" value="opcion1"> Efectico
+          </label>
+          <label id="campos">
+            <input type="checkbox" name="opcion2" value="opcion2"> Tarjeta
+          </label>
+          <label id="campos">
+            <input type="checkbox" name="opcion3" value="opcion3"> Sinpe Movil
+          </label>
           </div>
         </div>
-
-
-
-      </div>
 
       <section class="tablaVenta">
         <div class="tablaVendidos">
@@ -162,12 +148,12 @@
       </section>
       <input type="hidden" id="listaProductos" name="listaProductos">
 
-      <div class="botonesVenta">
-        <div class="col-xs-8 pull-right">
+      <div class="saleCalculations">
 
+        <div class="col-xs-8 pull-right">
           <table class="table tablaD">
             <thead>
-              <tr>
+              <tr class = "thead_tableD">
                 <th class="total-texto">Descuento %</th>
                 <th class="total-texto">Impuesto %</th>
                 <th class="total-texto">SubTotal</th>
@@ -175,8 +161,8 @@
               </tr>
             </thead>
 
-            <tbody class = "tbody_tableD">
-              <tr>
+            <tbody>
+              <tr  class = "tbody_tableD">
                 <!--DESCUENTO DE VENTA-->
                 <td>
                   <div class="input-group">
@@ -197,22 +183,25 @@
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="number" class="form-control input-lg" id="nuevoSubTotalVenta" name="nuevoSubTotalVenta" value=0 readonly required>
+                    <input type="number" class="form-control input-lg" id="nuevoSubTotalVenta" name="nuevoSubTotalVenta" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
                 <!--TOTAL DE VENTA--> 
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
+                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
                 
               </tr>
             </tbody>
           </table>
-
         </div>
+      </div>
+
+      <div class="botonesVenta">
+        
         <a href="ventas">
 
         <button type="button" class="btnVentaCancelar">Cancelar</button>
@@ -222,7 +211,6 @@
         <button type="submit" class="btnVentaGuardar">Guardar venta</button>
 
       </div>
-
 
     </div>
   </form>

@@ -146,6 +146,8 @@ function eliminarFila(idProduct) {
 			arrayProductos.splice(index, 1);
 			tr.remove();
 			sumarTotalPrecios();
+			Discount();
+			Tax();
 		}
 	}
 }
@@ -176,6 +178,7 @@ function sumarTotalPrecios(){
 
 
 	$("#nuevoSubTotalVenta").val(total);
+	//$("#nuevoTotalVenta").val(total);
 	return total;
 
 }
@@ -185,8 +188,7 @@ function sumarTotalPrecios(){
 	EVENTO PARA DESCUENTO DE TODA LA VENTA
 ========================================================*/
 
-$('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
-
+function Discount(){
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
 		let totalTaxt = parseFloat(sumarTotalPrecios()) + getTax();
@@ -196,7 +198,33 @@ $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
 		$("#descuentoVenta").val(getDiscount());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
-		
+}
+
+$('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
+	Discount();
+});
+
+
+/*======================================================
+	EVENTO PARA PAGO DE VENTA Y CUANTA PLATA DEVOLVER
+========================================================*/
+
+$('.tablaD').on('blur', '#nuevoPagoVenta', function() {
+
+	if(document.getElementById("nuevoTotalVenta").value !="0"){
+
+		if(document.getElementById("nuevoPagoVenta").value !="0"){
+			let pagoVenta = parseInt(document.getElementById("nuevoPagoVenta").value);
+			let totalVenta = parseInt(document.getElementById("nuevoTotalVenta").value);
+
+			let deuSale = pagoVenta - totalVenta;
+
+			$("#nuevoDueVenta").val(deuSale);
+		}
+
+	}
+	
+
 });
 
 
@@ -204,8 +232,7 @@ $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
 	EVENTO PARA IMPUESTO DE TODA LA VENTA
 ========================================================*/
 
-$('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
-
+function Tax(){
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
 		let totalDiscount = parseFloat(sumarTotalPrecios()) - getDiscount();
@@ -215,7 +242,10 @@ $('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
 		$("#impuestoVenta").val(getTax());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
+}
 
+$('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
+	Tax();
 });
 
 
@@ -354,25 +384,43 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 }
 
 $("#nuevoMetodoPago").change(function(){
-	//let metodo = $(this).val();
+    let metodo = $(this).val();
 
-	/*if(metodo == "Efectivo"){
-		$(".tbody_tableD").append(
-			
-		)
-	}*/
+    if(metodo == "Efectivo"){
+        // Guardar los elementos que se van a agregar
+        let $thPay = $('<th class="total-texto">Pago</th>');
 
-	/**
-	 * <td>
-                  <div class="input-group">
-                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
-                    <input type="hidden" name="totalVenta" id="totalVenta">
-                  </div>
-                </td>
-	 */
+        let $tdPay = $('<td>'+
+                                '<div class="input-group">'+
+                                    '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+                                    '<input type="number" class="form-control input-lg" id="nuevoPagoVenta" name="nuevoPagoVenta" value=0 min=0 max=100000000 required>'+
+                                '</div>'+
+                            '</td>');
 
-})
+		let $tdDue = $('<td>'+
+                                '<div class="input-group">'+
+                                    '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+                                    '<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
+                                '</div>'+
+                            '</td>');						
+
+        // Agregar los elementos
+        $thPay.appendTo(".thead_tableD");
+        $tdPay.appendTo(".tbody_tableD");
+		$tdDue.appendTo(".tbody_tableD");
+
+        // Eliminar los elementos si se selecciona otro método de pago
+        $("#nuevoMetodoPago").change(function(){
+            let metodo2 = $(this).val();
+            if(metodo2 != "Efectivo"){
+                $thPay.remove();
+                $tdPay.remove();
+				$tdDue.remove();
+            }
+        });
+    }
+});
+
 
 /*=============================================
 IMPRIMIR FACTURA
@@ -397,5 +445,7 @@ $(".tablas").on("click", ".btnImprimirTicket", function(){
 
 	window.open("extensiones/tcpdf/pdf/ticket.php?codigo="+codigoVenta, "_blank");
 })
+
+
 
 

@@ -51,6 +51,7 @@
 
 
                 ?>
+                <!-- CARDS DEL PRINCIPIO CLIENTES, VENTAS, USUARIOS, INVENTARIO  -->
                 <div class="cardCont">
                     <div class="card card-user">
                         <img src="imagen/user.png" class="card-img">
@@ -70,6 +71,9 @@
                     </div>
 
                 </div>
+
+
+                <!-- CARDS #2 EMPLEADO Y SECUENCIA DE IMAGENES -->
                 <div class="cardCont">
                     <div class="card card-empleado">
                         <div class="col1">
@@ -81,15 +85,24 @@
                             <span class="hidden-sm1"><?php echo $_SESSION["nombre"] . " " . $_SESSION["apellidos"]; ?></span>
 
                         </div>
+                    </div>
+                    <div class="card card-slider">
+                        <section>
 
+                            <ul>
+                                <li> <img src="imageneshome/web.png"></li>
+                                <li> <img src="imageneshome/Cables.JPG"></li>
+                                <li><img src="imageneshome/computadoras.jpg"></li>
+                            </ul>
+
+
+
+                        </section>
 
 
 
                     </div>
-                    <div class="card card-imagen">
-                        <img src="imagen/inventario.png" class="card-img">
-                        <a href="inventarios" class="btn-perso btn-inventory">Inventario</a>
-                    </div>
+
 
                 </div>
 
@@ -98,7 +111,7 @@
 
 
 
-
+                <!-- CARDS #3 FOTO DE USUARIO, NUMERO DE CLIENTES Y NUMERO DE PRODUCTOS  -->
                 <div class="cardCont">
                     <div class="card card-usuariologueado">
                         <?php
@@ -139,7 +152,7 @@
 
                 </div>
 
-
+                <!-- CARDS DE REPORTES DE VENTAS-->
                 <h1 style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important; ">Reportes.</h1>
 
 

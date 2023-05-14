@@ -408,217 +408,27 @@ section {
     height: 500px;
     display: flex;
     flex-direction: row;
-  
-  }
-  .card-img22 {
+
+}
+.card-img22 {
     
     border-radius: 50%;
     border: 3px solid black;
     width: 45%;
     max-width: 100%;
     height: auto;
-  }
-  
-  .row2{
-    display: flex;
-    flex-direction: row;
-    margin: auto;
-    width: 90%;
-    align-items: center;
-    
-    }
-#perfil-usuario {
-    width: 540px;
-    height: 500px;
-    margin-right: 200px;
-   /** margin: 0 auto;**/
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 60px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 8px 7px 9px 3px #bebebf;
 }
 
-#perfil-usuario img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 10px;
-}
+
 .hidden-sm{
 
-  text-decoration:bold;
-  font-size: 30px;
-  font-family: 'Roboto Condensed', sans-serif !important;
+text-decoration:bold;
+font-size: 30px;
+font-family: 'Roboto Condensed', sans-serif !important;
 
 }
-
-#perfil-usuario h1 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-#perfil-usuario p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-}
-
-#perfil-usuario ul {
-    list-style: none;
-    margin-bottom: 20px;
-    justify-content: left;
-}
-
-#perfil-usuario li {
-    font-size: 1.1em;
-    margin-bottom: 5px;
-    justify-content: left;
-}
-
-#perfil-usuario button {
-    background-color: #0c335d;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    
-    
-}
-#perfil-usuario{
-    border-style:solid;
-    border-width: 4px;
-    border-color: white white white #0c335d;
-
-}
-
-#perfil-usuario button:hover {
-    background-color: #0959af;
-}
-
-.imagen-usuario{
-
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 3px solid black;
-
-}
-#input-imagen {
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 16px;
-    color: #ffffff;
-    background-color: #ffffff;
-    box-shadow: none;
-    cursor: pointer;
-    
-  }
-  #input-imagen::before {
-    content: "Editar imagen";
-    display: inline-block;
-    background-color: #000839;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  #input-imagen:hover::before {
-    background-color: #5753a5;
-  }
-  
-  #input-imagen:active::before {
-    background-color: #3d4f88;
-  }
-
-
-.imagen-productos{
-
-    width: 250px;
-    height: 250px;
-    
-    
-
-}
-
-.imagen-clientes{
-
-    width: 250px;
-    height: 250px;
-
-
-}
-#cantidad-productos {
-    width: 540px;
-    height: 500px;
-    margin-right: 200px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 60px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-style:solid;
-    border-width: 4px;
-    border-radius: 10px;
-    border-color: white white white #0c335d;
-    box-shadow: 8px 7px 9px 3px #bebebf;
-
-}
-
-
-#cantidad-clientes {
-    width: 540px;
-    height: 500px;
-    margin-right: 200px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 60px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    border-style:solid;
-    border-width: 4px;
-    border-color: white white white #0c335d;
-    border-radius: 10px;
-    box-shadow: 8px 7px 9px 3px #bebebf;
-
-
-}
-/********************************************/
 
 /***************Contenedor de 2 divs reportes ventas y stock******************/
-
-.row-venta{
-display: flex;
- grid-gap: 20px;
-flex-direction: row;
-margin: auto;
-width: 90%;
-align-items: center;
-
-
-}
-
-
-
-.imagen-venta{
-
-    float: left;
-    margin: 0 auto;
-    width: 230px;
-    height: 210px;
-    align-items: center;
-    
-}
 
 #reporte-venta{
     flex: 10;
@@ -642,34 +452,6 @@ align-items: center;
 }
 
 
-
-#datosStock {
-    
-     text-align: center;
-    width: 50%;
-    height: 400px;
-    margin-right: 5px;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 20px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    justify-content: center;
-    align-items: center;
-    border-style:solid;
-    border-width: 4px;
-    border-color: white white white #0c335d;
-}
-
-
-
-
-
-
-
-
-/********************************************/
 
 .columna {
     display: inline-block;
@@ -730,27 +512,17 @@ padding-bottom: 45px; /* Añadir un padding inferior */
 box-shadow: 8px 7px 9px 3px #bebebf;
 }
 
-
-
-
-
 .imagen-venta1{
         justify-content: left;
         margin: 0 auto;
         width: 180px;
         height: 170px;
-        
-
-
 }
 .imagen-movimiento{
     justify-content: left;
     margin: 0 auto;
     width: 180px;
     height: 170px;
-    
-
-
 }
     
 .table-responsive {
@@ -791,53 +563,6 @@ box-shadow: 8px 7px 9px 3px #bebebf;
     font-size: 50px;
     font-family: 'Roboto Condensed', sans-serif !important;
     margin-left: 5px;
-
-
-}
-.textoreporte{
-
-
-    margin-bottom: 50px;
-}
-#reporte1 {
-    width: 750px;
-    height: 500px;
-    margin-right: 200px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 20px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    position: relative;
-    overflow-y: auto;
-}
-
-#reporte2 {
-    width: 750px;
-    height: 500px;
-    margin-right: 200px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #ffffff;
-    border: 1px solid #ffffff;
-    padding: 20px;
-    margin-top: 40px;
-    margin-bottom: 20px;
-    overflow-y: auto;
-}
-.textoreporte{
-
-    font-family: 'Roboto Condensed', sans-serif !important;
-    margin-top: 15px;
-    text-align: center;
-}
-
-#miGrafico{
-
-position: absolute;
-
 
 
 }

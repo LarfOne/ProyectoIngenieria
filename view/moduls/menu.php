@@ -8,7 +8,7 @@
 
         <?php
 
-        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") {
+        if ($_SESSION["role"] == "Administrador") {
 
             echo '<li>
                     <a href="inicio">
@@ -19,9 +19,7 @@
                     </a>
                   
                 </li>';
-        }
 
-        if ($_SESSION["role"] == "Administrador") {
             echo '<li class="has-subnav">
                     <a href="users">
                         <i class="fa fa-user fa-2x"></i>
@@ -29,38 +27,28 @@
                             Usuarios
                         </span>
                     </a>
-                    
                 </li>';
-        }
 
-        if ($_SESSION["role"] == "Administrador") {
             echo '<li class="has-subnav">
                     <a href="categories">
-                       <i class="fa fa-th fa-2x"></i>
+                        <i class="fa fa-th fa-2x"></i>
                         <span class="nav-text">
                             Categorias
                         </span>
                     </a>
                     
                 </li>';
-        }
 
-        if ($_SESSION["role"] == "Administrador") {
-            echo '<li class="has-subnav">
+                echo '<li class="has-subnav">
                     <a href="products">
-                       <i class="fa fa-desktop fa-2x"></i>
+                        <i class="fa fa-desktop fa-2x"></i>
                         <span class="nav-text">
                             Productos
                         </span>
                     </a>
-                   
                 </li>';
-        }
 
-
-
-        if ($_SESSION["role"] == "Administrador") {
-            echo '<li>
+                echo '<li>
                     <a href="sucursal">
                         <i class="fa fa-building-o fa-2x"></i>
                         <span class="nav-text">
@@ -68,11 +56,8 @@
                         </span>
                     </a>
                 </li>';
-        }
 
-
-        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") {
-            echo '<li>
+                echo '<li>
                     <a href="cliente">
                         <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
@@ -80,37 +65,27 @@
                         </span>
                     </a>
                 </li>';
-        }
 
-
-        if ($_SESSION["role"] == "Administrador") {
-            echo '<li class="has-subnav">
+                echo '<li class="has-subnav">
                     <a href="activos">
                         <i class="fa fa-cubes fa-2x"></i>
                         <span class="nav-text">
                             Activos
                         </span>
                     </a>
-                    
+                
                 </li>';
-        }
 
-
-        if ($_SESSION["role"] == "Administrador") {
-            echo '<li class="has-subnav">
+                echo '<li class="has-subnav">
                     <a href="inventarios">
                         <i class="fa fa-archive fa-2x"></i>
                         <span class="nav-text">
                             Inventario
                         </span>
-                    </a>
-                    
+                    </a>    
                 </li>';
-        }
 
-
-        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") {
-            echo '<li class="has-subnav">
+                echo '<li class="has-subnav">
                     <a href="ventas">
                         <i class="fa fa-money fa-2x"></i>
                         <span class="nav-text">
@@ -119,11 +94,8 @@
                     </a>
                     
                 </li>';
-        }
 
-        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") { 
-        
-            echo '<li class="has-subnav">
+                echo '<li class="has-subnav">
                         <a href="auditoria">
                             <i class="fa fa-database fa-2x"></i>
                             <span class="nav-text">
@@ -132,7 +104,71 @@
                         </a>
                         
                     </li>';
+
         }
+
+        if ($_SESSION["role"] == "Usuario") {
+
+            echo '<li>
+                    <a href="inicio">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">
+                            Inicio
+                        </span>
+                    </a>
+                  
+                </li>';
+
+                echo '<li class="has-subnav">
+                    <a href="products">
+                        <i class="fa fa-desktop fa-2x"></i>
+                        <span class="nav-text">
+                            Productos
+                        </span>
+                    </a>
+                </li>';
+
+                echo '<li>
+                    <a href="cliente">
+                        <i class="fa fa-users fa-2x"></i>
+                        <span class="nav-text">
+                           Clientes
+                        </span>
+                    </a>
+                </li>';
+
+                echo '<li class="has-subnav">
+                    <a href="categories">
+                        <i class="fa fa-th fa-2x"></i>
+                        <span class="nav-text">
+                            Categorias
+                        </span>
+                    </a>
+                    
+                </li>';
+
+                
+                echo '<li class="has-subnav">
+                    <a href="inventarios">
+                        <i class="fa fa-archive fa-2x"></i>
+                        <span class="nav-text">
+                            Inventario
+                        </span>
+                    </a>    
+                </li>';
+
+                echo '<li class="has-subnav">
+                    <a href="ventas">
+                        <i class="fa fa-money fa-2x"></i>
+                        <span class="nav-text">
+                            Ventas
+                        </span>
+                    </a>
+                    
+                </li>';
+
+        }
+
         ?>
     </ul>
 

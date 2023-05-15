@@ -199,22 +199,9 @@
             </tbody>
           </table>
         </div>
-<<<<<<< HEAD
       
         <div class="btn-container">
         <a type="button" href="ventas" class="btnVentaCancelar">Cancelar</a>
-=======
-      </div>
-
-      <div class="botonesVenta">
-        
-        <a href="ventas">
-
-        <button type="button" class="btnVentaCancelar">Cancelar</button>
-
-        </a>
-
->>>>>>> origin/luisBranch
         <button type="submit" class="btnVentaGuardar">Guardar venta</button>
         </div>
 

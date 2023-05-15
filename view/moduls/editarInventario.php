@@ -6,9 +6,9 @@
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ajuste de Inventario</h1>
 
-            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px; !important">
+            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px !important; ">
 
-                <div class="row align-items-center first">
+                  <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
                               <label>Codigo del producto.</label>
                               <input class="form-control input-sm mt-2" type="text" id="idProductoAjuste" name="idProductoAjuste" placeholder="Ingresar codigo" required readonly>

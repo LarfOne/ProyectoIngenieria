@@ -206,12 +206,12 @@
         
         <a href="ventas">
 
-        <button type="button" class="btnVentaCancelar">Cancelar</button>
+        <button type="button" class="btn1 btnVentaCancelar">Cancelar</button>
 
-        </a>
+      
 
-        <button type="submit" class="btnVentaGuardar">Guardar venta</button>
-
+        <button type="submit" class="btn1  btnVentaGuardar">Guardar</button>
+           </a>
       </div>
 
     </div>

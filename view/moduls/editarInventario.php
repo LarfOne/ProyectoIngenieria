@@ -24,7 +24,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Descripción.</label>
-                              <textarea class="form-control input-sm mt-2" id="descriptionProductoAjuste" name="descriptionProductoAjuste" rows="2" placeholder="Descripcion"></textarea>
+                              <textarea class="form-control input-sm mt-2" id="descriptionProductoAjuste" name="descriptionProductoAjuste" rows="2" placeholder="Descripcion" style="resize: none;"></textarea>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Cantidad.</label>
@@ -131,7 +131,7 @@
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>
-                              <textarea class="form-control input-lg mt-2" id="obsProductoAjuste" name="obsProductoAjuste" rows="2" placeholder="Observaciones"></textarea>
+                              <textarea class="form-control input-lg mt-2" id="obsProductoAjuste" name="obsProductoAjuste" rows="2" placeholder="Observaciones"style="resize: none; height: 160px;"></textarea>
                         </div>
                   </div>
 

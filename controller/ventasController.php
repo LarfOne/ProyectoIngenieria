@@ -38,14 +38,13 @@ class ControladorVentas{
 									"fechaFactura" => $fecha,
 									"descuento" => $_POST["descuentoVenta"],
 									"impuesto" => $_POST["impuestoVenta"],
-                                    "total" => $_POST["nuevoTotalVenta"]
+                                    "total" => $_POST["nuevoTotalVenta"],
+									"metodoPago" => $_POST["listaMetodoPago"]
                                     );
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					
-						
-						$array = json_decode($_POST['listaProductos'],true);
+					$array = json_decode($_POST['listaProductos'],true);
 
 						foreach ($array as $key => $value) { 
 							$tabla = "inventario";
@@ -61,8 +60,17 @@ class ControladorVentas{
 						$table = "detallefactura";
 		
 						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
-						
-				
+					
+                    
+                    if($respuesta == "ok"){
+                        echo "<script>
+                        
+                            Swal.fire({
+                                title: 'La Venta se realizo correctamente!',
+                                icon: 'success',
+                            }).then((result) => {
+                                window.location = 'ventas';
+                            })
 
                         </script>";
 

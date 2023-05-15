@@ -42,9 +42,8 @@ class ModeloVentas{
 
 	static public function mdlIngresarVenta($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idCliente, idSucursal, idEmpleado, fechaFactura, subTotal, impuesto, descuento, total) VALUES (:idCliente, :idSucursal, :idEmpleado, :fechaFactura, :subTotal, :impuesto, :descuento, :total)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idCliente, idSucursal, idEmpleado, fechaFactura, subTotal, impuesto, descuento, total, metodoPago) VALUES (:idCliente, :idSucursal, :idEmpleado, :fechaFactura, :subTotal, :impuesto, :descuento, :total, :metodoPago)");
 		
-		//$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$stmt->bindParam(":idCliente", $datos["idCliente"], PDO::PARAM_INT);
 		$stmt->bindParam(":idSucursal", $datos["idSucursal"], PDO::PARAM_INT);
 		$stmt->bindParam(":idEmpleado", $datos["idEmpleado"], PDO::PARAM_INT);
@@ -53,6 +52,7 @@ class ModeloVentas{
 		$stmt->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
 		$stmt->bindParam(":descuento", $datos["descuento"], PDO::PARAM_STR);
 		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_INT);
+		$stmt->bindParam(":metodoPago", $datos["metodoPago"], PDO::PARAM_STR);
 		
 
 		if($stmt->execute()){
@@ -141,11 +141,14 @@ class ModeloVentas{
 
 
 		}else if($fechaInicial == $fechaFinal){
+			$fechaInicialComparar = $fechaInicial . " 00:00:00";
+			$fechaFinalComparar = $fechaFinal . " 23:59:59";
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN :fechaInicial AND :fechaFinal");
+			$stmt->bindParam(":fechaInicial", $fechaInicialComparar, PDO::PARAM_STR);
+			$stmt->bindParam(":fechaFinal", $fechaFinalComparar, PDO::PARAM_STR);
+			$stmt->execute();
+			return $stmt->fetchAll();
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura = :fechaFactura");
-    $stmt->bindParam(":fechaFactura", $fechaInicial, PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetchAll();
 
 		}else{
 
@@ -177,6 +180,7 @@ class ModeloVentas{
 	}
 
 
+
 	static public function mdlSumaTotalVentas($tabla){	
 
 		$stmt = Conexion::conectar()->prepare("SELECT SUM(neto) as total FROM $tabla");
@@ -206,7 +210,7 @@ class ModeloVentas{
 
 		}else{
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo DESC");
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
 
 			$stmt -> execute();
 

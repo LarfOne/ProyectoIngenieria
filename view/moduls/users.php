@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
@@ -9,11 +10,10 @@
 <div id="container pt-4" style="margin-top: 100px;">
   <div class="container mt-3">
     <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
-    <div class="tablaUs">
-      <button class="btn btn-primary btnAgregarU" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
+      <button class="btn btn-primary btnAgregarU correrIzquierda" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Usuario
       </button>
-      <div class="table-responsive roboto rU">
+      <div class="table-responsive roboto correrIzquierda">
         <table class="table tableU" id="tabla" data-sort="table">
           <thead>
             <tr>
@@ -73,7 +73,6 @@
           </tbody>
         </table>
       </div>
-    </div>
   </div>
 </div>
 

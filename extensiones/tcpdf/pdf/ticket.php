@@ -113,11 +113,7 @@ $bloque1 = <<<EOF
 			<td style="background-color:white;">
         <h2>MOUSELAMP</h2>
 				<div style="font-size:8.5px; text-align:left; line-height:15px;">
-<<<<<<< HEAD
-					codigo factura: $valorFac
-=======
 					Codigo Factura: $valorFac
->>>>>>> origin/luisBranch
 					<br>
 					
 					Vendedor: $respuestaVendedor[nombre] $respuestaVendedor[apellidos]

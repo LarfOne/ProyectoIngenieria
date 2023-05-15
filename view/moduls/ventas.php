@@ -1,4 +1,6 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/ventas.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 
@@ -17,10 +19,10 @@
   </section>
 
   <section class="content">
-    <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Facturas</h2>
+    <h2 class="correrIzquierda" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Facturas</h2>
     <div class="box">
 
-      <div class="box-header with-border">
+      <div class="box-header with-border correrIzquierda">
   
         <a href="crearVentasP">
 
@@ -35,20 +37,15 @@
       </div>
 
 
-      <div class="box" style="margin: 0px;">
+      <div class="box correrIzquierda" style="margin: 0px;">
       
       </div>
 
       <div class="box-body">
-      <div class="table-responsive roboto">
+      <div class="table-responsive roboto correrIzquierda">
         
-<<<<<<< HEAD
-       <table id="tabla" class="table table-bordered table-striped dt-responsive tablas" width="100%">
-         
-=======
       <table id="tabla" class="table table-bordered table-striped dt-responsive tablas" width="100%">
         
->>>>>>> origin/luisBranch
         <thead>
         
         <tr>

@@ -2,7 +2,7 @@ let stock = "";
 let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
-
+let metodosSeleccionados = [];
 
 // Creamos un array vacío
 const arrayProductos = [];
@@ -383,43 +383,37 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	codigoInventario = "";
 }
 
-$("#nuevoMetodoPago").change(function(){
-    let metodo = $(this).val();
-
-    if(metodo == "Efectivo"){
-        // Guardar los elementos que se van a agregar
-        let $thPay = $('<th class="total-texto">Pago</th>');
-
-        let $tdPay = $('<td>'+
-                                '<div class="input-group">'+
-                                    '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
-                                    '<input type="number" class="form-control input-lg" id="nuevoPagoVenta" name="nuevoPagoVenta" value=0 min=0 max=100000000 required>'+
-                                '</div>'+
-                            '</td>');
-
-		let $tdDue = $('<td>'+
-                                '<div class="input-group">'+
-                                    '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
-                                    '<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
-                                '</div>'+
-                            '</td>');						
-
-        // Agregar los elementos
-        $thPay.appendTo(".thead_tableD");
-        $tdPay.appendTo(".tbody_tableD");
-		$tdDue.appendTo(".tbody_tableD");
-
-        // Eliminar los elementos si se selecciona otro método de pago
-        $("#nuevoMetodoPago").change(function(){
-            let metodo2 = $(this).val();
-            if(metodo2 != "Efectivo"){
-                $thPay.remove();
-                $tdPay.remove();
-				$tdDue.remove();
-            }
-        });
+$("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
+    // Verificar si el checkbox se seleccionó o deseleccionó
+    if ($(this).is(":checked")) {
+        // Si se seleccionó, agregarlo al arreglo
+        metodosSeleccionados.push($(this).val());
+    } else {
+        // Si se deseleccionó, eliminarlo del arreglo
+        let index = metodosSeleccionados.indexOf($(this).val());
+        if (index !== -1) {
+            metodosSeleccionados.splice(index, 1);
+        }
     }
+	    // Imprimir el arreglo actualizado (para fines de depuración)
+		console.log(metodosSeleccionados);
+
+		$("#listaMetodoPago").val(metodosSeleccionados);
+		//console.log(document.getElementById("listaMetodoPago").textContent);
+		pagosVenta();
 });
+
+function pagosVenta(){
+	if(metodosSeleccionados.length == 1){
+
+		if(metodosSeleccionados[0] == "Efectivo"){
+			console.log(metodosSeleccionados[0]);
+		}
+
+	}else{
+		
+	}
+}
 
 
 /*=============================================

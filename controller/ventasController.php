@@ -64,23 +64,6 @@ class ControladorVentas{
 						
 				
 
-<<<<<<< HEAD
-                    if($respuesta == "ok"){
-						echo "<script>
-						
-						Swal.fire({
-							title: 'La Venta se realizo correctamente!',
-							icon: 'success',
-						}).then((result) => {
-							
-						})
-
-					</script>";
-						echo "<script>";
-						echo "window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo=" . $idFactura . "';";
-						echo "</script>";
-						
-=======
                         </script>";
 
 						echo "<script>
@@ -89,7 +72,6 @@ class ControladorVentas{
 
 						</script>";
 
->>>>>>> origin/luisBranch
 					}else{
 
 						echo "<script>

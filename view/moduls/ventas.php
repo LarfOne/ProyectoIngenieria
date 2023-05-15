@@ -47,7 +47,6 @@
         <thead>
         
         <tr>
-              <th style="width:10px" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">#</th>
               <th>Código factura</th>
               <th>Cliente</th>
               <th>Sucursal</th>
@@ -57,6 +56,10 @@
               <th>Impuesto</th>
               <th>Descuenso</th>
               <th>Total</th>
+              <th>MP_Tipo</th>
+              <th>Sinpe</th>
+              <th>Efectivo</th>
+              <th>Tarjeta</th>
               <th>Acciones</th>
 
         </tr> 
@@ -76,8 +79,6 @@
            
 
            echo '<tr>
-
-                  <td>'.($key+1).'</td>
 
 
                   <td>'.$value["codigo"].'</td>';
@@ -127,8 +128,11 @@
                   
                   <td>¢ '.number_format($value["total"],2).'</td>
                   
-                  
-
+                  <td>'.$value["metodoPago"].'</td>
+                  <td>¢ '.number_format($value["sinpe"],2).'</td>
+                  <td>¢ '.number_format($value["efectivo"],2).'</td>
+                  <td>¢ '.number_format($value["tarjeta"],2).'</td>
+            
 
 
                   <td>

@@ -410,7 +410,9 @@ function pagosVenta(){
 	if(metodosSeleccionados.length == 1){
 
 		if(metodosSeleccionados[0] == "Efectivo"){
-			
+
+			quitarElementos();
+
 			$th1 = $('<th class="total-texto">Pago</th>');
 
 			$td1 = $('<td>'+
@@ -433,33 +435,11 @@ function pagosVenta(){
 			$td2.appendTo(".tbody_tableD");
 
 		}else{
-			if ($th1) {
-				$th1.remove();
-		
-			}if($th2){
-				$th2.remove();
-		
-			}if ($td1) {
-				$td1.remove();
-		
-			}if ($td2) {
-				$td2.remove();
-			}
+			quitarElementos();
 		}
 
 	}else{
-			if ($th1) {
-				$th1.remove();
-		
-			}if($th2){
-				$th2.remove();
-		
-			}if ($td1) {
-				$td1.remove();
-		
-			}if ($td2) {
-				$td2.remove();
-			}
+		quitarElementos();
 		
 		if(metodosSeleccionados.length >=2){
 
@@ -493,6 +473,20 @@ function pagosVenta(){
 	}
 }
 
+function quitarElementos(){
+	if ($th1) {
+		$th1.remove();
+
+	}if($th2){
+		$th2.remove();
+
+	}if ($td1) {
+		$td1.remove();
+
+	}if ($td2) {
+		$td2.remove();
+	}
+}
 
 
 /*$("#nuevoMetodoPago").change(function(){

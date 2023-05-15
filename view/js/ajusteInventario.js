@@ -1,38 +1,69 @@
-const dataArrayProductos = JSON.parse(localStorage.getItem("datosProductos"));
-const dataArrayInventario = JSON.parse(localStorage.getItem("datosInventario"));
+// Obtener el objeto URLSearchParams con los parámetros de la URL
+const urlParams = new URLSearchParams(window.location.search);
 
-console.log("HOLA SI ESTOY", dataArrayProductos);
-console.log("HOLA SI ESTOY2", dataArrayInventario);
+// Obtener el valor del parámetro 'codigo'
+const codigo = urlParams.get('codigoInventario');
 
-//dataArrayProductos[0].codigo
+let datasInventario = new FormData();
 
-$("#idProductoAjuste").val(dataArrayProductos[0].codigo);
-$("#codigoInventarioAjuste").val(dataArrayInventario[0].codigo);
-$("#nameProductoAjuste").val(dataArrayProductos[0].nombre);
-$("#marcaProductoAjuste").val(dataArrayProductos[0].marca);
-$("#descriptionProductoAjuste").val(dataArrayProductos[0].descripcion);
-$("#existenciaAjuste").val(dataArrayInventario[0].cantidad);
-$("#idSucursalAjuste").val(dataArrayInventario[0].idSucursal);
-$("#unitProductoAjuste").val(dataArrayProductos[0].unidadMedida);
-$("#porcProductoAjuste").val(dataArrayProductos[0].porcentajeIva);
-$("#precioNetoAjuste").val(dataArrayProductos[0].precioNeto);
-$("#precioTotalAjuste").val(dataArrayProductos[0].precioTotal);
-$("#cateProductoAjuste").val(dataArrayProductos[0].categoria);
-$("#obsProductoAjuste").val(dataArrayProductos[0].observaciones);
-$("#fotoActualProducto").val(dataArrayProductos[0].image);
+datasInventario.append("idInventario", codigo);
 
-if (dataArrayProductos[0].image != null) {
-    $(".imageTemp").attr("src", dataArrayProductos[0].image);
-} else {
-    $(".imageTemp").attr("src", "imagen/computadoraDefault.png");
+$.ajax({
+    url:"ajax/inventarioAjax.php",
+    method:"POST",
+    data: datasInventario,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function(respuesta){
+        $("#codigoInventarioAjuste").val(respuesta["codigo"]);
+        $("#idProductoAjuste").val(respuesta["idProducto"]);
+        $("#idSucursalAjuste").val(respuesta["idSucursal"]);
+        $("#existenciaAjuste").val(respuesta["cantidad"]);
+        ajaxProducto();
+    }
+    
+})
+
+
+function ajaxProducto(){
+
+    let datasProducto = new FormData();
+    datasProducto.append("idProduct", document.getElementById("idProductoAjuste").value);
+
+    $.ajax({
+        url:"ajax/productAjax.php",
+        method:"POST",
+        data: datasProducto,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){
+            console.log("respuestaP",respuesta);
+            // Resto del código que usa la respuesta de la llamada AJAX
+            $("#nameProductoAjuste").val(respuesta["nombre"]);
+            $("#marcaProductoAjuste").val(respuesta["marca"]);
+            $("#descriptionProductoAjuste").val(respuesta["descripcion"]);;
+            $("#unitProductoAjuste").val(respuesta["unidadmedida"]);
+            $("#porcProductoAjuste").val(respuesta["porcentajeIva"]);
+            $("#precioNetoAjuste").val(respuesta["precioNeto"]);
+            $("#precioTotalAjuste").val(respuesta["precioTotal"]);
+            $("#cateProductoAjuste").val(respuesta["categoria"]);
+            $("#obsProductoAjuste").val(respuesta["observaciones"]);
+            $("#fotoActualProducto").val(respuesta["image"]);
+
+            if(respuesta["image"] != null) {
+                $(".imageTemp").attr("src", respuesta["image"]);
+            } else {
+                $(".imageTemp").attr("src", "imagen/computadoraDefault.png");
+            }
+        }
+    });
+
 }
 
-
-
-
-$(".botonAjusteInventario").click(function(){
-    localStorage.clear();
-})
 
 $('#porcProductoAjuste').on('blur', function() {
     let porcentaje = 0;

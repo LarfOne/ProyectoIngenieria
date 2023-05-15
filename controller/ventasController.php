@@ -34,8 +34,10 @@ class ControladorVentas{
 									"idEmpleado" => $_POST["idEmpleado"],
 									"idSucursal" => $_POST["idSucursal"],
 									"idCliente"=>$_POST["idCliente"],
-                                    "subTotal" => $_POST["nuevoTotalVenta"],
+                                    "subTotal" => $_POST["nuevoSubTotalVenta"],
 									"fechaFactura" => $fecha,
+									"descuento" => $_POST["descuentoVenta"],
+									"impuesto" => $_POST["impuestoVenta"],
                                     "total" => $_POST["nuevoTotalVenta"]
                                     );
 
@@ -62,6 +64,7 @@ class ControladorVentas{
 						
 				
 
+<<<<<<< HEAD
                     if($respuesta == "ok"){
 						echo "<script>
 						
@@ -77,6 +80,16 @@ class ControladorVentas{
 						echo "window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo=" . $idFactura . "';";
 						echo "</script>";
 						
+=======
+                        </script>";
+
+						echo "<script>
+
+						window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo='+$idFactura;
+
+						</script>";
+
+>>>>>>> origin/luisBranch
 					}else{
 
 						echo "<script>

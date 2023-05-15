@@ -65,16 +65,27 @@ font-family: 'Roboto Condensed', sans-serif !important;
     justify-content: center;
     margin-left:220px;
     padding: 7px;
-    grid-template-columns: 1fr 85px 1fr 1fr 1fr;
+    grid-template-columns: 400px 100px 400px 20px 1fr;
     grid-template-rows: repeat(1, 1fr);
     gap: 5px;
-   
-   
 }
 #campos{
 color: white;
 
 }
+
+.metodoPago label {
+    display: inline-block;
+    width: auto;
+    margin-right: 10px;
+}
+
+.metodoPago input[type="checkbox"] {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+
 .tablaVenta{
     overflow: auto;
     height: 400px;
@@ -82,7 +93,8 @@ color: white;
     border: solid 1px rgb(205, 207, 212);
     border-radius: 10px;
     align-items: center;
-    background-color: rgb(202, 204, 210);
+    background-color: rgb(238, 239, 241);
+    /*background-color: rgb(202, 204, 210);*/
     margin: auto;
     width: 100%;
     margin-top: 20px;
@@ -106,7 +118,7 @@ color: white;
     border: 1px solid black;       
 }
 
-.botonesVenta{
+.saleCalculations{
     
     border: solid 1px rgb(133, 78, 78);
     gap: 10px;
@@ -123,6 +135,23 @@ color: white;
     position: relative;
     
 }
+
+.botonesVenta{
+    background-color: #344780;
+    border-radius: 10px;
+    border: solid 1px rgb(47, 56, 89);
+    gap: 10px;
+    display: flow-root;
+    align-items: center;
+    margin: auto;
+    width: 100%;
+    margin-top: 20px;
+    margin-left:220px;
+    padding: 7px;
+    position: relative;
+    
+}
+
 .total-texto {
     color: white;
   }
@@ -273,4 +302,7 @@ color: white;
     text-decoration: none;
     background-color:#ab0a2d;
 }
+
+
+
 

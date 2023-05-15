@@ -113,7 +113,11 @@ $bloque1 = <<<EOF
 			<td style="background-color:white;">
         <h2>MOUSELAMP</h2>
 				<div style="font-size:8.5px; text-align:left; line-height:15px;">
+<<<<<<< HEAD
 					codigo factura: $valorFac
+=======
+					Codigo Factura: $valorFac
+>>>>>>> origin/luisBranch
 					<br>
 					
 					Vendedor: $respuestaVendedor[nombre] $respuestaVendedor[apellidos]
@@ -170,7 +174,7 @@ $bloque2 = <<<EOF
 
 		
     <br>
-    Fecha de venta: $fecha
+		Fecha de venta: $fecha
 
 
 
@@ -204,7 +208,7 @@ $bloque3 = <<<EOF
 		<tr>	
 		<td style="border: 1px solid #666; background-color:white; width:260px; text-align:center">Producto</td>
 		<td style="border: 1px solid #666; background-color:white; width:80px; text-align:center">Cantidad</td>
-		<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">Valor Unitario.</td>
+		<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">V. Unitario</td>
 		<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">Valor Total</td>
 		</tr>
 	</table>

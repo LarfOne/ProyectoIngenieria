@@ -38,14 +38,13 @@ class ControladorVentas{
 									"fechaFactura" => $fecha,
 									"descuento" => $_POST["descuentoVenta"],
 									"impuesto" => $_POST["impuestoVenta"],
-                                    "total" => $_POST["nuevoTotalVenta"]
+                                    "total" => $_POST["nuevoTotalVenta"],
+									"metodoPago" => $_POST["listaMetodoPago"]
                                     );
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					
-						
-						$array = json_decode($_POST['listaProductos'],true);
+					$array = json_decode($_POST['listaProductos'],true);
 
 						foreach ($array as $key => $value) { 
 							$tabla = "inventario";

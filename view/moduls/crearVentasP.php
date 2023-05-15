@@ -114,16 +114,18 @@
         <div class="col mt-3 mr-5 form-group row metodoPago">
         <label id="campos">Metodos de pago: </label>
           <label id="campos">
-            <input type="checkbox" name="opcion1" value="opcion1"> Efectivo
+            <input type="checkbox" id="checkEfectivo" name="Efectivo" value="Efectivo"> Efectivo
           </label>
           <label id="campos">
-            <input type="checkbox" name="opcion2" value="opcion2"> Tarjeta
+            <input type="checkbox" id="checkTarjeta" name="Tarjeta" value="Tarjeta"> Tarjeta
           </label>
           <label id="campos">
-            <input type="checkbox" name="opcion3" value="opcion3"> Sinpe Movil
+            <input type="checkbox" id="checkSinpe" name="Sinpe" value="Sinpe"> Sinpe Movil
           </label>
           </div>
         </div>
+
+        <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
       <section class="tablaVenta">
         <div class="tablaVendidos">
@@ -148,7 +150,6 @@
         </div>
       </section>
       <input type="hidden" id="listaProductos" name="listaProductos">
-
       <div class="saleCalculations">
 
         <div class="col-xs-8 pull-right">

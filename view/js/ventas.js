@@ -2,7 +2,7 @@ let stock = "";
 let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
-
+let metodosSeleccionados = [];
 
 // Creamos un array vacío
 const arrayProductos = [];
@@ -383,21 +383,133 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	codigoInventario = "";
 }
 
-$("#nuevoMetodoPago").change(function(){
+$("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
+    // Verificar si el checkbox se seleccionó o deseleccionó
+    if ($(this).is(":checked")) {
+        // Si se seleccionó, agregarlo al arreglo
+        metodosSeleccionados.push($(this).val());
+    } else {
+        // Si se deseleccionó, eliminarlo del arreglo
+        let index = metodosSeleccionados.indexOf($(this).val());
+        if (index !== -1) {
+            metodosSeleccionados.splice(index, 1);
+        }
+    }
+	    // Imprimir el arreglo actualizado (para fines de depuración)
+		console.log(metodosSeleccionados);
+
+		$("#listaMetodoPago").val(metodosSeleccionados);
+		//console.log(document.getElementById("listaMetodoPago").textContent);
+		pagosVenta();
+});
+
+let $th1, $th2, $td1, $td2; // declarar las variables fuera de la función para que estén disponibles en el ámbito global
+
+function pagosVenta(){
+
+	if(metodosSeleccionados.length == 1){
+
+		if(metodosSeleccionados[0] == "Efectivo"){
+			
+			$th1 = $('<th class="total-texto">Pago</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoVenta" name="nuevoPagoVenta" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
+							'</div>'+
+						'</td>');						
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+
+		}else{
+			if ($th1) {
+				$th1.remove();
+		
+			}if($th2){
+				$th2.remove();
+		
+			}if ($td1) {
+				$td1.remove();
+		
+			}if ($td2) {
+				$td2.remove();
+			}
+		}
+
+	}else{
+			if ($th1) {
+				$th1.remove();
+		
+			}if($th2){
+				$th2.remove();
+		
+			}if ($td1) {
+				$td1.remove();
+		
+			}if ($td2) {
+				$td2.remove();
+			}
+		
+		if(metodosSeleccionados.length >=2){
+
+			//Nuevos elementos cuando hay dos
+			$th1 = $('<th class="total-texto">'+metodosSeleccionados[0]+'</th>');
+
+			$th2 = $('<th class="total-texto">'+metodosSeleccionados[1]+'</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoVenta" name="nuevoPagoVenta" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
+							'</div>'+
+						'</td>');						
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$th2.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+
+		}
+		
+	}
+}
+
+
+
+/*$("#nuevoMetodoPago").change(function(){
     let metodo = $(this).val();
 
     if(metodo == "Efectivo"){
         // Guardar los elementos que se van a agregar
-        let $thPay = $('<th class="total-texto">Pago</th>');
+        let $th1 = $('<th class="total-texto">Pago</th>');
 
-        let $tdPay = $('<td>'+
+        let $td1 = $('<td>'+
                                 '<div class="input-group">'+
                                     '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
                                     '<input type="number" class="form-control input-lg" id="nuevoPagoVenta" name="nuevoPagoVenta" value=0 min=0 max=100000000 required>'+
                                 '</div>'+
                             '</td>');
 
-		let $tdDue = $('<td>'+
+		let $td2 = $('<td>'+
                                 '<div class="input-group">'+
                                     '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
                                     '<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
@@ -405,22 +517,21 @@ $("#nuevoMetodoPago").change(function(){
                             '</td>');						
 
         // Agregar los elementos
-        $thPay.appendTo(".thead_tableD");
-        $tdPay.appendTo(".tbody_tableD");
-		$tdDue.appendTo(".tbody_tableD");
+        $th1.appendTo(".thead_tableD");
+        $td1.appendTo(".tbody_tableD");
+		$td2.appendTo(".tbody_tableD");
 
         // Eliminar los elementos si se selecciona otro método de pago
         $("#nuevoMetodoPago").change(function(){
             let metodo2 = $(this).val();
             if(metodo2 != "Efectivo"){
-                $thPay.remove();
-                $tdPay.remove();
-				$tdDue.remove();
+                $th1.remove();
+                $td1.remove();
+				$td2.remove();
             }
         });
     }
-});
-
+});*/
 
 /*=============================================
 IMPRIMIR FACTURA

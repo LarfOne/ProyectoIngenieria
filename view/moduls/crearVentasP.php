@@ -6,7 +6,7 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 <div id="container pt-4">
-  <form role="form" method="post" class="formularioVenta">
+  <form role="form" method="post" class="formularioVenta" id="formularioVenta">
     <div class="contVenta" >
 
 

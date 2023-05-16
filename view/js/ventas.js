@@ -3,7 +3,7 @@ let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
 let metodosSeleccionados = [];
-
+const formulario = document.getElementById('formularioVenta');
 // Creamos un array vacío
 const arrayProductos = [];
 
@@ -138,9 +138,7 @@ QUITAR PRODUCTOS DE LA TABLA
 
 function eliminarFila(idProduct) {
 	let tr = document.querySelector('#listaP' + idProduct);
-
-	let index = arrayProductos.findIndex(producto => producto.idProducto === idProduct);
-
+	let index = arrayProductos.findIndex(producto => producto.idProducto == idProduct);
 	if (index !== -1) {
 		if (tr) {
 			arrayProductos.splice(index, 1);
@@ -173,7 +171,7 @@ function sumarTotalPrecios(){
 	let total = 0;
 
 	precios.forEach(function(precio) {
-		total += parseFloat(precio.textContent);
+		total += parseInt(precio.textContent);
 	});
 
 
@@ -191,10 +189,9 @@ function sumarTotalPrecios(){
 function Discount(){
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
-		let totalTaxt = parseFloat(sumarTotalPrecios()) + getTax();
+		let totalTaxt = parseInt(sumarTotalPrecios()) + getTax();
 
-		let totalFinal = parseFloat(totalTaxt) - getDiscount();
-		console.log(totalFinal);
+		let totalFinal = parseInt(totalTaxt) - getDiscount();
 		$("#descuentoVenta").val(getDiscount());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
@@ -235,9 +232,9 @@ $('.tablaD').on('blur', '#nuevoPagoVenta', function() {
 function Tax(){
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
-		let totalDiscount = parseFloat(sumarTotalPrecios()) - getDiscount();
+		let totalDiscount = parseInt(sumarTotalPrecios()) - getDiscount();
 
-		let totalFinal = parseFloat(totalDiscount) + getTax();
+		let totalFinal = parseInt(totalDiscount) + getTax();
 		console.log(totalFinal);
 		$("#impuestoVenta").val(getTax());
 		$("#nuevoTotalVenta").val(totalFinal);
@@ -253,7 +250,7 @@ function getTax(){
 
 	let impuestoVenta = parseInt(document.getElementById("nuevoImpuestoVenta").value);
 	let porcentajeImpuesto= impuestoVenta / 100;
-	let impuestoTotal = parseFloat(sumarTotalPrecios()) * porcentajeImpuesto;
+	let impuestoTotal = parseInt(sumarTotalPrecios()) * porcentajeImpuesto;
 
 	return impuestoTotal;
 }
@@ -262,14 +259,14 @@ function getDiscount(){
 
 	let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
 	let porcentajeDescuento = descuentoVenta / 100;
-	let descuentoTotal = porcentajeDescuento * parseFloat(sumarTotalPrecios());
+	let descuentoTotal = porcentajeDescuento * parseInt(sumarTotalPrecios());
 
 	return descuentoTotal;
 
 }
 
 function getTotalSale(){
-	let total = parseFloat(sumarTotalPrecios());
+	let total = parseInt(sumarTotalPrecios());
 
 	total = total + getTax();
 
@@ -327,6 +324,22 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 });
 
 
+
+formulario.addEventListener('submit', function(event) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let alMenosUnoSeleccionado = false;
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        alMenosUnoSeleccionado = true;
+      }
+    });
+    if (!alMenosUnoSeleccionado) {
+      event.preventDefault();
+      alert('Por favor, selecciona al menos una opción de pago.');
+    }
+  });
+
+
 /*=============================================
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
@@ -347,9 +360,9 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	let descuento = parseInt(descuentoProducto);
 
 	let porcentajeDescuento = descuento / 100; // convierte el descuento a un porcentaje
-	let descuentoTotal = porcentajeDescuento * parseFloat(subTotal); // calcula la cantidad a restar del subtotal
+	let descuentoTotal = porcentajeDescuento * parseInt(subTotal); // calcula la cantidad a restar del subtotal
 
-	let subTotalDescuento = parseFloat(subTotal) - descuentoTotal; // resta el descuento al subtotal original
+	let subTotalDescuento = parseInt(subTotal) - descuentoTotal; // resta el descuento al subtotal original
 	console.log("subTotalDescuento",subTotalDescuento);
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
 	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);

@@ -31,7 +31,6 @@ class ControladorVentas{
 				$fecha = date('Y-m-d H:i:s');
 
 					$datas = array(
-						"codigo" => $_POST["nuevaVenta"],
 						"idEmpleado" => $_POST["idEmpleado"],
 						"idSucursal" => $_POST["idSucursal"],
 						"idCliente"=>$_POST["idCliente"],

@@ -30,17 +30,23 @@ class ControladorVentas{
 				date_default_timezone_set("America/Costa_Rica");	
 				$fecha = date('Y-m-d H:i:s');
 
-                    $datas = array( "codigo" => $_POST["nuevaVenta"],
-									"idEmpleado" => $_POST["idEmpleado"],
-									"idSucursal" => $_POST["idSucursal"],
-									"idCliente"=>$_POST["idCliente"],
-                                    "subTotal" => $_POST["nuevoSubTotalVenta"],
-									"fechaFactura" => $fecha,
-									"descuento" => $_POST["descuentoVenta"],
-									"impuesto" => $_POST["impuestoVenta"],
-                                    "total" => $_POST["nuevoTotalVenta"],
-									"metodoPago" => $_POST["listaMetodoPago"]
-                                    );
+					$datas = array(
+						"codigo" => $_POST["nuevaVenta"],
+						"idEmpleado" => $_POST["idEmpleado"],
+						"idSucursal" => $_POST["idSucursal"],
+						"idCliente"=>$_POST["idCliente"],
+						"subTotal" => $_POST["nuevoSubTotalVenta"],
+						"fechaFactura" => $fecha,
+						"descuento" => $_POST["descuentoVenta"],
+						"impuesto" => $_POST["impuestoVenta"],
+						"total" => $_POST["nuevoTotalVenta"],
+						"metodoPago" => $_POST["listaMetodoPago"],
+						"sinpe" => $_POST["nuevoPagoSinpe"],
+						"efectivo" => $_POST["nuevoPagoEfectivo"],
+						"tarjeta" => $_POST["nuevoPagoTarjeta"]
+					);
+				
+				
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 

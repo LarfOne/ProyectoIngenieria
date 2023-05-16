@@ -5,6 +5,22 @@
 
 } */
 
+@media (max-width: 767px) {
+    /* Estilos para pantallas pequeñas */
+    .container {
+      /* Asegúrate de que el contenedor tenga suficiente espacio */
+      padding-bottom: 100px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    /* Estilos para pantallas más grandes */
+    .container {
+      /* Restaura los estilos originales del contenedor */
+      padding-bottom: 0;
+    }
+  }
+  
 .contenedor {
     margin: 51px 0px 20px 61px;
 
@@ -55,41 +71,39 @@ input::file-selector-button {
 
 .button-save {
     margin-right: 50px;
-    height: 80px;
-    width: 200px;
+    width: 170px;
     border-radius: 10px;
-    background-color: #40B419;
-    font-size: larger;
+    
+    font-size:larger;
     border: none;
     color: white;
-    font-size: 30px;
+    height: 65px;
+    
+    background-color: #2ecc71;
+    box-shadow: 0px 5px 0px 0px #15B358;
+    
     
 }
 
 .button-save:hover{
-    border: 1px solid rgb(22, 117, 6);
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    background-color: #2b800e;
+    background-color: #48E68B;
 }
 
 .button-cancel {
     margin-right: 50px;
-    height: 80px;
-    width: 200px;
-    border-radius: 10px;
-    background-color: #FF0038;
+    height: 65px;
+    width: 170px;
+    
     font-size: larger;
-    border: none;
+    border-radius: 10px;
     color: white;
-    font-size: 30px;
+    border: 2px solid #f44336;
+    background-color: #e74c3c;
+   box-shadow: 0px 5px 0px 0px #CE3323;
 }
 
 .button-cancel:hover{
-    border: 1px solid rgb(112, 0, 0);
-    color: rgb(255, 255, 255);
-    background-color: #990021;
-    text-decoration: none;
+    background-color: #FF6656;
 }
 .image {
     background-color:#005092;

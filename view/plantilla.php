@@ -97,12 +97,15 @@ session_start(); //para usar variables de session
     } else {
       include "moduls/inicio.php";
     }
+   
+
+   // Quitar footer de editar inventario y de products
+   if ($_GET["ruta"] !== "products" && $_GET["ruta"] !== "editarInventario") {
     include "moduls/footer.php";
-  } else {
-    include "moduls/login.php";
   }
-
-
+} else {
+  include "moduls/login.php";
+}
   ?>
 
 

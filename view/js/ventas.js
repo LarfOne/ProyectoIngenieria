@@ -403,17 +403,169 @@ $("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
 		pagosVenta();
 });
 
+let $th1, $th2, $th3, $td1, $td2, $td3;
+
 function pagosVenta(){
+
 	if(metodosSeleccionados.length == 1){
 
 		if(metodosSeleccionados[0] == "Efectivo"){
-			console.log(metodosSeleccionados[0]);
+
+			quitarElementos();
+
+			$th1 = $('<th class="total-texto">Pago</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoVenta" name="nuevoPagoVenta" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
+							'</div>'+
+						'</td>');
+						
+			$td3 = $(
+						'<td>'+
+						'<div class="input-group">'+
+							'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+							'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoEfectivo" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+						'</div>'+
+					'</td>'
+					);
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+			$td3.appendTo(".tbody_tableD");
+			
+
+
+		}if(metodosSeleccionados[0] == "Sinpe"){
+			quitarElementos();
+			$td3 = $(
+				'<td>'+
+				'<div class="input-group">'+
+					'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+					'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoSinpe" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+				'</div>'+
+			'</td>'
+			);
+
+			$td3.appendTo(".tbody_tableD");
+
+		}if(metodosSeleccionados[0] == "Tarjeta"){
+			quitarElementos();
+			$td3 = $(
+				'<td>'+
+				'<div class="input-group">'+
+					'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+					'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoTarjeta" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+				'</div>'+
+			'</td>'
+			);
+
+			$td3.appendTo(".tbody_tableD");
+
 		}
 
 	}else{
+		quitarElementos();
+		
+		if(metodosSeleccionados.length == 2){
+			//Nuevos elementos cuando hay dos
+			$th1 = $('<th class="total-texto">'+metodosSeleccionados[0]+'</th>');
+
+			$th2 = $('<th class="total-texto">'+metodosSeleccionados[1]+'</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPago'+metodosSeleccionados[0]+'" name="nuevoPago'+metodosSeleccionados[0]+'" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPago'+metodosSeleccionados[1]+'" name="nuevoPago'+metodosSeleccionados[1]+'" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');						
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$th2.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+
+		}if(metodosSeleccionados.length == 3){
+			//Nuevos elementos cuando hay tres
+			$th1 = $('<th class="total-texto">Sinpe</th>');
+
+			$th2 = $('<th class="total-texto">Efectivo</th>');
+
+			$th3 = $('<th class="total-texto">Tarjeta</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoSinpe" name="nuevoPagoSinpe" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoEfectivo" name="nuevoPagoEfectivo" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+			
+			$td3 = $('<td>'+
+						'<div class="input-group">'+
+							'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+							'<input type="number" class="form-control input-lg" id="nuevoPagoTarjeta" name="nuevoPagoTarjeta" value=0 min=0 max=100000000 required>'+
+						'</div>'+
+					'</td>');
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$th2.appendTo(".thead_tableD");
+			$th3.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+			$td3.appendTo(".tbody_tableD");
+
+		}
 		
 	}
 }
+
+function quitarElementos(){
+	if ($th1) {
+		$th1.remove();
+
+	}if($th2){
+		$th2.remove();
+
+	}if($th3){
+		$th3.remove();
+
+	}if ($td1) {
+		$td1.remove();
+
+	}if ($td2) {
+		$td2.remove();
+
+	}if ($td3) {
+		$td3.remove();
+	}
+}
+
 
 
 /*=============================================

@@ -121,7 +121,7 @@
                       $item = null;
                       $valor = null;
 
-                      $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
+                      $categorias = ControllerClient::ctrShowClient($item, $valor);
 
                        foreach ($categorias as $key => $value) {
 
@@ -154,7 +154,7 @@
                   $item = "id";
                   $valor = $value["id"];
 
-                  $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor);
+                  $respuesta = ControllerProduct::ctrShowProduct($item, $valor);
 
                   $stockAntiguo = $respuesta["stock"] + $value["cantidad"];
                   
@@ -504,8 +504,8 @@ MODAL AGREGAR CLIENTE
 
       <?php
 
-        $crearCliente = new ControladorClientes();
-        $crearCliente -> ctrCrearCliente();
+        $crearCliente = new ControllerClient();
+        $crearCliente -> ctrCreateClient();
 
       ?>
 

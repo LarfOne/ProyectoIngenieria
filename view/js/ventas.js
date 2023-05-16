@@ -271,7 +271,7 @@ function getTotalSale(){
 	total = total + getTax();
 
 	total = total - getDiscount();
-	//console.log("El total es",total);
+	console.log("El total es",total);
 
 	$("#nuevoTotalVenta").val(total);
 }
@@ -318,9 +318,9 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 
 	let subTotal = parseInt(precioUnitario)*cantidad;
 
-	console.log('blur',idProduct);										
+	console.log('blur',idProduct);
+	getTotalSale();									
 	listarProductos(descuentoProducto, idProduct,subTotal);
-	getTotalSale();
 });
 
 
@@ -351,7 +351,7 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	//console.log("listar Productos", tr);
 	let idInventario = codigoInventario;
 	let stockProducto = stock;
-	console.log("stock",stock);
+	//console.log("stock",stock);
 	let codigo = codigoProducto;
 	let descripcion = tr.querySelector('.descripcionProducto').textContent;
 	let cantidad = tr.querySelector('.cantidadProducto').textContent;

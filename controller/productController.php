@@ -62,7 +62,7 @@ class ControllerProduct
 			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
 				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 
-				$ruta = $_POST["fotoActualProducto"];
+				$ruta = NULL;
 				
 				if(isset($_FILES["imageProductosAjuste"]["tmp_name"])&& !empty($_FILES["imageProductosAjuste	"]["tmp_name"])){	
 					list($ancho, $alto) = getimagesize($_FILES["imageProductosAjuste"]["tmp_name"]);

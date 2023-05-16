@@ -140,7 +140,7 @@ QUITAR PRODUCTOS DE LA TABLA
 function eliminarFila(idProduct) {
 	let tr = document.querySelector('#listaP' + idProduct);
 
-	let index = arrayProductos.findIndex(producto => producto.idProducto === idProduct);
+	let index = arrayProductos.findIndex(producto => producto.idProducto == idProduct);
 
 	if (index !== -1) {
 		if (tr) {

@@ -7,11 +7,17 @@
 
 
 <div id="container pt-4" class="contenedorProducts" style="margin-top:90px;">
+      <style>
+
+
+
+
+      </style>
       <div class="container mt-3">
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
 
-            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px; !important">
+            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px;">
 
                   <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
@@ -28,7 +34,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Descripción.</label>
-                              <textarea class="form-control input-sm mt-2" name="descriptionProducto" rows="2" placeholder="Descripcion"></textarea>
+                              <textarea class="form-control input-sm mt-2" name="descriptionProducto" rows="2" placeholder="Descripcion" style="resize: none;"></textarea>
                         </div>
                   </div>
 
@@ -49,10 +55,10 @@
                         <div class="col mt-5 mr-5">
                               <label>Sucursal</label>
                               <select class="form-select input-lg mt-2" name="idSucursal">
-                                    
-                              <option value="" >Seleccionar sucursal.</option>
-                              <?php foreach ($sucursal as $sucursal1) { ?>
-                              
+
+                                    <option value="">Seleccionar sucursal.</option>
+                                    <?php foreach ($sucursal as $sucursal1) { ?>
+
                                           <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                                     <?php } ?>
                               </select>
@@ -69,7 +75,7 @@
                         <div class="col mt-5 mr-5">
                               <label>Unidad</label>
                               <select class="form-select input-lg mt-2" name="unitProducto">
-                              <option value="" >Seleccionar unidad.</option>
+                                    <option value="">Seleccionar unidad.</option>
                                     <?php foreach ($unit as $unit1) { ?>
                                           <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
                                     <?php } ?>
@@ -111,7 +117,7 @@
                         <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                               <label>Categoría.</label>
                               <select class="form-select input-lg mt-2 selectC" name="cateProducto">
-                                    <option value="" >Seleccionar categoría.</option>
+                                    <option value="">Seleccionar categoría.</option>
                                     <?php foreach ($category as $category1) { ?>
                                           <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
                                     <?php } ?>
@@ -132,16 +138,18 @@
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>
-                              <textarea class="form-control input-lg mt-2" name="obsProducto" rows="2" placeholder="Observaciones"></textarea>
+                              <textarea class="form-control input-lg mt-2" name="obsProducto" rows="2" placeholder="Observaciones" style="resize: none; height:160px;"></textarea>
                         </div>
+
+                        <div class="button-container">
+
+                              <button type="submit" class="btn1 button-save">Registrar</button>
+
+                              <button type="button" class="btn1 button-cancel">Cancelar</button>
+                        </div>
+
                   </div>
 
-                  <div class="button-container">
-
-                        <button type="submit" class="button-save">Registrar</button>
-
-                        <button type="button" class="button-cancel">Cancelar</button>
-                  </div>
 
                   <?php
 

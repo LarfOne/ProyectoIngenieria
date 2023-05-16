@@ -23,7 +23,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'La Categoría se agrego correctamente',
+                                title: 'La Categoría se agregó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'categories';
@@ -86,7 +86,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'La Categoría se modifico correctamente',
+                                title: 'La Categoría se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'categories';

@@ -230,47 +230,55 @@ color: white;
 
 .btnVentaGuardar{
     margin-right: 50px;
-    width: 200px;
-    border-radius: 10px;
-    background-color: #00A652;
+    width: 170px;
+    
     font-size:larger;
     border: none;
     color: white;
-    height: 80px;
-    font-family: Arial, Helvetica, sans-serif;
- 
+    height: 65px;
+    background-color: #2ecc71;
+    box-shadow: 0px 5px 0px 0px #15B358;
     
 }
 
 .btnVentaCancelar{
     margin-right: 50px;
-    height: 80px;
-    width: 200px;
-    border-radius: 10px;
-    background-color: #EF2A31;
-    font-size: larger;
-    border: none;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-
+    height: 65px;
+    width: 170px;
     
-   
+    font-size: larger;
+    
+    color: black; 
+    border: 2px solid #f44336;
+    background-color: #e74c3c;
+   box-shadow: 0px 5px 0px 0px #CE3323;
+
 }
 .btnVentaGuardar:hover{
-    border: 1px solid rgb(22, 117, 6);
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    background-color: #2b800e;
+    background-color: #48E68B;
 }
 
 .btnVentaCancelar:hover {
-   
-    border: 1px solid  #FF0038;
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    background-color:#ab0a2d;
+    background-color: #FF6656;
 }
 
+.btn1 {
+    border-radius: 10px;
+    padding: 15px 25px;
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .btn1:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+  }
+  
 
 
 

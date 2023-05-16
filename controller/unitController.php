@@ -17,7 +17,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'La unidad de medida se agrego correctamente',
+                                title: 'La unidad de medida se agregó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'products';
@@ -68,7 +68,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'La unidad de medida se modifico correctamente',
+                                title: 'La unidad de medida se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'products';
@@ -108,7 +108,7 @@
                     echo "<script>
                     
                         Swal.fire({
-                            title: 'La unidad de medida se elimino correctamente',
+                            title: 'La unidad de medida se eliminó correctamente',
                             showConfirmButton: true,
                             confirmButtonText: 'Cerrar',
                             closeOnConfirm: false,

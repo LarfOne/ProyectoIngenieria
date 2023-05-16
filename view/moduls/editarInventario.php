@@ -6,9 +6,9 @@
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ajuste de Inventario</h1>
 
-            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px; !important">
+            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px !important; ">
 
-                <div class="row align-items-center first">
+                  <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
                               <label>Codigo del producto.</label>
                               <input class="form-control input-sm mt-2" type="text" id="idProductoAjuste" name="idProductoAjuste" placeholder="Ingresar codigo" required readonly>
@@ -24,7 +24,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Descripción.</label>
-                              <textarea class="form-control input-sm mt-2" id="descriptionProductoAjuste" name="descriptionProductoAjuste" rows="2" placeholder="Descripcion"></textarea>
+                              <textarea class="form-control input-sm mt-2" id="descriptionProductoAjuste" name="descriptionProductoAjuste" rows="2" placeholder="Descripcion" style="resize: none;"></textarea>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Cantidad.</label>
@@ -132,7 +132,7 @@
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>
-                              <textarea class="form-control input-lg mt-2" id="obsProductoAjuste" name="obsProductoAjuste" rows="2" placeholder="Observaciones"></textarea>
+                              <textarea class="form-control input-lg mt-2" id="obsProductoAjuste" name="obsProductoAjuste" rows="2" placeholder="Observaciones"style="resize: none; height: 160px;"></textarea>
                         </div>
                   </div>
 

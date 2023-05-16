@@ -1,13 +1,10 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/boton.css">
-<<<<<<< HEAD
-<<<<<<< HEAD
 <link rel="stylesheet" href="css/clients.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
-=======
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
->>>>>>> origin/laryBranch
-=======
-<link rel="stylesheet" href="css/clients.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -17,14 +14,14 @@
 <div id="container pt-4" style="margin-top: 100px;">
 
   <div class="container mt-3">
-    <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Clientes</h2>
+    <h2 class="correrIzquierda" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Clientes</h2>
 
-    <button class="btn btn-primary btnAgregarCli" data-bs-toggle="modal" data-bs-target="#modalAddClient" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
+    <button class="btn btn-primary btnAgregarCli correrIzquierda" data-bs-toggle="modal" data-bs-target="#modalAddClient" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Cliente
 
     </button>
     <div class="box-body">
-      <div class="table-responsive roboto">
+      <div class="table-responsive roboto correrIzquierda">
         <table class="table" id="tabla" data-sort="table">
           <thead>
             <tr>

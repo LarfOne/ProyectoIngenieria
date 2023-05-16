@@ -120,7 +120,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'El activo se modifico correctamente',
+                                title: 'El activo se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'activos';
@@ -160,7 +160,7 @@
                     echo "<script>
                     
                         Swal.fire({
-                            title: 'El activo se elimino correctamente',
+                            title: 'El activo se eliminó correctamente',
                             showConfirmButton: true,
                             confirmButtonText: 'Cerrar',
                             closeOnConfirm: false,

@@ -53,7 +53,15 @@
                 <?php
                 if ($empleado1['estado'] == 'Inactivo') { ?>
                   <td>❌</td>
-                <?php } ?>  
+                <?php } ?>
+                <?php
+                if ($empleado1['image'] != null) { ?>
+                  <td><img src="<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
+                <?php } ?>
+                <?php
+                if ($empleado1['image'] == null) { ?>
+                  <td><img src="imagen/userDefault.png" class="img-thumbnail" width="40px"></td>
+                <?php } ?>
                 <td>
                   <div class="btn-group">
                     <button class="btn btn-warning btnUpdate btnUpdateUser" idEmpleado=<?php echo $empleado1['cedula']; ?> data-bs-toggle="modal" data-bs-target="#modalUpdateUser"><i class="fa fa-pencil"></i></button>
@@ -126,7 +134,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="email" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
                 </div>
               </div>
               <!--AGREGAR DE ROLE-->
@@ -144,7 +152,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input type="password" style="border-radius: 5px;" data-bs-toggle="tooltip" title="La contraseña debe de ser minimo de 6 caracteres y permite letras y numero" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
+                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
                 </div>
               </div>
               <!--AGREGAR DE CUENTA BANCARIA-->
@@ -172,13 +180,13 @@
                   </select>
                 </div>
               </div>
-              <!--AGREGAR DE FOTO
+              <!--AGREGAR DE FOTO-->
               <div class="form-group subirFoto">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
                 <input type="file" class="imageUser" name="imageUser">
                 <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
-                <img src="imagen/userDefault.png" class="img-thumbnail imageTempUser" width="100px">
-              </div>-->
+                <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
+              </div>
             </div>
           </div>
           <div class="modal-footer">
@@ -244,7 +252,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="email" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
+                  <input type="text" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
                 </div>
               </div>
               <!--MODIFICAR DE ROLE-->
@@ -292,14 +300,14 @@
                   </select>
                 </div>
               </div>
-              <!--MODIFICAR DE FOTO
+              <!--MODIFICAR DE FOTO-->
               <div class="form-group">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir nueva foto</span>
                 <input type="file" class="image" name="imageUpdate">
                 <p class="help-block">Peso maximo de la foto 10MB</p>
-                <img src="imagen/userDefault.png" class="img-thumbnail imageTempUser" width="100px">
+                <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
                 <input type="hidden" name="fotoActual" id="fotoActual">
-              </div>-->
+              </div>
             </div>
           </div>
           <div class="modal-footer">

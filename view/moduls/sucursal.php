@@ -147,7 +147,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control input-lg" name="emailSucursal" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
+                <input type="text" class="form-control input-lg" name="emailSucursal" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -248,7 +248,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control input-lg" id="emailSucursalm" name="emailSucursalm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
+                <input type="text" class="form-control input-lg" id="emailSucursalm" name="emailSucursalm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
 
               </div>
 

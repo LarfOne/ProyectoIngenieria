@@ -33,9 +33,9 @@ $(".btnUpdateUser").click(function() {
             $("#estadoUserm").val(respuesta["estado"]);
             $("#fotoActual").val(respuesta["image"]);
             if (respuesta["image"] != null) {
-                $(".imageTempUser").attr("src", respuesta["image"]);
+                $(".imageTemp").attr("src", respuesta["image"]);
             } else {
-                $(".imageTempUser").attr("src", "imagen/userDefault.png");
+                $(".imageTemp").attr("src", "imagen/userDefault.png");
             }
             //$("#passwordActual").val(respuesta["password"]);
 
@@ -102,7 +102,7 @@ $(".imageUser").change(function() {
 
         $(datosImagen).on("load", function(event) {
             var rutaImagen = event.target.result;
-            $(".imageTempUser").attr("src", rutaImagen);
+            $(".imageTemp").attr("src", rutaImagen);
         })
     }
 

@@ -107,7 +107,7 @@ session_start(); //para usar variables de session
 
 
   </div>
-  <!-- ./wrapper -->
+  <!--./wrapper-->
   <script src="view/js/ventas.js"></script>
   <script src="view/js/user.js"></script>
   <script src="view/js/sucursal.js"></script>

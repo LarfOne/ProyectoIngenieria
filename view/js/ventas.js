@@ -3,7 +3,7 @@ let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
 let metodosSeleccionados = []; 
-const formularioVenta = document.querySelector('.formularioVenta');
+//const formularioVenta = document.querySelector('.formularioVenta');
 
 // Creamos un array vacío
 const arrayProductos = [];
@@ -328,7 +328,7 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 });
 
 
-formularioVenta.addEventListener('submit', function(event) {
+/*formularioVenta.addEventListener('submit', function(event) {
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     let alMenosUnoSeleccionado = false;
     checkboxes.forEach(function(checkbox) {
@@ -340,7 +340,7 @@ formularioVenta.addEventListener('submit', function(event) {
       event.preventDefault();
       alert('Por favor, selecciona al menos una opción de pago.');
     }
-});
+});*/
 
 /*=============================================
 LISTAR TODOS LOS PRODUCTOS

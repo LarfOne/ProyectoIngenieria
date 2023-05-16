@@ -45,7 +45,7 @@ $(".btnUpdateInventario").click(function(event){
             precioTotal: respuesta2[0]["precioTotal"],
             observaciones: respuesta2[0]["observaciones"],
             image: respuesta2[0]["image"],
-            usuarioIngresa: respuesta2[0]["usuarioIngresa"]
+            usuarioResponsable: respuesta2[0]["usuarioResponsable"]
         }
         datosProductos = [...datosProductos, infoProductos];
         let productos = JSON.stringify(datosProductos);

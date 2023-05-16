@@ -55,7 +55,7 @@
             <a class="probar" href="editarInventario?codigoInventario=<?php echo $inventario1['codigo'];?>"><i class="fa fa-pencil"></i></a>
             </button>
 
-              <button class="btn btn-danger btnDelete btnDeleteInventario" codigoIventarioM = <?php echo $inventario1['codigo']; ?> codigoProductM = <?php echo $inventario1['idProducto']; ?>
+              <button class="btn btn-danger btnDelete btnDeleteInventario" codigoProductM = <?php echo $inventario1['idProducto']; ?> codigoInventarioM = <?php echo $inventario1['codigo']; ?>
               ><i class="fa fa-times"></i></button>
           </div>
 

@@ -412,3 +412,17 @@ border: 1px solid black;
     }
 }
 
+@media (max-width: 767px) {
+    .centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    }
+
+    .centered-content-inner {
+    text-align: center;
+      margin: 0 auto; /* Ajusta los márgenes para centrar el contenido /
+      max-width: 90%; / Limita el ancho máximo del contenido */
+    }
+}

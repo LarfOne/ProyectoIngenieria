@@ -76,12 +76,14 @@
 
                 $table = "inventario";
                 $data = $_GET["codigoInventarioE"];
+                echo ("DICEEEEEN");
                 //mdlDelete" de la clase "Inventario" para eliminar el registro correspondiente de la tabla "inventario"
                 
                 $respuesta = Inventario::mdlDelete($table, $data);
                 //$respuesta = User::mdlPrueba($data);
 
                 if($respuesta == "ok"){
+                    
                     echo "<script>
                     
                         Swal.fire({
@@ -98,6 +100,22 @@
                         })
                     </script>";
 
+                }else{
+                    echo "<script>
+                    
+                        Swal.fire({
+                            title: 'El inventario se eliminó correctamente',
+                            showConfirmButton: error,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                            icon: 'success',
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'inventarios';
+                            }
+                            
+                        })
+                    </script>";
                 }
             
             }

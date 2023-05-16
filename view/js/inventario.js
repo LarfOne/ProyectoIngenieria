@@ -74,13 +74,12 @@ $(".btnUpdateInventario").click(function(event){
     //localStorage.clear(); //Cuando se oprima el boton de editar se vacia el localStorage
 })*/
 
-$(".btnDeleteInventario").click(function(){
-
-    var codigoIventarioM = $(this).attr("codigoIventarioM"); 
-
+$(".btnDeleteInventario").click(function() {
+    var codigoProductM = $(this).attr("codigoProductM");
+    var codigoInventarioM = $(this).attr("codigoInventarioM");
 
     Swal.fire({
-        title: 'Estas seguro de eliminar el inventario?',
+        title: '¿Estás seguro de eliminar?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -88,11 +87,10 @@ $(".btnDeleteInventario").click(function(){
         cancelButtonText: 'Cancelar',
         confirmButtonText: 'Borrar'
     }).then((result) => {
-        if(result.value){
-
-            window.location = "index.php?ruta=inventarios&codigoInventarioE="+codigoIventarioM;
+        if (result.value) {
+            if (codigoProductM && codigoInventarioM) {
+                window.location = "index.php?ruta=inventarios&idProductE=" + codigoProductM + "&codigoInventarioE=" + codigoInventarioM;
+            }
         }
-
-    })
-
-})
+    });
+});

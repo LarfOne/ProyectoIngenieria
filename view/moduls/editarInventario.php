@@ -37,7 +37,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Existencia.</label>
-                              <input class="form-control input-sm mt-2" type="number" id="existenciaAjuste" name="existenciaAjuste" placeholder="Existencia de productos" required>
+                              <input class="form-control input-sm mt-2" type="number" id="existenciaAjuste" name="existenciaAjuste" placeholder="Existencia de productos" required readonly>
                         </div>
 
                         <!-- Mandar a traer las sucursales -->

@@ -227,16 +227,17 @@
                 </div>
 
                 <br>
-                <div class="columnas-juntas2">
+                <div class="texto-imagen">
 
-                    <div class="texto-imagen">
+                    <h1 class="texto-imagen-reporte-venta correrIzquierda" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
+                        
+                </div>
+                <div class="columnas-juntas2" style="justify-content:center;">
 
-                        <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
-                        <img src="imagen/ventas.png" alt="  Logo ventas" class="imagen-venta1">
-                    </div>
+                    
 
                     <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
-                        <table class="table" id="tabla" data-sort="table">
+                        <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
                             <thead>
                                 <tr>
                                     <th>Vendedor</th>
@@ -279,16 +280,17 @@
 
 
                 </div>
-                <div class="columnas-juntas2">
 
-                    <div class="texto-imagen">
+                <div class="texto-imagen">
 
-                        <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
-                        <img src="imagen/imagen-movimiento-stock.png" alt="  Logo movimientos" class="imagen-movimiento">
+                        <h1 class="texto-imagen-reporte-venta correrIzquierda" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
                     </div>
+
+                <div class="columnas-juntas2" style="justify-content:center;">
+
                     <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
 
-                        <table class="table" id="tabla" data-sort="table">
+                        <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
                             <thead>
                                 <tr>
                                     <th>Vendedor</th>

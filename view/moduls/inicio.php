@@ -101,7 +101,7 @@
                                 <div class="carousel-item active">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <img src="imageneshome/diseno-grafico.png" class="tamanoimg img-fluid mr-3" alt="..." "  >
+                                            <img src="imageneshome/diseno-grafico.png" class="tamanoimg img-fluid mr-3" alt="...">
                                         </div>
                                         <div class=" col-md-6">
 

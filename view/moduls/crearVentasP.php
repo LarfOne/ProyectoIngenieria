@@ -127,6 +127,8 @@
 
       <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
+        <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
+
       <section class="tablaVenta">
         <div class="tablaVendidos">
           <table class="table tableU" id="tablitaC" data-sort="table">

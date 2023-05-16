@@ -11,11 +11,7 @@
 <div id= "container pt-4" style="margin-top: 100px;">
 
 <div class="container mt-3">
-  <h2  class="correrIzquierda" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Inventario</h2>
-
-    <!--<button class="btn btn-primary" style="margin:0px, 0px, 100px, 100px !important" data-toggle="modal" data-target="#modalAddUser">
-        Agregar Usuario
-    </button>-->
+  <h2 class="correrIzquierda" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Inventario</h2>
 
   <div class="box-body">
   <div class="table-responsive roboto correrIzquierda">

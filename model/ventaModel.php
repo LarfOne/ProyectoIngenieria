@@ -143,14 +143,31 @@ class ModeloVentas{
             return $stmt -> fetchAll();
 
 
-        }else if($fechaInicial == $fechaFinal){
-            $fechaInicialComparar = $fechaInicial . " 00:00:00";
-            $fechaFinalComparar = $fechaFinal . " 23:59:59";
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN :fechaInicial AND :fechaFinal");
-            $stmt->bindParam(":fechaInicial", $fechaInicialComparar, PDO::PARAM_STR);
-            $stmt->bindParam(":fechaFinal", $fechaFinalComparar, PDO::PARAM_STR);
-            $stmt->execute();
-            return $stmt->fetchAll();
+		}else if($fechaInicial == $fechaFinal){
+			$fechaInicialComparar = $fechaInicial . " 00:00:00";
+			$fechaFinalComparar = $fechaFinal . " 23:59:59";
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN :fechaInicial AND :fechaFinal");
+			$stmt->bindParam(":fechaInicial", $fechaInicialComparar, PDO::PARAM_STR);
+			$stmt->bindParam(":fechaFinal", $fechaFinalComparar, PDO::PARAM_STR);
+			$stmt->execute();
+			return $stmt->fetchAll();
+
+
+		}else{
+
+			$fechaActual = new DateTime();
+			$fechaActual ->add(new DateInterval("P1D"));
+			$fechaActualMasUno = $fechaActual->format("Y-m-d");
+
+			$fechaFinal2 = new DateTime($fechaFinal);
+			$fechaFinal2 ->add(new DateInterval("P1D"));
+			$fechaFinalMasUno = $fechaFinal2->format("Y-m-d");
+
+			if($fechaFinalMasUno == $fechaActualMasUno){
+
+				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN '$fechaInicial' AND '$fechaFinalMasUno'");
+
+			}else{
 
 
         }else{
@@ -181,6 +198,7 @@ class ModeloVentas{
         }
 
     }
+
 
 
 	static public function mdlSumaTotalVentas($tabla){	

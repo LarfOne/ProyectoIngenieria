@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/activos.css"> 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
@@ -9,13 +11,13 @@
 <div id= "container pt-4" style="margin-top: 100px;">
 
   <div class="container mt-3">
-      <h2 style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Activos</h2>
+      <h2 class="correrIzquierda" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Activos</h2>
       
-      <button class="btn btn-primary btnAgregarAct" data-bs-toggle="modal" data-bs-target="#modalAddActivo" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
+      <button class="btn btn-primary btnAgregarAct correrIzquierda" data-bs-toggle="modal" data-bs-target="#modalAddActivo" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
             Agregar Activos
         </button>
 
-        <div class="table-responsive roboto">
+        <div class="table-responsive roboto correrIzquierda">
           <table class="table" id="tabla" data-sort="table">
             <thead>
                   <tr>

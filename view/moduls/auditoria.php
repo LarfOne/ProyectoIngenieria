@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet" href="css/auditoria.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">  
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -7,7 +8,7 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 
-<div id="container pt-4" style="margin-top:100px;">
+<div class="correrIzquierda" id="container pt-4" style="margin-top:100px;">
     <div class="container mt-3" >
         <h2>Movimiento de productos</h2>
 

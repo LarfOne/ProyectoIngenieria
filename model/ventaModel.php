@@ -170,23 +170,6 @@ class ModeloVentas{
 			}else{
 
 
-        }else{
-
-            $fechaActual = new DateTime();
-            $fechaActual ->add(new DateInterval("P1D"));
-            $fechaActualMasUno = $fechaActual->format("Y-m-d");
-
-            $fechaFinal2 = new DateTime($fechaFinal);
-            $fechaFinal2 ->add(new DateInterval("P1D"));
-            $fechaFinalMasUno = $fechaFinal2->format("Y-m-d");
-
-            if($fechaFinalMasUno == $fechaActualMasUno){
-
-                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN '$fechaInicial' AND '$fechaFinalMasUno'");
-
-            }else{
-
-
                 $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN '$fechaInicial' AND '$fechaFinal'");
 
             }

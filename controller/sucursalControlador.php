@@ -35,7 +35,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'La Sucursal se agrego correctamente',
+                                title: 'La Sucursal se agregó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'sucursal';
@@ -92,7 +92,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'La Sucursal se modifico correctamente',
+                                title: 'La Sucursal se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'sucursal';
@@ -133,7 +133,7 @@
                     echo "<script>
                     
                         Swal.fire({
-                            title: 'La Sucursal se elimino correctamente',
+                            title: 'La Sucursal se eliminó correctamente',
                             showConfirmButton: true,
                             confirmButtonText: 'Cerrar',
                             closeOnConfirm: false,

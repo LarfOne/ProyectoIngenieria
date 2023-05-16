@@ -119,7 +119,7 @@
                                         echo "<script>
                                         
                                             Swal.fire({
-                                                title: 'El usuario se agrego correctamente',
+                                                title: 'El usuario se agregó correctamente',
                                                 icon: 'success',
                                             }).then((result) => {
                                                 window.location = 'users';
@@ -267,7 +267,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'El usuario se modifico correctamente',
+                                title: 'El usuario se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'users';

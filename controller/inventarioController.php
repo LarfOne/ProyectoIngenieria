@@ -58,7 +58,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'El inventario se modifico correctamente',
+                                title: 'El inventario se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'inventarios';
@@ -85,7 +85,7 @@
                     echo "<script>
                     
                         Swal.fire({
-                            title: 'El inventario se elimino correctamente',
+                            title: 'El inventario se eliminó correctamente',
                             showConfirmButton: true,
                             confirmButtonText: 'Cerrar',
                             closeOnConfirm: false,

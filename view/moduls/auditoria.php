@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">  
 </head>
 <body>
-    <div id="container pt-4" style="margin-top:100px;">
-        <div class="container mt-3">
-            
-            <div class="table-responsive roboto">
+    
+    <div id="container pt-4" style="margin-top:100px; justify-content:center;">
+    <h1 class="texto-imagen-reporte-venta correrIzquierda" style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
+        <div class="container mt-3 columnas-juntas2" >
+            <div class="table-responsive roboto correrIzquierda">
             <h2>Ingresos de productos</h2>
-                <table class="table" id="tabla" data-sort="table">
+                <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
                     <thead>
                         <tr>
                             <th>Código</th>
@@ -55,13 +56,12 @@
                 </table>
             </div>
         </div>
-
-        <div class="container mt-3">
+        <div class="container mt-3 columnas-juntas2">
             
-            <div class="table-responsive roboto">
+            <div class="table-responsive roboto correrIzquierda">
             <h2>Modificaciones de productos</h2>
 
-                <table class="table" id="tabla" data-sort="table">
+                <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
                     <thead>
                         <tr>
                             <th>Código</th>

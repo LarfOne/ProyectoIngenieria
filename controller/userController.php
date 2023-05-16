@@ -63,7 +63,7 @@
                     // función comprueba si se ha cargado una imagen de perfil para el nuevo usuario y si es así, la procesa y la almacena en un directorio en el servidor.
                     $ruta = null;
                     
-                    if(isset($_FILES["imageUser"]["tmp_name"])){
+                    /*if(isset($_FILES["imageUser"]["tmp_name"])){
 
                         list($ancho, $alto) = getimagesize($_FILES["imageUser"]["tmp_name"]);
 
@@ -98,7 +98,7 @@
                         }
                         
 
-                    }
+                    }*/
 
                                     $datas = array("cedula" => $_POST["idUser"], 
                                                     "nombre" => $_POST["nameUser"], 
@@ -170,7 +170,8 @@
 
                     /**FOTO AL MODIFICAR */
 
-                    $ruta = $_POST["fotoActual"];
+                    //$ruta = $_POST["fotoActual"];
+                    $ruta = null;
 
                     if(isset($_FILES["imageUpdate"]["tmp_name"]) && !empty($_FILES["imageUpdate"]["tmp_name"])){
 

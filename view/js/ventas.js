@@ -3,6 +3,7 @@ let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
 let metodosSeleccionados = [];
+const formulario = document.querySelector('.formularioVenta');
 
 // Creamos un array vacío
 const arrayProductos = [];
@@ -325,6 +326,20 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 	listarProductos(descuentoProducto, idProduct,subTotal);
 	getTotalSale();
 });
+
+formulario.addEventListener('submit', function(event) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let alMenosUnoSeleccionado = false;
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        alMenosUnoSeleccionado = true;
+      }
+    });
+    if (!alMenosUnoSeleccionado) {
+      event.preventDefault();
+      alert('Por favor, selecciona al menos una opción de pago.');
+    }
+  });
 
 
 /*=============================================

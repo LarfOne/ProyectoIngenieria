@@ -66,7 +66,7 @@ $(".btnDeleteUser").click(function() {
 
 })
 
-//AGREGAR IMAGEN AL USUARIO
+/*AGREGAR IMAGEN AL USUARIO
 $(".imageUser").change(function() {
 
     var imagen = this.files[0];
@@ -76,7 +76,7 @@ $(".imageUser").change(function() {
     /*$target_dir = "imagen/"; //directorio en el que se subira
     $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
     */
-    if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
+    /*if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
 
         $(".image").val("");
 
@@ -106,4 +106,4 @@ $(".imageUser").change(function() {
         })
     }
 
-})
+})*/

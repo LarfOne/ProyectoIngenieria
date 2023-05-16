@@ -122,17 +122,13 @@
                   </div>
 
                   <div class="row align-items-center four">
-                        <div class="col mt-5 mr-5">
+                        <!--FOTO
+                              <div class="col mt-5 mr-5">
                               <label>Foto del producto.</label>
-                              <!--FOTO-->
+                              
                               <input type="file" class="form-control input-sm mt-2 imageProductos" name="imageProductos">
                               <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
-                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTemp" width="100px">
-                              <!--
-                              <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
-                              <input type="file" class="image" name="image">
-                              <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
-                              <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">-->
+                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTemp" width="100px">-->
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>

@@ -62,7 +62,7 @@ function obtenerPrecioNeto(){
 }
 
 
-//AGREGAR IMAGEN AL PRODUCTO
+/*AGREGAR IMAGEN AL PRODUCTO
 $(".imageProductos").change(function() {
 
     var imagen = this.files[0];
@@ -72,7 +72,7 @@ $(".imageProductos").change(function() {
     /*$target_dir = "imagen/"; //directorio en el que se subira
     $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
     */
-    if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
+    /*if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
 
         $(".image").val("");
 
@@ -102,7 +102,7 @@ $(".imageProductos").change(function() {
         })
     }
 
-})  
+})*/
 
 
 

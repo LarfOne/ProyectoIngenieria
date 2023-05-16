@@ -62,9 +62,9 @@ class ControllerProduct
 			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
 				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 
-				$ruta = $_POST["fotoActualProducto"];
-				
-				if(isset($_FILES["imageProductosAjuste"]["tmp_name"])&& !empty($_FILES["imageProductosAjuste	"]["tmp_name"])){	
+				//$ruta = $_POST["fotoActualProducto"];
+				$ruta = null;
+				/*if(isset($_FILES["imageProductosAjuste"]["tmp_name"])&& !empty($_FILES["imageProductosAjuste	"]["tmp_name"])){	
 					list($ancho, $alto) = getimagesize($_FILES["imageProductosAjuste"]["tmp_name"]);
 					//var_dump($_FILES["image"]["tmp_name"]);
 					$directorio = "imagen/productos/";
@@ -86,7 +86,7 @@ class ControllerProduct
 						imagepng($destino, $ruta);
 					}
 					
-				}
+				}*/
 
 				$datas = array(
 					"codigo" => $_POST["idProductoAjuste"],
@@ -142,7 +142,7 @@ class ControllerProduct
 				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 				/************************** FOTO PRODUCTO ********************************************/
 				$ruta = null;
-				if(isset($_FILES["imageProductos"]["tmp_name"])){	
+				/*if(isset($_FILES["imageProductos"]["tmp_name"])){	
 
 					list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
 					//var_dump($_FILES["image"]["tmp_name"]);
@@ -166,7 +166,7 @@ class ControllerProduct
 						imagepng($destino, $ruta);
 					}
 					
-				}
+				}*/
 					
 				$datas = array(
 					"codigo" => $_POST["idProducto"],

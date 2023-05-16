@@ -11,7 +11,7 @@ session_start(); //para usar variables de session
   <link rel="icon" href="view/img/empresa/logoBlanco.png ">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-3jAmQXxn7tj3Pq3in8Wb0Dyj/BYtGdCtGKM8aDDnbDgIP/n1yeiHewIv+8WxYgjRSiITstSYff5z5ch8W5DhBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
 
   <!--SCRIPT TABLA-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -118,7 +118,7 @@ session_start(); //para usar variables de session
   <script src="view/js/user.js"></script>
   <script src="view/js/sucursal.js"></script>
   <script src="view/js/inventario.js"></script>
-  <script src="view/js/table.js"></script>
+  <!-- <script src="view/js/table.js"></script> -->
   <script src="view/js/categoria.js"></script>
   <script src="view/js/activo.js"></script>
   <script src="view/js/cliente.js"></script>

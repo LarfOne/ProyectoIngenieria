@@ -1,47 +1,61 @@
 let datosInventario = [];
+let datosProductos = [];
 
-$(".btnUpdateInventario").click(function(){
-    var idInventario = $(this).attr("idInventario");
-    var datas = new FormData();
+$(".btnUpdateInventario").click(function(event){
+    // Evitar el comportamiento predeterminado del botón
+    event.preventDefault();
 
-    datas.append("idInventario", idInventario);
+    let idInventario = $(this).attr("idInventario");
+    let idProduct = $(this).attr("idProduct");
 
-    $.ajax({
-
+    // Realizar las dos funciones AJAX de forma asíncrona
+    let request1 = $.ajax({
         url:"ajax/inventarioAjax.php",
         method:"POST",
-        data: datas,
-        cache: false,
-        contentType: false,
-        processData: false,
-        dataType: "json",
-        success: function(respuesta){
+        data: {idInventario: idInventario},
+        dataType: "json"
+    });
+    let request2 = $.ajax({
+        url:"ajax/productAjax.php",
+        method:"POST",
+        data: {idProduct: idProduct},
+        dataType: "json"
+    });
 
-            const infoInventario = {
-                codigo: respuesta["codigo"],
-                idSucursal: respuesta["idSucursal"],
-                cantidad: respuesta["cantidad"]
-            }
-
-            datosInventario = [...datosInventario, infoInventario];
-
-            let inventario = JSON.stringify(datosInventario);
-            localStorage.setItem("datosInventario",inventario);
-
-            
-
-            $("#codigoInventario").val(respuesta["codigo"]);
-            $("#idSucursal").val(respuesta["idSucursal"]);
-            //$("#idProducto").val(respuesta["idProducto"]);
-            $("#cantProducto").val(respuesta["cantidad"]);
-            $("#existProducto").val(respuesta["existencia"]);
-            $("#minProducto").val(respuesta["minimo"]);
-            console.log("respuesta", respuesta);
-
+    // Esperar a que ambas funciones AJAX terminen de ejecutarse
+    $.when(request1, request2).done(function(respuesta1, respuesta2){
+        const infoInventario = {
+            codigo: respuesta1[0]["codigo"],
+            idSucursal: respuesta1[0]["idSucursal"],
+            cantidad: respuesta1[0]["cantidad"]
         }
+        datosInventario = [...datosInventario, infoInventario];
+        let inventario = JSON.stringify(datosInventario);
+        localStorage.setItem("datosInventario",inventario);
 
-    })
-})
+        const infoProductos = {
+            codigo: respuesta2[0]["codigo"],
+            nombre: respuesta2[0]["nombre"],
+            marca: respuesta2[0]["marca"],
+            descripcion: respuesta2[0]["descripcion"],
+            precioNeto: respuesta2[0]["precioNeto"],
+            categoria: respuesta2[0]["categoria"],
+            unidadMedida: respuesta2[0]["unidadmedida"],
+            porcentajeIva: respuesta2[0]["porcentajeIva"],
+            precioTotal: respuesta2[0]["precioTotal"],
+            observaciones: respuesta2[0]["observaciones"],
+            image: respuesta2[0]["image"],
+            usuarioIngresa: respuesta2[0]["usuarioIngresa"]
+        }
+        datosProductos = [...datosProductos, infoProductos];
+        let productos = JSON.stringify(datosProductos);
+        localStorage.setItem("datosProductos",productos);
+
+        // Redirigir a la nueva página después de que las funciones AJAX terminen
+        window.location.href = "editarInventario";
+    });
+});
+
 
 /*$(document).ready(function(){
 

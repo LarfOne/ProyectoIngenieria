@@ -1,10 +1,10 @@
 <?php
 
     class Conexion{
-
+        // "Conexion", que se utiliza para establecer una conexión a una base de datos MySQL
         public $conexion;
 
-        public static function conectar(){
+        public static function conectar(){//obtiene una instancia de la conexión
 
             $host="localhost";
             $bd="proyectoinventario";
@@ -21,7 +21,7 @@
 
             return $conexion;
         }
-        function cerrar(){
+        function cerrar(){//método "cerrar" que se utiliza para cerrar la conexión a la base de datos,
 
          $this->conexion->close();
 

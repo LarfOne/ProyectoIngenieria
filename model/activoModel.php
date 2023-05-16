@@ -39,7 +39,9 @@ class Activo{
 
 
     static public function mdlShow($tabla, $item, $valor){
-
+         //recibe tres parámetros: el nombre de la tabla de la base de datos a consultar, un nombre de columna y su valor asociado.
+        
+        //La función comienza por verificar si el segundo parámetro no es nulo. Si no es nulo, se prepara una consulta SQL que selecciona todos los registros de la tabla donde la columna dada coincide con el valor
         if($item != null){
             $sentenciaSQL = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item =:$item");
 
@@ -98,12 +100,15 @@ class Activo{
         $sentenciaSQL->execute();
         $listaActivo=$sentenciaSQL->fetchAll(PDO::FETCH_ASSOC);
 
-        return $listaActivo;
+        return $listaActivo;//que retorna un array con todas las filas resultantes.
+
+        // Finalmente, se retorna la lista de activos.
+ 
 
     }
 
 
-    
+     // recibe tres parámetros: $table, $data y $codigoA. $table
     static public function mdlUpdateEmployer($table, $data,$codigoA){
         $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET empleado_id = :empleado_id WHERE codigo = :codigo");
     
@@ -127,6 +132,7 @@ class Activo{
 
 
     static public function mdlUpdate($table, $datas){
+         // recibe como parámetros el nombre de la tabla a actualizar ($table) y un arreglo de datos a actualizar ($datas)
 
         $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET idSucursal = :idSucursal, descripcion = :descripcion, estado = :estado,
                                                         empleado_id = :empleado_id WHERE codigo = :codigo");
@@ -137,7 +143,7 @@ class Activo{
         $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':empleado_id', $datas["empleado_id"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
-
+         //la función verifica si la ejecución de la sentencia SQL fue exitosa y retorna "ok" en caso afirmativo o "error" en caso contrario. Además, se cierra la conexión y se limpia la instancia de PDOStatement.
         if($sentenciaSQL->execute()){
             
             return "ok";
@@ -152,6 +158,8 @@ class Activo{
     }
 
     static public function mdlDelete($table, $data){
+        //recibe dos parámetros: $table que es el nombre de la tabla de la cual se quiere eliminar 
+        //un registro y $data que es el valor de la clave primaria (en este caso llamada "codigo") del registro que se desea eliminar.
 
         $sentenciaSQL = Conexion::conectar()->prepare("DELETE FROM $table WHERE codigo = :codigo");
         $sentenciaSQL -> bindParam(':codigo', $data, PDO::PARAM_INT);

@@ -42,17 +42,19 @@ class ModeloVentas{
 
 	static public function mdlIngresarVenta($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idCliente, idSucursal, idEmpleado, fechaFactura, subTotal, total) VALUES (:idCliente, :idSucursal, :idEmpleado, :fechaFactura, :subTotal, :total)");
-		
-		//$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idCliente, idSucursal, idEmpleado, fechaFactura, subTotal, impuesto, descuento, total, metodoPago, sinpe, efectivo, tarjeta) VALUES (:idCliente, :idSucursal, :idEmpleado, :fechaFactura, :subTotal, :impuesto, :descuento, :total, :metodoPago, :sinpe, :efectivo, :tarjeta)");
 		$stmt->bindParam(":idCliente", $datos["idCliente"], PDO::PARAM_INT);
 		$stmt->bindParam(":idSucursal", $datos["idSucursal"], PDO::PARAM_INT);
 		$stmt->bindParam(":idEmpleado", $datos["idEmpleado"], PDO::PARAM_INT);
 		$stmt->bindParam(":fechaFactura", $datos["fechaFactura"], PDO::PARAM_STR);
 		$stmt->bindParam(":subTotal", $datos["subTotal"], PDO::PARAM_INT);
-		//$stmt->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
-		//$stmt->bindParam(":descuento", $datos["descuento"], PDO::PARAM_STR);
+		$stmt->bindParam(":impuesto", $datos["impuesto"], PDO::PARAM_STR);
+		$stmt->bindParam(":descuento", $datos["descuento"], PDO::PARAM_STR);
 		$stmt->bindParam(":total", $datos["total"], PDO::PARAM_INT);
+		$stmt->bindParam(":metodoPago", $datos["metodoPago"], PDO::PARAM_STR);
+		$stmt->bindParam(":sinpe", $datos["sinpe"], PDO::PARAM_STR);
+		$stmt->bindParam(":efectivo", $datos["efectivo"], PDO::PARAM_STR);
+		$stmt->bindParam(":tarjeta", $datos["tarjeta"], PDO::PARAM_STR);
 		
 
 		if($stmt->execute()){

@@ -1,7 +1,8 @@
 <?php
     class ControllerSucursal{
 
-
+         //mdlNameSucursal de la clase Sucursal para obtener la información correspondiente a la sucursal con el código 
+        //proporcionado y devolverla como respuesta
         static public function ctrNameSucursal($codigo){
             
             $respuesta = Sucursal::mdlNameSucursal($codigo);
@@ -29,7 +30,7 @@
                                     );
 
                     $respuesta = Sucursal::mdlAdd($table, $datas);
-                    
+                    //Si todo sale bien, se muestra un mensaje de éxito utilizando la biblioteca SweetAlert y se redirige al usuario a la página de sucursales. Si los valores no son válidos, se muestra un mensaje de error similar y se redirige al usuario a la página de sucursales
                     if($respuesta == "ok"){
                         echo "<script>
                         
@@ -66,15 +67,16 @@
             $tabla = "sucursal";
             
             $respuesta = Sucursal::mdlShow($tabla, $item, $valor);
-            return $respuesta;
+            return $respuesta;//respuesta es un arreglo de objetos que contiene la información de la sucursal buscada
         }
-
+        //ctrUpdateSucursal se encarga de actualizar la información de una sucursal en la base de datos
         static public function ctrUpdateSucursal(){
 
             if(isset($_POST["idSucursalm"])){
 
                 if(preg_match('/^[0-9]+$/', $_POST["idSucursalm"])){
-
+                     //Los datos a actualizar se guardan en un arreglo $datas
+                                            
                     $table = "sucursal";
 
                     $datas = array("codigo" => $_POST["idSucursalm"], 
@@ -84,7 +86,8 @@
                                     "email" => $_POST["emailSucursalm"]);
 
                     $respuesta = Sucursal::mdlUpdate($table, $datas);
-                    
+                    //Si la actualización fue exitosa, se muestra un mensaje de éxito y se redirige al 
+                    //usuario a la página de sucursales. Si no se pudo actualizar, se muestra un mensaje de error y se redirige al usuario a la misma página
                     if($respuesta == "ok"){
                         echo "<script>
                         
@@ -114,13 +117,15 @@
                 }
             }
         }
-
+         // eliminación de una sucursal de la base de datos
         static public function ctrDeleteSucursal(){
 
             if(isset($_GET["codigoE"])){
 
                 $table = "sucursal";
                 $data = $_GET["codigoE"];
+                //llama a la función "mdlDelete" de la clase "Sucursal" para eliminar la sucursal de la tabla "sucursal". Si la respuesta es "ok",
+                // se muestra un mensaje de éxito utilizando la biblioteca "SweetAlert". Si la respuesta no es "ok", se muestra un mensaje de error utilizando la misma biblioteca
                 
                 $respuesta = Sucursal::mdlDelete($table, $data);
 

@@ -30,20 +30,26 @@ class ControladorVentas{
 				date_default_timezone_set("America/Costa_Rica");	
 				$fecha = date('Y-m-d H:i:s');
 
-                    $datas = array( "codigo" => $_POST["nuevaVenta"],
-									"idEmpleado" => $_POST["idEmpleado"],
-									"idSucursal" => $_POST["idSucursal"],
-									"idCliente"=>$_POST["idCliente"],
-                                    "subTotal" => $_POST["nuevoTotalVenta"],
-									"fechaFactura" => $fecha,
-                                    "total" => $_POST["nuevoTotalVenta"]
-                                    );
+					$datas = array(
+						"idEmpleado" => $_POST["idEmpleado"],
+						"idSucursal" => $_POST["idSucursal"],
+						"idCliente"=>$_POST["idCliente"],
+						"subTotal" => $_POST["nuevoSubTotalVenta"],
+						"fechaFactura" => $fecha,
+						"descuento" => $_POST["descuentoVenta"],
+						"impuesto" => $_POST["impuestoVenta"],
+						"total" => $_POST["nuevoTotalVenta"],
+						"metodoPago" => $_POST["listaMetodoPago"],
+						"sinpe" => $_POST["nuevoPagoSinpe"],
+						"efectivo" => $_POST["nuevoPagoEfectivo"],
+						"tarjeta" => $_POST["nuevoPagoTarjeta"]
+					);
+				
+				
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					
-						
-						$array = json_decode($_POST['listaProductos'],true);
+					$array = json_decode($_POST['listaProductos'],true);
 
 						foreach ($array as $key => $value) { 
 							$tabla = "inventario";
@@ -72,6 +78,13 @@ class ControladorVentas{
                             })
 
                         </script>";
+
+						echo "<script>
+
+						window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo='+$idFactura;
+
+						</script>";
+
 					}else{
 
 						echo "<script>

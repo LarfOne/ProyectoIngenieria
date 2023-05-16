@@ -6,7 +6,7 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 <div id="container pt-4">
-  <form role="form" method="post" class="formularioVenta">
+  <form role="form" method="post" class="formularioVenta" id="formularioVenta">
     <div class="contVenta" >
 
 
@@ -56,8 +56,8 @@
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" style="border-radius: 10px;" class="form-control" id="nombre" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-                <input type="hidden" style="border-radius: 10px; id="idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
-                <input type="hidden" style="border-radius: 10px; id="idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
+                <input type="hidden" style="border-radius: 10px;" id="idEmpleado" name="idEmpleado" value="<?php echo $_SESSION["cedula"]; ?>">
+                <input type="hidden" style="border-radius: 10px;" id="idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
               </div>
             </div>
 
@@ -108,35 +108,24 @@
         </div>
 
         <div class="col mt-3 mr-5 form-group row factura">
-          <label id="campos">Tipo Factura</label>
-          <div class="input-group">
-            <select class="form-select input-sm mt-2" id="nuevoTipoFactura" name="nuevoTipoFactura" required>
-              <option value="">Tipo Factura</option>
-              <option value="Electronica">Electronica</option>
-              <option value="Normal">Normal</option>
-            </select>
+          
+        </div>
+
+        <div class="col mt-3 mr-5 form-group row metodoPago">
+        <label id="campos">Metodos de pago: </label>
+          <label id="campos">
+            <input type="checkbox" id="checkEfectivo" name="Efectivo" value="Efectivo"> Efectivo
+          </label>
+          <label id="campos">
+            <input type="checkbox" id="checkTarjeta" name="Tarjeta" value="Tarjeta"> Tarjeta
+          </label>
+          <label id="campos">
+            <input type="checkbox" id="checkSinpe" name="Sinpe" value="Sinpe"> Sinpe Movil
+          </label>
           </div>
         </div>
 
-        <div class="col mt-3 mr-5 form-group row">
-          <label id="campos">Método de pago.</label>
-          <div class="input-group">
-            <select class="form-select input-sm mt-2" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
-              <option value="">Seleccione método de pago</option>
-              <option value="Efectivo">Efectivo</option>
-              <option value="TC">Tarjeta Crédito</option>
-              <option value="TD">Tarjeta Débito</option>
-            </select>
-          </div>
-
-          <div class="cajasMetodoPago">
-            <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
-          </div>
-        </div>
-
-
-
-      </div>
+        <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
       <section class="tablaVenta">
         <div class="tablaVendidos">
@@ -161,27 +150,27 @@
         </div>
       </section>
       <input type="hidden" id="listaProductos" name="listaProductos">
+      <div class="saleCalculations">
 
-      <div class="botonesVenta">
         <div class="col-xs-8 pull-right">
-
           <table class="table tablaD">
             <thead>
-              <tr>
+              <tr class = "thead_tableD">
                 <th class="total-texto">Descuento %</th>
                 <th class="total-texto">Impuesto %</th>
+                <th class="total-texto">SubTotal</th>
                 <th class="total-texto">Total</th>
               </tr>
             </thead>
 
             <tbody>
-              <tr>
+              <tr  class = "tbody_tableD">
                 <!--DESCUENTO DE VENTA-->
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                     <input type="number" class="form-control input-lg" id="nuevoDescuentoVenta" name="nuevoDescuentoVenta" value=0 min=0 max=100 required>
-                    <input type="hidden" name="descuentoVenta" id="totalVenta">
+                    <input type="hidden" name="descuentoVenta" id="descuentoVenta">
                   </div>
                 </td>
                 <!--IMPUESTO DE VENTA-->
@@ -189,22 +178,32 @@
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                     <input type="number" class="form-control input-lg" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" value=0 min=0 max=100 required>
-                    <input type="hidden" name="impuestoVenta" id="totalVenta">
+                    <input type="hidden" name="impuestoVenta" id="impuestoVenta">
+                  </div>
+                </td>
+                <!--SUBTOTAL DE VENTA-->
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
+                    <input type="number" class="form-control input-lg" id="nuevoSubTotalVenta" name="nuevoSubTotalVenta" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
                 <!--TOTAL DE VENTA--> 
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 readonly required>
-                    <input type="hidden" name="totalVenta" id="totalVenta">
+                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
+                
               </tr>
             </tbody>
           </table>
-
         </div>
+      </div>
+
+      <div class="botonesVenta">
+        
         <a href="ventas">
 
         <button type="button" class="btnVentaCancelar">Cancelar</button>
@@ -214,7 +213,6 @@
         <button type="submit" class="btnVentaGuardar">Guardar venta</button>
 
       </div>
-
 
     </div>
   </form>
@@ -243,9 +241,9 @@ MODAL AGREGAR CLIENTE
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header" style="background:#3c8dbc; color:white">
+        <div class="modal-header modalHeaderColor" >
 
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+
 
           <h4 class="modal-title">Agregar cliente</h4>
 
@@ -267,7 +265,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoCliente" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" name="nuevoCliente" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
 
               </div>
 
@@ -281,7 +279,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
 
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar documento" required>
+                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId"  style="border-radius: 5px;"placeholder="Ingresar documento" required>
 
               </div>
 
@@ -295,7 +293,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 
-                <input type="email" class="form-control input-lg" name="nuevoEmail" placeholder="Ingresar email" required>
+                <input type="email" class="form-control input-lg" name="nuevoEmail"  style="border-radius: 5px;"placeholder="Ingresar email" required>
 
               </div>
 
@@ -309,7 +307,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoTelefono" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevoTelefono"  style="border-radius: 5px;"placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
 
               </div>
 
@@ -323,7 +321,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevaDireccion" placeholder="Ingresar dirección" required>
+                <input type="text" class="form-control input-lg" name="nuevaDireccion"  style="border-radius: 5px;"placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -337,7 +335,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento"  style="border-radius: 5px;"placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
               </div>
 
@@ -353,9 +351,9 @@ MODAL AGREGAR CLIENTE
 
         <div class="modal-footer">
 
-          <button type="button" class="btn btn-default pull-left" data-bs-dismiss="modal">Salir</button>
+          <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
 
-          <button type="submit" class="btn btn-primary">Guardar cliente</button>
+          <button type="submit" class="btn btn-success pull-right">Guardar cliente</button>
 
         </div>
 

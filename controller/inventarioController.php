@@ -1,5 +1,6 @@
 <?php
     class ControllerInventario{
+        // recibe dos parámetros: $item y $valor. Estos parámetros son utilizados para filtrar la búsqueda de elementos en la tabla inventario de la base de datos.
         
         static public function ctrShowInventario($item, $valor){
 
@@ -8,11 +9,11 @@
             $respuesta = Inventario::mdlShowInventario($tabla, $item, $valor);
             return $respuesta;
         }
-
+         //buscar el código de inventario de un producto en particular, según un valor de búsqueda proporcionado
         static public function ctrCodigoInventarioPorProducto($item, $valor){
 
             $tabla = "inventario";
-            
+            //codigoInventarioPorProducto de esa clase, pasándole la tabla en la que buscar y el valor del campo a buscar
             $respuesta = Inventario::codigoInventarioPorProducto($tabla, $item, $valor);
             return $respuesta;
         }
@@ -24,6 +25,7 @@
                 if(preg_match('/^[0-9]+$/', $_POST["idProducto"])){
             
                     $table = "inventario";
+                    //crea un arreglo con los datos necesarios para el nuevo registro, donde se especifica la sucursal, el producto y la cantidad de productos disponibles en esa sucursal
 
                     $datas = array(
                         "idSucursal" => $_POST["idSucursal"],
@@ -44,12 +46,12 @@
 
                     $table = "inventario";
                     $nuevaCantidad = intval($_POST["existenciaAjuste"]) + intval($_POST["cantProductoAjuste"]);
-
+                     //array con los nuevos datos del inventario, que consisten en el código del inventario a modificar
                     $datas = array("codigo" => $_POST["codigoInventarioAjuste"], 
                                     "idSucursal" => $_POST["idSucursalAjuste"], 
                                     "idProducto" =>  $_POST["idProductoAjuste"],    
                                     "cantidad" => $nuevaCantidad);
-
+                        // llama al método "mdlUpdateInventario" de la clase "Inventario" para realizar la actualización en la base de datos
                     $respuesta = Inventario::mdlUpdateInventario($table, $datas);
                     
                     if($respuesta == "ok"){
@@ -67,11 +69,14 @@
         }
 
         static public function ctrDeleteInventario(){
+            // verifica si el parámetro "codigoInventarioE" se ha establecido en la URL 
+            //usando $_GET
 
             if(isset($_GET["codigoInventarioE"])){
 
                 $table = "inventario";
                 $data = $_GET["codigoInventarioE"];
+                //mdlDelete" de la clase "Inventario" para eliminar el registro correspondiente de la tabla "inventario"
                 
                 $respuesta = Inventario::mdlDelete($table, $data);
                 //$respuesta = User::mdlPrueba($data);
@@ -101,10 +106,11 @@
         }
 
 
-
+         //recibe el parámetro "$item" que indica el campo por el que se desea buscar en la tabla "inventario", en este caso, "idProducto".
         static public function ctrProductosCantidad (){
             $tabla = "inventario";
             $item = "idProducto";
+             // "mdlMostrarCantidadProductosInventario" del modelo "Inventario" pasándole los parámetros necesarios
             $respuesta = Inventario::mdlMostrarCantidadProductosInventario($tabla, $item);
             return $respuesta;
         }

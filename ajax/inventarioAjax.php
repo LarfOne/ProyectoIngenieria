@@ -9,7 +9,8 @@ class AjaxInventario{
 
     public $idInventario;
     public $idProducto;
-
+ //recibe el ID de un producto y llama al controlador correspondiente para obtener el código del inventario asociado a ese producto. Luego, devuelve 
+    //la respuesta en formato JSON.
     public function ajaxUpdateInventario(){ 
 
         $item = "codigo";
@@ -34,7 +35,8 @@ class AjaxInventario{
     }
 
 }
-
+// verifica si se ha enviado una solicitud POST con el parámetro "idInventario" o "idProducto"
+//devuelve en JSON
 
 if(isset($_POST["idInventario"])){
 

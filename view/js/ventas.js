@@ -2,8 +2,8 @@ let stock = "";
 let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
-
-
+let metodosSeleccionados = [];
+const formulario = document.getElementById('formularioVenta');
 // Creamos un array vacío
 const arrayProductos = [];
 
@@ -138,14 +138,14 @@ QUITAR PRODUCTOS DE LA TABLA
 
 function eliminarFila(idProduct) {
 	let tr = document.querySelector('#listaP' + idProduct);
-
-	let index = arrayProductos.findIndex(producto => producto.idProducto === idProduct);
-
+	let index = arrayProductos.findIndex(producto => producto.idProducto == idProduct);
 	if (index !== -1) {
 		if (tr) {
 			arrayProductos.splice(index, 1);
 			tr.remove();
 			sumarTotalPrecios();
+			Discount();
+			Tax();
 		}
 	}
 }
@@ -171,9 +171,12 @@ function sumarTotalPrecios(){
 	let total = 0;
 
 	precios.forEach(function(precio) {
-		total += parseFloat(precio.textContent);
+		total += parseInt(precio.textContent);
 	});
 
+
+	$("#nuevoSubTotalVenta").val(total);
+	//$("#nuevoTotalVenta").val(total);
 	return total;
 
 }
@@ -183,17 +186,42 @@ function sumarTotalPrecios(){
 	EVENTO PARA DESCUENTO DE TODA LA VENTA
 ========================================================*/
 
+function Discount(){
+	if(document.getElementById("nuevoTotalVenta").value !="0"){
+
+		let totalTaxt = parseInt(sumarTotalPrecios()) + getTax();
+
+		let totalFinal = parseInt(totalTaxt) - getDiscount();
+		$("#descuentoVenta").val(getDiscount());
+		$("#nuevoTotalVenta").val(totalFinal);
+	}
+}
+
 $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
+	Discount();
+});
+
+
+/*======================================================
+	EVENTO PARA PAGO DE VENTA Y CUANTA PLATA DEVOLVER
+========================================================*/
+
+$('.tablaD').on('blur', '#nuevoPagoVenta', function() {
 
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
-		let totalTaxt = parseFloat(sumarTotalPrecios()) + getTax();
+		if(document.getElementById("nuevoPagoVenta").value !="0"){
+			let pagoVenta = parseInt(document.getElementById("nuevoPagoVenta").value);
+			let totalVenta = parseInt(document.getElementById("nuevoTotalVenta").value);
 
-		let totalFinal = parseFloat(totalTaxt) - getDiscount();
-		console.log(totalFinal);
-		$("#nuevoTotalVenta").val(totalFinal);
+			let deuSale = pagoVenta - totalVenta;
+
+			$("#nuevoDueVenta").val(deuSale);
+		}
+
 	}
-		
+	
+
 });
 
 
@@ -201,17 +229,20 @@ $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
 	EVENTO PARA IMPUESTO DE TODA LA VENTA
 ========================================================*/
 
-$('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
-
+function Tax(){
 	if(document.getElementById("nuevoTotalVenta").value !="0"){
 
-		let totalDiscount = parseFloat(sumarTotalPrecios()) - getDiscount();
+		let totalDiscount = parseInt(sumarTotalPrecios()) - getDiscount();
 
-		let totalFinal = parseFloat(totalDiscount) + getTax();
+		let totalFinal = parseInt(totalDiscount) + getTax();
 		console.log(totalFinal);
+		$("#impuestoVenta").val(getTax());
 		$("#nuevoTotalVenta").val(totalFinal);
 	}
+}
 
+$('.tablaD').on('blur', '#nuevoImpuestoVenta', function() {
+	Tax();
 });
 
 
@@ -219,7 +250,7 @@ function getTax(){
 
 	let impuestoVenta = parseInt(document.getElementById("nuevoImpuestoVenta").value);
 	let porcentajeImpuesto= impuestoVenta / 100;
-	let impuestoTotal = parseFloat(sumarTotalPrecios()) * porcentajeImpuesto;
+	let impuestoTotal = parseInt(sumarTotalPrecios()) * porcentajeImpuesto;
 
 	return impuestoTotal;
 }
@@ -228,14 +259,14 @@ function getDiscount(){
 
 	let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
 	let porcentajeDescuento = descuentoVenta / 100;
-	let descuentoTotal = porcentajeDescuento * parseFloat(sumarTotalPrecios());
+	let descuentoTotal = porcentajeDescuento * parseInt(sumarTotalPrecios());
 
 	return descuentoTotal;
 
 }
 
 function getTotalSale(){
-	let total = parseFloat(sumarTotalPrecios());
+	let total = parseInt(sumarTotalPrecios());
 
 	total = total + getTax();
 
@@ -293,6 +324,22 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 });
 
 
+
+formulario.addEventListener('submit', function(event) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let alMenosUnoSeleccionado = false;
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        alMenosUnoSeleccionado = true;
+      }
+    });
+    if (!alMenosUnoSeleccionado) {
+      event.preventDefault();
+      alert('Por favor, selecciona al menos una opción de pago.');
+    }
+  });
+
+
 /*=============================================
 LISTAR TODOS LOS PRODUCTOS
 =============================================*/
@@ -313,9 +360,9 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	let descuento = parseInt(descuentoProducto);
 
 	let porcentajeDescuento = descuento / 100; // convierte el descuento a un porcentaje
-	let descuentoTotal = porcentajeDescuento * parseFloat(subTotal); // calcula la cantidad a restar del subtotal
+	let descuentoTotal = porcentajeDescuento * parseInt(subTotal); // calcula la cantidad a restar del subtotal
 
-	let subTotalDescuento = parseFloat(subTotal) - descuentoTotal; // resta el descuento al subtotal original
+	let subTotalDescuento = parseInt(subTotal) - descuentoTotal; // resta el descuento al subtotal original
 	console.log("subTotalDescuento",subTotalDescuento);
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
 	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);
@@ -349,13 +396,190 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	codigoInventario = "";
 }
 
-$("#nuevoMetodoPago").change(function(){
+$("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
+    // Verificar si el checkbox se seleccionó o deseleccionó
+    if ($(this).is(":checked")) {
+        // Si se seleccionó, agregarlo al arreglo
+        metodosSeleccionados.push($(this).val());
+    } else {
+        // Si se deseleccionó, eliminarlo del arreglo
+        let index = metodosSeleccionados.indexOf($(this).val());
+        if (index !== -1) {
+            metodosSeleccionados.splice(index, 1);
+        }
+    }
+	    // Imprimir el arreglo actualizado (para fines de depuración)
+		console.log(metodosSeleccionados);
 
-	let metodo = $(this).val();
+		$("#listaMetodoPago").val(metodosSeleccionados);
+		//console.log(document.getElementById("listaMetodoPago").textContent);
+		pagosVenta();
+});
 
-	console.log("Metodo de pago", metodo);
+let $th1, $th2, $th3, $td1, $td2, $td3;
 
-})
+function pagosVenta(){
+
+	if(metodosSeleccionados.length == 1){
+
+		if(metodosSeleccionados[0] == "Efectivo"){
+
+			quitarElementos();
+
+			$th1 = $('<th class="total-texto">Pago</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoVenta" name="nuevoPagoVenta" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
+							'</div>'+
+						'</td>');
+						
+			$td3 = $(
+						'<td>'+
+						'<div class="input-group">'+
+							'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+							'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoEfectivo" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+						'</div>'+
+					'</td>'
+					);
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+			$td3.appendTo(".tbody_tableD");
+			
+
+
+		}if(metodosSeleccionados[0] == "Sinpe"){
+			quitarElementos();
+			$td3 = $(
+				'<td>'+
+				'<div class="input-group">'+
+					'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+					'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoSinpe" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+				'</div>'+
+			'</td>'
+			);
+
+			$td3.appendTo(".tbody_tableD");
+
+		}if(metodosSeleccionados[0] == "Tarjeta"){
+			quitarElementos();
+			$td3 = $(
+				'<td>'+
+				'<div class="input-group">'+
+					'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+					'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoTarjeta" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+				'</div>'+
+			'</td>'
+			);
+
+			$td3.appendTo(".tbody_tableD");
+
+		}
+
+	}else{
+		quitarElementos();
+		
+		if(metodosSeleccionados.length == 2){
+			//Nuevos elementos cuando hay dos
+			$th1 = $('<th class="total-texto">'+metodosSeleccionados[0]+'</th>');
+
+			$th2 = $('<th class="total-texto">'+metodosSeleccionados[1]+'</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPago'+metodosSeleccionados[0]+'" name="nuevoPago'+metodosSeleccionados[0]+'" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPago'+metodosSeleccionados[1]+'" name="nuevoPago'+metodosSeleccionados[1]+'" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');						
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$th2.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+
+		}if(metodosSeleccionados.length == 3){
+			//Nuevos elementos cuando hay tres
+			$th1 = $('<th class="total-texto">Sinpe</th>');
+
+			$th2 = $('<th class="total-texto">Efectivo</th>');
+
+			$th3 = $('<th class="total-texto">Tarjeta</th>');
+
+			$td1 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoSinpe" name="nuevoPagoSinpe" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+
+			$td2 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoPagoEfectivo" name="nuevoPagoEfectivo" value=0 min=0 max=100000000 required>'+
+							'</div>'+
+						'</td>');
+			
+			$td3 = $('<td>'+
+						'<div class="input-group">'+
+							'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+							'<input type="number" class="form-control input-lg" id="nuevoPagoTarjeta" name="nuevoPagoTarjeta" value=0 min=0 max=100000000 required>'+
+						'</div>'+
+					'</td>');
+
+			// Agregar los elementos
+			$th1.appendTo(".thead_tableD");
+			$th2.appendTo(".thead_tableD");
+			$th3.appendTo(".thead_tableD");
+			$td1.appendTo(".tbody_tableD");
+			$td2.appendTo(".tbody_tableD");
+			$td3.appendTo(".tbody_tableD");
+
+		}
+		
+	}
+}
+
+function quitarElementos(){
+	if ($th1) {
+		$th1.remove();
+
+	}if($th2){
+		$th2.remove();
+
+	}if($th3){
+		$th3.remove();
+
+	}if ($td1) {
+		$td1.remove();
+
+	}if ($td2) {
+		$td2.remove();
+
+	}if ($td3) {
+		$td3.remove();
+	}
+}
+
+
 
 /*=============================================
 IMPRIMIR FACTURA
@@ -380,5 +604,7 @@ $(".tablas").on("click", ".btnImprimirTicket", function(){
 
 	window.open("extensiones/tcpdf/pdf/ticket.php?codigo="+codigoVenta, "_blank");
 })
+
+
 
 

@@ -67,7 +67,7 @@
                   <?php }
                   ?>
                 </select>
-                <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs botonCli" data-bs-toggle="modal" data-bs-target="#modalAgregarCliente" data-dismiss="modal">Agregar cliente</button></span>
+                <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs botonCli" data-bs-toggle="modal" data-bs-target="#modalAddClient" data-dismiss="modal">Agregar cliente</button></span>
               </div>
             </div>
 
@@ -247,149 +247,119 @@
 
 </div>
 
-<!--=====================================
-MODAL AGREGAR CLIENTE
-======================================-->
+<!--MODAL PARA AGREGAR USUARIO-->
 
-<div id="modalAgregarCliente" class="modal fade" role="dialog">
 
+<div class="modal fade" id="modalAddClient" role="dialog">
   <div class="modal-dialog">
-
     <div class="modal-content">
 
-      <form role="form" method="post">
 
-        <!--=====================================
-        CABEZA DEL MODAL
-        ======================================-->
+      <form role="form" method="POST" enctype="multipart/form-data">
 
-        <div class="modal-header modalHeaderColor">
-
-
-
-          <h4 class="modal-title">Agregar cliente</h4>
-
+        <div class="modal-header modalHeaderColor" >
+          <h4 class="modal-title">Agregar Cliente</h4>
         </div>
 
-        <!--=====================================
-        CUERPO DEL MODAL
-        ======================================-->
-
+        </br>
         <div class="modal-body">
 
-          <div class="box-body">
+          <div class="box-body modalCli">
 
-            <!-- ENTRADA PARA EL NOMBRE -->
-
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevoCliente" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
-
-              </div>
-
-            </div>
-
-            <!-- ENTRADA PARA EL DOCUMENTO ID -->
-
+            <!--AGREGAR DE CEDULA-->
             <div class="form-group">
 
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" style="border-radius: 5px;" placeholder="Ingresar documento" required>
-
+                <input type="text" class="form-control input-lg" name="cedula" style="border-radius: 5px;" placeholder="Ingresar cédula" required>
+                <input type="hidden" id="clientId">
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA EL EMAIL -->
-
+            <!--AGREGAR DE NOMBRE DE CLIENTE-->
             <div class="form-group">
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-
-                <input type="email" class="form-control input-lg" name="nuevoEmail" style="border-radius: 5px;" placeholder="Ingresar email" required>
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control input-lg" name="nomCliente" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
 
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA EL TELÉFONO -->
+            <!--AGREGAR DE APELLIDOS-->
+            <div class="form-group">
 
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control input-lg" name="apellidos" style="border-radius: 5px;" placeholder="Ingresar apellidos " required>
+
+              </div>
+
+            </div>
+
+
+
+            <!--AGREGAR DE TELEFONO DEL CLIENTE-->
             <div class="form-group">
 
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevoTelefono" style="border-radius: 5px;" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
+                <input type="text" class="form-control input-lg" name="telefonoCli" style="border-radius: 5px;" placeholder="Ingresar número de telefono" required>
 
               </div>
 
             </div>
 
-            <!-- ENTRADA PARA LA DIRECCIÓN -->
+            <!--AGREGAR DE EMAIL-->
+            <div class="form-group">
+
+              <div class="input-group">
+
+                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="email" class="form-control input-lg" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
+
+              </div>
+
+            </div>
+
 
             <div class="form-group">
 
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevaDireccion" style="border-radius: 5px;" placeholder="Ingresar dirección" required>
-
-              </div>
-
-            </div>
-
-            <!-- ENTRADA PARA LA FECHA DE NACIMIENTO -->
-
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" style="border-radius: 5px;" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" name="direccion" style="border-radius: 5px;" placeholder="Ingresar dirección " required>
 
               </div>
 
             </div>
+
+
+
 
           </div>
 
         </div>
 
-        <!--=====================================
-        PIE DEL MODAL
-        ======================================-->
-
         <div class="modal-footer">
-
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-
-          <button type="submit" class="btn btn-success pull-right">Guardar cliente</button>
-
+          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
         </div>
 
+        <?php
+
+        $addClient = new ControllerClient;
+        $addClient->ctrCreateClient();
+
+        ?>
+
       </form>
-
-      <?php
-
-      $crearCliente = new ControllerClient();
-      $crearCliente->ctrCreateClient();
-
-      ?>
-
     </div>
-
   </div>
-
 </div>

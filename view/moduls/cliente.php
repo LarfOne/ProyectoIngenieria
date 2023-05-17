@@ -1,12 +1,10 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/boton.css">
-<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/clients.css">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
-
-
-<link rel="stylesheet" href="css/clients.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">    
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -158,7 +156,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
+                <input type="email" class="form-control input-lg" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -278,7 +276,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="emailm" name="emailm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
+                <input type="email" class="form-control input-lg" id="emailm" name="emailm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
 
               </div>
 

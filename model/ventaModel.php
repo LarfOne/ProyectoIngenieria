@@ -134,13 +134,13 @@ class ModeloVentas{
 	
 	static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal){
 
-		if($fechaInicial == null){
+        if($fechaInicial == null){
 
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
 
-			$stmt -> execute();
+            $stmt -> execute();
 
-			return $stmt -> fetchAll();	
+            return $stmt -> fetchAll();
 
 
 		}else if($fechaInicial == $fechaFinal){
@@ -170,17 +170,17 @@ class ModeloVentas{
 			}else{
 
 
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN '$fechaInicial' AND '$fechaFinal'");
+                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN '$fechaInicial' AND '$fechaFinal'");
 
-			}
-		
-			$stmt -> execute();
+            }
 
-			return $stmt -> fetchAll();
+            $stmt -> execute();
 
-		}
+            return $stmt -> fetchAll();
 
-	}
+        }
+
+    }
 
 
 

@@ -57,7 +57,7 @@ class Product{
 	static public function mdlAdd($datos){
 		//recibe un arreglo asociativo $datos con la información del producto a agregar
 		$sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_producto(:codigo, :nombre, :marca, :descripcion, :precioNeto, 
-			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :image, :usuarioIngresa)");
+			:categoria, :unidadmedida, :porcentajeIva, :precioTotal, :observaciones, :image, :usuarioResponsable)");
 
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -70,7 +70,7 @@ class Product{
 		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":image", $datos["image"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":usuarioIngresa", $datos["usuarioIngresa"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":usuarioResponsable", $datos["usuarioResponsable"], PDO::PARAM_STR);
 
 		//retorna un string indicando si la operación de inserción en la base de datos fue exitosa o no, 
 		//"ok" en caso de éxito y "error" en caso contrario.
@@ -102,7 +102,7 @@ class Product{
 		//mdlUpdateProduct recibe un arreglo de datos que representan los nuevos valores de un producto.
 		$sentenciaSQL = Conexion::conectar()->prepare("CALL sp_actualizar_producto (:codigo, :nombre, :marca, :descripcion,
 		:precioNeto, :categoria, :unidadmedida, :porcentajeiva, 
-		:precioTotal, :observaciones, :image, :usuarioIngresa)");
+		:precioTotal, :observaciones, :image, :usuarioResponsable)");
 		
 		$sentenciaSQL->bindParam(":codigo", $datos["codigo"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
@@ -115,7 +115,7 @@ class Product{
 		$sentenciaSQL->bindParam(":precioTotal", $datos["precioTotal"], PDO::PARAM_INT);
 		$sentenciaSQL->bindParam(":observaciones", $datos["observaciones"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(":image", $datos["image"], PDO::PARAM_STR);
-		$sentenciaSQL->bindParam(":usuarioIngresa", $datos["usuarioIngresa"], PDO::PARAM_STR);
+		$sentenciaSQL->bindParam(":usuarioResponsable", $datos["usuarioResponsable"], PDO::PARAM_STR);
 		
 		//Si la ejecución de la sentencia SQL es exitosa, la función retorna la cadena "ok". De lo contrario, retorna la cadena "error".
         if ($sentenciaSQL->execute()) {

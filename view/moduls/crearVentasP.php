@@ -5,6 +5,8 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
+
+
 <div id="container pt-4">
 
 
@@ -27,6 +29,24 @@
   </script>
 
   <form role="form" method="post" class="formularioVenta">
+  <script>
+    const formularioVenta = document.querySelector('.formularioVenta');
+
+      formularioVenta.addEventListener('submit', function(event) {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        let alMenosUnoSeleccionado = false;
+        checkboxes.forEach(function(checkbox) {
+          if (checkbox.checked) {
+            alMenosUnoSeleccionado = true;
+          }
+        });
+        if (!alMenosUnoSeleccionado) {
+          event.preventDefault();
+          alert('Por favor, selecciona al menos una opción de pago.');
+        }
+});
+  </script>
+
     <div class="contVenta" >
 
 
@@ -128,11 +148,11 @@
         </div>
 
         <div class="col mt-3 mr-5 form-group row factura">
-          
+
         </div>
 
         <div class="col mt-3 mr-5 form-group row metodoPago">
-        <label id="campos">Metodos de pago: </label>
+          <label id="campos">Metodos de pago: </label>
           <label id="campos">
             <input type="checkbox" id="checkEfectivo" name="Efectivo" value="Efectivo"> Efectivo
           </label>
@@ -142,8 +162,10 @@
           <label id="campos">
             <input type="checkbox" id="checkSinpe" name="Sinpe" value="Sinpe"> Sinpe Movil
           </label>
-          </div>
         </div>
+      </div>
+
+      <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
         <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
@@ -175,7 +197,7 @@
         <div class="col-xs-8 pull-right">
           <table class="table tablaD">
             <thead>
-              <tr class = "thead_tableD">
+              <tr class="thead_tableD">
                 <th class="total-texto">Descuento %</th>
                 <th class="total-texto">Impuesto %</th>
                 <th class="total-texto">SubTotal</th>
@@ -184,7 +206,7 @@
             </thead>
 
             <tbody>
-              <tr  class = "tbody_tableD">
+              <tr class="tbody_tableD">
                 <!--DESCUENTO DE VENTA-->
                 <td>
                   <div class="input-group">
@@ -208,14 +230,14 @@
                     <input type="number" class="form-control input-lg" id="nuevoSubTotalVenta" name="nuevoSubTotalVenta" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
-                <!--TOTAL DE VENTA--> 
+                <!--TOTAL DE VENTA-->
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                     <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
-                
+
               </tr>
             </tbody>
           </table>
@@ -223,15 +245,15 @@
       </div>
 
       <div class="botonesVenta">
-        
+
         <a href="ventas">
 
-        <button type="button" class="btn1 btnVentaCancelar">Cancelar</button>
+          <button type="button" class="btn1 btnVentaCancelar">Cancelar</button>
 
-      
 
-        <button type="submit" class="btn1  btnVentaGuardar">Guardar</button>
-           </a>
+
+          <button type="submit" class="btn1  btnVentaGuardar">Guardar</button>
+        </a>
       </div>
 
     </div>
@@ -261,7 +283,7 @@ MODAL AGREGAR CLIENTE
         CABEZA DEL MODAL
         ======================================-->
 
-        <div class="modal-header modalHeaderColor" >
+        <div class="modal-header modalHeaderColor">
 
 
 
@@ -299,7 +321,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
 
-                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId"  style="border-radius: 5px;"placeholder="Ingresar documento" required>
+                <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" style="border-radius: 5px;" placeholder="Ingresar documento" required>
 
               </div>
 
@@ -313,7 +335,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 
-                <input type="email" class="form-control input-lg" name="nuevoEmail"  style="border-radius: 5px;"placeholder="Ingresar email" required>
+                <input type="email" class="form-control input-lg" name="nuevoEmail" style="border-radius: 5px;" placeholder="Ingresar email" required>
 
               </div>
 
@@ -327,7 +349,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevoTelefono"  style="border-radius: 5px;"placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevoTelefono" style="border-radius: 5px;" placeholder="Ingresar teléfono" data-inputmask="'mask':'(999) 999-9999'" data-mask required>
 
               </div>
 
@@ -341,7 +363,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevaDireccion"  style="border-radius: 5px;"placeholder="Ingresar dirección" required>
+                <input type="text" class="form-control input-lg" name="nuevaDireccion" style="border-radius: 5px;" placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -355,7 +377,7 @@ MODAL AGREGAR CLIENTE
 
                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
 
-                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento"  style="border-radius: 5px;"placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
+                <input type="text" class="form-control input-lg" name="nuevaFechaNacimiento" style="border-radius: 5px;" placeholder="Ingresar fecha nacimiento" data-inputmask="'alias': 'yyyy/mm/dd'" data-mask required>
 
               </div>
 

@@ -2,7 +2,8 @@ let stock = "";
 let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
-let metodosSeleccionados = [];
+let metodosSeleccionados = []; 
+//const formularioVenta = document.querySelector('.formularioVenta');
 
 // Creamos un array vacío
 const arrayProductos = [];
@@ -139,7 +140,7 @@ QUITAR PRODUCTOS DE LA TABLA
 function eliminarFila(idProduct) {
 	let tr = document.querySelector('#listaP' + idProduct);
 
-	let index = arrayProductos.findIndex(producto => producto.idProducto === idProduct);
+	let index = arrayProductos.findIndex(producto => producto.idProducto == idProduct);
 
 	if (index !== -1) {
 		if (tr) {
@@ -326,6 +327,20 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 	getTotalSale();
 });
 
+
+/*formularioVenta.addEventListener('submit', function(event) {
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    let alMenosUnoSeleccionado = false;
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        alMenosUnoSeleccionado = true;
+      }
+    });
+    if (!alMenosUnoSeleccionado) {
+      event.preventDefault();
+      alert('Por favor, selecciona al menos una opción de pago.');
+    }
+});*/
 
 /*=============================================
 LISTAR TODOS LOS PRODUCTOS

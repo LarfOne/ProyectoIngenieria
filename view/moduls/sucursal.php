@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/sucursal.css">
 <link rel="stylesheet" href="css/style.css">
@@ -148,7 +149,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" name="emailSucursal" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
+                <input type="email" class="form-control input-lg" name="emailSucursal" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -249,7 +250,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="text" class="form-control input-lg" id="emailSucursalm" name="emailSucursalm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
+                <input type="email" class="form-control input-lg" id="emailSucursalm" name="emailSucursalm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
 
               </div>
 

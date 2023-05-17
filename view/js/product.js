@@ -1,25 +1,3 @@
-    $(".btnDeleteInventario").click(function(){
-
-    var codigoProductM = $(this).attr("codigoProductM"); 
-
-
-    Swal.fire({
-        title: 'Estas seguro de eliminar el producto?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        cancelButtonText: 'Cancelar',
-        confirmButtonText: 'Borrar'
-    }).then((result) => {
-        if(result.value){
-
-            window.location = "index.php?ruta=inventarios&idProductE="+codigoProductM;
-        }
-
-    })
-})
-
 $(".cerrarM").click(function(){
     $("#modalUpdateInventario").modal('hide')
 })
@@ -34,9 +12,7 @@ function obtenerPorcentaje(){
     porc = document.getElementById("porcProducto").value;
     porcentaje = Number.parseFloat(porc) / 100;
     precioNeto = document.getElementById("precioNeto").value
-
     if(porc != "" && precioNeto != ""){
-
         precioIVA = precioNeto * porcentaje;
         precioTotal = Number.parseInt(precioNeto) + Number.parseInt(precioIVA);
         
@@ -62,7 +38,7 @@ function obtenerPrecioNeto(){
 }
 
 
-//AGREGAR IMAGEN AL PRODUCTO
+/*AGREGAR IMAGEN AL PRODUCTO
 $(".imageProductos").change(function() {
 
     var imagen = this.files[0];
@@ -72,7 +48,7 @@ $(".imageProductos").change(function() {
     /*$target_dir = "imagen/"; //directorio en el que se subira
     $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
     */
-    if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
+    /*if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
 
         $(".image").val("");
 
@@ -102,7 +78,7 @@ $(".imageProductos").change(function() {
         })
     }
 
-})  
+})*/
 
 
 

@@ -49,6 +49,9 @@
         <thead>
         
         <tr>
+
+
+              
               <th>Código factura</th>
               <th>Cliente</th>
               <th>Sucursal</th>

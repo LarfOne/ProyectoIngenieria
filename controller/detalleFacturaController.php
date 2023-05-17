@@ -41,7 +41,7 @@
                     echo "<script>
                     
                         Swal.fire({
-                            title: 'La Venta se realizo correctamente',
+                            title: 'La Venta se realizó correctamente',
                             icon: 'success',
                         }).then((result) => {
                             window.location = 'ventas';

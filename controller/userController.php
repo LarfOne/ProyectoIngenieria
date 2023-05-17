@@ -63,7 +63,7 @@
                     // función comprueba si se ha cargado una imagen de perfil para el nuevo usuario y si es así, la procesa y la almacena en un directorio en el servidor.
                     $ruta = null;
                     
-                    if(isset($_FILES["imageUser"]["tmp_name"])){
+                    /*if(isset($_FILES["imageUser"]["tmp_name"])){
 
                         list($ancho, $alto) = getimagesize($_FILES["imageUser"]["tmp_name"]);
 
@@ -98,7 +98,7 @@
                         }
                         
 
-                    }
+                    }*/
 
                                     $datas = array("cedula" => $_POST["idUser"], 
                                                     "nombre" => $_POST["nameUser"], 
@@ -119,7 +119,7 @@
                                         echo "<script>
                                         
                                             Swal.fire({
-                                                title: 'El usuario se agrego correctamente',
+                                                title: 'El usuario se agregó correctamente',
                                                 icon: 'success',
                                             }).then((result) => {
                                                 window.location = 'users';
@@ -170,7 +170,8 @@
 
                     /**FOTO AL MODIFICAR */
 
-                    $ruta = $_POST["fotoActual"];
+                    //$ruta = $_POST["fotoActual"];
+                    $ruta = null;
 
                     if(isset($_FILES["imageUpdate"]["tmp_name"]) && !empty($_FILES["imageUpdate"]["tmp_name"])){
 
@@ -267,7 +268,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'El usuario se modifico correctamente',
+                                title: 'El usuario se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'users';

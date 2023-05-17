@@ -10,10 +10,11 @@
 <div id="container pt-4" style="margin-top: 100px;">
   <div class="container mt-3">
     <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
+    <div class="tablaUs">
       <button class="btn btn-primary btnAgregarU correrIzquierda" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Usuario
       </button>
-      <div class="table-responsive roboto correrIzquierda">
+      <div class="table-responsive roboto correrIzquierda ">
         <table class="table tableU" id="tabla" data-sort="table">
           <thead>
             <tr>
@@ -26,7 +27,6 @@
               <th>Sucursal</th>
               <th>Direccion</th>
               <th>Estado</th>
-              <th>Imagen</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -53,14 +53,6 @@
                 <?php
                 if ($empleado1['estado'] == 'Inactivo') { ?>
                   <td>❌</td>
-                <?php } ?>
-                <?php
-                if ($empleado1['image'] != null) { ?>
-                  <td><img src="<?php echo $empleado1['image']; ?>" class="img-thumbnail" width="40px"></td>
-                <?php } ?>
-                <?php
-                if ($empleado1['image'] == null) { ?>
-                  <td><img src="imagen/userDefault.png" class="img-thumbnail" width="40px"></td>
                 <?php } ?>
                 <td>
                   <div class="btn-group">
@@ -133,7 +125,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
+                  <input type="email" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
                 </div>
               </div>
               <!--AGREGAR DE ROLE-->
@@ -179,13 +171,13 @@
                   </select>
                 </div>
               </div>
-              <!--AGREGAR DE FOTO-->
+              <!--AGREGAR DE FOTO
               <div class="form-group subirFoto">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
                 <input type="file" class="imageUser" name="imageUser">
                 <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
                 <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="modal-footer">
@@ -251,7 +243,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="text" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
+                  <input type="email" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
                 </div>
               </div>
               <!--MODIFICAR DE ROLE-->
@@ -299,14 +291,14 @@
                   </select>
                 </div>
               </div>
-              <!--MODIFICAR DE FOTO-->
+              <!--MODIFICAR DE FOTO
               <div class="form-group">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir nueva foto</span>
                 <input type="file" class="image" name="imageUpdate">
                 <p class="help-block">Peso maximo de la foto 10MB</p>
                 <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
                 <input type="hidden" name="fotoActual" id="fotoActual">
-              </div>
+              </div>-->
             </div>
           </div>
           <div class="modal-footer">

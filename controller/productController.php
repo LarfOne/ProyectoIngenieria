@@ -60,11 +60,12 @@ class ControllerProduct
 		if (isset($_POST["idProductoAjuste"])) {
 
 			if (preg_match('/^[0-9]+$/', $_POST["idProductoAjuste"])) {
-				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 
-				$ruta = $_POST["fotoActualProducto"];
-				
-				if(isset($_FILES["imageProductosAjuste"]["tmp_name"])&& !empty($_FILES["imageProductosAjuste	"]["tmp_name"])){	
+				$usuarioResponsable = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
+
+				//$ruta = $_POST["fotoActualProducto"];
+				$ruta = null;
+				/*if(isset($_FILES["imageProductosAjuste"]["tmp_name"])&& !empty($_FILES["imageProductosAjuste	"]["tmp_name"])){	
 					list($ancho, $alto) = getimagesize($_FILES["imageProductosAjuste"]["tmp_name"]);
 					//var_dump($_FILES["image"]["tmp_name"]);
 					$directorio = "imagen/productos/";
@@ -86,7 +87,7 @@ class ControllerProduct
 						imagepng($destino, $ruta);
 					}
 					
-				}
+				}*/
 
 				$datas = array(
 					"codigo" => $_POST["idProductoAjuste"],
@@ -100,7 +101,7 @@ class ControllerProduct
 					"precioTotal" => $_POST["precioTotalAjuste"],
 					"observaciones" => $_POST["obsProductoAjuste"],
 					"image" => $ruta,
-					"usuarioIngresa" => $usuarioIngresa);
+					"usuarioResponsable" => $usuarioResponsable);
 
 
 				//llama al método "mdlUpdateProduct" de la clase Product para actualizar el producto en la base de datos. 
@@ -139,10 +140,10 @@ class ControllerProduct
 
 			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
 
-				$usuarioIngresa = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
+				$usuarioResponsable = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 				/************************** FOTO PRODUCTO ********************************************/
 				$ruta = null;
-				if(isset($_FILES["imageProductos"]["tmp_name"])){	
+				/*if(isset($_FILES["imageProductos"]["tmp_name"])){	
 
 					list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
 					//var_dump($_FILES["image"]["tmp_name"]);
@@ -166,7 +167,7 @@ class ControllerProduct
 						imagepng($destino, $ruta);
 					}
 					
-				}
+				}*/
 					
 				$datas = array(
 					"codigo" => $_POST["idProducto"],
@@ -180,7 +181,7 @@ class ControllerProduct
 					"precioTotal" => $_POST["precioTotal"],
 					"observaciones" => $_POST["obsProducto"],
 					"image" => $ruta,
-					"usuarioIngresa" => $usuarioIngresa);
+					"usuarioResponsable" => $usuarioResponsable);
 					//mdlAdd() y se le pasa $datas como argumento. Si el método mdlAdd() devuelve "ok", 
 				//el producto se agregó con éxito a la base de datos y se muestra una alerta de éxito. Si el método devuelve otra cosa, se muestra una alerta de error.
 				$respuesta = Product::mdlAdd($datas);

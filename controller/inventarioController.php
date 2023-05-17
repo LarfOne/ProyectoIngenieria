@@ -58,7 +58,7 @@
                         echo "<script>
                         
                             Swal.fire({
-                                title: 'El inventario se modifico correctamente',
+                                title: 'El inventario se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
                                 window.location = 'inventarios';
@@ -76,16 +76,18 @@
 
                 $table = "inventario";
                 $data = $_GET["codigoInventarioE"];
+                echo ("DICEEEEEN");
                 //mdlDelete" de la clase "Inventario" para eliminar el registro correspondiente de la tabla "inventario"
                 
                 $respuesta = Inventario::mdlDelete($table, $data);
                 //$respuesta = User::mdlPrueba($data);
 
                 if($respuesta == "ok"){
+                    
                     echo "<script>
                     
                         Swal.fire({
-                            title: 'El inventario se elimino correctamente',
+                            title: 'El inventario se eliminó correctamente',
                             showConfirmButton: true,
                             confirmButtonText: 'Cerrar',
                             closeOnConfirm: false,
@@ -98,6 +100,22 @@
                         })
                     </script>";
 
+                }else{
+                    echo "<script>
+                    
+                        Swal.fire({
+                            title: 'El inventario se eliminó correctamente',
+                            showConfirmButton: error,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                            icon: 'success',
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'inventarios';
+                            }
+                            
+                        })
+                    </script>";
                 }
             
             }

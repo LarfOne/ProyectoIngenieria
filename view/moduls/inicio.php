@@ -101,7 +101,7 @@
                                 <div class="carousel-item active">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <img src="imageneshome/diseno-grafico.png" class="tamanoimg img-fluid mr-3" alt="..." "  >
+                                            <img src="imageneshome/diseno-grafico.png" class="tamanoimg img-fluid mr-3" alt="...">
                                         </div>
                                         <div class=" col-md-6">
 
@@ -230,6 +230,7 @@
 
                 
                 <br>
+<<<<<<< HEAD
                 <div class="texto-imagen correrIzquierda">
                         <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
                     </div>
@@ -263,6 +264,20 @@
                             foreach ($detalles as $key2 => $detalle) {
                                 $producto = ControllerProduct::ctrNameProducts($detalle[2]);
                                 echo ('
+=======
+                <div class="texto-imagen">
+
+                    <h1 class="texto-imagen-reporte-venta correrIzquierda" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
+                        
+                </div>
+                <div class="columnas-juntas2" style="justify-content:center;">
+
+                    
+
+                    <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
+                        <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
+                            <thead>
+>>>>>>> origin/luisBranch
                                 <tr>
                                 <td>' . $respuestaUsuario[2] . '</td>
                                 <td>' . $factura[4] . '</td>
@@ -281,9 +296,15 @@
 
 <div class="texto-imagen correrIzquierda">
 
-<h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
-</div>
-                <div class="columnas-juntas2">
+                </div>
+
+                <div class="texto-imagen">
+
+                        <h1 class="texto-imagen-reporte-venta correrIzquierda" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
+                    </div>
+
+                <div class="columnas-juntas2" style="justify-content:center;">
+
                     <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
 
                         <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">

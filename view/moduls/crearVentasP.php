@@ -6,6 +6,26 @@
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
 <div id="container pt-4">
+
+
+<script>
+    const formularioVenta = document.querySelector('.formularioVenta');
+
+    formularioVenta.addEventListener('submit', function(event) {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let alMenosUnoSeleccionado = false;
+      checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+          alMenosUnoSeleccionado = true;
+        }
+      });
+      if (!alMenosUnoSeleccionado) {
+        event.preventDefault();
+        alert('Por favor, selecciona al menos una opción de pago.');
+      }
+    });
+  </script>
+
   <form role="form" method="post" class="formularioVenta">
     <div class="contVenta" >
 

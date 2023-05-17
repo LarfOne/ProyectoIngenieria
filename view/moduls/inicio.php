@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/style.css">
+
 
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
@@ -194,20 +194,21 @@
                 </div>
 
                 <!-- CARDS DE REPORTES DE VENTAS-->
-                <h1 style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important; ">Reportes.</h1>
-
-
-                <div class="row columnas-juntas2-2 ">
+                <div class="row columnas-juntas2-2">
                     <div class="col-sm-12 col-md-6">
-                        <h3 class="box-title" style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important;">Ventas</h3>
-                        <?php include "graficos/graficoVentas.php"; ?>
+                        <h3 class="box-title">Ventas</h3>
+                            <?php include "graficos/graficoVentas.php"; ?>
                     </div>
-                    <div class="col-sm-12 col-md-6">
-                        <h3 class="box-title" style="text-align: center; font-family: 'Roboto Condensed', sans-serif !important;">Total de ventas de los empleados</h3>
-                        <div id="bar-chart1" style="height: 250px;"></div>
-                        <?php include "graficos/ventasEmpleados.php"; ?>
+                <div class="col-sm-12 col-md-6">
+                <h3 class="box-title">Total de ventas de los empleados</h3>
+                    <div id="bar-chart1" style="height: 250px;"></div>
+                    <div class="centered-content">
+                        <div class="centered-content-inner">
+                            <?php include "graficos/ventasEmpleados.php"; ?>
+                        </div>
                     </div>
                 </div>
+            </div>
 
 
                 <div class="container">
@@ -226,69 +227,66 @@
                     </div>
                 </div>
 
+
+                
                 <br>
-                <div class="columnas-juntas2">
-
-                    <div class="texto-imagen">
-
+                <div class="texto-imagen correrIzquierda">
                         <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
-                        <img src="imagen/ventas.png" alt="  Logo ventas" class="imagen-venta1">
                     </div>
+                <div class="columnas-juntas2">
+                    
 
-                    <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
-                        <table class="table" id="tabla" data-sort="table">
-                            <thead>
+                    <div class="table-responsive roboto">
+                        <!-- Contenedor de la tabla -->
+                        <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
+                        <thead>
+                            <tr>
+                            <th>Vendedor</th>
+                            <th>Fecha</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            /** Extracción de datos para la tabla de movimientos */
+                            $facturas = ControladorVentas::ctrVentasMes();
+                            foreach ($facturas as $key => $factura) {
+                            /** Se deben buscar todos los detalles que tengan esa factura */
+                            /* Se debe extraer el nombre del vendedor haciendo una consulta a la tabla ya que la factura ya lleva su id */
+                            $itemUsuario = "cedula";
+                            $valorUsuario = $factura[3];
+                            $respuestaUsuario = ControllerUser::ctrShowUser($itemUsuario, $valorUsuario);
+                            /** Se le envía el id de la factura */
+                            $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
+                            foreach ($detalles as $key2 => $detalle) {
+                                $producto = ControllerProduct::ctrNameProducts($detalle[2]);
+                                echo ('
                                 <tr>
-                                    <th>Vendedor</th>
-                                    <th>Fecha</th>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Total</th>
+                                <td>' . $respuestaUsuario[2] . '</td>
+                                <td>' . $factura[4] . '</td>
+                                <td>' . $producto[1] . '</td>
+                                <td>' . $detalle[3] . '</td>
+                                <td>' . $detalle[6] . '</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                /**Extraccion de datos para la tabla de movimientos */
-                                $facturas = ControladorVentas::ctrVentasMes();
-                                foreach ($facturas as $key => $factura) {
-                                    /**Se deben buscar todos los detalles que tengan esa factura */
-                                    /*Se debe extraer el nombre de el vendedor haciendo una consulta a la tabla ya que la factura ya lleva su id* */
-                                    $itemUsuario = "cedula";
-                                    $valorUsuario = $factura[3];
-                                    $respuestaUsuario = ControllerUser::ctrShowUser($itemUsuario, $valorUsuario);
-                                    /**Se le envia el id de la factura */
-                                    $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
-                                    foreach ($detalles as $key2 => $detalle) {
-                                        $producto = ControllerProduct::ctrNameProducts($detalle[2]);
-                                        echo ('
-                                <tr>
-                                    <td>' . $respuestaUsuario[2] . '</td>
-                                    <td>' . $factura[4] . '</td>
-                                    <td>' . $producto[1] . '</td>
-                                    <td>' . $detalle[3] . '</td>
-                                    <td>' . $detalle[6] . '</td>
-                                </tr>
-                                
-                                ');
-                                    }
-                                }
-                                ?>
-                            </tbody>
+                            ');
+                            }
+                            }
+                            ?>
+                        </tbody>
                         </table>
                     </div>
+</div>
 
+<div class="texto-imagen correrIzquierda">
 
-                </div>
+<h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
+</div>
                 <div class="columnas-juntas2">
-
-                    <div class="texto-imagen">
-
-                        <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
-                        <img src="imagen/imagen-movimiento-stock.png" alt="  Logo movimientos" class="imagen-movimiento">
-                    </div>
                     <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
 
-                        <table class="table" id="tabla" data-sort="table">
+                        <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
                             <thead>
                                 <tr>
                                     <th>Vendedor</th>

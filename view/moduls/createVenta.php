@@ -8,7 +8,24 @@
 
 <div class= "contenedor">
 
+<script>
+    const formularioVenta = document.querySelector('.formularioVenta');
 
+    formularioVenta.addEventListener('submit', function(event) {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let alMenosUnoSeleccionado = false;
+      checkboxes.forEach(function(checkbox) {
+        if (checkbox.checked) {
+          alMenosUnoSeleccionado = true;
+        }
+      });
+      if (!alMenosUnoSeleccionado) {
+        event.preventDefault();
+        alert('Por favor, selecciona al menos una opción de pago.');
+      }
+    });
+  </script>
+  
 <div class="content-wrapper" style="padding: 15px 10px 30px 10px !important;">
 
   <section class="content-header">

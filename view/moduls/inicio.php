@@ -230,41 +230,6 @@
 
                 
                 <br>
-<<<<<<< HEAD
-                <div class="texto-imagen correrIzquierda">
-                        <h1 class="texto-imagen-reporte-venta" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
-                    </div>
-                <div class="columnas-juntas2">
-                    
-
-                    <div class="table-responsive roboto">
-                        <!-- Contenedor de la tabla -->
-                        <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
-                        <thead>
-                            <tr>
-                            <th>Vendedor</th>
-                            <th>Fecha</th>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            /** Extracción de datos para la tabla de movimientos */
-                            $facturas = ControladorVentas::ctrVentasMes();
-                            foreach ($facturas as $key => $factura) {
-                            /** Se deben buscar todos los detalles que tengan esa factura */
-                            /* Se debe extraer el nombre del vendedor haciendo una consulta a la tabla ya que la factura ya lleva su id */
-                            $itemUsuario = "cedula";
-                            $valorUsuario = $factura[3];
-                            $respuestaUsuario = ControllerUser::ctrShowUser($itemUsuario, $valorUsuario);
-                            /** Se le envía el id de la factura */
-                            $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
-                            foreach ($detalles as $key2 => $detalle) {
-                                $producto = ControllerProduct::ctrNameProducts($detalle[2]);
-                                echo ('
-=======
                 <div class="texto-imagen">
 
                     <h1 class="texto-imagen-reporte-venta correrIzquierda" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de ventas Mensuales.</h1>
@@ -277,7 +242,6 @@
                     <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
                         <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
                             <thead>
->>>>>>> origin/luisBranch
                                 <tr>
                                 <td>' . $respuestaUsuario[2] . '</td>
                                 <td>' . $factura[4] . '</td>

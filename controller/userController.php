@@ -56,8 +56,8 @@
                  // verifica que se hayan enviado los datos del formulario y que cumplan con ciertos patrones de validación 
 
                 if(preg_match('/^[0-9]+$/', $_POST["idUser"]) && 
-                preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
-                preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
+                    preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) &&
+                    preg_match('/^[a-zA-Z-Z0-9]+$/', $_POST["passwordUser"])){
                      //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
                     $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
                     // función comprueba si se ha cargado una imagen de perfil para el nuevo usuario y si es así, la procesa y la almacena en un directorio en el servidor.
@@ -138,6 +138,15 @@
                                         })
                                         </script>";
                                     }
+                }else{
+                    echo "<script>     
+                                Swal.fire({
+                                title: 'Escriba bien',
+                                icon: 'error',
+                                }).then((result) => {
+                                    window.location = 'users';
+                                })
+                        </script>";
                 }
 
             }

@@ -44,12 +44,11 @@ function llenarTablaVentas(){
 
 	let idProduct = document.getElementById("idProducto").value;
 	let cantidad = document.getElementById("cantidadProducto").value;
-	console.log("no",cantidad);
-	if(idProduct != "" ){
+	console.log("idProducto",idProduct);
+	if(idProduct != ""){
 
 		if(cantidad != "" && cantidad != "0"){
-
-			if(cantidad <= 1000){
+			if(cantidad <= "1000"){
 
 				console.log("idProduct ",idProduct)
 
@@ -118,12 +117,10 @@ function llenarTablaVentas(){
 							
 							let descuento = tr.querySelector('.descuentoInput').value;
 										
-							getTotalSale();
-
-							listarProductos(descuento, codigoProducto, subTotal);
-							
-							cantidadMayorStock();
-
+								getTotalSale();
+								listarProductos(descuento, codigoProducto, subTotal);	
+								cantidadMayorStock()
+								
 								stock = "";
 								codigoInventario = "";
 						}
@@ -132,7 +129,7 @@ function llenarTablaVentas(){
 			}else{
 				Swal.fire({
 					title: 'No digites cantidades tan grandes',
-					html: 'Como maximo digita 1000.<br>',
+					html: 'Puedes digitar como maximo 1000<br>',
 					showConfirmButton: true,
 					confirmButtonText: 'Cerrar',
 					closeOnConfirm: false,
@@ -301,13 +298,11 @@ FUNCION PARA VERIFICAR SI HAY LOS SUFICIENTES PRODUCTOS EN STOCK
 function cantidadMayorStock(){
 
 	let tr = document.querySelector('#listaP'+codigoProducto);
-	//console.log("TR", tr);
 
 	let td = tr.querySelector('.cantidadProducto');
 
 	let cantidades = td.textContent;
-	console.log("stooock", stock);
-	console.log("cantidadesss", cantidades);
+
 	if(stock < parseInt(cantidades)){
 		Swal.fire({
 			title: 'No hay suficientes productos en el inventario',
@@ -317,12 +312,7 @@ function cantidadMayorStock(){
 			closeOnConfirm: false,
 			icon: 'warning'
 		})
-
 		eliminarFila(codigoProducto);
-		return false;
-		
-	}else{
-		return true;
 	}
 }
 
@@ -429,7 +419,7 @@ $("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
 		console.log(metodosSeleccionados);
 
 		$("#listaMetodoPago").val(metodosSeleccionados);
-		//console.log(document.getElementById("listaMetodoPago").textContent);
+		console.log(document.getElementById("listaMetodoPago").textContent);
 		pagosVenta();
 });
 

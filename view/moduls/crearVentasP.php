@@ -80,31 +80,6 @@
                 <input type="hidden" style="border-radius: 10px;" id="idSucursal" name="idSucursal" value="<?php echo $_SESSION["idSucursal"]; ?>">
               </div>
             </div>
-
-            <!--Codigo incrementable de la factura -->
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon" style="border-radius: 10px;"><i class="fa fa-key"></i></span>
-
-                <?php
-                $item = null;
-                $valor = null;
-                $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
-
-                if (!$ventas) {
-
-                  echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1" readonly>';
-                } else {
-
-                  foreach ($ventas as $key => $value) {
-                  }
-                  $codigo = $value["codigo"] + 1;
-                  echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="' . $codigo . '" readonly>';
-                }
-                ?>
-
-              </div>
-            </div>
           </div>
         </div>
       </header>
@@ -124,7 +99,7 @@
 
         <div class="col mt-3 mr-5">
           <label id="campos">Cantidad</label>
-          <input class="form-control input-sm mt-2" type="number" min="1" value="1" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
+          <input class="form-control input-sm mt-2" type="number" min="1" max="100" value="1" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
         </div>
 
         <div class="col mt-3 mr-5 form-group row factura">
@@ -146,8 +121,6 @@
       </div>
 
       <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
-
-        <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
       <section class="tablaVenta">
         <div class="tablaVendidos">

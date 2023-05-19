@@ -48,7 +48,7 @@
                         ?>
                         <div class="col mt-5 mr-5">
                               <label>Sucursal</label>
-                              <select class="form-select input-lg mt-2" id="idSucursalAjuste" name="idSucursalAjuste">
+                              <select class="form-select input-lg mt-2" id="idSucursalAjuste" name="idSucursalAjuste" required>
                                     
                               <option value="" >Seleccionar sucursal.</option>
                               <?php foreach ($sucursal as $sucursal1) { ?>
@@ -68,7 +68,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Unidad</label>
-                              <select class="form-select input-lg mt-2" id="unitProductoAjuste" name="unitProductoAjuste">
+                              <select class="form-select input-lg mt-2" id="unitProductoAjuste" name="unitProductoAjuste" required>
                               <option value="" >Seleccionar unidad.</option>
                                     <?php foreach ($unit as $unit1) { ?>
                                           <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
@@ -110,7 +110,7 @@
 
                         <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                               <label>Categoría.</label>
-                              <select class="form-select input-lg mt-2 selectC" id="cateProductoAjuste" name="cateProductoAjuste">
+                              <select class="form-select input-lg mt-2 selectC" id="cateProductoAjuste" name="cateProductoAjuste" required>
                                     <option value="" >Seleccionar categoría.</option>
                                     <?php foreach ($category as $category1) { ?>
                                           <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>

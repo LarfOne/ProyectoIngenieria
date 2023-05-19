@@ -322,7 +322,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
         <?php

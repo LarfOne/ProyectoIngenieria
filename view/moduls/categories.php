@@ -113,7 +113,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
             <?php
@@ -154,7 +154,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="idCategoriesm" style="border-radius: 5px;" name="idCategoriesm" value="" readonly>
+                <input type="text" class="form-control input-lg" id="idCategoriesm" style="border-radius: 5px;" name="idCategoriesm" readonly required>
                 
 
               </div>
@@ -181,7 +181,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-              <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+              <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
             </div>
 
             <?php

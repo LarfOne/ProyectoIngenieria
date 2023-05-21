@@ -145,4 +145,17 @@ class Product{
 
         $sentenciaSQL = null;
     }
+
+
+	static public function getProductImagePath($codigo)
+	{
+		$sentenciaSQL = Conexion::conectar()->prepare("SELECT image FROM producto WHERE codigo = :codigo");
+		$sentenciaSQL->bindParam(':codigo', $codigo, PDO::PARAM_STR);
+		$sentenciaSQL->execute();
+
+		$imagen = $sentenciaSQL->fetch(PDO::FETCH_COLUMN);
+
+		return $imagen;
+	}
+
 }

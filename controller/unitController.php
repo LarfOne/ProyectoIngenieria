@@ -8,8 +8,7 @@
                     //La función recibe los datos enviados desde un formulario HTML mediante el método POST,
                     $table = "unidadmedida";
 
-                    $datas = array("codigo" => $_POST["idUnit"], 
-                                    "nombre" => $_POST["nameUnit"]);
+                    $datas = array("nombre" => $_POST["nameUnit"]);
 
                     $respuesta = Unit::mdlAddUnit($table, $datas);
                     

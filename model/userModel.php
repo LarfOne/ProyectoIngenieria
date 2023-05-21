@@ -2,7 +2,7 @@
 
     require_once "conexion.php";
 
-    class User{   
+class User{   
         
         /**
          * Obtener todos los datos de un usuario
@@ -174,8 +174,20 @@
 
 
         }
+        static public function getUserImagePath($cedula)
+        {
+            $sentenciaSQL = Conexion::conectar()->prepare("SELECT image FROM empleado WHERE  cedula = :cedula");
+            $sentenciaSQL->bindParam(':cedula', $cedula, PDO::PARAM_STR);
+            $sentenciaSQL->execute();
+
+            $imagen = $sentenciaSQL->fetch(PDO::FETCH_COLUMN);
+
+            return $imagen;
+        }
+
+}
 
 
-    }
+    
 
 ?>

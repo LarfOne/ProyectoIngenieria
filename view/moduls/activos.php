@@ -126,7 +126,8 @@
 
                   <span class="input-group-addon"><i class="fa fa-building"></i></span>
                   <!--<input type="text" class="form-control input-lg" name="idSucursal" placeholder="Ingresar id de sucursal" required>-->
-                  <select class="form-control input-lg" id="idSucursal" style="border-radius: 5px;" name="idSucursal">
+                  <select class="form-control input-lg" id="idSucursal" style="border-radius: 5px;" name="idSucursal" required>
+                              <option value="">Seleccionar sucursal.</option>
                               <?php foreach ($sucursal as $sucursal1) { ?>
                                     <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                               <?php } ?>
@@ -171,9 +172,10 @@
 
                   <span style="border-radius: 5px;" class="input-group-addon"><i class="fa fa-envelope"></i></span>
                   <!--<input type="text" class="form-control input-lg" name="empleado_id" placeholder="Ingresar cédula del empleado">-->
-                  <select class="form-control input-lg" id="empleado_id" name="empleado_id" style="border-radius: 5px;">
+                  <select class="form-control input-lg" id="empleado_id" name="empleado_id" style="border-radius: 5px;" required>
+                  <option value="">Seleccionar Empleado.</option>
                             <?php foreach ($user as $user1) { ?>
-
+                              
                               <?php if ($user1['estado']!='Inactivo') { ?>
 
                                 <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
@@ -193,7 +195,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
         <?php
@@ -245,8 +247,9 @@
 
                                 <span class="input-group-addon"><i class="fa fa-building"></i></span>
                                 <!--<input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" value="Ingresar id de sucursal" required>-->
-                                <select class="form-control input-lg" id="idSucursalm" name="idSucursalm" style="border-radius: 5px;">
-                                  <?php foreach ($sucursal as $sucursal1) { ?>
+                                <select class="form-control input-lg" id="idSucursalm" name="idSucursalm" style="border-radius: 5px;" required>
+                                <option value="">Seleccionar sucursal.</option>
+                                <?php foreach ($sucursal as $sucursal1) { ?>
                                         <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
                                   <?php } ?>
                                 </select>
@@ -287,8 +290,9 @@
 
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
                                 <!--<input type="text" class="form-control input-lg" id="empleado_idm" name="empleado_idm" value="Ingresar cédula del empleado" required>-->
-                                <select class="form-control input-lg" id="empleado_idm" name="empleado_idm" style="border-radius: 5px;">
-                                          <?php foreach ($user as $user1) { ?>
+                                <select class="form-control input-lg" id="empleado_idm" name="empleado_idm" style="border-radius: 5px;" required>
+                                <option value="">Seleccionar Empleado.</option>
+                                <?php foreach ($user as $user1) { ?>
                                               <?php if ($user1['estado']!='Inactivo') { ?>
                                                 <option value=<?php echo $user1['cedula'] ?>><?php echo $user1['nombre']." ".$user1['apellidos'] ?></option>
                                               <?php } ?>
@@ -304,7 +308,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-              <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+              <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
             </div>
 
             <?php

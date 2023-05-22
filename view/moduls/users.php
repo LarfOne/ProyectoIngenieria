@@ -113,7 +113,7 @@
                 <div class="input-group">
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-building"></i></span>
                   <!--<input type="text" class="form-control input-lg" name="sucursalUser" placeholder="Ingresar sucursal a la que pertenece" required>-->
-                  <select class="form-select input-lg" id="sucursalUser" name="sucursalUser">
+                  <select class="form-select input-lg" id="sucursalUser" name="sucursalUser" required>
                     <option value="">Seleccionar sucursal.</option>
                     <?php foreach ($sucursal as $sucursal1) { ?>
                       <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
@@ -132,7 +132,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser">
+                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
                     <option value="">Selecionar Perfil.</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Usuario">Usuario</option>
@@ -164,25 +164,25 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
-                  <select class="form-select input-lg" id="estadoUser" name="estadoUser">
+                  <select class="form-select input-lg" id="estadoUser" name="estadoUser" required>
                     <option value="">Seleccionar estado.</option>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
                   </select>
                 </div>
               </div>
-              <!--AGREGAR DE FOTO
+              <!--AGREGAR DE FOTO-->
               <div class="form-group subirFoto">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
                 <input type="file" class="imageUser" name="imageUser">
                 <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
                 <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
-              </div>-->
+              </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Salir</button>
-            <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Guardar</button>
+            <button type="submit" class="btn btn-success pull-right" data-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Guardar</button>
           </div>
           <?php
           $addUser = new ControllerUser;
@@ -209,7 +209,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="text" class="form-control input-lg" id="idUserm" name="idUserm" value="" readonly>
+                  <input type="text" class="form-control input-lg" id="idUserm" name="idUserm" value="" readonly required>
                 </div>
               </div>
               <!--MODIFCAR DE NOMBRE-->
@@ -231,7 +231,7 @@
                 <div class="input-group">
                 <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-building"></i></span>
                     <!--<input type=" text" class="form-control input-lg" id="sucursalUserm" name="sucursalUserm" value="Ingresar sucursal a la que pertenece" required>-->
-                      <select class="form-select input-lg" id="sucursalUserm" name="sucursalUserm">
+                      <select class="form-select input-lg" id="sucursalUserm" name="sucursalUserm" required>
                         <option value="">Seleccionar sucursal.</option>
                         <?php foreach ($sucursal as $sucursal1) { ?>
                           <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
@@ -250,7 +250,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" id="roleUserm" name="roleUserm">
+                  <select class="form-select input-lg" id="roleUserm" name="roleUserm" required>
                     <option value="">Seleccionar perfil</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Usuario">Usuario</option>
@@ -285,25 +285,25 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
-                  <select class="form-select input-lg" id="estadoUserm" name="estadoUserm">
+                  <select class="form-select input-lg" id="estadoUserm" name="estadoUserm" required>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
                   </select>
                 </div>
               </div>
-              <!--MODIFICAR DE FOTO
+              <!--MODIFICAR DE FOTO-->
               <div class="form-group">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir nueva foto</span>
-                <input type="file" class="image" name="imageUpdate">
+                <input type="file" class="imageUser" id="imageUpdateUser" name="imageUpdateUser">
                 <p class="help-block">Peso maximo de la foto 10MB</p>
                 <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
                 <input type="hidden" name="fotoActual" id="fotoActual">
-              </div>-->
+              </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-            <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+            <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
           </div>
           <?php
           $updateUser = new ControllerUser;

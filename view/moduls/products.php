@@ -54,7 +54,7 @@
                         ?>
                         <div class="col mt-5 mr-5">
                               <label>Sucursal</label>
-                              <select class="form-select input-lg mt-2" name="idSucursal">
+                              <select class="form-select input-lg mt-2" name="idSucursal" required>
 
                                     <option value="">Seleccionar sucursal.</option>
                                     <?php foreach ($sucursal as $sucursal1) { ?>
@@ -74,7 +74,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Unidad</label>
-                              <select class="form-select input-lg mt-2" name="unitProducto">
+                              <select class="form-select input-lg mt-2" name="unitProducto" required>
                                     <option value="">Seleccionar unidad.</option>
                                     <?php foreach ($unit as $unit1) { ?>
                                           <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
@@ -116,7 +116,7 @@
 
                         <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                               <label>Categoría.</label>
-                              <select class="form-select input-lg mt-2 selectC" name="cateProducto">
+                              <select class="form-select input-lg mt-2 selectC" name="cateProducto" required>
                                     <option value="">Seleccionar categoría.</option>
                                     <?php foreach ($category as $category1) { ?>
                                           <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
@@ -128,13 +128,13 @@
                   </div>
 
                   <div class="row align-items-center four">
-                        <!--FOTO
-                              <div class="col mt-5 mr-5">
+                        <!--FOTO-->
+                        <div class="col mt-5 mr-5">
                               <label>Foto del producto.</label>
                               
                               <input type="file" class="form-control input-sm mt-2 imageProductos" name="imageProductos">
                               <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
-                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTemp" width="100px">-->
+                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTemp" width="100px">
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>
@@ -144,8 +144,11 @@
                         <div class="button-container">
 
                               <button type="submit" class="btn1 button-save">Registrar</button>
-
-                              <button type="button" class="btn1 button-cancel">Cancelar</button>
+                              
+                              <a href="inventarios">
+                                    <button type="button" class="btn1 button-cancel">Cancelar</button>
+                              </a>
+                              
                         </div>
 
                   </div>

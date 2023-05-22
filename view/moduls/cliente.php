@@ -183,7 +183,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
         <?php
@@ -222,7 +222,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="cedulam" name="cedulam" style="border-radius: 5px;" value="Ingresar Cedula" readonly>
+                <input type="text" class="form-control input-lg" id="cedulam" name="cedulam" style="border-radius: 5px;" value="Ingresar Cedula" readonly required>
 
 
               </div>
@@ -300,7 +300,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
         <?php

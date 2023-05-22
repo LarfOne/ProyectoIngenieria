@@ -66,17 +66,14 @@ $(".btnDeleteUser").click(function() {
 
 })
 
-/*AGREGAR IMAGEN AL USUARIO
+/*AGREGAR IMAGEN AL USUARIO*/
 $(".imageUser").change(function() {
 
-    var imagen = this.files[0];
+    let imagen = this.files[0];
 
     console.log(this.files[0]);
 
-    /*$target_dir = "imagen/"; //directorio en el que se subira
-    $target_file = $target_dir . basename($_FILES["image"]["name"]);//se añade el directorio y el nombre del archivo
-    */
-    /*if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
+    if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
 
         $(".image").val("");
 
@@ -97,13 +94,13 @@ $(".imageUser").change(function() {
 
     } else {
 
-        var datosImagen = new FileReader;
+        let datosImagen = new FileReader;
         datosImagen.readAsDataURL(imagen);
 
         $(datosImagen).on("load", function(event) {
-            var rutaImagen = event.target.result;
-            $(".imageTemp").attr("src", rutaImagen);
+            let rutaImagen = event.target.result;
+            $(".img-thumbnail").attr("src", rutaImagen);
         })
     }
 
-})*/
+})

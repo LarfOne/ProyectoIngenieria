@@ -57,7 +57,7 @@ session_start(); //para usar variables de session
 
     if (isset($_GET["ruta"])) {
 
-      if($_SESSION["role"] === "Administrador"){
+      if($_SESSION["role"] === "Administrador" || $_SESSION["role"] === "SuperAdmin"){
 
         if (
           $_GET["ruta"] == "inicio" ||

@@ -158,22 +158,27 @@ class User{
         }
 
         static public function mdlDelete($data){
-
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_eliminar_empleado(:cedula)");
-            $sentenciaSQL -> bindParam(':cedula', $data, PDO::PARAM_INT);
-
-            if($sentenciaSQL->execute()){
-                return "ok";
-            }else{
-                return "error";
+            try {
+                $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_eliminar_empleado_administrador(:cedula)");
+                $sentenciaSQL->bindParam(':cedula', $data, PDO::PARAM_INT);
+                $sentenciaSQL->execute();
+        
+                // Obtener el resultado del procedimiento almacenado
+                $resultado = $sentenciaSQL->fetch(PDO::FETCH_ASSOC);
+        
+                $sentenciaSQL->closeCursor();
+        
+                if ($resultado) {
+                    return $resultado['mensaje'];
+                } else {
+                    return "Error al ejecutar el procedimiento almacenado.";
+                }
+            } catch (PDOException $e) {
+                return "Error en la conexión a la base de datos: " . $e->getMessage();
             }
-
-            $sentenciaSQL -> close();
-
-            $sentenciaSQL = null;
-
-
         }
+        
+        
         static public function getUserImagePath($cedula)
         {
             $sentenciaSQL = Conexion::conectar()->prepare("SELECT image FROM empleado WHERE  cedula = :cedula");

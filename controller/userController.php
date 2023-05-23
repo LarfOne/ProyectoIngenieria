@@ -334,24 +334,43 @@
         }
 
         static public function ctrDeleteUser(){
-
             if(isset($_GET["idEmpleadoE"])){
-
                 $table = "empleado";
                 $data = $_GET["idEmpleadoE"];
-                //mdlDelete del modelo User para realizar la eliminación en la base de datos. 
-                //Si la eliminación es exitosa, se muestra un mensaje de éxito usando la librería SweetAlert y se redirecciona al usuario a la página de lista de usuarios.
+                
                 $rutaImagen = User::getUserImagePath($data);
                 $respuesta = User::mdlDelete($data);
-                //$respuesta = User::mdlPrueba($data);
-
-                if($respuesta == "ok"){
-                    // Eliminar la imagen del empleado si existe
-                    if (!empty($rutaImagen) && file_exists($rutaImagen)) {
-                        unlink($rutaImagen);
-                    }
+                
+                if (strpos($respuesta, 'Error en la conexión a la base de datos') !== false) {
                     echo "<script>
-                    
+                        Swal.fire({
+                            title: 'Error en la conexión a la base de datos',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                            icon: 'error',
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'users';
+                            }
+                        });
+                    </script>";
+                } else if(strpos($respuesta, 'No se puede eliminar un usuario con rol de super usuario.') !== false){
+                    echo "<script>
+                        Swal.fire({
+                            title: '".$respuesta."',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                            icon: 'error',
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'users';
+                            }
+                        });
+                    </script>";
+                }else{
+                    echo "<script>
                         Swal.fire({
                             title: 'El usuario se eliminó correctamente',
                             showConfirmButton: true,
@@ -362,15 +381,11 @@
                             if(result.value){
                                 window.location = 'users';
                             }
-                            
                         })
                     </script>";
-
                 }
-            
+                
             }
-            
-            
         }
     }
     

@@ -128,6 +128,8 @@
                   <input type="email" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
                 </div>
               </div>
+              <?php
+                if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") { ?>
               <!--AGREGAR DE ROLE-->
               <div class="form-group">
                 <div class="input-group">
@@ -139,6 +141,22 @@
                   </select>
                 </div>
               </div>
+              <?php } ?>
+              <?php
+                if ($_SESSION["role"] == "SuperAdmin") { ?>
+              <!--AGREGAR DE ROLE-->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
+                    <option value="">Selecionar Perfil.</option>
+                    <option value="SuperAdmin">Super Administrador</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Usuario">Usuario</option>
+                  </select>
+                </div>
+              </div>
+              <?php } ?>
               <!--AGREGAR DE PASSWORD-->
               <div class="form-group">
                 <div class="input-group">
@@ -246,17 +264,35 @@
                   <input type="email" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
                 </div>
               </div>
+              <?php
+                if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") { ?>
               <!--MODIFICAR DE ROLE-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" id="roleUserm" name="roleUserm" required>
-                    <option value="">Seleccionar perfil</option>
+                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
+                    <option value="">Selecionar Perfil.</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Usuario">Usuario</option>
                   </select>
                 </div>
               </div>
+              <?php } ?>
+              <?php
+                if ($_SESSION["role"] == "SuperAdmin") { ?>
+              <!--MODIFICAR DE ROLE-->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-users"></i></span>
+                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
+                    <option value="">Selecionar Perfil.</option>
+                    <option value="SuperAdmin">Super Administrador</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Usuario">Usuario</option>
+                  </select>
+                </div>
+              </div>
+              <?php } ?>
               <!--MODIFICAR DE PASSWORD-->
               <div class="form-group">
                 <div class="input-group">

@@ -46,8 +46,7 @@ $(".btnUpdateUser").click(function() {
 
 $(".btnDeleteUser").click(function() {
 
-    var idEmpleado = $(this).attr("idEmpleado");
-
+    let idEmpleado = $(this).attr("idEmpleado");
     Swal.fire({
         title: 'Estas seguro de eliminar el usuario?',
         icon: 'warning',

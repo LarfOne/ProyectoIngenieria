@@ -8,7 +8,7 @@
 
         <?php
 
-        if ($_SESSION["role"] == "Administrador") {
+        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "SuperAdmin") {
 
             echo '<li>
                     <a href="inicio">
@@ -61,7 +61,7 @@
                     <a href="cliente">
                         <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
-                           Clientes
+                            Clientes
                         </span>
                     </a>
                 </li>';
@@ -116,7 +116,7 @@
                             Inicio
                         </span>
                     </a>
-                  
+                
                 </li>';
 
                 echo '<li class="has-subnav">
@@ -132,7 +132,7 @@
                     <a href="cliente">
                         <i class="fa fa-users fa-2x"></i>
                         <span class="nav-text">
-                           Clientes
+                            Clientes
                         </span>
                     </a>
                 </li>';
@@ -175,7 +175,7 @@
     
     <ul class="logout" style="margin-bottom: 71px;">
         <?php
-        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario") {
+        if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "Usuario" || $_SESSION["role"] == "SuperAdmin") {
             echo '<li>
                         <a href="salir">
                             <i class="fa fa-power-off fa-2x"></i>

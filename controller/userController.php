@@ -66,7 +66,7 @@
                                 // función comprueba si se ha cargado una imagen de perfil para el nuevo usuario y si es así, la procesa y la almacena en un directorio en el servidor.
                                 $ruta = null;
                                 
-                                if(isset($_FILES["imageUser"]["tmp_name"])){
+                                if(isset($_FILES["imageUser"]) && $_FILES["imageUser"]["error"] === UPLOAD_ERR_OK){
 
                                     list($ancho, $alto) = getimagesize($_FILES["imageUser"]["tmp_name"]);
 
@@ -355,7 +355,7 @@
                             }
                         });
                     </script>";
-                } else if(strpos($respuesta, 'No se puede eliminar un usuario con rol de super usuario.') !== false){
+                } else if(strpos($respuesta, 'No se puede eliminar un usuario con rol de super administrador.') !== false){
                     echo "<script>
                         Swal.fire({
                             title: '".$respuesta."',

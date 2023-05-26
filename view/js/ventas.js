@@ -47,8 +47,8 @@ function llenarTablaVentas(){
 	console.log("idProducto",idProduct);
 	if(idProduct != ""){
 
-		if(cantidad != "" && cantidad != "0"){
-			if(cantidad <= "1000"){
+		if(cantidad != "" && cantidad > 0){
+			if(cantidad <= 1000000){
 
 				console.log("idProduct ",idProduct)
 
@@ -129,7 +129,7 @@ function llenarTablaVentas(){
 			}else{
 				Swal.fire({
 					title: 'No digites cantidades tan grandes',
-					html: 'Puedes digitar como maximo 1000<br>',
+					html: 'Puedes digitar como maximo 1000000<br>',
 					showConfirmButton: true,
 					confirmButtonText: 'Cerrar',
 					closeOnConfirm: false,

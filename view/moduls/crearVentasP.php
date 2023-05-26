@@ -90,7 +90,7 @@
 
         <div class="col mt-3 mr-5">
           <label id="campos">Articulo</label>
-          <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo">
+          <input class="form-control input-sm mt-2" type="number" id="idProducto" name="idProducto" placeholder="Ingresar codigo">
         </div>
 
         <div class="col mt-5 mr-5">
@@ -99,7 +99,7 @@
 
         <div class="col mt-3 mr-5">
           <label id="campos">Cantidad</label>
-          <input class="form-control input-sm mt-2" type="number" min="1" max="100" value="1" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
+          <input class="form-control input-sm mt-2" type="number" min=1 value=1 id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
         </div>
 
         <div class="col mt-3 mr-5 form-group row factura">

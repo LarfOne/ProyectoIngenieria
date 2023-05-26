@@ -77,12 +77,19 @@
                 $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (codigo, idSucursal, idProducto, cantidad) VALUES
                                                                                     (:codigo, :idSucursal, :idProducto, :cantidad)");
 
-                $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
-                $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
-                $sentenciaSQL->bindParam(':idProducto', $datas["idProducto"], PDO::PARAM_STR);
-                $sentenciaSQL->bindParam(':cantidad', $datas["cantidad"], PDO::PARAM_STR);
+                $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_INT);
+                $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
+                $sentenciaSQL->bindParam(':idProducto', $datas["idProducto"], PDO::PARAM_INT);
+                $sentenciaSQL->bindParam(':cantidad', $datas["cantidad"], PDO::PARAM_INT);
 
-                $sentenciaSQL->execute();
+                if($sentenciaSQL->execute()){
+                    return "ok";
+                }else{
+                    return "error";
+                
+                }
+                $sentenciaSQL->close();
+                $sentenciaSQL = null;
 
             }
 

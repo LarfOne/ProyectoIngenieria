@@ -18,25 +18,83 @@ $(".btnUpdateUser").click(function() {
         processData: false,
         dataType: "json",
         success: function(respuesta) {
+            let roleUsuario = document.getElementById("sessionRole").value;
+            console.log("roleUsuario", roleUsuario);
             console.log("respuesta", respuesta);
+            if(respuesta["role"] === "SuperAdmin" && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
+                let selectElement = document.getElementById("roleUserm");
 
-            $("#idUserm").val(respuesta["cedula"]);
-            $("#nameUserm").val(respuesta["nombre"]);
-            $("#lastNameUserm").val(respuesta["apellidos"]);
-            $("#sucursalUserm").val(respuesta["idSucursal"]);
-            $("#emailUserm").val(respuesta["email"]);
-            $("#roleUserm").val(respuesta["role"]);
-            //$("#passwordUserm").val(respuesta["password"]);
-            $("#passwordActual").val(respuesta["password"]);
-            $("#cuentaUserm").val(respuesta["cuentaBancaria"]);
-            $("#directionUserm").val(respuesta["direccion"]);
-            $("#estadoUserm").val(respuesta["estado"]);
-            $("#fotoActual").val(respuesta["image"]);
-            if (respuesta["image"] != null) {
-                $(".imageTemp").attr("src", respuesta["image"]);
-            } else {
-                $(".imageTemp").attr("src", "imagen/userDefault.png");
+                // Crear una nueva opción
+                let newOption = document.createElement("option");
+                newOption.value = "SuperAdmin";
+                newOption.text = "Super Administrador";
+
+                // Agregar la nueva opción al final del select
+                selectElement.add(newOption);
+                $("#idUserm").val(respuesta["cedula"]);
+                $("#nameUserm").val(respuesta["nombre"]);
+                $("#lastNameUserm").val(respuesta["apellidos"]);
+                $("#sucursalUserm").val(respuesta["idSucursal"]);
+                $("#emailUserm").val(respuesta["email"]);
+                $("#roleUserm").val(respuesta["role"]);
+                //$("#passwordUserm").val(respuesta["password"]);
+                $("#passwordActual").val(respuesta["password"]);
+                $("#cuentaUserm").val(respuesta["cuentaBancaria"]);
+                $("#directionUserm").val(respuesta["direccion"]);
+                $("#estadoUserm").val(respuesta["estado"]);
+                $("#fotoActual").val(respuesta["image"]);
+                if (respuesta["image"] != null) {
+                    $(".imageTemp").attr("src", respuesta["image"]);
+                } else {
+                    $(".imageTemp").attr("src", "imagen/userDefault.png");
+                }
+
+                $('#idUserm').prop('readonly', true);
+                $('#nameUserm').prop('readonly', true);
+                $('#lastNameUserm').prop('readonly', true);
+                $('#sucursalUserm').prop('disabled', true);
+                $('#emailUserm').prop('readonly', true);
+                $('#roleUserm').prop('disabled', true);
+                $('#passwordActual').prop('readonly', true);
+                $('#cuentaUserm').prop('readonly', true);
+                $('#directionUserm').prop('readonly', true);
+                $('#estadoUserm').prop('disabled', true);
+                $('#imageUpdateUser').prop('disabled', true);
+                $('#passwordUserm').prop('readonly', true);
+            }else{
+                $("#idUserm").val(respuesta["cedula"]);
+                $("#nameUserm").val(respuesta["nombre"]);
+                $("#lastNameUserm").val(respuesta["apellidos"]);
+                $("#sucursalUserm").val(respuesta["idSucursal"]);
+                $("#emailUserm").val(respuesta["email"]);
+                $("#roleUserm").val(respuesta["role"]);
+                //$("#passwordUserm").val(respuesta["password"]);
+                $("#passwordActual").val(respuesta["password"]);
+                $("#cuentaUserm").val(respuesta["cuentaBancaria"]);
+                $("#directionUserm").val(respuesta["direccion"]);
+                $("#estadoUserm").val(respuesta["estado"]);
+                $("#fotoActual").val(respuesta["image"]);
+                if (respuesta["image"] != null) {
+                    $(".imageTemp").attr("src", respuesta["image"]);
+                } else {
+                    $(".imageTemp").attr("src", "imagen/userDefault.png");
+                }
+
+                $('#idUserm').prop('readonly', false);
+                $('#nameUserm').prop('readonly', false);
+                $('#lastNameUserm').prop('readonly', false);
+                $('#sucursalUserm').prop('disabled', false);
+                $('#emailUserm').prop('readonly', false);
+                $('#roleUserm').prop('disabled', false);
+                $('#passwordActual').prop('readonly', false);
+                $('#cuentaUserm').prop('readonly', false);
+                $('#directionUserm').prop('readonly', false);
+                $('#estadoUserm').prop('disabled', false);
+                $('#imageUpdateUser').prop('disabled', false);
+                $('#passwordUserm').prop('readonly', false);
+
             }
+            
             //$("#passwordActual").val(respuesta["password"]);
 
         }

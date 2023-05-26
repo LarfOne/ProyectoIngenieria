@@ -141,12 +141,12 @@ class ControllerProduct
 		//verifica si se ha enviado una solicitud POST con un valor idProducto
 		if (isset($_POST["idProducto"])) {
 
-			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ]+$/', $_POST["idProducto"])){
+			if(preg_match('/^[0-9]+$/', $_POST["idProducto"])){
 
 				$usuarioResponsable = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 				/************************** FOTO PRODUCTO ********************************************/
 				$ruta = null;
-				if(isset($_FILES["imageProductos"]["tmp_name"])){	
+				if(isset($_FILES["imageProductos"]) && $_FILES["imageProductos"]["error"] === UPLOAD_ERR_OK){	
 
 					list($ancho, $alto) = getimagesize($_FILES["imageProductos"]["tmp_name"]);
 					//var_dump($_FILES["image"]["tmp_name"]);
@@ -189,18 +189,41 @@ class ControllerProduct
 				$respuesta = Product::mdlAdd($datas);
 
 				if ($respuesta == "ok") {
-					echo "<script>
+
+					$tableInventario = "inventario";
+                    //crea un arreglo con los datos necesarios para el nuevo registro, donde se especifica la sucursal, el producto y la cantidad de productos disponibles en esa sucursal
+
+                    $datasInventario = array(
+                        "idSucursal" => $_POST["idSucursal"],
+                        "idProducto" => $_POST["idProducto"],
+                        "cantidad" => $_POST["cantProducto"]
+                    );
+
+                    $respuesta = Inventario::mdlAdd($tableInventario, $datasInventario);
+
+					if($respuesta == "ok"){
+						echo "<script>
+							Swal.fire({
+								title: 'El producto se agregó correctamente al inventario',
+								icon: 'success',
+							}).then((result) => {
+								window.location = 'products';
+							})
+						</script>";
+
+					}else{
+						echo "<script>
 					
 						Swal.fire({
-							title: 'El producto se agregó correctamente',
-							icon: 'success',
+							title: 'No se puede agregar el producto al inventario',
+							icon: 'error',
 						}).then((result) => {
 							window.location = 'products';
 						})
-					</script>";
-				
+						</script>";
+					}
+					
 				} else {
-
 					echo "<script>
 					
 					Swal.fire({
@@ -213,7 +236,6 @@ class ControllerProduct
 				}
 			}
 		}
-
 	}
 
 }

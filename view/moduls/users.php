@@ -67,6 +67,8 @@
       </div>
   </div>
 </div>
+<!--Este input es para obtener el role del usuario que esta logeado para poder editar-->
+<input type="hidden" id="sessionRole" name="sessionRole" value=<?php echo $_SESSION["role"]; ?> >
 
 <!--MODAL PARA AGREGAR USUARIO-->
 
@@ -270,7 +272,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
+                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUserm" name="roleUserm" required>
                     <option value="">Selecionar Perfil.</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Usuario">Usuario</option>
@@ -284,7 +286,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
+                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUserm" name="roleUserm" required>
                     <option value="">Selecionar Perfil.</option>
                     <option value="SuperAdmin">Super Administrador</option>
                     <option value="Administrador">Administrador</option>

@@ -17,24 +17,24 @@
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
 
-            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px;">
+            <form id="formProducto" class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px;">
 
                   <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
                               <label>Codigo del producto.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
+                              <input class="form-control input-sm mt-2" type="number" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Nombre del producto.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="nameProducto" placeholder="Ingresar nombre" required>
+                              <input class="form-control input-sm mt-2" type="text" id="nameProducto" name="nameProducto" placeholder="Ingresar nombre" required>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Marca.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="marcaProducto" placeholder="Ingresar marca" required>
+                              <input class="form-control input-sm mt-2" type="text" id="marcaProducto" name="marcaProducto" placeholder="Ingresar marca" required>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Descripción.</label>
-                              <textarea class="form-control input-sm mt-2" name="descriptionProducto" rows="2" placeholder="Descripcion" style="resize: none;"></textarea>
+                              <textarea class="form-control input-sm mt-2" id="descriptionProducto" name="descriptionProducto" rows="2" placeholder="Descripcion" style="resize: none;" required></textarea>
                         </div>
                   </div>
 
@@ -43,7 +43,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Cantidad.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="cantProducto" placeholder="Cantidad de productos" required>
+                              <input class="form-control input-sm mt-2" type="number" id="cantProducto" min="1" name="cantProducto" placeholder="Cantidad de productos" required>
                         </div>
 
                         <!-- Mandar a traer las sucursales -->
@@ -85,7 +85,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Porcentaje de IVA</label>
-                              <input class="form-control input-sm mt-2" type="number" id="porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
+                              <input class="form-control input-sm mt-2" type="number" id="porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" required>
                         </div>
                   </div>
 
@@ -138,7 +138,7 @@
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>
-                              <textarea class="form-control input-lg mt-2" name="obsProducto" rows="2" placeholder="Observaciones" style="resize: none; height:160px;"></textarea>
+                              <textarea class="form-control input-lg mt-2" id="obsProducto" name="obsProducto" rows="2" placeholder="Observaciones" style="resize: none; height:160px;"></textarea>
                         </div>
 
                         <div class="button-container">
@@ -153,17 +153,10 @@
 
                   </div>
 
-
                   <?php
-
-                  $addProducto = new ControllerProduct;
-                  $addProducto->ctrCreateProduct();
-
-                  $addInventario = new ControllerInventario;
-                  $addInventario->ctrCreateInventario();
-
+                        $addProducto = new ControllerProduct;
+                        $addProducto->ctrCreateProduct();
                   ?>
-
             </form>
       </div>
 </div>

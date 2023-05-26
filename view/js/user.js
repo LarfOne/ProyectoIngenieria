@@ -61,6 +61,8 @@ $(".btnUpdateUser").click(function() {
                 $('#estadoUserm').prop('disabled', true);
                 $('#imageUpdateUser').prop('disabled', true);
                 $('#passwordUserm').prop('readonly', true);
+                $('#btnModificarUser').prop('disabled', true);
+
             }else{
                 $("#idUserm").val(respuesta["cedula"]);
                 $("#nameUserm").val(respuesta["nombre"]);
@@ -92,7 +94,7 @@ $(".btnUpdateUser").click(function() {
                 $('#estadoUserm').prop('disabled', false);
                 $('#imageUpdateUser').prop('disabled', false);
                 $('#passwordUserm').prop('readonly', false);
-
+                $('#btnModificarUser').prop('disabled', false);
             }
             
             //$("#passwordActual").val(respuesta["password"]);
@@ -161,3 +163,27 @@ $(".imageUser").change(function() {
     }
 
 })
+
+
+$('#idUser').on('blur', function() {
+    validarCedula();
+});
+
+function validarCedula() {
+    let inputCedula = document.getElementById("idUser");
+    let cedula = inputCedula.value;
+
+    if (!/^\d+$/.test(cedula)) {
+        alert("La cedula debe ser un número entero");
+        inputCedula.value = 0; // Limpiar el campo de entrada
+        inputCedula.focus(); // Colocar el foco en el campo de entrada
+        return false; // Indicar que la validación no pasó
+    }else if(codigo.length > 10){
+        alert("La cedula debe contener como máximo 10 dígitos.");
+        inputCedula.value = 0 // Limpiar el campo de entrada
+        inputCedula.focus(); // Colocar el foco en el campo de entrada
+        return false; // Indicar que la validación no pasó
+    }
+
+    return true; // Indicar que la validación pasó
+}

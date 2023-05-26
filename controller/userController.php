@@ -312,7 +312,15 @@
                         }
                     
                     }else{
-
+                        echo "<script>     
+                            Swal.fire({
+                                title: 'Escriba una contraseña valida',
+                                showConfirmButton: true,
+                                confirmButtonText: 'Cerrar',
+                                closeOnConfirm: false,
+                                icon: 'error'
+                            })
+                        </script>";
                     }
 
                     

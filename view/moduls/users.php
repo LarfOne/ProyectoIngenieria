@@ -87,14 +87,14 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" name="idUser" placeholder="Ingresar cédula" required>
+                  <input type="number" style="border-radius: 5px;" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" id="idUser" name="idUser" placeholder="Ingresar cédula" required>
                 </div>
               </div>
               <!--AGREGAR DE NOMBRE-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="nameUser" placeholder="Ingresar nombre" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="nameUser" name="nameUser" placeholder="Ingresar nombre" required>
                   <input type="hidden" id="userId">
                 </div>
               </div>
@@ -102,7 +102,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="lastNameUser" placeholder="Ingresar apellidos" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="lastNameUser" name="lastNameUser" placeholder="Ingresar apellidos" required>
                 </div>
               </div>
               <?php
@@ -127,7 +127,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="email" style="border-radius: 5px;" class="form-control input-lg" name="emailUser" placeholder="Ingresar correo electrónico" required>
+                  <input type="email" style="border-radius: 5px;" class="form-control input-lg" id="emailUser" name="emailUser" placeholder="Ingresar correo electrónico" required>
                 </div>
               </div>
               <?php
@@ -136,7 +136,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
+                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUser" name="roleUser" required>
                     <option value="">Selecionar Perfil.</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Usuario">Usuario</option>
@@ -150,7 +150,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" style="border-radius: 5px;" name="roleUser" required>
+                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUser" name="roleUser" required>
                     <option value="">Selecionar Perfil.</option>
                     <option value="SuperAdmin">Super Administrador</option>
                     <option value="Administrador">Administrador</option>
@@ -163,28 +163,28 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" name="passwordUser" placeholder="Ingresar contraseña" required>
+                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" id="passwordUser" name="passwordUser" placeholder="Ingresar contraseña" required>
                 </div>
               </div>
               <!--AGREGAR DE CUENTA BANCARIA-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-credit-card-alt"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="cuentaUser" placeholder="Ingresar cuenta bancaria" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="cuentaUser" name="cuentaUser" placeholder="Ingresar cuenta bancaria" required>
                 </div>
               </div>
               <!--AGREGAR DE DIRECCION-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" name="directionUser" placeholder="Ingresar dirección" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="directionUser" name="directionUser" placeholder="Ingresar dirección" required>
                 </div>
               </div>
               <!--AGREGAR ESTADO-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
-                  <select class="form-select input-lg" id="estadoUser" name="estadoUser" required>
+                  <select class="form-select input-lg" id="estadoUser" id="estadoUser" name="estadoUser" required>
                     <option value="">Seleccionar estado.</option>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>
@@ -194,14 +194,14 @@
               <!--AGREGAR DE FOTO-->
               <div class="form-group subirFoto">
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
-                <input type="file" class="imageUser" name="imageUser">
+                <input type="file" class="imageUser" id="imageUser" name="imageUser">
                 <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
                 <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Salir</button>
+            <button type="button" class="btn btn-danger pull-left"  data-bs-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Salir</button>
             <button type="submit" class="btn btn-success pull-right" data-dismiss="modal" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Guardar</button>
           </div>
           <?php
@@ -341,7 +341,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-            <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
+            <button type="submit" class="btn btn-success pull-right" id="btnModificarUser" data-dismiss="modal">Guardar</button>
           </div>
           <?php
           $updateUser = new ControllerUser;

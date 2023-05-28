@@ -101,7 +101,6 @@
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" class="form-control input-lg" id="nameCategories" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
-                <input type="hidden" id="categoriesId">
               </div>
 
             </div>

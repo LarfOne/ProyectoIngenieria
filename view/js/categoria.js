@@ -1,3 +1,32 @@
+// Obtén el formulario y los elementos de entrada
+const formCategoriesAdd = document.getElementById('modalAddCategories');
+const formCategoriesUpdate = document.getElementById('modalUpdateCategories');
+
+const nameCategoriesInput = document.getElementById('nameCategories');
+const nameCategoriesmInput = document.getElementById('nameCategoriesm');
+const idCategoriesmInput = document.getElementById('idCategoriesm');
+
+// Verificaciones para el formulario de agregar usuario
+formCategoriesAdd.addEventListener('submit', function(event) {
+    // Verifica si los campos están vacíos
+    if (nameCategoriesInput.value === '') {
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, completa todos los campos obligatorios.');
+    }
+});
+
+// Agrega un controlador de evento al enviar el formulario
+formCategoriesUpdate.addEventListener('submit', function(event) {
+    // Verifica si los campos están vacíos
+    if (nameCategoriesmInput.value === '' || idCategoriesmInput.value === '') {
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, completa todos los campos obligatorios.');
+    }
+});
+
+
 $(".btnUpdateCategories").click(function(){
     var idCategories = $(this).attr("idCategories");
     var datas = new FormData();
@@ -48,3 +77,15 @@ $(".btnDeleteCategories").click(function(){
     })
 
 })
+
+$('#nameCategories, #nameCategoriesm').on('keypress input', function(e) {
+    validarInputCategories(e, 60);
+});
+
+function validarInputCategories(e, maxLength) {
+    let input = e.target.value;
+
+    if (input.length >= maxLength) {
+        e.preventDefault();
+    }
+}

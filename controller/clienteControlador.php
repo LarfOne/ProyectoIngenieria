@@ -18,16 +18,15 @@ class ControllerClient{
 		if(isset($_POST["cedula"])){
 			
 
-			if(preg_match('/^[0-9]+$/', $_POST["cedula"])  
+			if(preg_match('/^[0-9]+$/', $_POST["idCliente"])  
 			   ){
 
 				$table = "cliente";
 
 			   
 
-				$datas = array("cedula" => $_POST["cedula"], 
+				$datas = array("cedula" => $_POST["idCliente"], 
 								"nomCliente" => $_POST["nomCliente"], 
-								"apellidos" => $_POST["apellidos"],
 								"telefonoCli" => $_POST["telefonoCli"],
 								"email" => $_POST["email"],
 								"direccion" => $_POST["direccion"]
@@ -76,16 +75,15 @@ class ControllerClient{
 
 	static public function ctrUpdateClient(){
 
-		if(isset($_POST["cedulam"])){// verifica si se ha enviado un formulario con la información del cliente a actualizar
+		if(isset($_POST["idClientem"])){// verifica si se ha enviado un formulario con la información del cliente a actualizar
 			//validación sobre el valor de cedulam para asegurarse de que solo contenga letras, números, espacios y caracteres especiales en español
 
-			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["cedulam"])){
+			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nomClientem"])){
 
 				$table = "cliente";
 
-				$datas = array("cedula" => $_POST["cedulam"], 
+				$datas = array("cedula" => $_POST["idClientem"], 
 				"nomCliente" => $_POST["nomClientem"], 
-				"apellidos" => $_POST["apellidosm"],
 				"telefonoCli" => $_POST["telefonoClim"],
 				"email" => $_POST["emailm"],
 				"direccion" => $_POST["direccionm"]
@@ -155,7 +153,7 @@ class ControllerClient{
 			}
 		
 		}
-		   
+		
 	}
 	
 	static public function ctrClientesCantidad (){

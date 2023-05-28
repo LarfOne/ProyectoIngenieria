@@ -1,3 +1,46 @@
+// Obtén el formulario y los elementos de entrada
+const formSucursalAdd = document.getElementById('modalAddSucursal');
+const formSucursalUpdate = document.getElementById('modalUpdateSucursal');
+
+const idSucursalInput = document.getElementById('idSucursal');
+const idSucursalmInput = document.getElementById('idSucursalm');
+
+const nameSucursalInput = document.getElementById('nameSucursal');
+const nameSucursalmInput = document.getElementById('nameSucursalm');
+
+const direccionSucursalInput = document.getElementById('direccionSucursal');
+const direccionSucursalmInput = document.getElementById('direccionSucursalm');
+
+const telefonoSucursalInput = document.getElementById('telefonoSucursal');
+const telefonoSucursalmInput = document.getElementById('telefonoSucursalm');
+
+const emailSucursalInput = document.getElementById('emailSucursal');
+const emailSucursalmInput = document.getElementById('emailSucursalm');
+
+// Verificaciones para el formulario de agregar usuario
+formSucursalAdd.addEventListener('submit', function(event) {
+    // Verifica si los campos están vacíos
+    if (idSucursalInput.value === '' || nameSucursalInput.value === '' || direccionSucursalInput.value === ''||
+        telefonoSucursalInput.value === '' || emailSucursalInput.value === '') {
+        event.preventDefault(); // Evita que el formulario se envíe
+
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, completa todos los campos obligatorios.');
+    }
+});
+
+// Agrega un controlador de evento al enviar el formulario
+formSucursalUpdate.addEventListener('submit', function(event) {
+    // Verifica si los campos están vacíos
+    if (idSucursalmInput.value === '' || nameSucursalmInput.value === '' || direccionSucursalmInput.value === ''||
+        telefonoSucursalmInput.value === '' || emailSucursalmInput.value === '') {
+        event.preventDefault(); // Evita que el formulario se envíe
+
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, completa todos los campos obligatorios.');
+    }
+});
+
 $(".btnUpdateSucursal").click(function(){
     var idSucursal = $(this).attr("idSucursal");
     var datas = new FormData();
@@ -50,3 +93,49 @@ $(".btnDeleteSucursal").click(function(){
     })
 
 })
+
+$('#idSucursal, #idSucursalm').on('keypress input', function(e) {
+    validarCodigoSucursal(e);
+});
+
+$('#nameSucursal, #nameSucursalm').on('keypress input', function(e) {
+    validarInputSucursal(e, 30);
+})
+
+$('#direccionSucursal, #direccionSucursalm').on('keypress input', function(e) {
+    validarInputSucursal(e, 45);
+})
+
+$('#telefonoSucursal, #telefonoSucursalm').on('keypress input', function(e) {
+    validarTelefonoSucursal(e);
+})
+
+$('#emailSucursal, #emailSucursalm').on('keypress input', function(e) {
+    validarInputSucursal(e, 45);
+})
+
+function validarCodigoSucursal(e) {
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 10) {
+        e.preventDefault();
+    }
+}
+
+function validarTelefonoSucursal(e) {
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 20) {
+        e.preventDefault();
+    }
+}
+
+function validarInputSucursal(e, maxLength) {
+    let input = e.target.value;
+
+    if (input.length >= maxLength) {
+        e.preventDefault();
+    }
+}

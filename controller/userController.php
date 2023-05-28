@@ -57,8 +57,8 @@
 
                 if(preg_match('/^[0-9]+$/', $_POST["idUser"])){
                     if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) && 
-                        preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["lastNameUser"])){
-                            if(preg_match('/^[a-zA-Z0-9]{6,}$/', $_POST["passwordUser"])){
+                        preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ0-9 ]+$/', $_POST["lastNameUser"])){
+                            if(preg_match('/^[a-zA-Z0-9]{8,}$/', $_POST["passwordUser"])){
 
                             
                                 //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
@@ -142,45 +142,9 @@
                                         })
                                         </script>";
                                     }
-
-                            }else{
-                                echo "<script>     
-                                    Swal.fire({
-                                        title: 'Digite una contraseña valida',
-                                        html: 'Sin caracteres especiales y minimo 6 caracteres.<br>',
-                                        showConfirmButton: true,
-                                        confirmButtonText: 'Cerrar',
-                                        closeOnConfirm: false,
-                                        icon: 'error'
-                                    })
-                                </script>";
                             }
-
-                    }else{
-                        echo "<script>     
-                            Swal.fire({
-                                title: 'Escriba un nombre valido',
-                                html: 'El nombre y el apellido no debe de llevar numeros ni caracteres epeciales.<br>',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Cerrar',
-                                closeOnConfirm: false,
-                                icon: 'error'
-                            })
-                        </script>";
                     }
-
                     
-                }else{
-                    echo "<script>     
-                            Swal.fire({
-                                title: 'Digite una cedula valida',
-                                html: 'Sin espacios ni guiones y solo numeros.<br>',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Cerrar',
-                                closeOnConfirm: false,
-                                icon: 'error'
-                            })
-                        </script>";
                 }
 
             }
@@ -311,32 +275,8 @@
                             </script>";
                         }
                     
-                    }else{
-                        echo "<script>     
-                            Swal.fire({
-                                title: 'Escriba una contraseña valida',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Cerrar',
-                                closeOnConfirm: false,
-                                icon: 'error'
-                            })
-                        </script>";
                     }
-
                     
-
-                }else{
-
-                    echo "<script>     
-                            Swal.fire({
-                                title: 'Escriba un nombre valido',
-                                html: 'El nombre y el apellido no debe de llevar numeros ni caracteres epeciales.<br>',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Cerrar',
-                                closeOnConfirm: false,
-                                icon: 'error'
-                            })
-                        </script>";
                 }
             }
         }

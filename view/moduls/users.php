@@ -1,6 +1,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="css/boton.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/user.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -87,22 +88,22 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="number" style="border-radius: 5px;" data-bs-toggle="tooltip" title="Ingrese el numero de cedula del usuario" class="form-control input-lg" id="idUser" name="idUser" placeholder="Ingresar cédula" required>
+                  <input type="number" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El número de cédula debe tener máximo 10 dígitos." class="form-control input-lg" id="idUser" name="idUser" placeholder="Ingresar cédula" required>
                 </div>
               </div>
               <!--AGREGAR DE NOMBRE-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="nameUser" name="nameUser" placeholder="Ingresar nombre" required>
-                  <input type="hidden" id="userId">
+                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El nombre debe tener máximo 45 dígitos." class="form-control input-lg" id="nameUser" name="nameUser" placeholder="Ingresar el nombre" required>
+                  
                 </div>
               </div>
               <!--AGREGAR DE APELLIDO-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="lastNameUser" name="lastNameUser" placeholder="Ingresar apellidos" required>
+                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El apellido debe tener máximo 45 dígitos." class="form-control input-lg" id="lastNameUser" name="lastNameUser" placeholder="Ingresar apellidos" required>
                 </div>
               </div>
               <?php
@@ -163,8 +164,9 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" id="passwordUser" name="passwordUser" placeholder="Ingresar contraseña" required>
+                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" id="passwordUser" name="passwordUser" placeholder="Ingresar contraseña" required>  
                 </div>
+                <p id="password-error" style="color: red; font-size: 12px; display: none;">La contraseña debe tener al menos 8 caracteres.</p>
               </div>
               <!--AGREGAR DE CUENTA BANCARIA-->
               <div class="form-group">
@@ -299,9 +301,10 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input type="password" class="form-control input-lg" id="passwordUserm" name="passwordUserm" placeholder="Ingresar la nueva contrasena">
+                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" id="passwordUserm" name="passwordUserm" placeholder="Ingresar la nueva contraseña">
                   <input type="hidden" id="passwordActual" name="passwordActual">
                 </div>
+                <p id="password-errorm" style="color: red; font-size: 12px; display: none;">La contraseña debe tener al menos 8 caracteres.</p>
               </div>
               <!--MODIFICAR DE CUENTA BANCARIA-->
               <div class="form-group">

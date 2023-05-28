@@ -1,3 +1,92 @@
+const passwordError = document.getElementById('password-error');
+const passwordErrorm = document.getElementById('password-errorm');
+
+// Obtén el formulario y los elementos de entrada
+const formUserAdd = document.getElementById('modalAddUser');
+const formUserUpdate = document.getElementById('modalUpdateUser');
+
+const idUserInput = document.getElementById('idUser');
+const idUsermInput = document.getElementById('idUserm');
+
+const nameUserInput = document.getElementById('nameUser');
+const nameUsermInput = document.getElementById('nameUserm');
+
+const lastNameUserInput = document.getElementById('lastNameUser');
+const lastNameUsermInput = document.getElementById('lastNameUserm');
+
+const sucursalUserInput = document.getElementById('sucursalUser');
+const sucursalUsermInput = document.getElementById('sucursalUserm');
+
+const emailUserInput = document.getElementById('emailUser');
+const emailUsermInput = document.getElementById('emailUserm');
+
+const roleUserInput = document.getElementById('roleUser');
+const roleUsermInput = document.getElementById('roleUserm');
+
+const passwordUserInput = document.getElementById('passwordUser');
+const passwordUsermInput = document.getElementById('passwordUserm');
+
+const cuentaUserInput = document.getElementById('cuentaUser');
+const cuentaUsermInput = document.getElementById('cuentaUserm');
+
+const directionUserInput = document.getElementById('directionUser');
+const directionUsermInput = document.getElementById('directionUserm');
+
+const estadoUserInput = document.getElementById('estadoUser');
+const estadoUsermInput = document.getElementById('estadoUserm');
+
+const rolesPermitidos = ['Administrador', 'Usuario', 'SuperAdmin'];
+const estadosPermitidos = ['Activo', 'Inactivo'];
+
+// Verificaciones para el formulario de agregar usuario
+formUserAdd.addEventListener('submit', function(event) {
+    // Verifica si los campos están vacíos
+    if (idUserInput.value === '' || nameUserInput.value === '' || lastNameUserInput.value === '' || sucursalUserInput.value === '' ||
+        emailUserInput.value === '' || roleUserInput.value === '' || passwordUserInput.value === '' || cuentaUserInput.value === '' ||
+        directionUserInput.value === '' || estadoUserInput.value === '') {
+        event.preventDefault(); // Evita que el formulario se envíe
+
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, completa todos los campos obligatorios.');
+    }else if(!validarLongitudPassword()){
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Debes de digitar una contraseña valida.');
+    }else if(roleUserInput.value === '' || !rolesPermitidos.includes(roleUserInput.value)) {
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, selecciona un perfil válido.');
+    }else if(!estadosPermitidos.includes(estadoUserInput.value)){
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, selecciona un estado válido.');
+    }
+});
+
+// Agrega un controlador de evento al enviar el formulario
+formUserUpdate.addEventListener('submit', function(event) {
+    // Verifica si los campos están vacíos
+    if (idUsermInput.value === '' || nameUsermInput.value === '' || lastNameUsermInput.value === '' || sucursalUsermInput.value === '' ||
+        emailUsermInput.value === '' || roleUsermInput.value === '' || cuentaUsermInput.value === '' ||
+        directionUsermInput.value === '' || estadoUsermInput.value === '') {
+        event.preventDefault(); // Evita que el formulario se envíe
+
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, completa todos los campos obligatorios.');
+    }else if(!validarLongitudPasswordm()){
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Debes de digitar una contraseña valida.');
+    }else if(roleUsermInput.value === '' || !rolesPermitidos.includes(roleUsermInput.value)) {
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, selecciona un perfil válido.');
+    }else if(!estadosPermitidos.includes(estadoUsermInput.value)){
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, selecciona un estado válido.');
+    }
+});
 /**EDITAR USUARIO */
 
 $(".btnUpdateUser").click(function() {
@@ -37,7 +126,6 @@ $(".btnUpdateUser").click(function() {
                 $("#sucursalUserm").val(respuesta["idSucursal"]);
                 $("#emailUserm").val(respuesta["email"]);
                 $("#roleUserm").val(respuesta["role"]);
-                //$("#passwordUserm").val(respuesta["password"]);
                 $("#passwordActual").val(respuesta["password"]);
                 $("#cuentaUserm").val(respuesta["cuentaBancaria"]);
                 $("#directionUserm").val(respuesta["direccion"]);
@@ -165,25 +253,80 @@ $(".imageUser").change(function() {
 })
 
 
-$('#idUser').on('blur', function() {
-    validarCedula();
+$('#idUser, #idUserm').on('keypress input', function(e) {
+    validarCedula(e);
 });
 
-function validarCedula() {
-    let inputCedula = document.getElementById("idUser");
-    let cedula = inputCedula.value;
+$('#nameUser, #nameUserm').on('keypress input', function(e) {
+    validarInputUser(e, 45);
+});
 
-    if (!/^\d+$/.test(cedula)) {
-        alert("La cedula debe ser un número entero");
-        inputCedula.value = 0; // Limpiar el campo de entrada
-        inputCedula.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }else if(codigo.length > 10){
-        alert("La cedula debe contener como máximo 10 dígitos.");
-        inputCedula.value = 0 // Limpiar el campo de entrada
-        inputCedula.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
+$('#lastNameUser, #lastNameUserm').on('keypress input', function(e) {
+    validarInputUser(e, 45);
+});
+
+$('#emailUser, #emailUserm').on('keypress input', function(e) {
+    validarInputUser(e, 45);
+});
+
+$('#passwordUser, #passwordUserm').on('keypress input', function(e) {
+    validarInputUser(e, 20);
+});
+
+$('#cuentaUser, #cuentaUserm').on('keypress input', function(e) {
+    validarInputUser(e, 45);
+});
+
+$('#directionUser, #directionUserm').on('keypress input', function(e) {
+    validarInputUser(e, 45);
+});
+
+function validarInputUser(e, maxLength) {
+    let input = e.target.value;
+
+    if (input.length >= maxLength) {
+        e.preventDefault();
     }
-
-    return true; // Indicar que la validación pasó
 }
+
+function validarCedula(e) {
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 10) {
+        e.preventDefault();
+    }
+}
+
+passwordUserInput.addEventListener('blur', validarLongitudPassword);
+
+function validarLongitudPassword() {
+    const password = passwordUserInput.value;
+
+    if (password.length < 8) {
+        passwordError.style.display = 'block';
+        return false;
+    } else {
+        passwordError.style.display = 'none';
+        return true;
+    }
+}
+
+passwordUsermInput.addEventListener('blur', validarLongitudPasswordm);
+
+function validarLongitudPasswordm() {
+    const password = passwordUsermInput.value;
+    console.log("mierdaaaaa");
+    if (password.length >= 8 || password.length == 0) {
+        passwordErrorm.style.display = 'none';
+        return true;
+    } else{
+        passwordErrorm.style.display = 'block';
+        return false;
+    }
+}
+
+
+
+
+

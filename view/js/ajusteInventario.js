@@ -4,67 +4,70 @@ const urlParams = new URLSearchParams(window.location.search);
 // Obtener el valor del parámetro 'codigo'
 const codigo = urlParams.get('codigoInventario');
 
-let datasInventario = new FormData();
-
-datasInventario.append("idInventario", codigo);
-
-$.ajax({
-    url:"ajax/inventarioAjax.php",
-    method:"POST",
-    data: datasInventario,
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType: "json",
-    success: function(respuesta){
-        $("#codigoInventarioAjuste").val(respuesta["codigo"]);
-        $("#idProductoAjuste").val(respuesta["idProducto"]);
-        $("#idSucursalAjuste").val(respuesta["idSucursal"]);
-        $("#existenciaAjuste").val(respuesta["cantidad"]);
-        ajaxProducto();
-    }
-    
-})
+if(codigo != null){
 
 
-function ajaxProducto(){
+    let datasInventario = new FormData();
 
-    let datasProducto = new FormData();
-    datasProducto.append("idProduct", document.getElementById("idProductoAjuste").value);
+    datasInventario.append("idInventario", codigo);
 
     $.ajax({
-        url:"ajax/productAjax.php",
+        url:"ajax/inventarioAjax.php",
         method:"POST",
-        data: datasProducto,
+        data: datasInventario,
         cache: false,
         contentType: false,
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            console.log("respuestaP",respuesta);
-            // Resto del código que usa la respuesta de la llamada AJAX
-            $("#nameProductoAjuste").val(respuesta["nombre"]);
-            $("#marcaProductoAjuste").val(respuesta["marca"]);
-            $("#descriptionProductoAjuste").val(respuesta["descripcion"]);;
-            $("#unitProductoAjuste").val(respuesta["unidadmedida"]);
-            $("#porcProductoAjuste").val(respuesta["porcentajeIva"]);
-            $("#precioNetoAjuste").val(respuesta["precioNeto"]);
-            $("#precioTotalAjuste").val(respuesta["precioTotal"]);
-            $("#cateProductoAjuste").val(respuesta["categoria"]);
-            $("#obsProductoAjuste").val(respuesta["observaciones"]);
-            $("#fotoActualProducto").val(respuesta["image"]);
-
-            if(respuesta["image"] != null) {
-                $(".imageTemp").attr("src", respuesta["image"]);
-            } else {
-                $(".imageTemp").attr("src", "imagen/computadoraDefault.png");
-            }
+            $("#codigoInventarioAjuste").val(respuesta["codigo"]);
+            $("#idProductoAjuste").val(respuesta["idProducto"]);
+            $("#idSucursalAjuste").val(respuesta["idSucursal"]);
+            $("#existenciaAjuste").val(respuesta["cantidad"]);
+            ajaxProducto();
         }
-    });
+        
+    })
+
+
+    function ajaxProducto(){
+
+        let datasProducto = new FormData();
+        datasProducto.append("idProduct", document.getElementById("idProductoAjuste").value);
+
+        $.ajax({
+            url:"ajax/productAjax.php",
+            method:"POST",
+            data: datasProducto,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            success: function(respuesta){
+                console.log("respuestaP",respuesta);
+                // Resto del código que usa la respuesta de la llamada AJAX
+                $("#nameProductoAjuste").val(respuesta["nombre"]);
+                $("#marcaProductoAjuste").val(respuesta["marca"]);
+                $("#descriptionProductoAjuste").val(respuesta["descripcion"]);;
+                $("#unitProductoAjuste").val(respuesta["unidadmedida"]);
+                $("#porcProductoAjuste").val(respuesta["porcentajeIva"]);
+                $("#precioNetoAjuste").val(respuesta["precioNeto"]);
+                $("#precioTotalAjuste").val(respuesta["precioTotal"]);
+                $("#cateProductoAjuste").val(respuesta["categoria"]);
+                $("#obsProductoAjuste").val(respuesta["observaciones"]);
+                $("#fotoActualProducto").val(respuesta["image"]);
+
+                if(respuesta["image"] != null) {
+                    $(".imageTemp").attr("src", respuesta["image"]);
+                } else {
+                    $(".imageTemp").attr("src", "imagen/computadoraDefault.png");
+                }
+            }
+        });
+
+    }
 
 }
-
-
 $('#porcProductoAjuste').on('blur', function() {
     let porcentaje = 0;
     let precioTotal = 0;

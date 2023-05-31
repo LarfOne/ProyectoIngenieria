@@ -88,14 +88,14 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="number" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El número de cédula debe tener máximo 10 dígitos." class="form-control input-lg" id="idUser" name="idUser" placeholder="Ingresar cédula" required>
+                  <input type="number" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El número de cédula debe tener máximo 10 dígitos." class="form-control input-lg" id="idUser" name="idUser" placeholder="Ingresar cédula" >
                 </div>
               </div>
               <!--AGREGAR DE NOMBRE-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El nombre debe tener máximo 45 dígitos." class="form-control input-lg" id="nameUser" name="nameUser" placeholder="Ingresar el nombre" required>
+                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El nombre debe tener máximo 45 dígitos." class="form-control input-lg" id="nameUser" name="nameUser" placeholder="Ingresar el nombre" >
                   
                 </div>
               </div>
@@ -103,7 +103,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El apellido debe tener máximo 45 dígitos." class="form-control input-lg" id="lastNameUser" name="lastNameUser" placeholder="Ingresar apellidos" required>
+                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El apellido debe tener máximo 45 dígitos." class="form-control input-lg" id="lastNameUser" name="lastNameUser" placeholder="Ingresar apellidos" >
                 </div>
               </div>
               <?php
@@ -116,7 +116,7 @@
                 <div class="input-group">
                   <span class="input-group-addon" style="border-radius: 5px;"><i class="fa fa-building"></i></span>
                   <!--<input type="text" class="form-control input-lg" name="sucursalUser" placeholder="Ingresar sucursal a la que pertenece" required>-->
-                  <select class="form-select input-lg" id="sucursalUser" name="sucursalUser" required>
+                  <select class="form-select input-lg" id="sucursalUser" name="sucursalUser" >
                     <option value="">Seleccionar sucursal.</option>
                     <?php foreach ($sucursal as $sucursal1) { ?>
                       <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
@@ -128,7 +128,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="email" style="border-radius: 5px;" class="form-control input-lg" id="emailUser" name="emailUser" placeholder="Ingresar correo electrónico" required>
+                  <input type="email" style="border-radius: 5px;" class="form-control input-lg" id="emailUser" name="emailUser" placeholder="Ingresar correo electrónico" >
                 </div>
               </div>
               <?php
@@ -137,7 +137,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUser" name="roleUser" required>
+                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUser" name="roleUser" >
                     <option value="">Selecionar Perfil.</option>
                     <option value="Administrador">Administrador</option>
                     <option value="Usuario">Usuario</option>
@@ -151,7 +151,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUser" name="roleUser" required>
+                  <select class="form-select input-lg" style="border-radius: 5px;" id="roleUser" name="roleUser" >
                     <option value="">Selecionar Perfil.</option>
                     <option value="SuperAdmin">Super Administrador</option>
                     <option value="Administrador">Administrador</option>
@@ -164,7 +164,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" id="passwordUser" name="passwordUser" placeholder="Ingresar contraseña" required>  
+                  <input type="password" style="border-radius: 5px;" class="form-control input-lg" id="passwordUser" name="passwordUser" placeholder="Ingresar contraseña" >  
                 </div>
                 <p id="password-error" style="color: red; font-size: 12px; display: none;">La contraseña debe tener al menos 8 caracteres.</p>
               </div>
@@ -172,21 +172,21 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-credit-card-alt"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="cuentaUser" name="cuentaUser" placeholder="Ingresar cuenta bancaria" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="cuentaUser" name="cuentaUser" placeholder="Ingresar cuenta bancaria" >
                 </div>
               </div>
               <!--AGREGAR DE DIRECCION-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="directionUser" name="directionUser" placeholder="Ingresar dirección" required>
+                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="directionUser" name="directionUser" placeholder="Ingresar dirección" >
                 </div>
               </div>
               <!--AGREGAR ESTADO-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-toggle-on"></i></span>
-                  <select class="form-select input-lg" id="estadoUser" id="estadoUser" name="estadoUser" required>
+                  <select class="form-select input-lg" id="estadoUser" id="estadoUser" name="estadoUser" >
                     <option value="">Seleccionar estado.</option>
                     <option value="Activo">Activo</option>
                     <option value="Inactivo">Inactivo</option>

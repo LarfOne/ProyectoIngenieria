@@ -38,6 +38,9 @@ const estadoUsermInput = document.getElementById('estadoUserm');
 const rolesPermitidos = ['Administrador', 'Usuario', 'SuperAdmin'];
 const estadosPermitidos = ['Activo', 'Inactivo'];
 
+let role = "";
+let roleUsuario = "";
+
 // Verificaciones para el formulario de agregar usuario
 formUserAdd.addEventListener('submit', function(event) {
     // Verifica si los campos están vacíos
@@ -85,15 +88,19 @@ formUserUpdate.addEventListener('submit', function(event) {
         event.preventDefault(); // Evita que el formulario se envíe
         // Muestra un mensaje de error o realiza otra acción
         alert('Por favor, selecciona un estado válido.');
+    }else if(role === 'SuperAdmin' && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
+        event.preventDefault(); // Evita que el formulario se envíe
+        // Muestra un mensaje de error o realiza otra acción
+        alert('No puedes editar un super administrador.');
     }
 });
 /**EDITAR USUARIO */
 
 $(".btnUpdateUser").click(function() {
-    var idEmpleado = $(this).attr("idEmpleado");
+    let idEmpleado = $(this).attr("idEmpleado");
     console.log("idEmpleado", idEmpleado);
 
-    var datas = new FormData();
+    let datas = new FormData();
 
     datas.append("idEmpleado", idEmpleado);
 
@@ -107,8 +114,8 @@ $(".btnUpdateUser").click(function() {
         processData: false,
         dataType: "json",
         success: function(respuesta) {
-            let roleUsuario = document.getElementById("sessionRole").value;
-            console.log("roleUsuario", roleUsuario);
+            role = respuesta["role"];
+            roleUsuario = document.getElementById("sessionRole").value;
             console.log("respuesta", respuesta);
             if(respuesta["role"] === "SuperAdmin" && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
                 let selectElement = document.getElementById("roleUserm");
@@ -149,7 +156,7 @@ $(".btnUpdateUser").click(function() {
                 $('#estadoUserm').prop('disabled', true);
                 $('#imageUpdateUser').prop('disabled', true);
                 $('#passwordUserm').prop('readonly', true);
-                $('#btnModificarUser').prop('disabled', true);
+                //$('#btnModificarUser').prop('disabled', true);
 
             }else{
                 $("#idUserm").val(respuesta["cedula"]);

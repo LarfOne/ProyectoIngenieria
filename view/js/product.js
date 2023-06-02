@@ -1,3 +1,47 @@
+
+// Obtén el formulario y los elementos de entrada
+const formProductAdd = document.getElementById('formProducto');
+
+const idProductoInput = document.getElementById('idProducto');
+
+const nameProductoInput = document.getElementById('nameProducto');
+
+const marcaProductoInput = document.getElementById('marcaProducto');
+
+const descriptionProductoInput = document.getElementById('descriptionProducto');
+
+const cantProductoInput = document.getElementById('cantProducto');
+
+const idSucursalProductoInput = document.getElementById('idSucursalProducto');
+
+const unitProductoInput = document.getElementById('unitProducto');
+
+const porcProductoInput = document.getElementById('porcProducto');
+
+const precioNetoInput = document.getElementById('precioNeto');
+
+const precioTotalInput = document.getElementById('precioTotal');
+
+const ivaProductoInput = document.getElementById('ivaProducto');
+
+const cateProductoInput = document.getElementById('cateProducto');
+
+const obsProductoInput = document.getElementById('obsProducto');
+
+// Verificaciones para el formulario de agregar usuario
+formProductAdd.addEventListener('submit', function(event) {
+    // Verifica si los campos están vacíos
+    if (idProductoInput.value === '' || nameProductoInput.value === '' || marcaProductoInput.value === '' || descriptionProductoInput.value === '' ||
+        cantProductoInput.value === '' || idSucursalProductoInput.value === '' || unitProductoInput.value === '' || porcProductoInput.value === '' ||
+        precioNetoInput.value === '' || precioTotalInput.value === '' || ivaProductoInput.value === '' ||
+        cateProductoInput.value === '' || obsProductoInput.value === '') {
+        event.preventDefault(); // Evita que el formulario se envíe
+
+        // Muestra un mensaje de error o realiza otra acción
+        alert('Por favor, completa todos los campos obligatorios.');
+    }
+});
+
 $(".cerrarM").click(function(){
     $("#modalUpdateInventario").modal('hide')
 })
@@ -9,7 +53,6 @@ let precioIVA = 0;
 let porc;
 
 function obtenerPorcentaje() {
-    if(validarPorcentaje() == true){
         porc = document.getElementById("porcProducto").value;
         porcentaje = parseFloat(porc) / 100;
         precioNeto = document.getElementById("precioNeto").value;
@@ -21,7 +64,6 @@ function obtenerPorcentaje() {
             $("#ivaProducto").val(precioIVA);
             $("#precioTotal").val(precioTotal);
         }
-    }
 
 }
 
@@ -39,173 +81,76 @@ function obtenerPrecioNeto(){
     }
 }
 
-
 $('#porcProducto').on('blur', function() {
     obtenerPorcentaje();
 });
-
 
 $('#precioNeto').on('blur', function() {
     obtenerPrecioNeto();
 });
 
-$('#cantProducto').on('blur', function() {
-    validarCantidad();
+$('#porcProducto').on('keypress input', function(e) {
+    validarPorcentaje(e, 2);
 });
 
-$('#idProducto').on('blur', function() {
-    validarCodigo();
+
+$('#precioNeto').on('keypress input', function(e) {
+    validarDatosNumericos(e, 10);
 });
 
-$('#nameProducto').on('blur', function() {
-    validarNombre();
+$('#cantProducto').on('keypress input', function(e) {
+    validarDatosNumericos(e, 45);
 });
 
-$('#marcaProducto').on('blur', function() {
-    validarMarca();
+$('#idProducto').on('keypress input', function(e) {
+    validarDatosNumericos(e, 10);
 });
 
-$('#descriptionProducto').on('blur', function() {
-    validarDescripcion();
+$('#nameProducto').on('keypress input', function(e) {
+    validarInputProducto(e, 20);
 });
 
-$('#obsProducto').on('blur', function() {
-    validarObservaciones();
+$('#marcaProducto').on('keypress input', function(e) {
+    validarInputProducto(e, 20);
 });
 
-$('#precioNeto').on('blur', function() {
-    validarPrecioNeto();
+$('#descriptionProducto').on('keypress input', function(e) {
+    validarInputProducto(e, 45);
 });
 
-function validarPrecioNeto() {
-    let inputNeto = document.getElementById("precioNeto");
-    let neto = inputNeto.value;
+$('#obsProducto').on('keypress input', function(e) {
+    validarInputProducto(e, 300);
+});
 
-    if (!/^\d+$/.test(neto) || parseInt(neto) < 0) {
-        alert("El precio neto debe de ser un numero entero mayor a 0.");
-        inputNeto.value = 0; // Limpiar el campo de entrada
-        inputNeto.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }else if(neto.length > 10){
-        alert("El precio neto debe contener como máximo 10 dígitos.");
-        inputNeto.value = 0; // Limpiar el campo de entrada
-        inputNeto.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
+
+function validarInputProducto(e, maxLength) {
+    let input = e.target.value;
+
+    if (input.length >= maxLength) {
+        e.preventDefault();
     }
-
-    return true; // Indicar que la validación pasó
 }
 
-function validarPorcentaje() {
-    let inputPorcentaje = document.getElementById("porcProducto");
-    let porcentaje = inputPorcentaje.value;
+function validarDatosNumericos(e, maxLength) {
+    let input = e.target.value;
 
-    if (!/^\d+$/.test(porcentaje) || parseInt(porcentaje) < 0 || parseInt(porcentaje) > 99) {
-        alert("El porcentaje debe de ser un numero entero entre 0 y 99.");
-        inputPorcentaje.value = 13; // Limpiar el campo de entrada
-        inputPorcentaje.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= maxLength) {
+        e.preventDefault();
     }
-
-    return true; // Indicar que la validación pasó
-}
-
-function validarCantidad() {
-    let inputCantidad = document.getElementById("cantProducto");
-    let cantidad = inputCantidad.value;
-
-    if (!/^\d+$/.test(cantidad) || parseInt(cantidad) < 1) {
-        alert("La cantidad debe ser un número entero mayor a 0.");
-        inputCantidad.value = 1; // Limpiar el campo de entrada
-        inputCantidad.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }else if(cantidad.length > 45){
-        alert("La cantidad debe contener como máximo 45 dígitos.");
-        inputCantidad.value = 1 // Limpiar el campo de entrada
-        inputCantidad.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }
-
-    return true; // Indicar que la validación pasó
 }
 
 
-function validarCodigo() {
-    let inputCodigo = document.getElementById("idProducto");
-    let codigo = inputCodigo.value;
+function validarPorcentaje(e, maxLength) {
 
-    if (!/^\d+$/.test(codigo)) {
-        alert("La cantidad debe ser un número entero");
-        inputCodigo.value = 0; // Limpiar el campo de entrada
-        inputCodigo.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }else if(codigo.length > 10){
-        alert("El codigo debe contener como máximo 10 dígitos.");
-        inputCodigo.value = 0 // Limpiar el campo de entrada
-        inputCodigo.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= maxLength) {
+        e.preventDefault();
     }
 
-    return true; // Indicar que la validación pasó
 }
-
-function validarNombre() {
-    let inputNombre = document.getElementById("nameProducto");
-    let nombre = inputNombre.value;
-
-    if (nombre.length > 20) {
-        alert("El nombre no puede sobrepasar los 20 caracteres.");
-        inputNombre.value = ""; // Limpiar el campo de entrada
-        inputNombre.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }
-
-    return true; // Indicar que la validación pasó
-}
-
-
-function validarMarca() {
-    let inputMarca = document.getElementById("marcaProducto");
-    let marca = inputMarca.value;
-
-    if (marca.length > 20) {
-        alert("La marca no puede sobrepasar los 20 caracteres.");
-        inputMarca.value = ""; // Limpiar el campo de entrada
-        inputMarca.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }
-
-    return true; // Indicar que la validación pasó
-}
-
-function validarDescripcion() {
-    let inputDescripcion = document.getElementById("descriptionProducto");
-    let descripcion = inputDescripcion.value;
-
-    if (descripcion.length > 45) {
-        alert("La descripcion no puede sobrepasar los 45 caracteres.");
-        inputDescripcion.value = ""; // Limpiar el campo de entrada
-        inputDescripcion.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }
-
-    return true; // Indicar que la validación pasó
-}
-
-function validarObservaciones() {
-    let inputObservaciones = document.getElementById("obsProducto");
-    let observacion = inputObservaciones.value;
-
-    if (observacion.length > 300) {
-        alert("La descripcion no puede sobrepasar los 300 caracteres.");
-        inputObservaciones.value = ""; // Limpiar el campo de entrada
-        inputObservaciones.focus(); // Colocar el foco en el campo de entrada
-        return false; // Indicar que la validación no pasó
-    }
-
-    return true; // Indicar que la validación pasó
-}
-
 
 
 //AGREGAR IMAGEN AL PRODUCTO

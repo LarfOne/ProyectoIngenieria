@@ -88,7 +88,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="number" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El número de cédula debe tener máximo 10 dígitos." class="form-control input-lg" id="idUser" name="idUser" placeholder="Ingresar cédula" >
+                  <input type="text" style="border-radius: 5px;" data-bs-toggle="tooltip" title="El número de cédula debe tener máximo 10 dígitos." class="form-control input-lg" id="idUser" name="idUser" placeholder="Ingresar cédula" >
                 </div>
               </div>
               <!--AGREGAR DE NOMBRE-->

@@ -8,7 +8,7 @@
 
 
 <div id="container pt-4">
-  <form role="form" method="post" class="formularioVenta">
+  <form id="formVentaProducto" role="form" method="POST" class="formularioVenta">
   <script>
     const formularioVenta = document.querySelector('.formularioVenta');
 
@@ -99,7 +99,7 @@
 
         <div class="col mt-3 mr-5">
           <label id="campos">Cantidad</label>
-          <input class="form-control input-sm mt-2" type="number" min=1 value=1 id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo" required>
+          <input class="form-control input-sm mt-2" type="text" id="cantidadProducto" name="cantidadProducto" placeholder="Ingresar codigo">
         </div>
 
         <div class="col mt-3 mr-5 form-group row factura">

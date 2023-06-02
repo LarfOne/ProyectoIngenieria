@@ -7,12 +7,7 @@
 
 
 <div id="container pt-4" class="contenedorProducts" style="margin-top:90px;">
-      <style>
 
-
-
-
-      </style>
       <div class="container mt-3">
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
@@ -22,7 +17,7 @@
                   <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
                               <label>Codigo del producto.</label>
-                              <input class="form-control input-sm mt-2" type="number" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
+                              <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Nombre del producto.</label>
@@ -43,7 +38,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Cantidad.</label>
-                              <input class="form-control input-sm mt-2" type="number" id="cantProducto" min="1" name="cantProducto" placeholder="Cantidad de productos" required>
+                              <input class="form-control input-sm mt-2" type="text" id="cantProducto" min="1" name="cantProducto" placeholder="Cantidad de productos" required>
                         </div>
 
                         <!-- Mandar a traer las sucursales -->
@@ -54,7 +49,7 @@
                         ?>
                         <div class="col mt-5 mr-5">
                               <label>Sucursal</label>
-                              <select class="form-select input-lg mt-2" name="idSucursal" required>
+                              <select class="form-select input-lg mt-2" id="idSucursalProducto" name="idSucursalProducto" required>
 
                                     <option value="">Seleccionar sucursal.</option>
                                     <?php foreach ($sucursal as $sucursal1) { ?>
@@ -74,7 +69,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Unidad</label>
-                              <select class="form-select input-lg mt-2" name="unitProducto" required>
+                              <select class="form-select input-lg mt-2" id="unitProducto" name="unitProducto" required>
                                     <option value="">Seleccionar unidad.</option>
                                     <?php foreach ($unit as $unit1) { ?>
                                           <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
@@ -85,7 +80,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Porcentaje de IVA</label>
-                              <input class="form-control input-sm mt-2" type="number" id="porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" required>
+                              <input class="form-control input-sm mt-2" type="text" id="porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" required>
                         </div>
                   </div>
 
@@ -101,7 +96,7 @@
                   <div class="row align-items-center third">
                         <div class="col mt-5 mr-5">
                               <label>Precio Neto.</label>
-                              <input class="form-control input-sm mt-2" type="number" id="precioNeto" name="precioNeto" placeholder="Ingresar precio" onchange="obtenerPrecioNeto()" required>
+                              <input class="form-control input-sm mt-2" type="number" id="precioNeto" name="precioNeto" placeholder="Ingresar precio" required>
                         </div>
 
                         <div class="col mt-5 mr-5">
@@ -116,7 +111,7 @@
 
                         <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                               <label>Categoría.</label>
-                              <select class="form-select input-lg mt-2 selectC" name="cateProducto" required>
+                              <select class="form-select input-lg mt-2 selectC" id="cateProducto" name="cateProducto" required>
                                     <option value="">Seleccionar categoría.</option>
                                     <?php foreach ($category as $category1) { ?>
                                           <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>

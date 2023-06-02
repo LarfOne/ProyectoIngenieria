@@ -35,7 +35,7 @@ const directionUsermInput = document.getElementById('directionUserm');
 const estadoUserInput = document.getElementById('estadoUser');
 const estadoUsermInput = document.getElementById('estadoUserm');
 
-const rolesPermitidos = ['Administrador', 'Usuario', 'SuperAdmin'];
+const rolesPermitidos = ['Administrador', 'Usuario', 'Sinpe'];
 const estadosPermitidos = ['Activo', 'Inactivo'];
 
 let role = "";
@@ -177,7 +177,7 @@ $(".btnUpdateUser").click(function() {
                     $(".imageTemp").attr("src", "imagen/userDefault.png");
                 }
 
-                $('#idUserm').prop('readonly', false);
+                $('#idUserm').prop('readonly', true);
                 $('#nameUserm').prop('readonly', false);
                 $('#lastNameUserm').prop('readonly', false);
                 $('#sucursalUserm').prop('disabled', false);
@@ -299,8 +299,7 @@ function validarInputUser(e, maxLength) {
 function validarCedula(e) {
     let input = e.target.value;
 
-    // Permitir solo números (código ASCII entre 48 y 57)
-    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 10) {
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 10) {
         e.preventDefault();
     }
 }

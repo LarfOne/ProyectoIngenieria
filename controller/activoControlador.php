@@ -5,10 +5,10 @@
         /**REGISTRO DE ACTIVOS */
         //se encarga de crear un nuevo activo en una base de datos, a través del envío de un formulario vía POST
         static public function ctrCreateActivo(){
-            if(isset($_POST["idSucursal"])){
+            if(isset($_POST["idSucursalActivo"])){
                   //Se verifica si existe la variable $_POST["idSucursal"], lo que indica que se ha enviado el 
                 //formulario con los datos del activo a crear.
-                if(preg_match('/^[0-9]+$/', $_POST["idSucursal"])){
+                if(preg_match('/^[0-9]+$/', $_POST["idSucursalActivo"])){
 
                     $table = "activos";
 
@@ -16,9 +16,9 @@
                      
                     //Se define un array $datas que contiene los datos del activo a insertar en la base de datos, estos datos son: el idSucursal, descripcion, estado y empleado_id,
                     // que son valores obtenidos de $_POST.
-                    $datas = array("idSucursal" => $_POST["idSucursal"], 
-                                    "descripcion" => $_POST["descripcion"],
-                                    "estado" => $_POST["estado"],
+                    $datas = array("idSucursal" => $_POST["idSucursalActivo"], 
+                                    "descripcion" => $_POST["descripcionActivo"],
+                                    "estado" => $_POST["estadoActivo"],
                                     "empleado_id" => $_POST["empleado_id"]);
                        //Se llama al método mdlAdd de la clase Activo, pasando como parámetros $table y $datas, para realizar la inserción en la base de datos.
                      //Si la inserción fue exitosa ($respuesta es igual a "ok"), se muestra un mensaje de éxito utilizando la librería SweetAlert2 y se redirige al usuario a la página 
@@ -99,16 +99,16 @@
         //ctrUpdateActivo actualiza un activo en la base de datos. Primero se verifica que se haya enviado el parámetro
         static public function ctrUpdateActivo(){
 
-            if(isset($_POST["codigom"])){
+            if(isset($_POST["codigoActivom"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["codigom"])){
+                if(preg_match('/^[0-9]+$/', $_POST["codigoActivom"])){
 
                     $table = "activos";
 
-                    $datas = array("codigo" => $_POST["codigom"],
-                                    "idSucursal" => $_POST["idSucursalm"], 
-                                    "descripcion" => $_POST["descripcionm"],
-                                    "estado" => $_POST["estadom"],
+                    $datas = array("codigo" => $_POST["codigoActivom"],
+                                    "idSucursal" => $_POST["idSucursalActivom"], 
+                                    "descripcion" => $_POST["descripcionActivom"],
+                                    "estado" => $_POST["estadoActivom"],
                                     "empleado_id" => $_POST["empleado_idm"]);
                      //se crea un array con los datos actualizados del activo y
                     // se llama al método mdlUpdate de la clase Activo

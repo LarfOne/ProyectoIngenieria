@@ -184,6 +184,7 @@ class ControllerProduct
 					"observaciones" => $_POST["obsProducto"],
 					"image" => $ruta,
 					"usuarioResponsable" => $usuarioResponsable);
+					
 					//mdlAdd() y se le pasa $datas como argumento. Si el método mdlAdd() devuelve "ok", 
 				//el producto se agregó con éxito a la base de datos y se muestra una alerta de éxito. Si el método devuelve otra cosa, se muestra una alerta de error.
 				$respuesta = Product::mdlAdd($datas);
@@ -194,7 +195,7 @@ class ControllerProduct
                     //crea un arreglo con los datos necesarios para el nuevo registro, donde se especifica la sucursal, el producto y la cantidad de productos disponibles en esa sucursal
 
                     $datasInventario = array(
-                        "idSucursal" => $_POST["idSucursal"],
+                        "idSucursal" => $_POST["idSucursalProducto"],
                         "idProducto" => $_POST["idProducto"],
                         "cantidad" => $_POST["cantProducto"]
                     );

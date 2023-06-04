@@ -49,7 +49,7 @@ class User{
         static public function mdlShow($item, $valor){
             if($item != null){
                 $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_obtener_empleado(:cedula)");
-                $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_INT);
+                $sentenciaSQL -> bindParam(":".$item, $valor, PDO::PARAM_STR);
                 $sentenciaSQL -> execute();
                 return $sentenciaSQL -> fetch();
             

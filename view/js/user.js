@@ -80,6 +80,10 @@ if(formUserAdd !== null && formUserUpdate != null){
             event.preventDefault(); // Evita que el formulario se envíe
             // Muestra un mensaje de error o realiza otra acción
             alert('Debes de digitar una contraseña valida.');
+        }else if(role === 'SuperAdmin' && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('No puedes editar un super administrador.');
         }else if(roleUsermInput.value === '' || !rolesPermitidos.includes(roleUsermInput.value)) {
             event.preventDefault(); // Evita que el formulario se envíe
             // Muestra un mensaje de error o realiza otra acción
@@ -88,10 +92,6 @@ if(formUserAdd !== null && formUserUpdate != null){
             event.preventDefault(); // Evita que el formulario se envíe
             // Muestra un mensaje de error o realiza otra acción
             alert('Por favor, selecciona un estado válido.');
-        }else if(role === 'SuperAdmin' && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
-            event.preventDefault(); // Evita que el formulario se envíe
-            // Muestra un mensaje de error o realiza otra acción
-            alert('No puedes editar un super administrador.');
         }
     });
 }
@@ -120,15 +120,7 @@ $(".btnUpdateUser").click(function() {
             roleUsuario = document.getElementById("sessionRole").value;
             console.log("respuesta", respuesta);
             if(respuesta["role"] === "SuperAdmin" && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
-                let selectElement = document.getElementById("roleUserm");
 
-                // Crear una nueva opción
-                let newOption = document.createElement("option");
-                newOption.value = "SuperAdmin";
-                newOption.text = "Super Administrador";
-
-                // Agregar la nueva opción al final del select
-                selectElement.add(newOption);
                 $("#idUserm").val(respuesta["cedula"]);
                 $("#nameUserm").val(respuesta["nombre"]);
                 $("#lastNameUserm").val(respuesta["apellidos"]);

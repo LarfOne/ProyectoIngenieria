@@ -34,7 +34,6 @@ const ivaProductoAjusteInput = document.getElementById('ivaProductoAjuste');
 
 const cateProductoAjusteInput = document.getElementById('cateProductoAjuste');
 
-const obsProductoAjusteInput = document.getElementById('obsProductoAjuste');
 
 // Verificaciones para el formulario de agregar usuario
 formProductUpdate.addEventListener('submit', function(event) {

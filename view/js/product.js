@@ -26,7 +26,6 @@ const ivaProductoInput = document.getElementById('ivaProducto');
 
 const cateProductoInput = document.getElementById('cateProducto');
 
-const obsProductoInput = document.getElementById('obsProducto');
 
 if(formProductAdd !== null){
     // Verificaciones para el formulario de agregar usuario

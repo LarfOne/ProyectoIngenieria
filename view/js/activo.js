@@ -15,30 +15,33 @@ const estadoActivomInput = document.getElementById('estadoActivom');
 const empleado_idInput = document.getElementById('empleado_id');
 const empleado_idmInput = document.getElementById('empleado_idm');
 
-// Verificaciones para el formulario de agregar activo
-formAddActivo.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idSucursalActivoInput.value === '' || descripcionActivoInput.value === '' || estadoActivoInput.value === '' || sucursalUserInput.value === '' ||
-        empleado_idInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+if(formAddActivo !== null && formUpdateActivo !== null) {
+    // Verificaciones para el formulario de agregar activo
+    formAddActivo.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idSucursalActivoInput.value === '' || descripcionActivoInput.value === '' || estadoActivoInput.value === '' || sucursalUserInput.value === '' ||
+            empleado_idInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });
 
 
-// Verificaciones para el formulario de modificar activo
-formUpdateActivo.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (codigoActivomInput.value === '' || idSucursalActivomInput.value === '' || descripcionActivomInput.value === '' || estadoActivomInput.value === '' || sucursalUserInput.value === '' ||
-        empleado_idmInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+    // Verificaciones para el formulario de modificar activo
+    formUpdateActivo.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (codigoActivomInput.value === '' || idSucursalActivomInput.value === '' || descripcionActivomInput.value === '' || estadoActivomInput.value === '' || sucursalUserInput.value === '' ||
+            empleado_idmInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });
+}
+
 
 $(".btnUpdateActivo").click(function(){
     var codigo = $(this).attr("codigo");

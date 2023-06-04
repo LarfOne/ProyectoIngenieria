@@ -14,29 +14,31 @@ const formVentaProducto = document.getElementById('formVentaProducto');
 
 const nuevoSubTotalVentaInput = document.getElementById('nuevoSubTotalVenta');
 const nuevoTotalVentaInput = document.getElementById('nuevoTotalVenta');
+if(formVentaProducto != null){
+	formVentaProducto.addEventListener('submit', function(event) {
+		const checkboxes = document.querySelectorAll('.metodoPago input[type="checkbox"]');
+		let seleccionados = [];
+		
+		checkboxes.forEach(function(checkbox) {
+			if (checkbox.checked) {
+				seleccionados.push(checkbox.value);
+			}
+		});
+		
+		const noPermitidos = seleccionados.filter(function(seleccionado) {
+			return !metodosPagoPermitidos.includes(seleccionado);
+		});
+		
+		if (noPermitidos.length > 0) {
+			event.preventDefault();
+			alert('Por favor, selecciona métodos de pago válidos.');
+		}else if(nuevoSubTotalVentaInput.value === '' || nuevoTotalVentaInput.value === '') {
+			event.preventDefault();
+			alert('Debes de tener al menos un producto en carrito para realizar la venta.');
+		}
+	});
+}
 
-formVentaProducto.addEventListener('submit', function(event) {
-    const checkboxes = document.querySelectorAll('.metodoPago input[type="checkbox"]');
-    let seleccionados = [];
-    
-    checkboxes.forEach(function(checkbox) {
-        if (checkbox.checked) {
-            seleccionados.push(checkbox.value);
-        }
-    });
-    
-    const noPermitidos = seleccionados.filter(function(seleccionado) {
-        return !metodosPagoPermitidos.includes(seleccionado);
-    });
-    
-    if (noPermitidos.length > 0) {
-        event.preventDefault();
-        alert('Por favor, selecciona métodos de pago válidos.');
-    }else if(nuevoSubTotalVentaInput.value === '' || nuevoTotalVentaInput.value === '') {
-		event.preventDefault();
-        alert('Debes de tener al menos un producto en carrito para realizar la venta.');
-	}
-});
 
 
 $(".btnAgregarProducto1").click(function(){

@@ -17,29 +17,32 @@ const emailClimInput = document.getElementById('emailm');
 const direccionCliInput = document.getElementById('direccion');
 const direccionClimInput = document.getElementById('direccionm');
 
-// Verificaciones para el formulario de agregar usuario
-formClienteAdd.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idClienteInput.value === '' || nomClienteInput.value === '' || telefonoCliInput.value === '' ||
-        emailCliInput.value === '' || direccionCliInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+if(formClienteAdd !== null && formClienteUpdate !== null) {
+    // Verificaciones para el formulario de agregar usuario
+    formClienteAdd.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idClienteInput.value === '' || nomClienteInput.value === '' || telefonoCliInput.value === '' ||
+            emailCliInput.value === '' || direccionCliInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });
 
-// Agrega un controlador de evento al enviar el formulario
-formClienteUpdate.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idClientemInput.value === '' || nomClientemInput.value === '' || telefonoClimInput.value === '' ||
-        emailClimInput.value === '' || direccionClimInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+    // Agrega un controlador de evento al enviar el formulario
+    formClienteUpdate.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idClientemInput.value === '' || nomClientemInput.value === '' || telefonoClimInput.value === '' ||
+            emailClimInput.value === '' || direccionClimInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });    
+}
+
 
 $(".btnUpdateClient").click(function(){
     var idClient = $(this).attr("idClient");
@@ -94,8 +97,16 @@ $(".btnDeleteClient").click(function(){
 
 })
 
-$('#idCliente, #idClientem').on('keypress input', function(e) {
-    validarCedulaCliente(e);
+$('#idCliente, #idClientem').on('keypress', function(e) {
+    let charCode = e.which ? e.which : e.keyCode;
+
+    if (!esNumeroOLetraCliente(charCode)) {
+        e.preventDefault();
+    }
+
+    if (e.target.value.length >= 20) {
+        e.preventDefault();
+    }
 });
 
 $('#nomCliente, #nomClientem').on('keypress input', function(e) {
@@ -114,13 +125,10 @@ $('#direccion, #direccionm').on('keypress input', function(e) {
     validarInputCliente(e, 45);
 });
 
-function validarCedulaCliente(e) {
-    let input = e.target.value;
-
-    // Permitir solo números (código ASCII entre 48 y 57)
-    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 10) {
-        e.preventDefault();
-    }
+function esNumeroOLetraCliente(charCode) {
+    return (charCode >= 48 && charCode <= 57) || // Números
+           (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
+           (charCode >= 97 && charCode <= 122);  // Letras minúsculas
 }
 
 function validarTelefonoCliente(e) {

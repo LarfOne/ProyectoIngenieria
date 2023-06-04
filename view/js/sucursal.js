@@ -16,30 +16,32 @@ const telefonoSucursalmInput = document.getElementById('telefonoSucursalm');
 
 const emailSucursalInput = document.getElementById('emailSucursal');
 const emailSucursalmInput = document.getElementById('emailSucursalm');
+if(formSucursalAdd != null && formSucursalUpdate != null){
+    // Verificaciones para el formulario de agregar usuario
+    formSucursalAdd.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idSucursalInput.value === '' || nameSucursalInput.value === '' || direccionSucursalInput.value === ''||
+            telefonoSucursalInput.value === '' || emailSucursalInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-// Verificaciones para el formulario de agregar usuario
-formSucursalAdd.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idSucursalInput.value === '' || nameSucursalInput.value === '' || direccionSucursalInput.value === ''||
-        telefonoSucursalInput.value === '' || emailSucursalInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+    // Agrega un controlador de evento al enviar el formulario
+    formSucursalUpdate.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idSucursalmInput.value === '' || nameSucursalmInput.value === '' || direccionSucursalmInput.value === ''||
+            telefonoSucursalmInput.value === '' || emailSucursalmInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-// Agrega un controlador de evento al enviar el formulario
-formSucursalUpdate.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idSucursalmInput.value === '' || nameSucursalmInput.value === '' || direccionSucursalmInput.value === ''||
-        telefonoSucursalmInput.value === '' || emailSucursalmInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });
+}
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
 
 $(".btnUpdateSucursal").click(function(){
     var idSucursal = $(this).attr("idSucursal");
@@ -99,7 +101,7 @@ $('#idSucursal, #idSucursalm').on('keypress input', function(e) {
 });
 
 $('#nameSucursal, #nameSucursalm').on('keypress input', function(e) {
-    validarInputSucursal(e, 30);
+    validarInputSucursal(e, 45);
 })
 
 $('#direccionSucursal, #direccionSucursalm').on('keypress input', function(e) {
@@ -111,14 +113,14 @@ $('#telefonoSucursal, #telefonoSucursalm').on('keypress input', function(e) {
 })
 
 $('#emailSucursal, #emailSucursalm').on('keypress input', function(e) {
-    validarInputSucursal(e, 45);
+    validarInputSucursal(e, 50);
 })
 
 function validarCodigoSucursal(e) {
     let input = e.target.value;
 
     // Permitir solo números (código ASCII entre 48 y 57)
-    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 10) {
+    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 18) {
         e.preventDefault();
     }
 }

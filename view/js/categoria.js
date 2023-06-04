@@ -6,25 +6,28 @@ const nameCategoriesInput = document.getElementById('nameCategories');
 const nameCategoriesmInput = document.getElementById('nameCategoriesm');
 const idCategoriesmInput = document.getElementById('idCategoriesm');
 
-// Verificaciones para el formulario de agregar usuario
-formCategoriesAdd.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (nameCategoriesInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+if(formCategoriesAdd != null && formCategoriesUpdate != null){
+   // Verificaciones para el formulario de agregar usuario
+    formCategoriesAdd.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (nameCategoriesInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });
 
-// Agrega un controlador de evento al enviar el formulario
-formCategoriesUpdate.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (nameCategoriesmInput.value === '' || idCategoriesmInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+    // Agrega un controlador de evento al enviar el formulario
+    formCategoriesUpdate.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (nameCategoriesmInput.value === '' || idCategoriesmInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    }); 
+}
+
 
 
 $(".btnUpdateCategories").click(function(){

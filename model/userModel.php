@@ -38,9 +38,10 @@ class User{
          * 
         */
 
-        static public function loginUser($name){
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_login(:name)");
-            $sentenciaSQL -> bindParam(":name", $name, PDO::PARAM_STR);
+        static public function loginUser($id, $contra){
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_login_user(:id, :contrasena)");
+            $sentenciaSQL -> bindParam(":id", $id, PDO::PARAM_STR);
+            $sentenciaSQL -> bindParam(":contrasena", $contra, PDO::PARAM_STR);
             $sentenciaSQL -> execute();
             return $sentenciaSQL -> fetch();
         }
@@ -76,7 +77,7 @@ class User{
         static public function mdlAdd($datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
-            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_INT);
+            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':apellidos', $datas["apellidos"], PDO::PARAM_STR);
@@ -132,7 +133,7 @@ class User{
             $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_update_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, 
             :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
 
-            $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':apellidos', $datas["apellidos"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':email', $datas["email"], PDO::PARAM_STR);
@@ -160,7 +161,7 @@ class User{
         static public function mdlDelete($data){
             try {
                 $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_eliminar_empleado_administrador(:cedula)");
-                $sentenciaSQL->bindParam(':cedula', $data, PDO::PARAM_INT);
+                $sentenciaSQL->bindParam(':cedula', $data, PDO::PARAM_STR);
                 $sentenciaSQL->execute();
         
                 // Obtener el resultado del procedimiento almacenado

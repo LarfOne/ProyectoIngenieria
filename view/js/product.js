@@ -28,19 +28,22 @@ const cateProductoInput = document.getElementById('cateProducto');
 
 const obsProductoInput = document.getElementById('obsProducto');
 
-// Verificaciones para el formulario de agregar usuario
-formProductAdd.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idProductoInput.value === '' || nameProductoInput.value === '' || marcaProductoInput.value === '' || descriptionProductoInput.value === '' ||
-        cantProductoInput.value === '' || idSucursalProductoInput.value === '' || unitProductoInput.value === '' || porcProductoInput.value === '' ||
-        precioNetoInput.value === '' || precioTotalInput.value === '' || ivaProductoInput.value === '' ||
-        cateProductoInput.value === '' || obsProductoInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+if(formProductAdd !== null){
+    // Verificaciones para el formulario de agregar usuario
+    formProductAdd.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idProductoInput.value === '' || nameProductoInput.value === '' || marcaProductoInput.value === '' || descriptionProductoInput.value === '' ||
+            cantProductoInput.value === '' || idSucursalProductoInput.value === '' || unitProductoInput.value === '' || porcProductoInput.value === '' ||
+            precioNetoInput.value === '' || precioTotalInput.value === '' || ivaProductoInput.value === '' ||
+            cateProductoInput.value === '' || obsProductoInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }
-});
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }
+    });
+}
+
 
 $(".cerrarM").click(function(){
     $("#modalUpdateInventario").modal('hide')
@@ -103,11 +106,11 @@ $('#cantProducto').on('keypress input', function(e) {
 });
 
 $('#idProducto').on('keypress input', function(e) {
-    validarDatosNumericos(e, 10);
+    validarDatosNumericos(e, 18);
 });
 
 $('#nameProducto').on('keypress input', function(e) {
-    validarInputProducto(e, 20);
+    validarInputProducto(e, 25);
 });
 
 $('#marcaProducto').on('keypress input', function(e) {
@@ -115,7 +118,7 @@ $('#marcaProducto').on('keypress input', function(e) {
 });
 
 $('#descriptionProducto').on('keypress input', function(e) {
-    validarInputProducto(e, 45);
+    validarInputProducto(e, 50);
 });
 
 $('#obsProducto').on('keypress input', function(e) {

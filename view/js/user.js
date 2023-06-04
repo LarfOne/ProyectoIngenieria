@@ -40,60 +40,62 @@ const estadosPermitidos = ['Activo', 'Inactivo'];
 
 let role = "";
 let roleUsuario = "";
+if(formUserAdd !== null && formUserUpdate != null){
+    // Verificaciones para el formulario de agregar usuario
+    formUserAdd.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idUserInput.value === '' || nameUserInput.value === '' || lastNameUserInput.value === '' || sucursalUserInput.value === '' ||
+            emailUserInput.value === '' || roleUserInput.value === '' || passwordUserInput.value === '' || cuentaUserInput.value === '' ||
+            directionUserInput.value === '' || estadoUserInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-// Verificaciones para el formulario de agregar usuario
-formUserAdd.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idUserInput.value === '' || nameUserInput.value === '' || lastNameUserInput.value === '' || sucursalUserInput.value === '' ||
-        emailUserInput.value === '' || roleUserInput.value === '' || passwordUserInput.value === '' || cuentaUserInput.value === '' ||
-        directionUserInput.value === '' || estadoUserInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }else if(!validarLongitudPassword()){
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Debes de digitar una contraseña valida.');
+        }else if(roleUserInput.value === '' || !rolesPermitidos.includes(roleUserInput.value)) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, selecciona un perfil válido.');
+        }else if(!estadosPermitidos.includes(estadoUserInput.value)){
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, selecciona un estado válido.');
+        }
+    });
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }else if(!validarLongitudPassword()){
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Debes de digitar una contraseña valida.');
-    }else if(roleUserInput.value === '' || !rolesPermitidos.includes(roleUserInput.value)) {
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, selecciona un perfil válido.');
-    }else if(!estadosPermitidos.includes(estadoUserInput.value)){
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, selecciona un estado válido.');
-    }
-});
+    // Agrega un controlador de evento al enviar el formulario
+    formUserUpdate.addEventListener('submit', function(event) {
+        // Verifica si los campos están vacíos
+        if (idUsermInput.value === '' || nameUsermInput.value === '' || lastNameUsermInput.value === '' || sucursalUsermInput.value === '' ||
+            emailUsermInput.value === '' || roleUsermInput.value === '' || cuentaUsermInput.value === '' ||
+            directionUsermInput.value === '' || estadoUsermInput.value === '') {
+            event.preventDefault(); // Evita que el formulario se envíe
 
-// Agrega un controlador de evento al enviar el formulario
-formUserUpdate.addEventListener('submit', function(event) {
-    // Verifica si los campos están vacíos
-    if (idUsermInput.value === '' || nameUsermInput.value === '' || lastNameUsermInput.value === '' || sucursalUsermInput.value === '' ||
-        emailUsermInput.value === '' || roleUsermInput.value === '' || cuentaUsermInput.value === '' ||
-        directionUsermInput.value === '' || estadoUsermInput.value === '') {
-        event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, completa todos los campos obligatorios.');
+        }else if(!validarLongitudPasswordm()){
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Debes de digitar una contraseña valida.');
+        }else if(roleUsermInput.value === '' || !rolesPermitidos.includes(roleUsermInput.value)) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, selecciona un perfil válido.');
+        }else if(!estadosPermitidos.includes(estadoUsermInput.value)){
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Por favor, selecciona un estado válido.');
+        }else if(role === 'SuperAdmin' && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('No puedes editar un super administrador.');
+        }
+    });
+}
 
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, completa todos los campos obligatorios.');
-    }else if(!validarLongitudPasswordm()){
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Debes de digitar una contraseña valida.');
-    }else if(roleUsermInput.value === '' || !rolesPermitidos.includes(roleUsermInput.value)) {
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, selecciona un perfil válido.');
-    }else if(!estadosPermitidos.includes(estadoUsermInput.value)){
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('Por favor, selecciona un estado válido.');
-    }else if(role === 'SuperAdmin' && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
-        event.preventDefault(); // Evita que el formulario se envíe
-        // Muestra un mensaje de error o realiza otra acción
-        alert('No puedes editar un super administrador.');
-    }
-});
 /**EDITAR USUARIO */
 
 $(".btnUpdateUser").click(function() {
@@ -260,8 +262,16 @@ $(".imageUser").change(function() {
 })
 
 
-$('#idUser, #idUserm').on('keypress input', function(e) {
-    validarCedula(e);
+$('#idUser, #idUserm').on('keypress', function(e) {
+    let charCode = e.which ? e.which : e.keyCode;
+
+    if (!esNumeroOLetraUsuario(charCode)) {
+        e.preventDefault();
+    }
+
+    if (e.target.value.length >= 20) {
+        e.preventDefault();
+    }
 });
 
 $('#nameUser, #nameUserm').on('keypress input', function(e) {
@@ -296,41 +306,40 @@ function validarInputUser(e, maxLength) {
     }
 }
 
-function validarCedula(e) {
-    let input = e.target.value;
+function esNumeroOLetraUsuario(charCode) {
+    return (charCode >= 48 && charCode <= 57) || // Números
+           (charCode >= 65 && charCode <= 90) || // Letras mayúsculas
+           (charCode >= 97 && charCode <= 122);  // Letras minúsculas
+}
+if(passwordUserInput !== null && passwordUsermInput !== null){
+    passwordUserInput.addEventListener('blur', validarLongitudPassword);
 
-    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 10) {
-        e.preventDefault();
+    function validarLongitudPassword() {
+        const password = passwordUserInput.value;
+
+        if (password.length < 8) {
+            passwordError.style.display = 'block';
+            return false;
+        } else {
+            passwordError.style.display = 'none';
+            return true;
+        }
+    }
+
+    passwordUsermInput.addEventListener('blur', validarLongitudPasswordm);
+
+    function validarLongitudPasswordm() {
+        const password = passwordUsermInput.value;
+        if (password.length >= 8 || password.length == 0) {
+            passwordErrorm.style.display = 'none';
+            return true;
+        } else{
+            passwordErrorm.style.display = 'block';
+            return false;
+        }
     }
 }
 
-passwordUserInput.addEventListener('blur', validarLongitudPassword);
-
-function validarLongitudPassword() {
-    const password = passwordUserInput.value;
-
-    if (password.length < 8) {
-        passwordError.style.display = 'block';
-        return false;
-    } else {
-        passwordError.style.display = 'none';
-        return true;
-    }
-}
-
-passwordUsermInput.addEventListener('blur', validarLongitudPasswordm);
-
-function validarLongitudPasswordm() {
-    const password = passwordUsermInput.value;
-    console.log("mierdaaaaa");
-    if (password.length >= 8 || password.length == 0) {
-        passwordErrorm.style.display = 'none';
-        return true;
-    } else{
-        passwordErrorm.style.display = 'block';
-        return false;
-    }
-}
 
 
 

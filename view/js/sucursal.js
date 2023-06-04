@@ -120,7 +120,7 @@ function validarCodigoSucursal(e) {
     let input = e.target.value;
 
     // Permitir solo números (código ASCII entre 48 y 57)
-    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 18) {
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 18) {
         e.preventDefault();
     }
 }

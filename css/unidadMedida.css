@@ -1,0 +1,22 @@
+.btnAgregarUnit:hover{
+    color: black;
+    background-color: #06aaeb;
+    border: 1px solid black;
+}
+
+.btnUpdateUnit:hover{
+    border: 1.5px solid black;
+}
+
+.btnDeleteUnit:hover{
+    background-color: red;
+    transition: background-color 0.3s ease;
+    border: 1.5px solid black;
+    color: black;
+}
+
+.modalUnit{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

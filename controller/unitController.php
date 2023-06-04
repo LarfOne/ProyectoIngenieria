@@ -5,6 +5,7 @@
         //"ctrCreateUnit" que se encarga de agregar una unidad de medida en la base de datos.
             static public function ctrCreateUnit()
             {
+                if(isset($_POST["nameUnit"])){
                     //La función recibe los datos enviados desde un formulario HTML mediante el método POST,
                     $table = "unidadmedida";
 
@@ -19,7 +20,7 @@
                                 title: 'La unidad de medida se agregó correctamente',
                                 icon: 'success',
                             }).then((result) => {
-                                window.location = 'products';
+                                window.location = 'unidadMedida';
                             })
 
                         </script>";
@@ -33,10 +34,11 @@
                             title: 'No se puede agregar la unidad de medida',
                             icon: 'error',
                         }).then((result) => {
-                            window.location = 'products';
+                            window.location = 'unidadMedida';
                         })
                         </script>";
                     }
+                }
             }
             
 
@@ -70,7 +72,7 @@
                                 title: 'La unidad de medida se modificó correctamente',
                                 icon: 'success',
                             }).then((result) => {
-                                window.location = 'products';
+                                window.location = 'unidadMedida';
                             })
                         </script>";
                     }
@@ -86,7 +88,7 @@
                         title: 'No se puede modificar la unidad de medida',
                         icon: 'error',
                     }).then((result) => {
-                        window.location = 'products';
+                        window.location = 'unidadMedida';
                     })
                     </script>";
                 }
@@ -114,7 +116,7 @@
                             icon: 'success',
                         }).then((result) => {
                             if(result.value){
-                                window.location = 'products';
+                                window.location = 'unidadMedida';
                             }
                             
                         })

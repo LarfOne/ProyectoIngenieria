@@ -40,6 +40,16 @@
                 </li>';
 
                 echo '<li class="has-subnav">
+                    <a href="unidadMedida">
+                    <i class="fa fa-crop" aria-hidden="true"></i>
+                        <span class="nav-text">
+                            Unidad de Medida
+                        </span>
+                    </a>
+                    
+                </li>';
+
+                echo '<li class="has-subnav">
                     <a href="products">
                         <i class="fa fa-desktop fa-2x"></i>
                         <span class="nav-text">

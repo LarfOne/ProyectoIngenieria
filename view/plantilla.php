@@ -75,7 +75,8 @@ session_start(); //para usar variables de session
           $_GET["ruta"] == "editarInventario" ||
           $_GET["ruta"] == "auditoria" ||
           $_GET["ruta"] == "auditVista" ||
-          $_GET["ruta"] == "cliente"
+          $_GET["ruta"] == "cliente" ||
+          $_GET["ruta"] == "unidadMedida"
         ) {
           include "moduls/" . $_GET["ruta"] . ".php";
         } else {
@@ -129,6 +130,7 @@ session_start(); //para usar variables de session
   <script src="view/js/menu.js"></script>
   <script src="view/js/ajusteInventario.js"></script>
   <script src="view/js/reporte.js"></script>
+  <script src="view/js/unidadMedida.js"></script>
 </body>
 
 </html>

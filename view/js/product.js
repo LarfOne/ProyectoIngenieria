@@ -35,7 +35,7 @@ if(formProductAdd !== null){
         if (idProductoInput.value === '' || nameProductoInput.value === '' || marcaProductoInput.value === '' || descriptionProductoInput.value === '' ||
             cantProductoInput.value === '' || idSucursalProductoInput.value === '' || unitProductoInput.value === '' || porcProductoInput.value === '' ||
             precioNetoInput.value === '' || precioTotalInput.value === '' || ivaProductoInput.value === '' ||
-            cateProductoInput.value === '' || obsProductoInput.value === '') {
+            cateProductoInput.value === '') {
             event.preventDefault(); // Evita que el formulario se envíe
 
             // Muestra un mensaje de error o realiza otra acción

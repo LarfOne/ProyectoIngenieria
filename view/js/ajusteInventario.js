@@ -42,7 +42,7 @@ formProductUpdate.addEventListener('submit', function(event) {
     if (idProductoAjusteInput.value === '' || nameProductoAjusteInput.value === '' || marcaProductoAjusteInput.value === '' || descriptionProductoAjusteInput.value === '' ||
         cantProductoAjusteInput.value === '' || idSucursalProductoAjusteInput.value === '' || unitProductoAjusteInput.value === '' || porcProductoAjusteInput.value === '' ||
         precioNetoAjusteInput.value === '' || precioTotalAjusteInput.value === '' || ivaProductoAjusteInput.value === '' ||
-        cateProductoAjusteInput.value === '' || obsProductoAjusteInput.value === '') {
+        cateProductoAjusteInput.value === '') {
         event.preventDefault(); // Evita que el formulario se envíe
 
         // Muestra un mensaje de error o realiza otra acción

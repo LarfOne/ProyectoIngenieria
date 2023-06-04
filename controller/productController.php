@@ -63,13 +63,13 @@ class ControllerProduct
 
 		if (isset($_POST["idProductoAjuste"])) {
 
-			if(preg_match('/^[0-9]{1,18}$/', $_POST["idProducto"])){
-				if(preg_match('/^[0-9a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,25}$/', $_POST["nameProducto"])){
-					if(preg_match('/^[0-9a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,20}$/', $_POST["marcaProducto"])){
-						if(preg_match('/^[0-9a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,50}$/', $_POST["descriptionProducto"])){
-							if(preg_match('/^[0-9]{1,10}$/', $_POST["precioNeto"])){
-								if(preg_match('/^[0-9]{1,2}$/', $_POST["porcProducto"])){
-									if(preg_match('/^[0-9]{1,10}$/', $_POST["precioTotal"])){
+			if(preg_match('/^[0-9]{1,18}$/', $_POST["idProductoAjuste"])){
+				if(preg_match('/^[0-9a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,25}$/', $_POST["nameProductoAjuste"])){
+					if(preg_match('/^[0-9a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,20}$/', $_POST["marcaProductoAjuste"])){
+						if(preg_match('/^[0-9a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,50}$/', $_POST["descriptionProductoAjuste"])){
+							if(preg_match('/^[0-9]{1,10}$/', $_POST["precioNetoAjuste"])){
+								if(preg_match('/^[0-9]{1,2}$/', $_POST["porcProductoAjuste"])){
+									if(preg_match('/^[0-9]{1,10}$/', $_POST["precioTotalAjuste"])){
 
 										$usuarioResponsable = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 

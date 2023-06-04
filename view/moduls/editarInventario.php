@@ -125,9 +125,9 @@
                         
                         <div class="col mt-5 mr-5">
                               <label>Foto del producto.</label>
-                              <input type="file" class="form-control input-sm mt-2 imageProductos" id="imageProductosAjuste" name="imageProductosAjuste">
+                              <input type="file" class="form-control input-sm mt-2 imageProductosAjuste" id="imageProductosAjuste" name="imageProductosAjuste">
                               <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
-                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTemp" width="100px">
+                              <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTempAjuste" width="100px">
                               <input type="hidden" name="fotoActualProducto" id="fotoActualProducto">
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">

@@ -15,52 +15,51 @@ class ControllerClient{
 	/**REGISTRO DE Clientes*/
 	static public function ctrCreateClient(){
 		//"ctrCreateClient", la cual es responsable de agregar un nuevo cliente en la base de datos
-		if(isset($_POST["cedula"])){
+		if(isset($_POST["idCliente"])){
 			
+			if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["idCliente"])){
+				if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,70}$/', $_POST["nomCliente"])){
+					if(preg_match('/^[0-9]{1,20}$/', $_POST["telefonoCli"])){
+						if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["direccion"])){
+							if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["email"])){ //acepta un correo valido
+								$table = "cliente";
 
-			if(preg_match('/^[0-9]+$/', $_POST["idCliente"])  
-			   ){
+								$datas = array("cedula" => $_POST["idCliente"], 
+												"nomCliente" => $_POST["nomCliente"], 
+												"telefonoCli" => $_POST["telefonoCli"],
+												"email" => $_POST["email"],
+												"direccion" => $_POST["direccion"]
+												);
 
-				$table = "cliente";
+								$respuesta = Client::mdlAddCli($table, $datas);
+								
+								if($respuesta == "ok"){
+									echo "<script>
+									
+										Swal.fire({
+											title: 'El cliente se agregó correctamente',
+											icon: 'success',
+										}).then((result) => {
+											window.location = 'cliente';
+										})
 
-			   
+									</script>";
+								}else{
 
-				$datas = array("cedula" => $_POST["idCliente"], 
-								"nomCliente" => $_POST["nomCliente"], 
-								"telefonoCli" => $_POST["telefonoCli"],
-								"email" => $_POST["email"],
-								"direccion" => $_POST["direccion"]
-								);
-
-				$respuesta = Client::mdlAddCli($table, $datas);
-				
-				if($respuesta == "ok"){
-					echo "<script>
-					
-						Swal.fire({
-							title: 'El cliente se agregó correctamente',
-							icon: 'success',
-						}).then((result) => {
-							window.location = 'cliente';
-						})
-
-					</script>";
+									echo "<script>
+									
+									Swal.fire({
+										title: 'No se puede agregar el Cliente',
+										icon: 'error',
+									}).then((result) => {
+										window.location = 'cliente';
+									})
+									</script>";
+								}
+							}
+						}
+					}
 				}
-
-
-				
-
-			}else{
-
-				echo "<script>
-				
-				Swal.fire({
-					title: 'No se puede agregar el Cliente',
-					icon: 'error',
-				}).then((result) => {
-					window.location = 'cliente';
-				})
-				</script>";
 			}
 		}
 	}
@@ -78,48 +77,52 @@ class ControllerClient{
 		if(isset($_POST["idClientem"])){// verifica si se ha enviado un formulario con la información del cliente a actualizar
 			//validación sobre el valor de cedulam para asegurarse de que solo contenga letras, números, espacios y caracteres especiales en español
 
-			if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nomClientem"])){
+			if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["idClientem"])){
+				if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,70}$/', $_POST["nomClientem"])){
+					if(preg_match('/^[0-9]{1,20}$/', $_POST["telefonoClim"])){
+						if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["direccionm"])){
+							if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailm"])){ //acepta un correo valido
 
-				$table = "cliente";
+									$table = "cliente";
 
-				$datas = array("cedula" => $_POST["idClientem"], 
-				"nomCliente" => $_POST["nomClientem"], 
-				"telefonoCli" => $_POST["telefonoClim"],
-				"email" => $_POST["emailm"],
-				"direccion" => $_POST["direccionm"]
-				);
+									$datas = array("cedula" => $_POST["idClientem"], 
+									"nomCliente" => $_POST["nomClientem"], 
+									"telefonoCli" => $_POST["telefonoClim"],
+									"email" => $_POST["emailm"],
+									"direccion" => $_POST["direccionm"]
+									);
 
 
 
-				//mdlUpdate de la clase Client para actualizar los datos del cliente en la base de datos. Este método recibe como parámetros el nombre de la tabla (cliente) y el array $datas con los nuevos datos del cliente
-				$respuesta = Client::mdlUpdate($table, $datas);
-				
-				if($respuesta == "ok"){
-					echo "<script>
-					
-						Swal.fire({
-							title: 'El Cliente se modificó correctamente',
-							icon: 'success',
-						}).then((result) => {
-							window.location = 'cliente';
-						})
-					</script>";
+									//mdlUpdate de la clase Client para actualizar los datos del cliente en la base de datos. Este método recibe como parámetros el nombre de la tabla (cliente) y el array $datas con los nuevos datos del cliente
+									$respuesta = Client::mdlUpdate($table, $datas);
+									
+									if($respuesta == "ok"){
+										echo "<script>
+										
+											Swal.fire({
+												title: 'El Cliente se modificó correctamente',
+												icon: 'success',
+											}).then((result) => {
+												window.location = 'cliente';
+											})
+										</script>";
+									}else{
+
+									echo "<script>
+									
+									Swal.fire({
+										title: 'No se puede modificar el Cliente',
+										icon: 'error',
+									}).then((result) => {
+										window.location = 'cliente';
+									})
+									</script>";
+								}
+							}
+						}
+					}
 				}
-
-
-				
-
-			}else{
-
-				echo "<script>
-				
-				Swal.fire({
-					title: 'No se puede modificar el Cliente',
-					icon: 'error',
-				}).then((result) => {
-					window.location = 'cliente';
-				})
-				</script>";
 			}
 		}
 	}

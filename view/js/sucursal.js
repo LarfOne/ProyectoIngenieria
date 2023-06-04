@@ -119,7 +119,7 @@ $('#emailSucursal, #emailSucursalm').on('keypress input', function(e) {
 function validarCodigoSucursal(e) {
     let input = e.target.value;
 
-    // Permitir solo números (código ASCII entre 48 y 57)
+    // Permitir solo números (código ASCII entre 47 y 58)
     if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 18) {
         e.preventDefault();
     }
@@ -128,8 +128,8 @@ function validarCodigoSucursal(e) {
 function validarTelefonoSucursal(e) {
     let input = e.target.value;
 
-    // Permitir solo números (código ASCII entre 48 y 57)
-    if (e.keyCode <= 48 || e.keyCode >= 57 || input.length >= 20) {
+    // Permitir solo números (código ASCII entre 47 y 58)
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 20) {
         e.preventDefault();
     }
 }

@@ -8,50 +8,50 @@
             if(isset($_POST["idSucursalActivo"])){
                   //Se verifica si existe la variable $_POST["idSucursal"], lo que indica que se ha enviado el 
                 //formulario con los datos del activo a crear.
-                if(preg_match('/^[0-9]+$/', $_POST["idSucursalActivo"])){
+                if(preg_match('/^[0-9]{1,10}$/', $_POST["idSucursalActivo"])){
+                    if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["descripcionActivo"])){
+                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["estadoActivo"])){
+                            if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["empleado_id"])){//solo acepta numeros y letras
 
-                    $table = "activos";
+                                $table = "activos";
 
-                    
-                     
-                    //Se define un array $datas que contiene los datos del activo a insertar en la base de datos, estos datos son: el idSucursal, descripcion, estado y empleado_id,
-                    // que son valores obtenidos de $_POST.
-                    $datas = array("idSucursal" => $_POST["idSucursalActivo"], 
-                                    "descripcion" => $_POST["descripcionActivo"],
-                                    "estado" => $_POST["estadoActivo"],
-                                    "empleado_id" => $_POST["empleado_id"]);
-                       //Se llama al método mdlAdd de la clase Activo, pasando como parámetros $table y $datas, para realizar la inserción en la base de datos.
-                     //Si la inserción fue exitosa ($respuesta es igual a "ok"), se muestra un mensaje de éxito utilizando la librería SweetAlert2 y se redirige al usuario a la página 
+                                //Se define un array $datas que contiene los datos del activo a insertar en la base de datos, estos datos son: el idSucursal, descripcion, estado y empleado_id,
+                                // que son valores obtenidos de $_POST.
+                                $datas = array("idSucursal" => $_POST["idSucursalActivo"], 
+                                                "descripcion" => $_POST["descripcionActivo"],
+                                                "estado" => $_POST["estadoActivo"],
+                                                "empleado_id" => $_POST["empleado_id"]);
+                                //Se llama al método mdlAdd de la clase Activo, pasando como parámetros $table y $datas, para realizar la inserción en la base de datos.
+                                //Si la inserción fue exitosa ($respuesta es igual a "ok"), se muestra un mensaje de éxito utilizando la librería SweetAlert2 y se redirige al usuario a la página 
 
-                    $respuesta = Activo::mdlAdd($table, $datas);
-                    
-                    if($respuesta == "ok"){
-                        echo "<script>
-                        
-                            Swal.fire({
-                                title: 'El activo se agregó correctamente',
-                                icon: 'success',
-                            }).then((result) => {
-                                window.location = 'activos';
-                            })
+                                $respuesta = Activo::mdlAdd($table, $datas);
+                                
+                                if($respuesta == "ok"){
+                                    echo "<script>
+                                    
+                                        Swal.fire({
+                                            title: 'El activo se agregó correctamente',
+                                            icon: 'success',
+                                        }).then((result) => {
+                                            window.location = 'activos';
+                                        })
 
-                        </script>";
+                                    </script>";
+                                }else{
+
+                                    echo "<script>
+                                    
+                                    Swal.fire({
+                                        title: 'No se puede agregar el activo',
+                                        icon: 'error',
+                                    }).then((result) => {
+                                        window.location = 'activos';
+                                    })
+                                    </script>";
+                                }
+                            }
+                        }
                     }
-
-
-                    
-
-                }else{
-
-                    echo "<script>
-                    
-                    Swal.fire({
-                        title: 'No se puede agregar el activo',
-                        icon: 'error',
-                    }).then((result) => {
-                        window.location = 'activos';
-                    })
-                    </script>";
                 }
             }
         }
@@ -101,50 +101,55 @@
 
             if(isset($_POST["codigoActivom"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["codigoActivom"])){
+                if(preg_match('/^[0-9]{1,10}$/', $_POST["codigoActivom"])){
+                    if(preg_match('/^[0-9]{1,18}$/', $_POST["idSucursalActivom"])){
+                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["descripcionActivom"])){
+                            if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["estadoActivom"])){
+                                if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["empleado_idm"])){//solo acepta numeros y letras
 
-                    $table = "activos";
+                                    $table = "activos";
 
-                    $datas = array("codigo" => $_POST["codigoActivom"],
-                                    "idSucursal" => $_POST["idSucursalActivom"], 
-                                    "descripcion" => $_POST["descripcionActivom"],
-                                    "estado" => $_POST["estadoActivom"],
-                                    "empleado_id" => $_POST["empleado_idm"]);
-                     //se crea un array con los datos actualizados del activo y
-                    // se llama al método mdlUpdate de la clase Activo
-                    $respuesta = Activo::mdlUpdate($table, $datas);
-                    
-                    //Si la respuesta es "ok", se muestra un mensaje de éxito con la librería SweetAlert y se redirecciona al usuario a la página de activos. Si hay un error, se muestra un mensaje de error con SweetAlert
-                    // y se redirecciona también a la página de activos.
-                    if($respuesta == "ok"){
-                        echo "<script>
-                        
-                            Swal.fire({
-                                title: 'El activo se modificó correctamente',
-                                icon: 'success',
-                            }).then((result) => {
-                                window.location = 'activos';
-                            })
-                        </script>";
+                                    $datas = array("codigo" => $_POST["codigoActivom"],
+                                                    "idSucursal" => $_POST["idSucursalActivom"], 
+                                                    "descripcion" => $_POST["descripcionActivom"],
+                                                    "estado" => $_POST["estadoActivom"],
+                                                    "empleado_id" => $_POST["empleado_idm"]);
+                                    //se crea un array con los datos actualizados del activo y
+                                    // se llama al método mdlUpdate de la clase Activo
+                                    $respuesta = Activo::mdlUpdate($table, $datas);
+                                    
+                                    //Si la respuesta es "ok", se muestra un mensaje de éxito con la librería SweetAlert y se redirecciona al usuario a la página de activos. Si hay un error, se muestra un mensaje de error con SweetAlert
+                                    // y se redirecciona también a la página de activos.
+                                    if($respuesta == "ok"){
+                                        echo "<script>
+                                        
+                                            Swal.fire({
+                                                title: 'El activo se modificó correctamente',
+                                                icon: 'success',
+                                            }).then((result) => {
+                                                window.location = 'activos';
+                                            })
+                                        </script>";
+                                    }else{
+
+                                        echo "<script>
+                                        
+                                        Swal.fire({
+                                            title: 'No se puede modificar el activo',
+                                            icon: 'error',
+                                        }).then((result) => {
+                                            window.location = 'activos';
+                                        })
+                                        </script>";
+                                    }
+                                }
+                            }
+                        }
                     }
-
-
-                    
-
-                }else{
-
-                    echo "<script>
-                    
-                    Swal.fire({
-                        title: 'No se puede modificar el activo',
-                        icon: 'error',
-                    }).then((result) => {
-                        window.location = 'activos';
-                    })
-                    </script>";
                 }
             }
         }
+        
 
         static public function ctrDeleteActivo(){
 

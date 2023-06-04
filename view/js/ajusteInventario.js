@@ -101,9 +101,9 @@ formProductUpdate.addEventListener('submit', function(event) {
                 $("#fotoActualProducto").val(respuesta["image"]);
 
                 if(respuesta["image"] != null) {
-                    $(".imageTemp").attr("src", respuesta["image"]);
+                    $(".imageTempAjuste").attr("src", respuesta["image"]);
                 } else {
-                    $(".imageTemp").attr("src", "imagen/computadoraDefault.png");
+                    $(".imageTempAjuste").attr("src", "imagen/computadoraDefault.png");
                 }
             }
         });
@@ -111,13 +111,8 @@ formProductUpdate.addEventListener('submit', function(event) {
     }
 
 }
-$('#porcProductoAjuste').on('blur', function() {
-    let porcentaje = 0;
-    let precioTotal = 0;
-    let precioNeto = 0;
-    let precioIVA = 0;
-    let porc;
 
+function obtenerPorcentajeAjuste() {
     porc = document.getElementById("porcProductoAjuste").value;
     porcentaje = Number.parseFloat(porc) / 100;
     precioNeto = document.getElementById("precioNetoAjuste").value
@@ -130,15 +125,10 @@ $('#porcProductoAjuste').on('blur', function() {
         $("#ivaProductoAjuste").val(precioIVA);
         $("#precioTotalAjuste").val(precioTotal);
     }
-});
 
-$('#precioNetoAjuste').on('blur', function() {
-    let porcentaje = 0;
-    let precioTotal = 0;
-    let precioNeto = 0;
-    let precioIVA = 0;
-    let porc;
+}
 
+function obtenerPrecioNetoAjuste(){
     porc = document.getElementById("porcProductoAjuste").value;
     porcentaje = Number.parseFloat(porc) / 100;
     precioNeto = document.getElementById("precioNetoAjuste").value;
@@ -152,6 +142,120 @@ $('#precioNetoAjuste').on('blur', function() {
         $("#precioTotalAjuste").val(precioTotal);
 
     }
+}
+
+$('#porcProductoAjuste').on('blur', function() {
+    obtenerPorcentajeAjuste();
 });
+
+$('#precioNetoAjuste').on('blur', function() {
+    obtenerPrecioNetoAjuste();
+});
+
+$('#porcProductoAjuste').on('keypress input', function(e) {
+    validarPorcentajeAjuste(e, 2);
+});
+
+
+$('#precioNetoAjuste').on('keypress input', function(e) {
+    validarDatosNumericosAjuste(e, 10);
+});
+
+$('#cantProductoAjuste').on('keypress input', function(e) {
+    validarDatosNumericosAjuste(e, 20);
+});
+
+$('#existenciaAjuste').on('keypress input', function(e) {
+    validarDatosNumericosAjuste(e, 20);
+});
+
+$('#idProductoAjuste').on('keypress input', function(e) {
+    validarDatosNumericosAjuste(e, 18);
+});
+
+$('#nameProductoAjuste').on('keypress input', function(e) {
+    validarInputProductoAjuste(e, 25);
+});
+
+$('#marcaProductoAjuste').on('keypress input', function(e) {
+    validarInputProductoAjuste(e, 20);
+});
+
+$('#descriptionProductoAjuste').on('keypress input', function(e) {
+    validarInputProductoAjuste(e, 50);
+});
+
+$('#obsProductoAjuste').on('keypress input', function(e) {
+    validarInputProductoAjuste(e, 300);
+});
+
+
+function validarInputProductoAjuste(e, maxLength) {
+    let input = e.target.value;
+
+    if (input.length >= maxLength) {
+        e.preventDefault();
+    }
+}
+
+function validarDatosNumericosAjuste(e, maxLength) {
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= maxLength) {
+        e.preventDefault();
+    }
+}
+
+
+function validarPorcentajeAjuste(e, maxLength) {
+
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= maxLength) {
+        e.preventDefault();
+    }
+
+}
+
+//AGREGAR IMAGEN AL PRODUCTO
+$(".imageProductosAjuste").change(function() {
+
+    var imagen = this.files[0];
+
+    console.log(this.files[0]);
+
+    if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
+
+        $(".image").val("");
+
+        Swal.fire(
+            'Error!',
+            'La imagen debe de estar en formato JPG, PNG O JPEG!',
+            'error'
+        );
+    } else if (imagen["size"] > 10000000) {
+
+        $(".image").val("");
+
+        Swal.fire(
+            'Error!',
+            'La imagen no debe de pesar mas de 10MB!',
+            'error'
+        );
+
+    } else {
+
+        var datosImagen = new FileReader;
+        datosImagen.readAsDataURL(imagen);
+
+        $(datosImagen).on("load", function(event) {
+            var rutaImagen = event.target.result;
+            $(".img-thumbnail").attr("src", rutaImagen);
+        })
+    }
+
+})
 
 

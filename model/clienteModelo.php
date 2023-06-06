@@ -46,11 +46,10 @@ class Client{
 
 		static public function mdlAddCli($table, $datas){
             // "mdlAddCli" recibe dos parámetros: el nombre de una tabla en la base de datos y un arreglo asociativo con los datos de un cliente
-				$sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table(cedula,nomCliente,apellidos,telefonoCli,email, direccion) VALUES (:cedula, :nomCliente, :apellidos, :telefonoCli, :email, :direccion)");
+				$sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table(cedula,nomCliente,telefonoCli,email, direccion) VALUES (:cedula, :nomCliente, :telefonoCli, :email, :direccion)");
 
 				$sentenciaSQL->bindParam(":cedula", $datas["cedula"], PDO::PARAM_STR);
 				$sentenciaSQL->bindParam(":nomCliente", $datas["nomCliente"], PDO::PARAM_STR);
-				$sentenciaSQL->bindParam(":apellidos", $datas["apellidos"], PDO::PARAM_STR);
 				$sentenciaSQL->bindParam(":telefonoCli", $datas["telefonoCli"], PDO::PARAM_STR);
 				$sentenciaSQL->bindParam(":email", $datas["email"], PDO::PARAM_STR);
 				$sentenciaSQL->bindParam(":direccion", $datas["direccion"], PDO::PARAM_STR);
@@ -78,13 +77,12 @@ class Client{
 
     static public function mdlUpdate($table, $datas){
         //"mdlUpdate" recibe como parámetros el nombre de la tabla a actualizar y los datos a actualizar
-        $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET  nomCliente = :nomCliente, apellidos= :apellidos,
-                                                         telefonoCli = :telefonoCli, email = :email , direccion = :direccion WHERE cedula = :cedula");
+        $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET  nomCliente = :nomCliente,
+                                                        telefonoCli = :telefonoCli, email = :email , direccion = :direccion WHERE cedula = :cedula");
         
         
         $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':nomCliente', $datas["nomCliente"], PDO::PARAM_STR);
-        $sentenciaSQL->bindParam(':apellidos', $datas["apellidos"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':telefonoCli', $datas["telefonoCli"], PDO::PARAM_STR);
         $sentenciaSQL->bindParam(':email', $datas["email"], PDO::PARAM_STR);
 		$sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);

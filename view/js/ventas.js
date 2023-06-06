@@ -8,6 +8,39 @@ let metodosSeleccionados = [];
 // Creamos un array vacío
 const arrayProductos = [];
 
+const metodosPagoPermitidos = ['Efectivo', 'Tarjeta', 'Sinpe'];
+
+const formVentaProducto = document.getElementById('formVentaProducto');
+
+const nuevoSubTotalVentaInput = document.getElementById('nuevoSubTotalVenta');
+const nuevoTotalVentaInput = document.getElementById('nuevoTotalVenta');
+if(formVentaProducto != null){
+	formVentaProducto.addEventListener('submit', function(event) {
+		const checkboxes = document.querySelectorAll('.metodoPago input[type="checkbox"]');
+		let seleccionados = [];
+		
+		checkboxes.forEach(function(checkbox) {
+			if (checkbox.checked) {
+				seleccionados.push(checkbox.value);
+			}
+		});
+		
+		const noPermitidos = seleccionados.filter(function(seleccionado) {
+			return !metodosPagoPermitidos.includes(seleccionado);
+		});
+		
+		if (noPermitidos.length > 0) {
+			event.preventDefault();
+			alert('Por favor, selecciona métodos de pago válidos.');
+		}else if(nuevoSubTotalVentaInput.value === '' || nuevoTotalVentaInput.value === '') {
+			event.preventDefault();
+			alert('Debes de tener al menos un producto en carrito para realizar la venta.');
+		}
+	});
+}
+
+
+
 $(".btnAgregarProducto1").click(function(){
     
 	let idProducto = document.getElementById("idProducto").value;
@@ -29,14 +62,25 @@ $(".btnAgregarProducto1").click(function(){
 			console.log("respuestaAa",respuesta);
 			codigoInventario = respuesta["codigo"];
 			stock = respuesta["cantidad"];
-
 			llenarTablaVentas();
-			
         }
 
     })
 	
 })
+
+$('#cantidadProducto').on('keypress input', function(e) {
+    validarInputCantidadVenta(e, 7);
+});
+
+
+function validarInputCantidadVenta(e, maxLength) {
+    let input = e.target.value;
+
+    if (input.length >= maxLength) {
+        e.preventDefault();
+    }
+}
 
 /*=============================================
 BOTON PARA AGREGAR PRODUCTOS A LA TABLA
@@ -46,89 +90,99 @@ function llenarTablaVentas(){
 
 	let idProduct = document.getElementById("idProducto").value;
 	let cantidad = document.getElementById("cantidadProducto").value;
-
+	console.log("idProducto",idProduct);
 	if(idProduct != ""){
 
+		if(cantidad != "" && cantidad > 0){
+			if(cantidad <= 1000000){
 
-		console.log("idProduct ",idProduct)
+				console.log("idProduct ",idProduct)
 
-		let datas = new FormData();
+				let datas = new FormData();
 
-		datas.append("idProduct", idProduct);
+				datas.append("idProduct", idProduct);
 
-		$.ajax({
+				$.ajax({
 
-			url:"ajax/productAjax.php",
-			method:"POST",
-			data: datas,
-			cache: false,
-			contentType: false,
-			processData: false,
-			dataType: "json",
+					url:"ajax/productAjax.php",
+					method:"POST",
+					data: datas,
+					cache: false,
+					contentType: false,
+					processData: false,
+					dataType: "json",
 
-			success: function(respuesta){ //vienen los datos del producto que se digito
+					success: function(respuesta){ //vienen los datos del producto que se digito
+						
+						if(respuesta != false){//comprueba que existe el producto
+
+							//console.log("respuesta", respuesta);
+							codigoProducto = respuesta["codigo"];
+							let descripcion = respuesta["descripcion"];
+							let precio = respuesta["precioTotal"];
+							let subTotal = parseInt(precio)*cantidad;
+							
+							//verifica si existe el codigo del producto en la tabla de ventas
+							if ($('.tablita #listaP'+codigoProducto).length) { 
+								let tr = document.querySelector('#listaP'+codigoProducto);
+
+								let td = tr.querySelector('.cantidadProducto');
+
+								let cantidadProducto = parseInt(td.textContent) + parseInt(cantidad);
+
+								subTotal = parseInt(precio)*cantidadProducto;
+
+								//se modifica el contenido de la tabla
+								$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
+
+								$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
+
+								
+
+							}else{
+								
+								$(".tablita").append(
+
+									'<tr id="listaP'+codigoProducto+'">'+
+							
+										'<td>'+codigoProducto+'</td>'+
+										'<td class="descripcionProducto">'+descripcion+'</td>'+
+										'<td class="cantidadProducto">'+cantidad+'</td>'+
+										'<td class="descuentoProducto"><input class="descuentoInput" type="number" min="0" max="100" idProduct="'+codigoProducto+'" step="1" value="'+0+'"></td>'+
+										'<td class="precioProducto">'+precio+'</td>'+
+										'<td class="subTotalProducto">'+subTotal+'</td>'+
+										'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
 				
-				if(respuesta != false){//comprueba que existe el producto
+									'</tr>')
 
-					//console.log("respuesta", respuesta);
-					codigoProducto = respuesta["codigo"];
-					let descripcion = respuesta["descripcion"];
-					let precio = respuesta["precioTotal"];
-					let subTotal = parseInt(precio)*cantidad;
-					
-					//verifica si existe el codigo del producto en la tabla de ventas
-					if ($('.tablita #listaP'+codigoProducto).length) { 
-						let tr = document.querySelector('#listaP'+codigoProducto);
+							}
 
-						let td = tr.querySelector('.cantidadProducto');
+							let tr = document.querySelector('#listaP' + codigoProducto); //selecionamos el tr por el codigo
 
-						let cantidadProducto = parseInt(td.textContent) + parseInt(cantidad);
-
-						subTotal = parseInt(precio)*cantidadProducto;
-
-						//se modifica el contenido de la tabla
-						$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
-
-						$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
-
-						
-
-					}else{
-						
-						$(".tablita").append(
-
-							'<tr id="listaP'+codigoProducto+'">'+
-					
-								'<td>'+codigoProducto+'</td>'+
-								'<td class="descripcionProducto">'+descripcion+'</td>'+
-								'<td class="cantidadProducto">'+cantidad+'</td>'+
-								'<td class="descuentoProducto"><input class="descuentoInput" type="number" min="0" max="100" idProduct="'+codigoProducto+'" step="1" value="'+0+'"></td>'+
-								'<td class="precioProducto">'+precio+'</td>'+
-								'<td class="subTotalProducto">'+subTotal+'</td>'+
-								'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
-		
-							'</tr>')
-
+							//console.log("listar Productos", tr);
+							
+							let descuento = tr.querySelector('.descuentoInput').value;
+										
+								getTotalSale();
+								listarProductos(descuento, codigoProducto, subTotal);	
+								cantidadMayorStock()
+								
+								stock = "";
+								codigoInventario = "";
+						}
 					}
-
-					let tr = document.querySelector('#listaP' + codigoProducto); //selecionamos el tr por el codigo
-
-					//console.log("listar Productos", tr);
-					
-					let descuento = tr.querySelector('.descuentoInput').value;
-
-							
-						cantidadMayorStock()
-							
-						getTotalSale()
-							
-						listarProductos(descuento, codigoProducto, subTotal);
-						
-				}
-
+				})
+			}else{
+				Swal.fire({
+					title: 'No digites cantidades tan grandes',
+					html: 'Puedes digitar como maximo 1000000<br>',
+					showConfirmButton: true,
+					confirmButtonText: 'Cerrar',
+					closeOnConfirm: false,
+					icon: 'warning'
+				})
 			}
-
-    	})
+		}
 	}
 }
 
@@ -138,12 +192,15 @@ QUITAR PRODUCTOS DE LA TABLA
 =============================================*/
 
 function eliminarFila(idProduct) {
+
 	let tr = document.querySelector('#listaP' + idProduct);
 
-	let index = arrayProductos.findIndex(producto => producto.idProducto == idProduct);
+	let index = arrayProductos.findIndex(producto => producto.idProducto === idProduct);
 
 	if (index !== -1) {
+
 		if (tr) {
+
 			arrayProductos.splice(index, 1);
 			tr.remove();
 			sumarTotalPrecios();
@@ -287,7 +344,6 @@ FUNCION PARA VERIFICAR SI HAY LOS SUFICIENTES PRODUCTOS EN STOCK
 function cantidadMayorStock(){
 
 	let tr = document.querySelector('#listaP'+codigoProducto);
-	//console.log("TR", tr);
 
 	let td = tr.querySelector('.cantidadProducto');
 
@@ -296,17 +352,14 @@ function cantidadMayorStock(){
 	if(stock < parseInt(cantidades)){
 		Swal.fire({
 			title: 'No hay suficientes productos en el inventario',
-			html: 'Solo hay '+stock+' productos en el inventario.<br>',
+			html: 'Verifica cuanta cantidad hay en stock.<br>',
 			showConfirmButton: true,
 			confirmButtonText: 'Cerrar',
 			closeOnConfirm: false,
 			icon: 'warning'
 		})
-
-		eliminarFila(codigoProducto)
+		eliminarFila(codigoProducto);
 	}
-
-	cantidades = "";
 }
 
 
@@ -394,8 +447,6 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	console.log("lista de productos JSON", arrayProductos);
 	$("#listaProductos").val(JSON.stringify(arrayProductos));
 
-	stock = "";
-	codigoInventario = "";
 }
 
 $("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
@@ -414,7 +465,7 @@ $("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
 		console.log(metodosSeleccionados);
 
 		$("#listaMetodoPago").val(metodosSeleccionados);
-		//console.log(document.getElementById("listaMetodoPago").textContent);
+		console.log(document.getElementById("listaMetodoPago").textContent);
 		pagosVenta();
 });
 

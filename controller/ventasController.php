@@ -21,9 +21,7 @@ class ControladorVentas{
 	=============================================*/
 
 	static public function ctrCrearVenta(){
-		
-		if(isset($_POST["nuevaVenta"])){	
-
+			
 			if(!empty($_POST["listaProductos"])){
 
 				$table = "factura";
@@ -31,7 +29,7 @@ class ControladorVentas{
 				$fecha = date('Y-m-d H:i:s');
 
 					$datas = array(
-						"codigo" => $_POST["nuevaVenta"],
+
 						"idEmpleado" => $_POST["idEmpleado"],
 						"idSucursal" => $_POST["idSucursal"],
 						"idCliente"=>$_POST["idCliente"],
@@ -50,8 +48,6 @@ class ControladorVentas{
 
                     $respuesta = ModeloVentas::mdlIngresarVenta($table, $datas);
 
-					$array = json_decode($_POST['listaProductos'],true);
-
 						foreach ($array as $key => $value) { 
 							$tabla = "inventario";
 							$item1 = "cantidad";
@@ -62,30 +58,54 @@ class ControladorVentas{
 							$nuevoStock = Inventario::actualizarStockProducto($tabla, $item1, $valor1, $valor2);
 						}
 						
-						$idFactura = $_POST["nuevaVenta"];
-						$table = "detallefactura";
-		
-						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
+						
 					
                     
                     if($respuesta == "ok"){
-                        echo "<script>
-                        
-                            Swal.fire({
-                                title: 'La Venta se realizó correctamente!',
-                                icon: 'success',
-                            }).then((result) => {
-                                window.location = 'ventas';
-                            })
 
-                        </script>";
+						$item = null;
+						$valor = null;
+						$ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
 
-						echo "<script>
+						if (!$ventas) {
 
-						window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo='+$idFactura;
+							$idFactura = 1;
+						
+						} else {
 
-						</script>";
+							foreach ($ventas as $key => $value) {
+							}
+							$idFactura = $value["codigo"];
+			
+						}
+						
+						$array = json_decode($_POST['listaProductos'],true);
+						$table = "detallefactura";
+		
+						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);
 
+						if($respuesta == "ok"){
+
+							echo "<script>
+
+								window.location.href = '/ProyectoIngenieria/extensiones/tcpdf/pdf/ticket.php?codigo='+$idFactura;
+
+							</script>";
+
+
+						}else{
+							echo "<script>
+						
+							Swal.fire({
+								title: 'No se puede realizar la factura!',
+								icon: 'error',
+							}).then((result) => {
+								window.location = 'ventas';
+							})
+							</script>";
+						}
+
+						
 					}else{
 
 						echo "<script>
@@ -99,7 +119,6 @@ class ControladorVentas{
 						</script>";
 					}
 			}
-		}
 
 	}
 

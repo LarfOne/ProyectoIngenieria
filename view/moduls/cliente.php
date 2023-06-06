@@ -26,8 +26,7 @@
           <thead>
             <tr>
               <th>Cedula</th>
-              <th>Nombre</th>
-              <th>Apellidos</th>
+              <th>Nombre Completo</th>
               <th>Telefono Cliente</th>
               <th>Email</th>
               <th>Direccion</th>
@@ -50,8 +49,6 @@
 
                 <td><?php echo $client1['cedula']; ?></td>
                 <td><?php echo $client1['nomCliente']; ?></td>
-                <td><?php echo $client1['apellidos']; ?></td>
-
                 <td><?php echo $client1['telefonoCli']; ?></td>
                 <td><?php echo $client1['email']; ?></td>
                 <td><?php echo $client1['direccion']; ?></td>
@@ -106,7 +103,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="cedula" style="border-radius: 5px;" placeholder="Ingresar cédula" required>
+                <input type="text" class="form-control input-lg" id="idCliente" name="idCliente" style="border-radius: 5px;" placeholder="Ingresar cédula o cedula juridica" required>
                 <input type="hidden" id="clientId">
               </div>
 
@@ -118,25 +115,11 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nomCliente" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nomCliente" name="nomCliente" style="border-radius: 5px;" placeholder="Ingresar nombre completo" required>
 
               </div>
 
             </div>
-
-            <!--AGREGAR DE APELLIDOS-->
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="apellidos" style="border-radius: 5px;" placeholder="Ingresar apellidos " required>
-
-              </div>
-
-            </div>
-
-
 
             <!--AGREGAR DE TELEFONO DEL CLIENTE-->
             <div class="form-group">
@@ -144,7 +127,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                <input type="text" class="form-control input-lg" name="telefonoCli" style="border-radius: 5px;" placeholder="Ingresar número de telefono" required>
+                <input type="text" class="form-control input-lg" id="telefonoCli" name="telefonoCli" style="border-radius: 5px;" placeholder="Ingresar número de telefono" required>
 
               </div>
 
@@ -156,7 +139,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control input-lg" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
+                <input type="email" class="form-control input-lg" id="email" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -168,7 +151,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                <input type="text" class="form-control input-lg" name="direccion" style="border-radius: 5px;" placeholder="Ingresar dirección " required>
+                <input type="text" class="form-control input-lg" id="direccion" name="direccion" style="border-radius: 5px;" placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -183,7 +166,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
         <?php
@@ -222,7 +205,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="cedulam" name="cedulam" style="border-radius: 5px;" value="Ingresar Cedula" readonly>
+                <input type="text" class="form-control input-lg" id="idClientem" name="idClientem" style="border-radius: 5px;" value="Ingresar Cedula" readonly required>
 
 
               </div>
@@ -240,23 +223,6 @@
               </div>
 
             </div>
-
-
-
-
-            <!--MODIFICAR DE APELLIDOS-->
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="apellidosm" name="apellidosm" style="border-radius: 5px;" value="Ingresar los apellidos" required>
-
-              </div>
-
-            </div>
-
-
 
             <!--MODIFICAR DE TELEFONO-->
             <div class="form-group">
@@ -300,7 +266,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
         <?php

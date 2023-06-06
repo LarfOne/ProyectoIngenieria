@@ -37,8 +37,7 @@
         static public function mdlAddUnit($table, $datas){
             // recibe dos parámetros: $table, que indica la tabla en la base de datos a la que se agregarán los datos, 
             //y $datas, que es un arreglo asociativo que contiene los valores que se agregarán a la tabla 
-            $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (codigo, nombre) VALUES (:codigo, :nombre)");
-            $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
+            $sentenciaSQL = Conexion::conectar()->prepare("INSERT INTO $table (nombre) VALUES (:nombre)");
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
             //Si se ejecuta sin errores, devuelve "ok", de lo contrario, devuelve "error".
             if($sentenciaSQL->execute()){
@@ -70,7 +69,7 @@
             
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
 
-            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
             //La función devuelve un string indicando si la operación se realizó correctamente o no: "ok" en caso de éxito y "error" en caso contrario.
             if($sentenciaSQL->execute()){
                 

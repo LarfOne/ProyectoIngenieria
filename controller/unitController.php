@@ -5,39 +5,42 @@
         //"ctrCreateUnit" que se encarga de agregar una unidad de medida en la base de datos.
             static public function ctrCreateUnit()
             {
-                    //La función recibe los datos enviados desde un formulario HTML mediante el método POST,
-                    $table = "unidadmedida";
+                if(isset($_POST["nameUnit"])){
+                    if(preg_match('/^[0-9-a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,60}$/', $_POST["nameUnit"])){
+                        //La función recibe los datos enviados desde un formulario HTML mediante el método POST,
+                        $table = "unidadmedida";
 
-                    $datas = array("codigo" => $_POST["idUnit"], 
-                                    "nombre" => $_POST["nameUnit"]);
+                        $datas = array("nombre" => $_POST["nameUnit"]);
 
-                    $respuesta = Unit::mdlAddUnit($table, $datas);
-                    
-                    if($respuesta == "ok"){
-                        echo "<script>
+                        $respuesta = Unit::mdlAddUnit($table, $datas);
                         
+                        if($respuesta == "ok"){
+                            echo "<script>
+                            
+                                Swal.fire({
+                                    title: 'La unidad de medida se agregó correctamente',
+                                    icon: 'success',
+                                }).then((result) => {
+                                    window.location = 'unidadMedida';
+                                })
+
+                            </script>";
+                        
+
+                        }else{
+
+                            echo "<script>
+                            
                             Swal.fire({
-                                title: 'La unidad de medida se agregó correctamente',
-                                icon: 'success',
+                                title: 'No se puede agregar la unidad de medida',
+                                icon: 'error',
                             }).then((result) => {
-                                window.location = 'products';
+                                window.location = 'unidadMedida';
                             })
-
-                        </script>";
-                    
-
-                    }else{
-
-                        echo "<script>
-                        
-                        Swal.fire({
-                            title: 'No se puede agregar la unidad de medida',
-                            icon: 'error',
-                        }).then((result) => {
-                            window.location = 'products';
-                        })
-                        </script>";
+                            </script>";
+                        }
                     }
+                }
             }
             
 
@@ -54,42 +57,46 @@
 
             if(isset($_POST["idUnitm"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["idUnitm"])){
+                if(preg_match('/^[0-9]{1,10}$/', $_POST["idUnitm"])){
+                    if(preg_match('/^[0-9-a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,60}$/', $_POST["nameUnitm"])){
 
-                    $table = "unidadmedida";
-
-                    $datas = array("codigo" => $_POST["idUnitm"], 
-                                    "nombre" => $_POST["nameUnitm"]);
-
-                    $respuesta = Unit::mdlUpdateUnit($table, $datas);
                     
-                    if($respuesta == "ok"){
-                        // Si la actualización se realiza correctamente, se muestra un mensaje de éxito
+
+                        $table = "unidadmedida";
+
+                        $datas = array("codigo" => $_POST["idUnitm"], 
+                                        "nombre" => $_POST["nameUnitm"]);
+
+                        $respuesta = Unit::mdlUpdateUnit($table, $datas);
+                        
+                        if($respuesta == "ok"){
+                            // Si la actualización se realiza correctamente, se muestra un mensaje de éxito
+                            echo "<script>
+                            
+                                Swal.fire({
+                                    title: 'La unidad de medida se modificó correctamente',
+                                    icon: 'success',
+                                }).then((result) => {
+                                    window.location = 'unidadMedida';
+                                })
+                            </script>";
+                        }
+
+
+                        
+
+                    }else{
+
                         echo "<script>
                         
-                            Swal.fire({
-                                title: 'La unidad de medida se modificó correctamente',
-                                icon: 'success',
-                            }).then((result) => {
-                                window.location = 'products';
-                            })
+                        Swal.fire({
+                            title: 'No se puede modificar la unidad de medida',
+                            icon: 'error',
+                        }).then((result) => {
+                            window.location = 'unidadMedida';
+                        })
                         </script>";
                     }
-
-
-                    
-
-                }else{
-
-                    echo "<script>
-                    
-                    Swal.fire({
-                        title: 'No se puede modificar la unidad de medida',
-                        icon: 'error',
-                    }).then((result) => {
-                        window.location = 'products';
-                    })
-                    </script>";
                 }
             }
         }
@@ -115,7 +122,7 @@
                             icon: 'success',
                         }).then((result) => {
                             if(result.value){
-                                window.location = 'products';
+                                window.location = 'unidadMedida';
                             }
                             
                         })

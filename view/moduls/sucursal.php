@@ -100,7 +100,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="idSucursal" style="border-radius: 5px;" placeholder="Ingresar código de la sucursal" required>
+                <input type="text" class="form-control input-lg" id="idSucursal" name="idSucursal" style="border-radius: 5px;" placeholder="Ingresar código de la sucursal" required>
                 
               </div>
 
@@ -112,7 +112,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nameSucursal" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nameSucursal" name="nameSucursal" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
                 <input type="hidden" id="sucursalId">
               </div>
 
@@ -124,7 +124,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                <input type="text" class="form-control input-lg" name="direccionSucursal" style="border-radius: 5px;" placeholder="Ingresar dirección" required>
+                <input type="text" class="form-control input-lg" id="direccionSucursal" name="direccionSucursal" style="border-radius: 5px;" placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -137,7 +137,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                <input type="text" class="form-control input-lg" name="telefonoSucursal" style="border-radius: 5px;" placeholder="Ingresar numero de telefono " required>
+                <input type="text" class="form-control input-lg" id="telefonoSucursal" name="telefonoSucursal" style="border-radius: 5px;" placeholder="Ingresar numero de telefono " required>
 
               </div>
 
@@ -149,7 +149,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control input-lg" name="emailSucursal" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
+                <input type="email" class="form-control input-lg" id="emailSucursal" name="emailSucursal" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -161,7 +161,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
         </div>
 
             <?php
@@ -200,7 +200,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" style="border-radius: 5px;" value="" readonly>
+                <input type="text" class="form-control input-lg" id="idSucursalm" name="idSucursalm" style="border-radius: 5px;" value="" readonly required>
                 
 
               </div>
@@ -262,7 +262,7 @@
 
             <div class="modal-footer">
               <button type="button" class="btn btn-danger pull-left" data-bs-dismiss="modal">Salir</button>
-              <button type="submit" class="btn btn-success pull-right" data-bs-dismiss="modal">Guardar</button>
+              <button type="submit" class="btn btn-success pull-right" data-dismiss="modal">Guardar</button>
             </div>
 
             <?php

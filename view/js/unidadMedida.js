@@ -1,16 +1,16 @@
 // Obtén el formulario y los elementos de entrada
-const formCategoriesAdd = document.getElementById('modalAddCategories');
-const formCategoriesUpdate = document.getElementById('modalUpdateCategories');
+const modalAddUnit = document.getElementById('modalAddUnit');
+const modalUpdateUnit = document.getElementById('modalUpdateUnit');
 
-const nameCategoriesInput = document.getElementById('nameCategories');
-const nameCategoriesmInput = document.getElementById('nameCategoriesm');
-const idCategoriesmInput = document.getElementById('idCategoriesm');
+const nameUnitInput = document.getElementById('nameUnit');
+const nameUnitmInput = document.getElementById('nameUnitm');
+const idUnitmInput = document.getElementById('idUnitm');
 
-if(formCategoriesAdd != null && formCategoriesUpdate != null){
+if(modalAddUnit != null && modalUpdateUnit != null){
    // Verificaciones para el formulario de agregar usuario
-    formCategoriesAdd.addEventListener('submit', function(event) {
+   modalAddUnit.addEventListener('submit', function(event) {
         // Verifica si los campos están vacíos
-        if (nameCategoriesInput.value === '') {
+        if (nameUnitInput.value === '') {
             event.preventDefault(); // Evita que el formulario se envíe
             // Muestra un mensaje de error o realiza otra acción
             alert('Por favor, completa todos los campos obligatorios.');
@@ -18,9 +18,9 @@ if(formCategoriesAdd != null && formCategoriesUpdate != null){
     });
 
     // Agrega un controlador de evento al enviar el formulario
-    formCategoriesUpdate.addEventListener('submit', function(event) {
+    modalUpdateUnit.addEventListener('submit', function(event) {
         // Verifica si los campos están vacíos
-        if (nameCategoriesmInput.value === '' || idCategoriesmInput.value === '') {
+        if (nameUnitmInput.value === '' || idUnitmInput.value === '') {
             event.preventDefault(); // Evita que el formulario se envíe
             // Muestra un mensaje de error o realiza otra acción
             alert('Por favor, completa todos los campos obligatorios.');
@@ -30,15 +30,15 @@ if(formCategoriesAdd != null && formCategoriesUpdate != null){
 
 
 
-$(".btnUpdateCategories").click(function(){
-    var idCategories = $(this).attr("idCategories");
+$(".btnUpdateUnit").click(function(){
+    var idUnit = $(this).attr("idUnit");
     var datas = new FormData();
-
-    datas.append("idCategories", idCategories);
+    console.log(idUnit);
+    datas.append("idUnit", idUnit);
 
     $.ajax({
 
-        url:"ajax/categoriaAjax.php",
+        url:"ajax/unidadAjax.php",
         method:"POST",
         data: datas,
         cache: false,
@@ -46,25 +46,21 @@ $(".btnUpdateCategories").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-
-            $("#idCategoriesm").val(respuesta["codigo"]);
-            $("#nameCategoriesm").val(respuesta["nombre"]);
-            
-
             console.log("respuesta", respuesta);
-
+            $("#idUnitm").val(respuesta["codigo"]);
+            $("#nameUnitm").val(respuesta["nombre"]);
+            
         }
-
     })
 })
 
-$(".btnDeleteCategories").click(function(){
+$(".btnDeleteUnit").click(function(){
 
     var codigoM = $(this).attr("codigoM"); 
 
 
     Swal.fire({
-        title: 'Estas seguro de eliminar la Categoría?',
+        title: 'Estas seguro de eliminar la Unidad de Medida?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -74,18 +70,18 @@ $(".btnDeleteCategories").click(function(){
     }).then((result) => {
         if(result.value){
 
-            window.location = "index.php?ruta=categories&codigoE="+codigoM;
+            window.location = "index.php?ruta=unidadMedida&idUnitE="+codigoM;
         }
 
     })
 
 })
 
-$('#nameCategories, #nameCategoriesm').on('keypress input', function(e) {
-    validarInputCategories(e, 60);
+$('#nameUnit, #nameUnitm').on('keypress input', function(e) {
+    validarInputUnit(e, 60);
 });
 
-function validarInputCategories(e, maxLength) {
+function validarInputUnit(e, maxLength) {
     let input = e.target.value;
 
     if (input.length >= maxLength) {

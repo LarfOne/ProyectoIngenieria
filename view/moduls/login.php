@@ -20,7 +20,7 @@
  		<form method="post">
  			<span>
  				<i class="fa fa-user"></i>
- 				<input type="text" placeholder="Usuario" name="ingUser" style="border-radius: 7px;">
+ 				<input type="text" placeholder="Cedula" name="ingUser" style="border-radius: 7px;">
  			</span><br>
  			<span>
  				<i class="fa fa-lock"></i>

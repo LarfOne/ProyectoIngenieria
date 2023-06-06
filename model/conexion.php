@@ -7,7 +7,7 @@
         public static function conectar(){//obtiene una instancia de la conexión
 
             $host="localhost";
-            $bd="proyectoinventario";
+            $bd="mouselampstock";
             $usuario="root";
             $contrasena="";
 

@@ -92,10 +92,8 @@ function llenarTablaVentas(){
 	let cantidad = document.getElementById("cantidadProducto").value;
 	console.log("idProducto",idProduct);
 	if(idProduct != ""){
-
 		if(cantidad != "" && cantidad > 0){
-			if(cantidad <= 1000000){
-
+			
 				console.log("idProduct ",idProduct)
 
 				let datas = new FormData();
@@ -172,16 +170,6 @@ function llenarTablaVentas(){
 						}
 					}
 				})
-			}else{
-				Swal.fire({
-					title: 'No digites cantidades tan grandes',
-					html: 'Puedes digitar como maximo 1000000<br>',
-					showConfirmButton: true,
-					confirmButtonText: 'Cerrar',
-					closeOnConfirm: false,
-					icon: 'warning'
-				})
-			}
 		}
 	}
 }

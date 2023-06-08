@@ -101,7 +101,7 @@ $('#precioNeto').on('keypress input', function(e) {
 });
 
 $('#cantProducto').on('keypress input', function(e) {
-    validarDatosNumericos(e, 45);
+    validarDatosNumericos(e, 18);
 });
 
 $('#idProducto').on('keypress input', function(e) {

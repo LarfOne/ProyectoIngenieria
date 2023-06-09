@@ -135,7 +135,7 @@ function validarTelefonoCliente(e) {
     let input = e.target.value;
 
     // Permitir solo números (código ASCII entre 47 y 58)
-    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 45) {
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 8) {
         e.preventDefault();
     }
 }

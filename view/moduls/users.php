@@ -175,6 +175,13 @@
                   <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="cuentaUser" name="cuentaUser" placeholder="Ingresar cuenta bancaria" >
                 </div>
               </div>
+              <!--AGREGAR DE TELEFONO-->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                  <input type="text" class="form-control input-lg" id="telefonoUser" name="telefonoUser" placeholder="Ingresar el telefono" required>
+                </div>
+              </div>
               <!--AGREGAR DE DIRECCION-->
               <div class="form-group">
                 <div class="input-group">
@@ -231,7 +238,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                  <input type="text" class="form-control input-lg" id="idUserm" name="idUserm" value="" readonly required>
+                  <input type="text" class="form-control input-lg" id="idUserm" name="idUserm" readonly required>
                 </div>
               </div>
               <!--MODIFCAR DE NOMBRE-->
@@ -265,7 +272,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                  <input type="email" class="form-control input-lg" id="emailUserm" name="emailUserm" value="Ingresar correo electrónico" required>
+                  <input type="email" class="form-control input-lg" id="emailUserm" name="emailUserm" placeholder="Ingresar correo electrónico" required>
                 </div>
               </div>
               <?php
@@ -312,14 +319,21 @@
                   <span class="input-group-addon">
                     <i class="fa fa-credit-card-alt"></i>
                   </span>
-                  <input type="text" class="form-control input-lg" id="cuentaUserm" name="cuentaUserm" value="Ingresar cuenta bancaria" required>
+                  <input type="text" class="form-control input-lg" id="cuentaUserm" name="cuentaUserm" placeholder="Ingresar cuenta bancaria" required>
+                </div>
+              </div>
+              <!--MODIFICAR DE TELEFONO-->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                  <input type="text" class="form-control input-lg" id="telefonoUserm" name="telefonoUserm" placeholder="Ingresar el telefono" required>
                 </div>
               </div>
               <!--MODIFICAR DE DIRECCION-->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control input-lg" id="directionUserm" name="directionUserm" value="Ingresar dirección" required>
+                  <input type="text" class="form-control input-lg" id="directionUserm" name="directionUserm" placeholder="Ingresar dirección" required>
                 </div>
               </div>
               <!--MODIFICAR DE ESTADO-->

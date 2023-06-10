@@ -239,24 +239,50 @@
 
                     
 
-                    <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
+                <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
                         <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
                             <thead>
                                 <tr>
-                                <td>' . $respuestaUsuario[2] . '</td>
-                                <td>' . $factura[4] . '</td>
-                                <td>' . $producto[1] . '</td>
-                                <td>' . $detalle[3] . '</td>
-                                <td>' . $detalle[6] . '</td>
+                                    <th>Vendedor</th>
+                                    <th>Fecha</th>
+                                    <th>Producto</th>
+                                    <th>Cantidad</th>
+                                    <th>Total</th>
                                 </tr>
-                            ');
-                            }
-                            }
-                            ?>
-                        </tbody>
+                            </thead>
+                            <tbody>
+                                <?php
+                                /**Extraccion de datos para la tabla de movimientos */
+                                $facturas = ControladorVentas::ctrVentasMes();
+                                foreach ($facturas as $key => $factura) {
+                                    /**Se deben buscar todos los detalles que tengan esa factura */
+                                    /*Se debe extraer el nombre de el vendedor haciendo una consulta a la tabla ya que la factura ya lleva su id* */
+                                    $itemUsuario = "cedula";
+                                    $valorUsuario = $factura[3];
+                                    $respuestaUsuario = ControllerUser::ctrShowUser($itemUsuario, $valorUsuario);
+                                    /**Se le envia el id de la factura */
+                                    $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
+                                    foreach ($detalles as $key2 => $detalle) {
+                                        $producto = ControllerProduct::ctrNameProducts($detalle[2]);
+                                        echo ('
+                                <tr>
+                                    <td>' . $respuestaUsuario[2] . '</td>
+                                    <td>' . $factura[4] . '</td>
+                                    <td>' . $producto[1] . '</td>
+                                    <td>' . $detalle[3] . '</td>
+                                    <td>' . $detalle[6] . '</td>
+                                </tr>
+                                
+                                ');
+                                    }
+                                }
+                                ?>
+                            </tbody>
                         </table>
                     </div>
-</div>
+
+
+                </div>
 
 <div class="texto-imagen correrIzquierda">
 

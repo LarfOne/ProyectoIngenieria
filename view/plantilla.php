@@ -122,11 +122,7 @@ session_start(); //para usar variables de session
   <script src="view/js/user.js"></script>
   <script src="view/js/sucursal.js"></script>
   <script src="view/js/inventario.js"></script>
-<<<<<<< HEAD
-  <script src="view/js/table.js"></script>
-=======
   <script src="view/js/table.js"></script> 
->>>>>>> origin/luisBranch
   <script src="view/js/categoria.js"></script>
   <script src="view/js/activo.js"></script>
   <script src="view/js/cliente.js"></script>

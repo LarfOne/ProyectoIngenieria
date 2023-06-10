@@ -76,7 +76,7 @@ class User{
 
         static public function mdlAdd($datas){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :password, :cuentaBancaria, :direccion, :estado, :telefono, :image)");
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
@@ -87,6 +87,7 @@ class User{
             $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':telefono', $datas["telefono"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);
 
             if($sentenciaSQL->execute()){
@@ -131,7 +132,7 @@ class User{
         static public function mdlUpdate($datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_update_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, 
-            :role, :password, :cuentaBancaria, :direccion, :estado, :image)");
+            :role, :password, :cuentaBancaria, :direccion, :estado, :telefono, :image)");
 
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
@@ -142,6 +143,7 @@ class User{
             $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':telefono', $datas["telefono"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
 

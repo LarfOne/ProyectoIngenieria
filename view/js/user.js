@@ -35,7 +35,10 @@ const directionUsermInput = document.getElementById('directionUserm');
 const estadoUserInput = document.getElementById('estadoUser');
 const estadoUsermInput = document.getElementById('estadoUserm');
 
-const rolesPermitidos = ['Administrador', 'Usuario', 'Sinpe'];
+const telefonoUserInput = document.getElementById('telefonoUser');
+const telefonoUsermInput = document.getElementById('telefonoUserm');
+
+const rolesPermitidos = ['Administrador', 'Usuario', 'SuperAdmin'];
 const estadosPermitidos = ['Activo', 'Inactivo'];
 
 let role = "";
@@ -71,7 +74,7 @@ if(formUserAdd !== null && formUserUpdate != null){
         // Verifica si los campos están vacíos
         if (idUsermInput.value === '' || nameUsermInput.value === '' || lastNameUsermInput.value === '' || sucursalUsermInput.value === '' ||
             emailUsermInput.value === '' || roleUsermInput.value === '' || cuentaUsermInput.value === '' ||
-            directionUsermInput.value === '' || estadoUsermInput.value === '') {
+            directionUsermInput.value === '' || estadoUsermInput.value === '' || telefonoUsermInput.value) {
             event.preventDefault(); // Evita que el formulario se envíe
 
             // Muestra un mensaje de error o realiza otra acción
@@ -131,6 +134,7 @@ $(".btnUpdateUser").click(function() {
                 $("#cuentaUserm").val(respuesta["cuentaBancaria"]);
                 $("#directionUserm").val(respuesta["direccion"]);
                 $("#estadoUserm").val(respuesta["estado"]);
+                $("#telefonoUserm").val(respuesta["telefono"]);
                 $("#fotoActual").val(respuesta["image"]);
                 if (respuesta["image"] != null) {
                     $(".imageTemp").attr("src", respuesta["image"]);
@@ -148,6 +152,7 @@ $(".btnUpdateUser").click(function() {
                 $('#cuentaUserm').prop('readonly', true);
                 $('#directionUserm').prop('readonly', true);
                 $('#estadoUserm').prop('disabled', true);
+                $('#telefonoUserm').prop('readonly', true);
                 $('#imageUpdateUser').prop('disabled', true);
                 $('#passwordUserm').prop('readonly', true);
                 //$('#btnModificarUser').prop('disabled', true);
@@ -164,6 +169,7 @@ $(".btnUpdateUser").click(function() {
                 $("#cuentaUserm").val(respuesta["cuentaBancaria"]);
                 $("#directionUserm").val(respuesta["direccion"]);
                 $("#estadoUserm").val(respuesta["estado"]);
+                $('#telefonoUserm').val(respuesta["telefono"]);
                 $("#fotoActual").val(respuesta["image"]);
                 if (respuesta["image"] != null) {
                     $(".imageTemp").attr("src", respuesta["image"]);
@@ -181,6 +187,7 @@ $(".btnUpdateUser").click(function() {
                 $('#cuentaUserm').prop('readonly', false);
                 $('#directionUserm').prop('readonly', false);
                 $('#estadoUserm').prop('disabled', false);
+                $('#telefonoUserm').prop('readonly', false);
                 $('#imageUpdateUser').prop('disabled', false);
                 $('#passwordUserm').prop('readonly', false);
                 $('#btnModificarUser').prop('disabled', false);

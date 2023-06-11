@@ -20,11 +20,11 @@
                     //loginUser para obtener los datos del usuario que se está intentando ingresar
                     $incrypt = crypt($_POST["ingPassword"], '$2a$07$usesomesillystringforsalt$');
                     // Si el usuario existe y su estado es 'Activo', se comprueba si los datos ingresados coinciden con los almacenados en la base de datos.
-                    $respuesta = User::loginUser($valor);
+                    $respuesta = User::loginUser($valor, $incrypt);
                     //Si coinciden, se establecen las variables de sesión correspondientes y se redirige al usuario a la página de inicio. Si no coinciden, 
                     //se muestra un mensaje de error. Si el usuario no existe o su estado no es 'Activo', también se muestra un mensaje de error
                     if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
-                    if(($respuesta["nombre"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
+                    if(($respuesta["cedula"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
                         $_SESSION["iniciarSesion"] = "ok";
                         $_SESSION["cedula"] = $respuesta["cedula"];
                         $_SESSION["nombre"] = $respuesta["nombre"];
@@ -55,132 +55,103 @@
             if(isset($_POST["idUser"])){
                  // verifica que se hayan enviado los datos del formulario y que cumplan con ciertos patrones de validación 
 
-                if(preg_match('/^[0-9]+$/', $_POST["idUser"])){
-                    if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameUser"]) && 
-                        preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["lastNameUser"])){
-                            if(preg_match('/^[a-zA-Z0-9]{6,}$/', $_POST["passwordUser"])){
+                if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["idUser"])){//solo acepta numeros y letras
+                    if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["nameUser"]) && 
+                        preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["lastNameUser"])){ //solo acepta letras
+                            if(preg_match('/^[a-zA-Z0-9]{8,20}$/', $_POST["passwordUser"])){ //solo acepta numeros y letras entre 8 y 20 digitos
+                                if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailUser"])){ //acepta un correo valido
+                                    if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["cuentaUser"])){
+                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["directionUser"])){
+                                            if(preg_match('/^[0-9]{1,8}$/', $_POST["telefonoUser"])){
+                                                //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
+                                                $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
+                                                // función comprueba si se ha cargado una imagen de perfil para el nuevo usuario y si es así, la procesa y la almacena en un directorio en el servidor.
+                                                $ruta = null;
+                                            
+                                                if(isset($_FILES["imageUser"]) && $_FILES["imageUser"]["error"] === UPLOAD_ERR_OK){
 
+                                                    list($ancho, $alto) = getimagesize($_FILES["imageUser"]["tmp_name"]);
+
+                                                    //var_dump($_FILES["image"]["tmp_name"]);
+
+                                                    $directorio = "imagen/perfil/";
+                                                    if (!file_exists($directorio)) {
+                                                        mkdir($directorio, 0755);
+                                                    }
+
+                                                    if($_FILES["imageUser"]["type"] == "image/jpeg"){
+                                                        $ruta = "imagen/perfil/".$_POST["idUser"].".jpg";
+                                                    
+                                                        $origen = imagecreatefromjpeg($_FILES["imageUser"]["tmp_name"]);
+                                                        $destino = imagecreatetruecolor($ancho, $alto);
+
+                                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+                                                        imagejpeg($destino, $ruta);
+                                                    }
+
+                                                    if($_FILES["imageUser"]["type"] == "image/png"){
+                                                        
+                                                        $ruta = "imagen/perfil/".$_POST["idUser"].".png";
+                                                    
+                                                        $origen = imagecreatefrompng($_FILES["imageUser"]["tmp_name"]);
+                                                        $destino = imagecreatetruecolor($ancho, $alto);
+
+                                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+
+                                                        imagepng($destino, $ruta);
+                                                    }
+                                                    
+
+                                                }
+
+                                                $datas = array("cedula" => $_POST["idUser"], 
+                                                                "nombre" => $_POST["nameUser"], 
+                                                                "password" => $incrypt,
+                                                                "apellidos" => $_POST["lastNameUser"],
+                                                                "email" => $_POST["emailUser"],
+                                                                "role" => $_POST["roleUser"],
+                                                                "cuentaBancaria" => $_POST["cuentaUser"],
+                                                                "idSucursal" => $_POST["sucursalUser"],
+                                                                "telefono" => $_POST["telefonoUser"],
+                                                                "direccion" => $_POST["directionUser"],
+                                                                "estado" => $_POST["estadoUser"],
+                                                                "image" =>$ruta);
+
+                                                
+                                            
+                                                $respuesta = User::mdlAdd($datas);
+
+                                                if($respuesta == "ok"){
+                                                    echo "<script>
+                                                    
+                                                        Swal.fire({
+                                                            title: 'El usuario se agregó correctamente',
+                                                            icon: 'success',
+                                                        }).then((result) => {
+                                                            window.location = 'users';
+                                                        })
                             
-                                //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
-                                $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
-                                // función comprueba si se ha cargado una imagen de perfil para el nuevo usuario y si es así, la procesa y la almacena en un directorio en el servidor.
-                                $ruta = null;
-                                
-                                if(isset($_FILES["imageUser"]["tmp_name"])){
+                                                    </script>";
+                                                }else{
 
-                                    list($ancho, $alto) = getimagesize($_FILES["imageUser"]["tmp_name"]);
-
-                                    //var_dump($_FILES["image"]["tmp_name"]);
-
-                                    $directorio = "imagen/perfil/";
-                                    if (!file_exists($directorio)) {
-                                        mkdir($directorio, 0755);
+                                                    echo "<script>
+                                                    
+                                                    Swal.fire({
+                                                        title: 'No se puede agregar el usuario',
+                                                        icon: 'error',
+                                                    }).then((result) => {
+                                                        window.location = 'users';
+                                                    })
+                                                    </script>";
+                                                }
+                                            }
+                                        }
                                     }
-
-                                    if($_FILES["imageUser"]["type"] == "image/jpeg"){
-                                        $ruta = "imagen/perfil/".$_POST["idUser"].".jpg";
-                                    
-                                        $origen = imagecreatefromjpeg($_FILES["imageUser"]["tmp_name"]);
-                                        $destino = imagecreatetruecolor($ancho, $alto);
-
-                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
-
-                                        imagejpeg($destino, $ruta);
-                                    }
-
-                                    if($_FILES["imageUser"]["type"] == "image/png"){
-                                        
-                                        $ruta = "imagen/perfil/".$_POST["idUser"].".png";
-                                    
-                                        $origen = imagecreatefrompng($_FILES["imageUser"]["tmp_name"]);
-                                        $destino = imagecreatetruecolor($ancho, $alto);
-
-                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
-
-                                        imagepng($destino, $ruta);
-                                    }
-                                    
-
                                 }
-
-                                    $datas = array("cedula" => $_POST["idUser"], 
-                                                    "nombre" => $_POST["nameUser"], 
-                                                    "password" => $incrypt,
-                                                    "apellidos" => $_POST["lastNameUser"],
-                                                    "email" => $_POST["emailUser"],
-                                                    "role" => $_POST["roleUser"],
-                                                    "cuentaBancaria" => $_POST["cuentaUser"],
-                                                    "idSucursal" => $_POST["sucursalUser"],
-                                                    "direccion" => $_POST["directionUser"],
-                                                    "estado" => $_POST["estadoUser"],
-                                                    "image" =>$ruta);
-
-                                    
-                                
-                                    $respuesta = User::mdlAdd($datas);
-
-                                    if($respuesta == "ok"){
-                                        echo "<script>
-                                        
-                                            Swal.fire({
-                                                title: 'El usuario se agregó correctamente',
-                                                icon: 'success',
-                                            }).then((result) => {
-                                                window.location = 'users';
-                                            })
-                
-                                        </script>";
-                                    }else{
-
-                                        echo "<script>
-                                        
-                                        Swal.fire({
-                                            title: 'No se puede agregar el usuario',
-                                            icon: 'error',
-                                        }).then((result) => {
-                                            window.location = 'users';
-                                        })
-                                        </script>";
-                                    }
-
-                            }else{
-                                echo "<script>     
-                                    Swal.fire({
-                                        title: 'Digite una contraseña valida',
-                                        html: 'Sin caracteres especiales y minimo 6 caracteres.<br>',
-                                        showConfirmButton: true,
-                                        confirmButtonText: 'Cerrar',
-                                        closeOnConfirm: false,
-                                        icon: 'error'
-                                    })
-                                </script>";
                             }
-
-                    }else{
-                        echo "<script>     
-                            Swal.fire({
-                                title: 'Escriba un nombre valido',
-                                html: 'El nombre y el apellido no debe de llevar numeros ni caracteres epeciales.<br>',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Cerrar',
-                                closeOnConfirm: false,
-                                icon: 'error'
-                            })
-                        </script>";
                     }
-
                     
-                }else{
-                    echo "<script>     
-                            Swal.fire({
-                                title: 'Digite una cedula valida',
-                                html: 'Sin espacios ni guiones y solo numeros.<br>',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Cerrar',
-                                closeOnConfirm: false,
-                                icon: 'error'
-                            })
-                        </script>";
                 }
 
             }
@@ -206,152 +177,168 @@
 
             if(isset($_POST["idUserm"])){
 
-                if(preg_match('/^[a-zA-Z-Z0-9ÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["idUserm"])){
-                    if(preg_match('/^[a-zA-Z0-9]{6,}$/', $_POST["passwordUserm"]) || $_POST["passwordUserm"] === ""){
-                    
-                        $table = "empleado";
+                if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["idUserm"])){//solo acepta numeros y letras
+                    if(preg_match('/^[a-zA-Z0-9]{8,20}$/', $_POST["passwordUserm"]) || $_POST["passwordUserm"] === ""){
+                        if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["nameUserm"]) && 
+                            preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["lastNameUserm"])){ //solo acepta letras
+                                if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailUserm"])){ //acepta un correo valido
+                                    if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["cuentaUserm"])){
+                                        if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["directionUserm"])){
+                                            if(preg_match('/^[0-9]{1,8}$/', $_POST["telefonoUserm"])){
+                                                
+                                                $table = "empleado";
 
 
-                        /**FOTO AL MODIFICAR */
+                                                /**FOTO AL MODIFICAR */
 
-                        $ruta = $_POST["fotoActual"];
+                                                $ruta = $_POST["fotoActual"];
 
-                        if(isset($_FILES["imageUpdateUser"]["tmp_name"]) && !empty($_FILES["imageUpdateUser"]["tmp_name"])){
+                                                if(isset($_FILES["imageUpdateUser"]["tmp_name"]) && !empty($_FILES["imageUpdateUser"]["tmp_name"])){
 
-                            list($ancho, $alto) = getimagesize($_FILES["imageUpdateUser"]["tmp_name"]);
+                                                    list($ancho, $alto) = getimagesize($_FILES["imageUpdateUser"]["tmp_name"]);
 
-                            //var_dump($_FILES["image"]["tmp_name"]);
+                                                    //var_dump($_FILES["image"]["tmp_name"]);
 
-                            $directorio = "imagen/perfil/";
-                            if (!file_exists($directorio)) {
-                                mkdir($directorio, 0755);
-                            }
+                                                    $directorio = "imagen/perfil/";
+                                                    if (!file_exists($directorio)) {
+                                                        mkdir($directorio, 0755);
+                                                    }
 
-                            if($_FILES["imageUpdateUser"]["type"] == "image/jpeg"){
-                                $ruta = "imagen/perfil/".$_POST["idUserm"].".jpg";
-                            
-                                $origen = imagecreatefromjpeg($_FILES["imageUpdateUser"]["tmp_name"]);
-                                $destino = imagecreatetruecolor($ancho, $alto);
+                                                    if($_FILES["imageUpdateUser"]["type"] == "image/jpeg"){
+                                                        $ruta = "imagen/perfil/".$_POST["idUserm"].".jpg";
+                                                    
+                                                        $origen = imagecreatefromjpeg($_FILES["imageUpdateUser"]["tmp_name"]);
+                                                        $destino = imagecreatetruecolor($ancho, $alto);
 
-                                imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+                                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
 
-                                imagejpeg($destino, $ruta);
-                            }
+                                                        imagejpeg($destino, $ruta);
+                                                    }
 
-                            if($_FILES["imageUpdateUser"]["type"] == "image/png"){
-                                
-                                $ruta = "imagen/perfil/".$_POST["idUserm"].".png";
-                            
-                                $origen = imagecreatefrompng($_FILES["imageUpdateUser"]["tmp_name"]);
-                                $destino = imagecreatetruecolor($ancho, $alto);
+                                                    if($_FILES["imageUpdateUser"]["type"] == "image/png"){
+                                                        
+                                                        $ruta = "imagen/perfil/".$_POST["idUserm"].".png";
+                                                    
+                                                        $origen = imagecreatefrompng($_FILES["imageUpdateUser"]["tmp_name"]);
+                                                        $destino = imagecreatetruecolor($ancho, $alto);
 
-                                imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+                                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
 
-                                imagepng($destino, $ruta);
-                            }
-                            
+                                                        imagepng($destino, $ruta);
+                                                    }
+                                                    
 
-                        }
+                                                }
 
 
-                        /**CAMBIAR CONTRASEÑA */
+                                                /**CAMBIAR CONTRASEÑA */
 
-                        if($_POST["passwordUserm"] != ""){
-                            $incrypt = crypt($_POST["passwordUserm"], '$2a$07$usesomesillystringforsalt$');
-                        }else{
-                            $incrypt = $_POST["passwordActual"];
-                        }
+                                                if($_POST["passwordUserm"] != ""){
+                                                    $incrypt = crypt($_POST["passwordUserm"], '$2a$07$usesomesillystringforsalt$');
+                                                }else{
+                                                    $incrypt = $_POST["passwordActual"];
+                                                }
 
-                        $datas = array("cedula" => $_POST["idUserm"], 
-                                        "nombre" => $_POST["nameUserm"], 
-                                        "password" =>  $incrypt,    
-                                        "apellidos" => $_POST["lastNameUserm"],
-                                        "email" => $_POST["emailUserm"],
-                                        "role" => $_POST["roleUserm"],
-                                        "cuentaBancaria" => $_POST["cuentaUserm"],
-                                        "idSucursal" => $_POST["sucursalUserm"],
-                                        "direccion" => $_POST["directionUserm"],
-                                        "estado" => $_POST["estadoUserm"],
-                                        "image" =>$ruta);
-                        
-                        $respuesta = User::mdlUpdate($datas);
-                        
-                        if($respuesta == "ok"){  
-                        
-                            //elimina todos los activos que tenga relacionado y los pone libre si el empleado es inactivo
-                            if($_POST["estadoUserm"]=='Inactivo'){
-                                $item = "empleado_id";
-                                $valor = $_POST["idUserm"];                
-                                $activos = ControllerActivos::ctrSpecificActivo($item, $valor);
-                            
-                            
-                                foreach($activos as $key => $activo) {
-                                $codigoA=$activo['codigo'];
-                                ControllerActivos::ctrUpdateOneActivo($activo,$codigoA);
+                                                $datas = array("cedula" => $_POST["idUserm"], 
+                                                                "nombre" => $_POST["nameUserm"], 
+                                                                "password" =>  $incrypt,    
+                                                                "apellidos" => $_POST["lastNameUserm"],
+                                                                "email" => $_POST["emailUserm"],
+                                                                "role" => $_POST["roleUserm"],
+                                                                "cuentaBancaria" => $_POST["cuentaUserm"],
+                                                                "idSucursal" => $_POST["sucursalUserm"],
+                                                                "direccion" => $_POST["directionUserm"],
+                                                                "estado" => $_POST["estadoUserm"],
+                                                                "telefono" => $_POST["telefonoUserm"],
+                                                                "image" =>$ruta);
+                                                
+                                                $respuesta = User::mdlUpdate($datas);
+                                                
+                                                if($respuesta == "ok"){  
+                                                
+                                                    //elimina todos los activos que tenga relacionado y los pone libre si el empleado es inactivo
+                                                    if($_POST["estadoUserm"]=='Inactivo'){
+                                                        $item = "empleado_id";
+                                                        $valor = $_POST["idUserm"];                
+                                                        $activos = ControllerActivos::ctrSpecificActivo($item, $valor);
+                                                    
+                                                    
+                                                        foreach($activos as $key => $activo) {
+                                                        $codigoA=$activo['codigo'];
+                                                        ControllerActivos::ctrUpdateOneActivo($activo,$codigoA);
+                                                        }
+                                                    }
+
+                                                    //Guarda los nuevos datos de las variables session y los actualiza
+                                                    if( $_SESSION['cedula'] ==$_POST["idUserm"] ){
+
+                                                        $_SESSION['nombre'] = $_POST['nameUserm'];
+                                                        $_SESSION['apellidos'] = $_POST['lastNameUserm'];
+                                                        $_SESSION['estado'] = $_POST['estadoUserm'];
+                                                    }
+                                                                
+
+                                                    echo "<script>
+                                                    
+                                                        Swal.fire({
+                                                            title: 'El usuario se modificó correctamente',
+                                                            icon: 'success',
+                                                        }).then((result) => {
+                                                            window.location = 'users';
+                                                        })
+                                                    </script>";
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
-                            }
-
-                            //Guarda los nuevos datos de las variables session y los actualiza
-                            if( $_SESSION['cedula'] ==$_POST["idUserm"] ){
-
-                                $_SESSION['nombre'] = $_POST['nameUserm'];
-                                $_SESSION['apellidos'] = $_POST['lastNameUserm'];
-                                $_SESSION['estado'] = $_POST['estadoUserm'];
-                            }
-                                        
-
-                            echo "<script>
-                            
-                                Swal.fire({
-                                    title: 'El usuario se modificó correctamente',
-                                    icon: 'success',
-                                }).then((result) => {
-                                    window.location = 'users';
-                                })
-                            </script>";
+                                
                         }
                     
-                    }else{
-
                     }
-
                     
-
-                }else{
-
-                    echo "<script>     
-                            Swal.fire({
-                                title: 'Escriba un nombre valido',
-                                html: 'El nombre y el apellido no debe de llevar numeros ni caracteres epeciales.<br>',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Cerrar',
-                                closeOnConfirm: false,
-                                icon: 'error'
-                            })
-                        </script>";
                 }
             }
         }
 
         static public function ctrDeleteUser(){
-
             if(isset($_GET["idEmpleadoE"])){
-
                 $table = "empleado";
                 $data = $_GET["idEmpleadoE"];
-                //mdlDelete del modelo User para realizar la eliminación en la base de datos. 
-                //Si la eliminación es exitosa, se muestra un mensaje de éxito usando la librería SweetAlert y se redirecciona al usuario a la página de lista de usuarios.
+                
                 $rutaImagen = User::getUserImagePath($data);
                 $respuesta = User::mdlDelete($data);
-                //$respuesta = User::mdlPrueba($data);
-
-                if($respuesta == "ok"){
-                    // Eliminar la imagen del empleado si existe
-                    if (!empty($rutaImagen) && file_exists($rutaImagen)) {
-                        unlink($rutaImagen);
-                    }
+                
+                if (strpos($respuesta, 'Error en la conexión a la base de datos') !== false) {
                     echo "<script>
-                    
+                        Swal.fire({
+                            title: 'Error en la conexión a la base de datos',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                            icon: 'error',
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'users';
+                            }
+                        });
+                    </script>";
+                } else if(strpos($respuesta, 'No se puede eliminar un usuario con rol de super administrador.') !== false){
+                    echo "<script>
+                        Swal.fire({
+                            title: '".$respuesta."',
+                            showConfirmButton: true,
+                            confirmButtonText: 'Cerrar',
+                            closeOnConfirm: false,
+                            icon: 'error',
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'users';
+                            }
+                        });
+                    </script>";
+                }else{
+                    echo "<script>
                         Swal.fire({
                             title: 'El usuario se eliminó correctamente',
                             showConfirmButton: true,
@@ -362,15 +349,11 @@
                             if(result.value){
                                 window.location = 'users';
                             }
-                            
                         })
                     </script>";
-
                 }
-            
+                
             }
-            
-            
         }
     }
     

@@ -11,7 +11,7 @@
         static public function ctrCreateCategories(){
             if(isset($_POST["nameCategories"])){
 
-                if( preg_match('/^[0-9-a-zA-ZÑñáéíóúÁÉÍÓÚ ]+$/', $_POST["nameCategories"])){
+                if( preg_match('/^[0-9-a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,60}$/', $_POST["nameCategories"])){
 
                     $datas = array("nombre" => $_POST["nameCategories"]);
                      //La clase llama al método mdlAdd de la clase Categories. Este método es responsable de agregar
@@ -68,46 +68,44 @@
             $respuesta = Categories::mdlShow($tabla, $item, $valor);
             return $respuesta;//El método devuelve la variable $respuesta que contiene los datos de la categoría buscada
         }
+
          //ctrUpdateCategories se ejecuta cuando se envía un formulario con el campo idCategoriesm a través del método POST
         static public function ctrUpdateCategories(){
             // idCategoriesm es un número válido, se crea un array llamado $datas que contiene los datos
            // que se actualizarán en la tabla de categorías. En este caso, el array contiene el codigo de la categoría y el nombre de la categoría actualizado
             if(isset($_POST["idCategoriesm"])){
 
-                if(preg_match('/^[0-9]+$/', $_POST["idCategoriesm"])){
+                if(preg_match('/^[0-9]{1,10}$/', $_POST["idCategoriesm"])){
+                    if(preg_match('/^[0-9-a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,60}$/', $_POST["nameCategoriesm"])){
 
-                    $datas = array("codigo" => $_POST["idCategoriesm"], 
-                                    "nombre" => $_POST["nameCategoriesm"]);
-                                   
+                        $datas = array("codigo" => $_POST["idCategoriesm"], 
+                                        "nombre" => $_POST["nameCategoriesm"]);
+                                    
 
-                    $respuesta = Categories::mdlUpdate($datas);
-                    
-                    if($respuesta == "ok"){
-                        echo "<script>
+                        $respuesta = Categories::mdlUpdate($datas);
                         
+                        if($respuesta == "ok"){
+                            echo "<script>
+                            
+                                Swal.fire({
+                                    title: 'La Categoría se modificó correctamente',
+                                    icon: 'success',
+                                }).then((result) => {
+                                    window.location = 'categories';
+                                })
+                            </script>";
+                        }else{
+                            echo "<script>
+                            
                             Swal.fire({
-                                title: 'La Categoría se modificó correctamente',
-                                icon: 'success',
+                                title: 'No se puede modificar la Categoría',
+                                icon: 'error',
                             }).then((result) => {
                                 window.location = 'categories';
                             })
-                        </script>";
+                            </script>";
+                        }
                     }
-
-
-                    
-
-                }else{
-
-                    echo "<script>
-                    
-                    Swal.fire({
-                        title: 'No se puede modificar la Categoría',
-                        icon: 'error',
-                    }).then((result) => {
-                        window.location = 'categories';
-                    })
-                    </script>";
                 }
             }
         }

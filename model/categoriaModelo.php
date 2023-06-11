@@ -80,7 +80,7 @@ class Categories{
         $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_actualizar_categoria(:codigo,:nombre)");
         
         
-        $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
+        $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_INT);
         $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
 
         //Si la actualización fue exitosa, el método devuelve la cadena "ok". De lo contrario, devuelve la cadena "error".

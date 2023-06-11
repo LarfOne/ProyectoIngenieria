@@ -8,6 +8,39 @@ let metodosSeleccionados = [];
 // Creamos un array vacío
 const arrayProductos = [];
 
+const metodosPagoPermitidos = ['Efectivo', 'Tarjeta', 'Sinpe'];
+
+const formVentaProducto = document.getElementById('formVentaProducto');
+
+const nuevoSubTotalVentaInput = document.getElementById('nuevoSubTotalVenta');
+const nuevoTotalVentaInput = document.getElementById('nuevoTotalVenta');
+if(formVentaProducto != null){
+	formVentaProducto.addEventListener('submit', function(event) {
+		const checkboxes = document.querySelectorAll('.metodoPago input[type="checkbox"]');
+		let seleccionados = [];
+		
+		checkboxes.forEach(function(checkbox) {
+			if (checkbox.checked) {
+				seleccionados.push(checkbox.value);
+			}
+		});
+		
+		const noPermitidos = seleccionados.filter(function(seleccionado) {
+			return !metodosPagoPermitidos.includes(seleccionado);
+		});
+		
+		if (noPermitidos.length > 0) {
+			event.preventDefault();
+			alert('Por favor, selecciona métodos de pago válidos.');
+		}else if(nuevoSubTotalVentaInput.value === '' || nuevoTotalVentaInput.value === '') {
+			event.preventDefault();
+			alert('Debes de tener al menos un producto en carrito para realizar la venta.');
+		}
+	});
+}
+
+
+
 $(".btnAgregarProducto1").click(function(){
     
 	let idProducto = document.getElementById("idProducto").value;
@@ -36,6 +69,19 @@ $(".btnAgregarProducto1").click(function(){
 	
 })
 
+$('#cantidadProducto').on('keypress input', function(e) {
+    validarInputCantidadVenta(e, 7);
+});
+
+
+function validarInputCantidadVenta(e, maxLength) {
+    let input = e.target.value;
+
+    if (input.length >= maxLength) {
+        e.preventDefault();
+    }
+}
+
 /*=============================================
 BOTON PARA AGREGAR PRODUCTOS A LA TABLA
 =============================================*/
@@ -46,10 +92,8 @@ function llenarTablaVentas(){
 	let cantidad = document.getElementById("cantidadProducto").value;
 	console.log("idProducto",idProduct);
 	if(idProduct != ""){
-
-		if(cantidad != "" && cantidad != "0"){
-			if(cantidad <= "1000"){
-
+		if(cantidad != "" && cantidad > 0){
+			
 				console.log("idProduct ",idProduct)
 
 				let datas = new FormData();
@@ -126,16 +170,6 @@ function llenarTablaVentas(){
 						}
 					}
 				})
-			}else{
-				Swal.fire({
-					title: 'No digites cantidades tan grandes',
-					html: 'Puedes digitar como maximo 1000<br>',
-					showConfirmButton: true,
-					confirmButtonText: 'Cerrar',
-					closeOnConfirm: false,
-					icon: 'warning'
-				})
-			}
 		}
 	}
 }

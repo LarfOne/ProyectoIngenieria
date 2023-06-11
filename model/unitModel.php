@@ -69,7 +69,7 @@
             
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
 
-            $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);
             //La función devuelve un string indicando si la operación se realizó correctamente o no: "ok" en caso de éxito y "error" en caso contrario.
             if($sentenciaSQL->execute()){
                 

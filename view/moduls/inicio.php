@@ -23,6 +23,8 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
+<script src="view/js/reporte.js"></script>
+
 <script>
     $('.carousel').carousel({
         interval: 1000 // Cambia aquí el tiempo en milisegundos entre cada slide

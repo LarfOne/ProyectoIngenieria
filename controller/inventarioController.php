@@ -18,28 +18,6 @@
             return $respuesta;
         }
 
-        static public function ctrCreateInventario()
-	    {
-            if (isset($_POST["idProducto"])) {
-
-                if(preg_match('/^[0-9]+$/', $_POST["idProducto"])){
-            
-                    $table = "inventario";
-                    //crea un arreglo con los datos necesarios para el nuevo registro, donde se especifica la sucursal, el producto y la cantidad de productos disponibles en esa sucursal
-
-                    $datas = array(
-                        "idSucursal" => $_POST["idSucursal"],
-                        "idProducto" => $_POST["idProducto"],
-                        "cantidad" => $_POST["cantProducto"]
-                    );
-
-                    $respuesta = Inventario::mdlAdd($table, $datas);
-                }
-            }
-
-	    }
-
-
         static public function ctrUpdateInventario(){
 
             if(isset($_POST["codigoInventarioAjuste"])){

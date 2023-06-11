@@ -7,34 +7,29 @@
 
 
 <div id="container pt-4" class="contenedorProducts" style="margin-top:90px;">
-      <style>
 
-
-
-
-      </style>
       <div class="container mt-3">
 
             <h1 class="texto" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Ingreso de productos</h1>
 
-            <form class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px;">
+            <form id="formProducto" class="col-md-12" role="form" enctype="multipart/form-data" method="POST" style="margin-top: -30px;">
 
                   <div class="row align-items-center first">
                         <div class="col mt-5 mr-5">
                               <label>Codigo del producto.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="idProducto" placeholder="Ingresar codigo" required>
+                              <input class="form-control input-sm mt-2" type="text" id="idProducto" name="idProducto" placeholder="Ingresar codigo" required>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Nombre del producto.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="nameProducto" placeholder="Ingresar nombre" required>
+                              <input class="form-control input-sm mt-2" type="text" id="nameProducto" name="nameProducto" placeholder="Ingresar nombre" required>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Marca.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="marcaProducto" placeholder="Ingresar marca" required>
+                              <input class="form-control input-sm mt-2" type="text" id="marcaProducto" name="marcaProducto" placeholder="Ingresar marca" required>
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Descripción.</label>
-                              <textarea class="form-control input-sm mt-2" name="descriptionProducto" rows="2" placeholder="Descripcion" style="resize: none;"></textarea>
+                              <textarea class="form-control input-sm mt-2" id="descriptionProducto" name="descriptionProducto" rows="2" placeholder="Descripcion" style="resize: none;" required></textarea>
                         </div>
                   </div>
 
@@ -43,7 +38,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Cantidad.</label>
-                              <input class="form-control input-sm mt-2" type="text" name="cantProducto" placeholder="Cantidad de productos" required>
+                              <input class="form-control input-sm mt-2" type="text" id="cantProducto" min="1" name="cantProducto" placeholder="Cantidad de productos" required>
                         </div>
 
                         <!-- Mandar a traer las sucursales -->
@@ -54,7 +49,7 @@
                         ?>
                         <div class="col mt-5 mr-5">
                               <label>Sucursal</label>
-                              <select class="form-select input-lg mt-2" name="idSucursal" required>
+                              <select class="form-select input-lg mt-2" id="idSucursalProducto" name="idSucursalProducto" required>
 
                                     <option value="">Seleccionar sucursal.</option>
                                     <?php foreach ($sucursal as $sucursal1) { ?>
@@ -74,7 +69,7 @@
 
                         <div class="col mt-5 mr-5">
                               <label>Unidad</label>
-                              <select class="form-select input-lg mt-2" name="unitProducto" required>
+                              <select class="form-select input-lg mt-2" id="unitProducto" name="unitProducto" required>
                                     <option value="">Seleccionar unidad.</option>
                                     <?php foreach ($unit as $unit1) { ?>
                                           <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
@@ -85,7 +80,7 @@
                         </div>
                         <div class="col mt-5 mr-5">
                               <label>Porcentaje de IVA</label>
-                              <input class="form-control input-sm mt-2" type="number" id="porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" onchange="obtenerPorcentaje()" required>
+                              <input class="form-control input-sm mt-2" type="text" id="porcProducto" value="13" name="porcProducto" placeholder="Ingresar porcentaje" required>
                         </div>
                   </div>
 
@@ -101,7 +96,7 @@
                   <div class="row align-items-center third">
                         <div class="col mt-5 mr-5">
                               <label>Precio Neto.</label>
-                              <input class="form-control input-sm mt-2" type="number" id="precioNeto" name="precioNeto" placeholder="Ingresar precio" onchange="obtenerPrecioNeto()" required>
+                              <input class="form-control input-sm mt-2" type="number" id="precioNeto" name="precioNeto" placeholder="Ingresar precio" required>
                         </div>
 
                         <div class="col mt-5 mr-5">
@@ -116,7 +111,7 @@
 
                         <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                               <label>Categoría.</label>
-                              <select class="form-select input-lg mt-2 selectC" name="cateProducto" required>
+                              <select class="form-select input-lg mt-2 selectC" id="cateProducto" name="cateProducto" required>
                                     <option value="">Seleccionar categoría.</option>
                                     <?php foreach ($category as $category1) { ?>
                                           <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
@@ -138,7 +133,7 @@
                         </div>
                         <div class="col mt-5 mr-5 align-self-center">
                               <label>Observaciones.</label>
-                              <textarea class="form-control input-lg mt-2" name="obsProducto" rows="2" placeholder="Observaciones" style="resize: none; height:160px;"></textarea>
+                              <textarea class="form-control input-lg mt-2" id="obsProducto" name="obsProducto" rows="2" placeholder="Observaciones" style="resize: none; height:160px;"></textarea>
                         </div>
 
                         <div class="button-container">
@@ -153,17 +148,10 @@
 
                   </div>
 
-
                   <?php
-
-                  $addProducto = new ControllerProduct;
-                  $addProducto->ctrCreateProduct();
-
-                  $addInventario = new ControllerInventario;
-                  $addInventario->ctrCreateInventario();
-
+                        $addProducto = new ControllerProduct;
+                        $addProducto->ctrCreateProduct();
                   ?>
-
             </form>
       </div>
 </div>

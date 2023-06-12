@@ -76,7 +76,6 @@ $valorFac = $this->codigo;//codigo es el id de la factura
 
 $respuestaDetalle = ControllerDetalle::ctrShowDetalleFactura($itemFac, $valorFac);
 
-//$productos = json_decode($respuestaDetalle, true);
 
 
 

@@ -49,7 +49,7 @@ if(formUserAdd !== null && formUserUpdate != null){
         // Verifica si los campos están vacíos
         if (idUserInput.value === '' || nameUserInput.value === '' || lastNameUserInput.value === '' || sucursalUserInput.value === '' ||
             emailUserInput.value === '' || roleUserInput.value === '' || passwordUserInput.value === '' || cuentaUserInput.value === '' ||
-            directionUserInput.value === '' || estadoUserInput.value === '') {
+            directionUserInput.value === '' || estadoUserInput.value === '' || telefonoUserInput.value==='') {
             event.preventDefault(); // Evita que el formulario se envíe
 
             // Muestra un mensaje de error o realiza otra acción
@@ -74,7 +74,7 @@ if(formUserAdd !== null && formUserUpdate != null){
         // Verifica si los campos están vacíos
         if (idUsermInput.value === '' || nameUsermInput.value === '' || lastNameUsermInput.value === '' || sucursalUsermInput.value === '' ||
             emailUsermInput.value === '' || roleUsermInput.value === '' || cuentaUsermInput.value === '' ||
-            directionUsermInput.value === '' || estadoUsermInput.value === '' || telefonoUsermInput.value) {
+            directionUsermInput.value === '' || estadoUsermInput.value === '' || telefonoUsermInput.value ==='') {
             event.preventDefault(); // Evita que el formulario se envíe
 
             // Muestra un mensaje de error o realiza otra acción
@@ -297,10 +297,27 @@ $('#directionUser, #directionUserm').on('keypress input', function(e) {
     validarInputUser(e, 45);
 });
 
+$('#cuentaUser, #cuentaUserm').on('keypress input', function(e) {
+    validarInputUser(e, 45);
+});
+
+$('#telefonoUser, #telefonoUserm').on('keypress input', function(e) {
+    validarTelefonoUser(e);
+});
+
 function validarInputUser(e, maxLength) {
     let input = e.target.value;
 
     if (input.length >= maxLength) {
+        e.preventDefault();
+    }
+}
+
+function validarTelefonoUser(e) {
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 47 y 58)
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 8) {
         e.preventDefault();
     }
 }

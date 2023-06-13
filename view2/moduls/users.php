@@ -179,7 +179,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control input-lg" id="telefonoUser" name="telefonoUser" placeholder="Ingresar el telefono" required>
+                  <input type="text" class="form-control input-lg" id="telefonoUser" name="telefonoUser" placeholder="Ingresar el telefono">
                 </div>
               </div>
               <!--AGREGAR DE DIRECCION-->
@@ -326,7 +326,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control input-lg" id="telefonoUserm" name="telefonoUserm" placeholder="Ingresar el telefono" required>
+                  <input type="text" class="form-control input-lg" id="telefonoUserm" name="telefonoUserm" placeholder="Ingresar el telefono">
                 </div>
               </div>
               <!--MODIFICAR DE DIRECCION-->

@@ -60,12 +60,6 @@
                 <td>Libre</td>
                 <?php } ?>
 
-
-
-
-  
-
-
                 <td>
 
                   <div class="btn-group">

@@ -178,7 +178,7 @@
               <!--AGREGAR DE TELEFONO-->
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                   <input type="text" class="form-control input-lg" id="telefonoUser" name="telefonoUser" placeholder="Ingresar el telefono">
                 </div>
               </div>
@@ -325,7 +325,7 @@
               <!--MODIFICAR DE TELEFONO-->
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                   <input type="text" class="form-control input-lg" id="telefonoUserm" name="telefonoUserm" placeholder="Ingresar el telefono">
                 </div>
               </div>

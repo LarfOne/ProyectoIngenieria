@@ -99,8 +99,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameCategories" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
+                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                <input type="text" class="form-control input-lg" id="nameCategories" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar Categoria" required>
               </div>
 
             </div>
@@ -165,8 +165,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameCategoriesm" style="border-radius: 5px;" name="nameCategoriesm" value="Ingresar nombre" required>
+                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                <input type="text" class="form-control input-lg" id="nameCategoriesm" style="border-radius: 5px;" name="nameCategoriesm" placeholder="Editar Categoria" required>
 
               </div>
 

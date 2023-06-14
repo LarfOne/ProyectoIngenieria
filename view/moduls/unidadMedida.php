@@ -99,8 +99,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameUnit" name="nameUnit" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
+                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                <input type="text" class="form-control input-lg" id="nameUnit" name="nameUnit" style="border-radius: 5px;" placeholder="Ingresar unidad de medida" required>
               </div>
 
             </div>
@@ -165,14 +165,12 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameUnitm" style="border-radius: 5px;" name="nameUnitm" value="Ingresar nombre" required>
+                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                <input type="text" class="form-control input-lg" id="nameUnitm" style="border-radius: 5px;" name="nameUnitm" placeholder="Editar unidad de medida" required>
 
               </div>
 
             </div>
-
-     
 
           </div>
 

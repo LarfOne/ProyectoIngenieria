@@ -282,7 +282,7 @@ $('#lastNameUser, #lastNameUserm').on('keypress input', function(e) {
 });
 
 $('#emailUser, #emailUserm').on('keypress input', function(e) {
-    validarInputUser(e, 45);
+    validarInputUser(e, 50);
 });
 
 $('#passwordUser, #passwordUserm').on('keypress input', function(e) {
@@ -294,7 +294,7 @@ $('#cuentaUser, #cuentaUserm').on('keypress input', function(e) {
 });
 
 $('#directionUser, #directionUserm').on('keypress input', function(e) {
-    validarInputUser(e, 45);
+    validarInputUser(e, 200);
 });
 
 $('#cuentaUser, #cuentaUserm').on('keypress input', function(e) {

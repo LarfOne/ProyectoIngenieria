@@ -61,7 +61,7 @@
                             if(preg_match('/^[a-zA-Z0-9]{8,20}$/', $_POST["passwordUser"])){ //solo acepta numeros y letras entre 8 y 20 digitos
                                 if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailUser"])){ //acepta un correo valido
                                     if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["cuentaUser"])){
-                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["directionUser"])){
+                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,200}$/', $_POST["directionUser"])){
                                             if(preg_match('/^[0-9]{1,8}$/', $_POST["telefonoUser"])){
                                                 //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
                                                 $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');

@@ -87,7 +87,7 @@ class Sucursal{
     static public function mdlUpdate($table, $datas){
         //mdlUpdate que acepta dos parámetros: $table y $datas.
         $sentenciaSQL = Conexion::conectar()->prepare("UPDATE $table SET nombre = :nombre, direccion = :direccion, email = :email,
-                                                         telefono = :telefono, email = :email WHERE codigo = :codigo");
+                                                        telefono = :telefono, email = :email WHERE codigo = :codigo");
         
         
         $sentenciaSQL->bindParam(':codigo', $datas["codigo"], PDO::PARAM_STR);

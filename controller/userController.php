@@ -26,14 +26,20 @@
                     if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
                     if(($respuesta["cedula"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
                         $_SESSION["iniciarSesion"] = "ok";
+
                         $_SESSION["cedula"] = $respuesta["cedula"];
+                        $_SESSION["idSucursal"] = $respuesta["idSucursal"];
                         $_SESSION["nombre"] = $respuesta["nombre"];
                         $_SESSION["apellidos"] = $respuesta["apellidos"];
-						$_SESSION["role"] = $respuesta["role"];
-                        $_SESSION["idSucursal"] = $respuesta["idSucursal"];
                         $_SESSION["email"] = $respuesta["email"];
-                        $_SESSION["image"] = $respuesta["image"];
+						$_SESSION["role"] = $respuesta["role"];
                         $_SESSION["estado"] = $respuesta["estado"];
+                        $_SESSION["telefono"] = $respuesta["telefono"];
+                        $_SESSION["cuentaBancaria"] = $respuesta["cuentaBancaria"];
+                        $_SESSION["direccion"] = $respuesta["direccion"];
+                        $_SESSION["image"] = $respuesta["image"];
+                        
+                        
                         
                         echo '<script>
                                 window.location = "inicio"
@@ -183,7 +189,7 @@
                             preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["lastNameUserm"])){ //solo acepta letras
                                 if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailUserm"])){ //acepta un correo valido
                                     if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["cuentaUserm"])){
-                                        if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["directionUserm"])){
+                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,200}$/', $_POST["directionUserm"])){
                                             if(preg_match('/^[0-9]{1,8}$/', $_POST["telefonoUserm"])){
                                                 
                                                 $table = "empleado";
@@ -254,6 +260,7 @@
                                                 
                                                 $respuesta = User::mdlUpdate($datas);
                                                 
+                                                
                                                 if($respuesta == "ok"){  
                                                 
                                                     //elimina todos los activos que tenga relacionado y los pone libre si el empleado es inactivo
@@ -270,11 +277,19 @@
                                                     }
 
                                                     //Guarda los nuevos datos de las variables session y los actualiza
-                                                    if( $_SESSION['cedula'] ==$_POST["idUserm"] ){
-
-                                                        $_SESSION['nombre'] = $_POST['nameUserm'];
-                                                        $_SESSION['apellidos'] = $_POST['lastNameUserm'];
-                                                        $_SESSION['estado'] = $_POST['estadoUserm'];
+                                                    if( $_SESSION['cedula'] == $_POST["idUserm"] ){
+                                                        
+                                                        $_SESSION["cedula"] = $_POST["idUserm"];
+                                                        $_SESSION["nombre"] = $_POST["nameUserm"];
+                                                        $_SESSION["apellidos"] = $_POST["lastNameUserm"];
+                                                        $_SESSION["role"] = $_POST["roleUserm"];
+                                                        $_SESSION["idSucursal"] = $_POST["sucursalUserm"];
+                                                        $_SESSION["email"] = $_POST["emailUserm"];
+                                                        $_SESSION["image"] = $ruta;
+                                                        $_SESSION["estado"] = $_POST["estadoUserm"];
+                                                        $_SESSION["telefonoUserm"] = $_POST["telefonoUserm"];
+                                                        $_SESSION["cuentaBancaria"] = $_POST["cuentaUserm"];
+                                                        $_SESSION["direccion"] = $_POST["directionUserm"];
                                                     }
                                                                 
 
@@ -351,6 +366,10 @@
                             }
                         })
                     </script>";
+
+                    if( $_SESSION['cedula'] == $data ){
+                        session_destroy();
+                    }
                 }
                 
             }

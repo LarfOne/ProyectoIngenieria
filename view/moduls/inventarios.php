@@ -15,7 +15,7 @@
 
   <div class="box-body">
   <div class="table-responsive roboto correrIzquierda">
-  <table class="table" id="tabla" data-sort="table">
+  <table class="table tableMostrar" id="tabla" data-sort="table">
     <thead>
                 <tr>
                     <th>Codigo</th>

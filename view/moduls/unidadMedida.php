@@ -19,16 +19,21 @@
     </button>
   <div class="box-body">
   <div class="table-responsive roboto correrIzquierda">
-  <table class="table" id="tabla" data-sort="table">
-    <thead>
+  <table class="table tableMostrar" id="tabla" data-sort="table">
+      <colgroup>
+        <col style="width: 30%;">
+        <col style="width: 30%;">
+        <col style="width: 30%;">
+      </colgroup>
+
+        <thead>
                 <tr>
                     <th>Código</th>
                     <th>Nombre</th>
                     <th>Acciones</th>
                     
                 </tr>
-                </thead>
-
+        </thead>
                 <tbody>
 
     <?php

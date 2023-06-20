@@ -90,11 +90,10 @@ function llenarTablaVentas(){
 
 	let idProduct = document.getElementById("idProducto").value;
 	let cantidad = document.getElementById("cantidadProducto").value;
-	console.log("idProducto",idProduct);
+
 	if(idProduct != ""){
+
 		if(cantidad != "" && cantidad > 0){
-			
-				console.log("idProduct ",idProduct)
 
 				let datas = new FormData();
 
@@ -163,10 +162,21 @@ function llenarTablaVentas(){
 										
 								getTotalSale();
 								listarProductos(descuento, codigoProducto, subTotal);	
-								cantidadMayorStock()
+								cantidadMayorStock(cantidad)
 								
 								stock = "";
 								codigoInventario = "";
+						}else{
+							
+							Swal.fire({
+								title: 'El producto que digito no existe en el inventario',
+								html: 'Verifica cuales productos estan agregados.<br>',
+								showConfirmButton: true,
+								confirmButtonText: 'Cerrar',
+								closeOnConfirm: false,
+								icon: 'warning'
+							})
+							
 						}
 					}
 				})
@@ -329,7 +339,7 @@ function getTotalSale(){
 FUNCION PARA VERIFICAR SI HAY LOS SUFICIENTES PRODUCTOS EN STOCK
 ==================================================================*/
 
-function cantidadMayorStock(){
+function cantidadMayorStock(cantidadP){
 
 	let tr = document.querySelector('#listaP'+codigoProducto);
 
@@ -346,7 +356,34 @@ function cantidadMayorStock(){
 			closeOnConfirm: false,
 			icon: 'warning'
 		})
-		eliminarFila(codigoProducto);
+		let cant = parseInt(cantidades) - parseInt(cantidadP);
+		$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cant);
+
+		let index = arrayProductos.findIndex(producto => producto.idProducto === codigoProducto);
+
+		if (index !== -1) {
+			// Si el objeto ya existe, actualizamos su propiedad cantidad
+			arrayProductos[index].cantidad = cant;
+		}
+	}
+}
+
+function quitarleCantidad(idProduct) {
+
+	let tr = document.querySelector('#listaP' + idProduct);
+
+	let index = arrayProductos.findIndex(producto => producto.idProducto === idProduct);
+
+	if (index !== -1) {
+
+		if (tr) {
+
+			arrayProductos.splice(index, 1);
+			tr.remove();
+			sumarTotalPrecios();
+			Discount();
+			Tax();
+		}
 	}
 }
 
@@ -368,20 +405,6 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 	getTotalSale();
 });
 
-
-/*formularioVenta.addEventListener('submit', function(event) {
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    let alMenosUnoSeleccionado = false;
-    checkboxes.forEach(function(checkbox) {
-      if (checkbox.checked) {
-        alMenosUnoSeleccionado = true;
-      }
-    });
-    if (!alMenosUnoSeleccionado) {
-      event.preventDefault();
-      alert('Por favor, selecciona al menos una opción de pago.');
-    }
-});*/
 
 /*=============================================
 LISTAR TODOS LOS PRODUCTOS

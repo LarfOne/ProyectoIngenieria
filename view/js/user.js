@@ -41,6 +41,9 @@ const telefonoUsermInput = document.getElementById('telefonoUserm');
 const rolesPermitidos = ['Administrador', 'Usuario', 'SuperAdmin'];
 const estadosPermitidos = ['Activo', 'Inactivo'];
 
+
+
+
 let role = "";
 let roleUsuario = "";
 if(formUserAdd !== null && formUserUpdate != null){
@@ -97,7 +100,11 @@ if(formUserAdd !== null && formUserUpdate != null){
             alert('Por favor, selecciona un estado válido.');
         }
     });
-}
+    }
+
+/* setInterval(function() {
+    console.log("hola");
+}, 5000); */
 
 /**EDITAR USUARIO */
 

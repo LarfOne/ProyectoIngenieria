@@ -76,7 +76,7 @@ class User{
 
         static public function mdlAdd($datas){
 
-            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :password, :cuentaBancaria, :direccion, :estado, :telefono, :image)");
+            $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_insertar_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, :role, :estado, :telefono, :password, :cuentaBancaria, :direccion, :image)");
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
@@ -132,7 +132,7 @@ class User{
         static public function mdlUpdate($datas){
 
             $sentenciaSQL = Conexion::conectar()->prepare("CALL sp_update_empleado(:cedula, :idSucursal, :nombre, :apellidos, :email, 
-            :role, :password, :cuentaBancaria, :direccion, :estado, :telefono, :image)");
+            :role, :estado, :telefono, :password, :cuentaBancaria, :direccion, :image)");
 
             $sentenciaSQL->bindParam(':idSucursal', $datas["idSucursal"], PDO::PARAM_INT);
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);

@@ -187,13 +187,14 @@
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 min=0 max=100000000 readonly>
+                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
 
               </tr>
             </tbody>
           </table>
+
         </div>
       </div>
 
@@ -202,8 +203,6 @@
         <a href="ventas">
 
           <button type="button" class="btn1 btnVentaCancelar">Cancelar</button>
-
-
 
           <button type="submit" class="btn1  btnVentaGuardar">Guardar</button>
         </a>
@@ -245,7 +244,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="cedula" style="border-radius: 5px;" placeholder="Ingresar cédula" required>
+                <input type="text" class="form-control input-lg" id="idCliente" name="idCliente" style="border-radius: 5px;" placeholder="Ingresar cédula o cedula juridica" required>
                 <input type="hidden" id="clientId">
               </div>
 
@@ -257,25 +256,11 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="nomCliente" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nomCliente" name="nomCliente" style="border-radius: 5px;" placeholder="Ingresar nombre completo" required>
 
               </div>
 
             </div>
-
-            <!--AGREGAR DE APELLIDOS-->
-            <div class="form-group">
-
-              <div class="input-group">
-
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" name="apellidos" style="border-radius: 5px;" placeholder="Ingresar apellidos " required>
-
-              </div>
-
-            </div>
-
-
 
             <!--AGREGAR DE TELEFONO DEL CLIENTE-->
             <div class="form-group">
@@ -283,7 +268,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-phone"></i></span>
-                <input type="text" class="form-control input-lg" name="telefonoCli" style="border-radius: 5px;" placeholder="Ingresar número de telefono" required>
+                <input type="text" class="form-control input-lg" id="telefonoCli" name="telefonoCli" style="border-radius: 5px;" placeholder="Ingresar número de telefono" required>
 
               </div>
 
@@ -295,7 +280,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                <input type="email" class="form-control input-lg" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
+                <input type="email" class="form-control input-lg" id="email" name="email" style="border-radius: 5px;" placeholder="Ingresar correo electrónico" required>
 
               </div>
 
@@ -307,7 +292,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                <input type="text" class="form-control input-lg" name="direccion" style="border-radius: 5px;" placeholder="Ingresar dirección " required>
+                <input type="text" class="form-control input-lg" id="direccion" name="direccion" style="border-radius: 5px;" placeholder="Ingresar dirección" required>
 
               </div>
 
@@ -326,9 +311,9 @@
         </div>
 
         <?php
-
+        $direccion = "crearVentasP";
         $addClient = new ControllerClient;
-        $addClient->ctrCreateClient();
+        $addClient->ctrCreateClient($direccion);
 
         ?>
 

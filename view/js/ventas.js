@@ -14,6 +14,9 @@ const formVentaProducto = document.getElementById('formVentaProducto');
 
 const nuevoSubTotalVentaInput = document.getElementById('nuevoSubTotalVenta');
 const nuevoTotalVentaInput = document.getElementById('nuevoTotalVenta');
+const nuevoImpuestoVentaInput = document.getElementById('nuevoImpuestoVenta');
+const nuevoDescuentoVentaInput = document.getElementById('nuevoDescuentoVenta');
+
 if(formVentaProducto != null){
 	formVentaProducto.addEventListener('submit', function(event) {
 		const checkboxes = document.querySelectorAll('.metodoPago input[type="checkbox"]');
@@ -32,9 +35,22 @@ if(formVentaProducto != null){
 		if (noPermitidos.length > 0) {
 			event.preventDefault();
 			alert('Por favor, selecciona métodos de pago válidos.');
+
+		}else if(nuevoImpuestoVentaInput === '' || nuevoDescuentoVentaInput === '') {
+			event.preventDefault();
+			alert('El impuesto o el descuento no puede estar vacio, debe tener un numero igual o mayor a 0.');
+
 		}else if(nuevoSubTotalVentaInput.value === '' || nuevoTotalVentaInput.value === '') {
 			event.preventDefault();
 			alert('Debes de tener al menos un producto en carrito para realizar la venta.');
+		}else if(!validarCambio()){
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('El dinero con el que se va a pagar es menor al total de la venta.');
+        }else if(!validarNuevoPagoVenta()){
+			event.preventDefault(); // Evita que el formulario se envíe
+            // Muestra un mensaje de error o realiza otra acción
+            alert('Debes de digitar el dinero con el que se va a pagar.');
 		}
 	});
 }
@@ -250,11 +266,23 @@ function Discount(){
 		let totalTaxt = parseFloat(sumarTotalPrecios()) + getTax();
 
 		let totalFinal = parseFloat(totalTaxt) - getDiscount();
-		console.log(totalFinal);
+
+		let fixedValue = parseFloat(totalFinal).toFixed(2);
+
 		$("#descuentoVenta").val(getDiscount());
-		$("#nuevoTotalVenta").val(totalFinal);
+
+		$("#nuevoTotalVenta").val(fixedValue);
 	}
 }
+
+nuevoTotalVentaInput.addEventListener('blur', function() {
+    const value = nuevoTotalVentaInput.value;
+
+    const fixedValue = parseFloat(value).toFixed(2);
+
+    nuevoTotalVentaInput.value = fixedValue;
+});
+
 
 $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
 	Discount();
@@ -283,6 +311,29 @@ $('.tablaD').on('blur', '#nuevoPagoVenta', function() {
 
 });
 
+$('.tablaD').on('blur', '#nuevoPagoTarjeta, #nuevoPagoSinpe, #nuevoPagoEfectivo', function() {
+	if (document.getElementById("nuevoTotalVenta").value != "0") {
+		let pagoVenta = 0;
+
+		if ($('#nuevoPagoTarjeta').length) {
+			pagoVenta += parseInt(document.getElementById("nuevoPagoTarjeta").value);
+		}
+	
+		if ($('#nuevoPagoSinpe').length) {
+			pagoVenta += parseInt(document.getElementById("nuevoPagoSinpe").value);
+		}
+	
+		if ($('#nuevoPagoEfectivo').length) {
+			pagoVenta += parseInt(document.getElementById("nuevoPagoEfectivo").value);
+		}
+
+		let totalVenta = parseInt(document.getElementById("nuevoTotalVenta").value);
+		let deuSale = pagoVenta - totalVenta;
+		$("#nuevoDueVenta").val(deuSale);
+	}
+});
+
+
 
 /*======================================================
 	EVENTO PARA IMPUESTO DE TODA LA VENTA
@@ -294,9 +345,12 @@ function Tax(){
 		let totalDiscount = parseFloat(sumarTotalPrecios()) - getDiscount();
 
 		let totalFinal = parseFloat(totalDiscount) + getTax();
+
+		let fixedValue = parseFloat(totalFinal).toFixed(2);
 		console.log(totalFinal);
+		
 		$("#impuestoVenta").val(getTax());
-		$("#nuevoTotalVenta").val(totalFinal);
+		$("#nuevoTotalVenta").val(fixedValue);
 	}
 }
 
@@ -480,7 +534,95 @@ $("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
 		pagosVenta();
 });
 
-let $th1, $th2, $th3, $td1, $td2, $td3;
+$('#nuevoDescuentoVenta').on('keypress input', function(e) {
+    validarDescuentoImpuesto(e, 2);
+});
+
+
+$('#nuevoImpuestoVenta').on('keypress input', function(e) {
+    validarDescuentoImpuesto(e, 2);
+});
+
+
+$('.tablaD').on('keypress input', '#nuevoPagoTarjeta', function(e) {
+    validarDescuentoImpuesto(e, 10);
+});
+
+$('.tablaD').on('keypress input', '#nuevoPagoSinpe', function(e) {
+    validarDescuentoImpuesto(e, 10);
+});
+
+$('.tablaD').on('keypress input', '#nuevoPagoEfectivo', function(e) {
+    validarDescuentoImpuesto(e, 10);
+});
+
+$('.tablaD').on('keypress input', '#nuevoPagoVenta', function(e) {
+    validarDescuentoImpuesto(e, 10);
+});
+
+$('.tablaD').on('keypress input', '#nuevoTotalVenta', function(e) {
+    validarDescuentoImpuesto(e, 10);
+});
+
+
+function validarDescuentoImpuesto(e, maxLength) {
+
+    let input = e.target.value;
+
+    // Permitir solo números (código ASCII entre 48 y 57)
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= maxLength) {
+        e.preventDefault();
+    }
+
+}
+
+
+
+
+let $th1, $th2, $th3, $th4, $td1, $td2, $td3, $td4;
+
+
+function validarCambio() {
+	let nuevoDueVenta = document.getElementById('nuevoDueVenta');
+
+	if (nuevoDueVenta !== null) {
+	  // El elemento con el ID 'nuevoDueVenta' existe
+		let inputValue = nuevoDueVenta.value;
+
+		if (parseFloat(inputValue) >= 0) {
+			// El valor es mayor o igual que cero
+			return true;
+		} else {
+			// El valor es menor a cero
+			return false;
+		}
+	} else {
+	  // El elemento con el ID 'nuevoDueVenta' no existe
+		return true;
+	}
+}
+
+function validarNuevoPagoVenta() {
+	let nuevoPagoVenta = document.getElementById('nuevoPagoVenta');
+
+	if (nuevoPagoVenta !== null) {
+	  // El elemento con el ID 'nuevoDueVenta' existe
+		let inputValue = nuevoPagoVenta.value;
+
+		if (parseFloat(inputValue) > 0) {
+			// El valor es mayor o igual que cero
+			return true;
+		} else {
+			// El valor es menor a cero
+			return false;
+		}
+	} else {
+	  // El elemento con el ID 'nuevoDueVenta' no existe
+		return true;
+	}
+}
+
+
 
 function pagosVenta(){
 
@@ -529,7 +671,7 @@ function pagosVenta(){
 				'<td>'+
 				'<div class="input-group">'+
 					'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
-					'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoSinpe" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+					'<input type="hidden" id="nuevoPagoSinpe" name="nuevoPagoSinpe" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
 				'</div>'+
 			'</td>'
 			);
@@ -542,7 +684,7 @@ function pagosVenta(){
 				'<td>'+
 				'<div class="input-group">'+
 					'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
-					'<input type="hidden" id="nuevoPagoEfectivo" name="nuevoPagoTarjeta" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
+					'<input type="hidden" id="nuevoPagoTarjeta" name="nuevoPagoTarjeta" value="'+parseInt(document.getElementById("nuevoTotalVenta").value)+'">'+
 				'</div>'+
 			'</td>'
 			);
@@ -572,13 +714,21 @@ function pagosVenta(){
 								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
 								'<input type="number" class="form-control input-lg" id="nuevoPago'+metodosSeleccionados[1]+'" name="nuevoPago'+metodosSeleccionados[1]+'" value=0 min=0 max=100000000 required>'+
 							'</div>'+
-						'</td>');						
+						'</td>');
+						
+			$td3 = $('<td>'+
+							'<div class="input-group">'+
+								'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+								'<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
+							'</div>'+
+						'</td>');
 
 			// Agregar los elementos
 			$th1.appendTo(".thead_tableD");
 			$th2.appendTo(".thead_tableD");
 			$td1.appendTo(".tbody_tableD");
 			$td2.appendTo(".tbody_tableD");
+			$td3.appendTo(".tbody_tableD");
 
 		}if(metodosSeleccionados.length == 3){
 			//Nuevos elementos cuando hay tres
@@ -609,6 +759,13 @@ function pagosVenta(){
 						'</div>'+
 					'</td>');
 
+			$td4 = $('<td>'+
+						'<div class="input-group">'+
+							'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
+							'<input type="number" class="form-control input-lg" id="nuevoDueVenta" name="nuevoDueVenta" value=0 min=0 max=100000000 required readonly>'+
+						'</div>'+
+					'</td>');
+
 			// Agregar los elementos
 			$th1.appendTo(".thead_tableD");
 			$th2.appendTo(".thead_tableD");
@@ -616,6 +773,7 @@ function pagosVenta(){
 			$td1.appendTo(".tbody_tableD");
 			$td2.appendTo(".tbody_tableD");
 			$td3.appendTo(".tbody_tableD");
+			$td4.appendTo(".tbody_tableD");
 
 		}
 		
@@ -632,6 +790,9 @@ function quitarElementos(){
 	}if($th3){
 		$th3.remove();
 
+	}if($th4){
+		$th4.remove();
+
 	}if ($td1) {
 		$td1.remove();
 
@@ -640,6 +801,9 @@ function quitarElementos(){
 
 	}if ($td3) {
 		$td3.remove();
+
+	}if ($td4) {
+		$td4.remove();
 	}
 }
 

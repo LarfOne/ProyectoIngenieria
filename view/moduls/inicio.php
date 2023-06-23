@@ -1,3 +1,4 @@
+
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/style.css">
@@ -23,7 +24,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-<script src="view/js/reporte.js"></script>
+<script src="../js/reporte.js"></script>
 
 <script>
     $('.carousel').carousel({
@@ -163,8 +164,8 @@
                             <img src="<?php echo $_SESSION['image']; ?>" alt="  Usuario logeado" class="card-img22">
                         <?php } ?>
                         <?php
-                        if ($_SESSION['image'] == null) { ?>
-                            <img src="imagen/pareja-usuarios.png" alt="  Usuario logeado" class="imagen-usuario">
+                        if ($_SESSION['image'] == null) { ?>|
+                            <img src="imagen/pareja-usuarios.png" alt="  Usuario logeado" class="card-img22">
                         <?php } ?>
 
 
@@ -279,61 +280,7 @@
                             </tbody>
                         </table>
                     </div>
-
-
                 </div>
-
-                <div class="texto-imagen">
-
-                        <h1 class="texto-imagen-reporte-venta correrIzquierda" style="text-align: left; font-family: 'Roboto Condensed', sans-serif !important;">Reporte de Movimientos de Stock.</h1>
-                    </div>
-
-                <div class="columnas-juntas2" style="justify-content:center;">
-
-                    <div class="table-responsive roboto"> <!-- contenedor de la tabla -->
-
-                        <table class="table table-bordered table-striped dt-responsive tablas" id="tabla" data-sort="table">
-                            <thead>
-                                <tr>
-                                    <th>Vendedor</th>
-                                    <th>Fecha</th>
-                                    <th>Producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                /**Extraccion de datos para la tabla de movimientos */
-                                $facturas = ControladorVentas::ctrVentasMes();
-                                foreach ($facturas as $key => $factura) {
-                                    /**Se deben buscar todos los detalles que tengan esa factura */
-                                    /*Se debe extraer el nombre de el vendedor haciendo una consulta a la tabla ya que la factura ya lleva su id* */
-                                    $itemUsuario = "cedula";
-                                    $valorUsuario = $factura[3];
-                                    $respuestaUsuario = ControllerUser::ctrShowUser($itemUsuario, $valorUsuario);
-                                    /**Se le envia el id de la factura */
-                                    $detalles = ControllerDetalle::ctrDetallesPorFactura($factura[0]);
-                                    foreach ($detalles as $key2 => $detalle) {
-                                        $producto = ControllerProduct::ctrNameProducts($detalle[2]);
-                                                                        echo ('
-                                                <tr>
-                                                    <td>' . $respuestaUsuario[2] . '</td>
-                                                    <td>' . $factura[4] . '</td>
-                                                    <td>' . $producto[1] . '</td>
-                                                    <td>' . $detalle[3] . '</td>
-                                                    <td>' . $detalle[6] . '</td>
-                                                </tr>
-                                                
-                                                ');
-                                    }
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
 
 </body>
 

@@ -170,9 +170,9 @@
         </div>
 
         <?php
-
-        $addClient = new ControllerClient;
-        $addClient->ctrCreateClient();
+            $direccion = "cliente";
+            $addClient = new ControllerClient;
+            $addClient->ctrCreateClient($direccion);
 
         ?>
 

@@ -24,20 +24,21 @@
                     //Si coinciden, se establecen las variables de sesión correspondientes y se redirige al usuario a la página de inicio. Si no coinciden, 
                     //se muestra un mensaje de error. Si el usuario no existe o su estado no es 'Activo', también se muestra un mensaje de error
                     if(($respuesta != null) && ($respuesta["estado" ]== 'Activo')){
-                    if(($respuesta["cedula"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
-                        $_SESSION["iniciarSesion"] = "ok";
+                    
+                        if(($respuesta["cedula"] == $_POST["ingUser"]) && ($respuesta["password"] == $incrypt)){
+                            $_SESSION["iniciarSesion"] = "ok";
 
-                        $_SESSION["cedula"] = $respuesta["cedula"];
-                        $_SESSION["idSucursal"] = $respuesta["idSucursal"];
-                        $_SESSION["nombre"] = $respuesta["nombre"];
-                        $_SESSION["apellidos"] = $respuesta["apellidos"];
-                        $_SESSION["email"] = $respuesta["email"];
-						$_SESSION["role"] = $respuesta["role"];
-                        $_SESSION["estado"] = $respuesta["estado"];
-                        $_SESSION["telefono"] = $respuesta["telefono"];
-                        $_SESSION["cuentaBancaria"] = $respuesta["cuentaBancaria"];
-                        $_SESSION["direccion"] = $respuesta["direccion"];
-                        $_SESSION["image"] = $respuesta["image"];
+                            $_SESSION["cedula"] = $respuesta["cedula"];
+                            $_SESSION["idSucursal"] = $respuesta["idSucursal"];
+                            $_SESSION["nombre"] = $respuesta["nombre"];
+                            $_SESSION["apellidos"] = $respuesta["apellidos"];
+                            $_SESSION["email"] = $respuesta["email"];
+                            $_SESSION["role"] = $respuesta["role"];
+                            $_SESSION["estado"] = $respuesta["estado"];
+                            $_SESSION["telefono"] = $respuesta["telefono"];
+                            $_SESSION["cuentaBancaria"] = $respuesta["cuentaBancaria"];
+                            $_SESSION["direccion"] = $respuesta["direccion"];
+                            $_SESSION["image"] = $respuesta["image"];
                         
                         
                         
@@ -53,6 +54,15 @@
                 }
                 }
 
+            }
+        }
+
+        static public function verificarExiste($item, $valor){
+
+            $respuesta = User::mdlShow($item, $valor);
+
+            if(($respuesta == null) && ($respuesta["estado" ] != 'Activo')){
+                session_destroy();
             }
         }
 

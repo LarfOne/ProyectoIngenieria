@@ -38,13 +38,15 @@
                         $productosAudit = ControllerAudit::ctrShowAuditProducts($item, $valor);
 
                         foreach($productosAudit as $key => $auditProducts1) {
-                            ?>
+                            $item = "codigo";
+                            $valor = $auditProducts1['unidadmedida'];
+                            $unit = ControllerUnit::ctrShowUnit($item, $valor) ?>
                             <tr>
                                 <td><?php echo $auditProducts1['codigo']; ?></td>
                                 <td><?php echo $auditProducts1['nombre']; ?></td>
                                 <td><?php echo $auditProducts1['marca']; ?></td>
                                 <td><?php echo $auditProducts1['descripcion']; ?></td>
-                                <td><?php echo $auditProducts1['unidadmedida']; ?></td>
+                                <td><?php echo $unit['nombre']; ?></td>
                                 <td><?php echo $auditProducts1['observaciones']; ?></td>
                                 <td><?php echo $auditProducts1['precioNeto']; ?></td>
                                 <td><?php echo $auditProducts1['precioTotal']; ?></td>
@@ -85,13 +87,15 @@
                         $productosAuditMod = ControllerAudit::ctrShowAuditProductsMod($item, $valor);
 
                         foreach($productosAuditMod as $key => $auditProducts2) {
-                            ?>
+                            $item = "codigo";
+                            $valor = $auditProducts2['unidadmedida'];
+                            $unit = ControllerUnit::ctrShowUnit($item, $valor) ?>
                             <tr>
                                 <td><?php echo $auditProducts2['codigo']; ?></td>
                                 <td><?php echo $auditProducts2['nombre']; ?></td>
                                 <td><?php echo $auditProducts2['marca']; ?></td>
                                 <td><?php echo $auditProducts2['descripcion']; ?></td>
-                                <td><?php echo $auditProducts2['unidadmedida']; ?></td>
+                                <td><?php echo $unit['nombre']; ?></td>
                                 <td><?php echo $auditProducts2['observaciones']; ?></td>
                                 <td><?php echo $auditProducts2['precioNeto']; ?></td>
                                 <td><?php echo $auditProducts2['precioTotal']; ?></td>

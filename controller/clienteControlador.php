@@ -13,7 +13,7 @@ class ControllerClient{
 	}
 
 	/**REGISTRO DE Clientes*/
-	static public function ctrCreateClient(){
+	static public function ctrCreateClient($direccion){
 		//"ctrCreateClient", la cual es responsable de agregar un nuevo cliente en la base de datos
 		if(isset($_POST["idCliente"])){
 			
@@ -40,7 +40,7 @@ class ControllerClient{
 											title: 'El cliente se agregó correctamente',
 											icon: 'success',
 										}).then((result) => {
-											window.location = 'cliente';
+											window.location = '$direccion';
 										})
 
 									</script>";
@@ -52,7 +52,7 @@ class ControllerClient{
 										title: 'No se puede agregar el Cliente',
 										icon: 'error',
 									}).then((result) => {
-										window.location = 'cliente';
+										window.location = '$direccion';
 									})
 									</script>";
 								}

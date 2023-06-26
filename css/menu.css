@@ -17,7 +17,6 @@ vertical-align: middle;
 font-size:20px;
 }
 
-
 .main-menu:hover,nav.main-menu.expanded {
 width:250px;
 overflow:visible;
@@ -46,6 +45,7 @@ margin:7px 0;
 position:relative;
 display:block;
 width:250px;
+margin-bottom: 13px;
 }
 
 .main-menu li>a {
@@ -55,7 +55,7 @@ border-collapse:collapse;
 border-spacing:0;
 color:#ffffff;
  font-family: 'Roboto Condensed', sans-serif !important;
-font-size: 14px;
+font-size: 18px;
 text-decoration:none;
 -webkit-transform:translateZ(0) scale(1,1);
 -webkit-transition:all .1s linear;

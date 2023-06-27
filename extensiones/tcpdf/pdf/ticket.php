@@ -167,7 +167,10 @@ $bloque2 = <<<EOF
 
 			Nombre : $respuestaCliente[nomCliente] $respuestaCliente[apellidos]
 
-		
+			<br>
+
+			Correo : 
+			$respuestaCliente[email] 
     <br>
 		Fecha de venta: $fecha
 

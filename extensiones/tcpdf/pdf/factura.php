@@ -179,48 +179,21 @@ $pdf->writeHTML($bloque1, false, false, false, false, '');
 // ---------------------------------------------------------
 
 $bloque2 = <<<EOF
-
-
-
-	<table style="font-size:10px; padding:5px 10px;">
-	<br>
-	<br>
-	<br>
-	
-	
+<table style="font-size:10px; padding:5px 10px;">
 	<tr>
-		
-
-
-
-			<td style="border: 1px solid #666; background-color:white; width:390px">
-
-				Cedula cliente: $respuestaCliente[cedula] 
-
-			</td>	
-			
-			<td style="border: 1px solid #666; background-color:white; width:390px">
-
-			Nombre cliente: $respuestaCliente[nomCliente] $respuestaCliente[apellidos]
-
+		<td colspan="4" style="border: 1px solid #666; background-color:white;">
+			<h3>Datos del cliente</h3>
 		</td>
-
-			<td style="border: 1px solid #666; background-color:white; width:150px; text-align:right">
-			
-				Fecha de venta: $fecha
-
-			</td>
-
-		</tr>
-
-		<tr>
-		
-		<td style="border-bottom: 1px solid #666; background-color:white; width:540px"></td>
-
-		</tr>
-
-	</table>
-
+	</tr>
+	<tr>
+		<td style="border: 1px solid #666; background-color:white; width:390px;">
+			Cedula: {$respuestaCliente['cedula']}&nbsp;&nbsp;&nbsp;Nombre: {$respuestaCliente['nomCliente']} {$respuestaCliente['apellidos']}&nbsp;&nbsp;&nbsp;Correo: {$respuestaCliente['email']}&nbsp;&nbsp;&nbsp;Fecha de venta: $fecha
+		</td>
+	</tr>
+	<tr>
+		<td style="border-bottom: 1px solid #666; background-color:white;" colspan="4"></td>
+	</tr>
+</table>
 EOF;
 
 $pdf->writeHTML($bloque2, false, false, false, false, '');

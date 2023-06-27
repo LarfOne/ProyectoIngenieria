@@ -132,55 +132,42 @@ class ModeloVentas{
 
 	}
 	
-	static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal){
-
-        if($fechaInicial == null){
-
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
-
-            $stmt -> execute();
-
-            return $stmt -> fetchAll();
-
-
-		}else if($fechaInicial == $fechaFinal){
-			$fechaInicialComparar = $fechaInicial . " 00:00:00";
-			$fechaFinalComparar = $fechaFinal . " 23:59:59";
-			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN :fechaInicial AND :fechaFinal");
-			$stmt->bindParam(":fechaInicial", $fechaInicialComparar, PDO::PARAM_STR);
-			$stmt->bindParam(":fechaFinal", $fechaFinalComparar, PDO::PARAM_STR);
-			$stmt->execute();
-			return $stmt->fetchAll();
-
-
-		}else{
-
-			$fechaActual = new DateTime();
-			$fechaActual ->add(new DateInterval("P1D"));
-			$fechaActualMasUno = $fechaActual->format("Y-m-d");
-
-			$fechaFinal2 = new DateTime($fechaFinal);
-			$fechaFinal2 ->add(new DateInterval("P1D"));
-			$fechaFinalMasUno = $fechaFinal2->format("Y-m-d");
-
-			if($fechaFinalMasUno == $fechaActualMasUno){
-
-				$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN '$fechaInicial' AND '$fechaFinalMasUno'");
-
-			}else{
-
-
-                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN '$fechaInicial' AND '$fechaFinal'");
-
-            }
-
-            $stmt -> execute();
-
-            return $stmt -> fetchAll();
-
+static public function mdlRangoFechasVentas($tabla, $fechaInicial, $fechaFinal) {
+    if ($fechaInicial == null) {
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY codigo ASC");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    } else {
+        $fechaInicialComparar = $fechaInicial . " 00:00:00";
+        $fechaFinalComparar = $fechaFinal . " 23:59:59";
+        
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE fechaFactura BETWEEN :fechaInicial AND :fechaFinal");
+        $stmt->bindParam(":fechaInicial", $fechaInicialComparar, PDO::PARAM_STR);
+        $stmt->bindParam(":fechaFinal", $fechaFinalComparar, PDO::PARAM_STR);
+        
+        if ($fechaInicial == $fechaFinal) { // Rango del día
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } elseif ($fechaInicial == date('Y-m-d', strtotime('-7 days')) && $fechaFinal == date('Y-m-d')) { // Últimos 7 días
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } elseif ($fechaInicial == date('Y-m-d', strtotime('-30 days')) && $fechaFinal == date('Y-m-d')) { // Últimos 30 días
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } elseif ($fechaInicial == date('Y-m-01') && $fechaFinal == date('Y-m-t')) { // Este mes
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } elseif ($fechaInicial == date('Y-m-01', strtotime('-1 month')) && $fechaFinal == date('Y-m-t', strtotime('-1 month'))) { // Mes pasado
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            // Fechas personalizadas, realizar consulta con el rango específico
+            $stmt->execute();
+            return $stmt->fetchAll();
         }
-
     }
+}
+
 
 
 

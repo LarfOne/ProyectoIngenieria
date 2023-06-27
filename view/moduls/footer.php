@@ -17,8 +17,7 @@
             <i class="fas fa-gem me-3 text-secondary"></i>MOUSELAMP TECHNOLOGIES
           </h6>
           <p>
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
+            Ser la empresa líder en servicios tecnológicos en la región de Guanacaste.
           </p>
 </br>
           <img
@@ -32,19 +31,16 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Productos
+            Servicios
           </h6>
           <p>
-            <a href="#!" class="text-reset">Angular</a>
+            Soporte Tecnico
           </p>
           <p>
-            <a href="#!" class="text-reset">React</a>
+            Telecomunicaciones
           </p>
           <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
+            Diseño y desarrollo de software
           </p>
         </div>
         <!-- Grid column -->
@@ -53,7 +49,7 @@
         <div class="col-md-3 col-lg-2 col-xl-2">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Seguinos
+            Redes Sociales
           </h6>
             <a href="https://www.facebook.com/mouselamp.technologies" class="link-secondary">
                 <i class="fa fa-facebook"></i>

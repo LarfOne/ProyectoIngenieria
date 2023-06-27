@@ -105,7 +105,7 @@ $('#nameSucursal, #nameSucursalm').on('keypress input', function(e) {
 })
 
 $('#direccionSucursal, #direccionSucursalm').on('keypress input', function(e) {
-    validarInputSucursal(e, 45);
+    validarInputSucursal(e, 200);
 })
 
 $('#telefonoSucursal, #telefonoSucursalm').on('keypress input', function(e) {
@@ -129,7 +129,7 @@ function validarTelefonoSucursal(e) {
     let input = e.target.value;
 
     // Permitir solo números (código ASCII entre 47 y 58)
-    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 20) {
+    if (e.keyCode <= 47 || e.keyCode >= 58 || input.length >= 10) {
         e.preventDefault();
     }
 }

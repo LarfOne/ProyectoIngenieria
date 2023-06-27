@@ -1,6 +1,8 @@
 <?php
 session_start(); // Para usar variables de sesi贸n
+
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -42,8 +44,23 @@ session_start(); // Para usar variables de sesi贸n
 <body class="hold-transition skin-blue sidebar-mini login-page">
 
   <?php
-  /**Se verifica si el usuario ya inici贸 sesi贸n */
-  if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"]=="ok"){
+  /**Se verifica si el usuario ya inicio sesion */
+  if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == "ok") {
+    ?>
+
+<script>
+
+setInterval(function() {
+    <?php 
+      $item = "cedula";
+      $valor = $_SESSION["cedula"];
+      $existUser = ControllerUser::verificarExiste($item, $valor);
+      ?>
+  }, 5000);
+
+</script>
+
+<?php
     include "moduls/cabecera.php";
     include "moduls/menu.php";
 
@@ -112,6 +129,7 @@ session_start(); // Para usar variables de sesi贸n
   <script src="view/js/menu.js"></script>
   <script src="view/js/ajusteInventario.js"></script>
   <script src="view/js/unidadMedida.js"></script>
+  <script src="view/js/reporte.js"></script>
 </body>
 
 </html>

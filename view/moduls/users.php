@@ -8,15 +8,19 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div id="container pt-4" style="margin-top: 100px;">
-  <div class="container mt-3">
-    <h2 class="cUser" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de Usuario</h2>
+<div id= "container pt-4" style="margin-top: 100px;">
+  <!---<div class="container mt-3">-->
+  <div class="content-wrapper" style="padding: 15px !important;">
+  <div class="content-wrapper">
+
+  <section class="content">
+    <h2 class="correrIzquierda" style="text-align:left; font-family: 'Roboto Condensed', sans-serif !important;">Control de usuario</h2>
     <div class="tablaUs">
       <button class="btn btn-primary btnAgregarU correrIzquierda" style="margin:0px, 0px, 100px, 100px !important" data-bs-toggle="modal" data-bs-target="#modalAddUser" style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important;">
         Agregar Usuario
       </button>
       <div class="table-responsive roboto correrIzquierda ">
-        <table class="table tableU" id="tabla" data-sort="table">
+        <table class="table tableMostrar" id="tabla" data-sort="table">
           <thead>
             <tr>
               <th>Cedula</th>
@@ -24,9 +28,7 @@
               <th>Apellidos</th>
               <th>Email</th>
               <th>Role</th>
-              <th>C.C</th>
               <th>Sucursal</th>
-              <th>Direccion</th>
               <th>Estado</th>
               <th>Acciones</th>
             </tr>
@@ -44,9 +46,7 @@
                 <td><?php echo $empleado1['apellidos']; ?></td>
                 <td><?php echo $empleado1['email']; ?></td>
                 <td><?php echo $empleado1['role']; ?></td>
-                <td><?php echo $empleado1['cuentaBancaria']; ?></td>
                 <td><?php echo $sucursal['nombre']; ?></td>
-                <td><?php echo $empleado1['direccion']; ?></td>
                 <?php
                 if ($empleado1['estado'] == 'Activo') { ?>
                   <td style=" padding: 5px !important;margin: 5% auto; ">✔️</td>
@@ -66,7 +66,12 @@
           </tbody>
         </table>
       </div>
-  </div>
+    </div>
+
+  </section>
+
+</div>
+
 </div>
 <!--Este input es para obtener el role del usuario que esta logeado para poder editar-->
 <input type="hidden" id="sessionRole" name="sessionRole" value=<?php echo $_SESSION["role"]; ?> >
@@ -178,7 +183,7 @@
               <!--AGREGAR DE TELEFONO-->
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                   <input type="text" class="form-control input-lg" id="telefonoUser" name="telefonoUser" placeholder="Ingresar el telefono">
                 </div>
               </div>
@@ -186,7 +191,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="directionUser" name="directionUser" placeholder="Ingresar dirección" >
+                  <textarea style="resize: none; height:60px;" class="form-control input-lg mt-2" rows="2" id="directionUser" name="directionUser" placeholder="Ingresar dirección" ></textarea>
                 </div>
               </div>
               <!--AGREGAR ESTADO-->
@@ -325,7 +330,7 @@
               <!--MODIFICAR DE TELEFONO-->
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
                   <input type="text" class="form-control input-lg" id="telefonoUserm" name="telefonoUserm" placeholder="Ingresar el telefono">
                 </div>
               </div>
@@ -333,7 +338,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
-                  <input type="text" class="form-control input-lg" id="directionUserm" name="directionUserm" placeholder="Ingresar dirección" required>
+                  <textarea class="form-control input-lg" rows="2" id="directionUserm" name="directionUserm" placeholder="Ingresar dirección" style="resize: none; height:60px;" required></textarea>
                 </div>
               </div>
               <!--MODIFICAR DE ESTADO-->

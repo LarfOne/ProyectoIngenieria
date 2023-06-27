@@ -21,8 +21,8 @@ $sumaPagosMes = array();
 foreach ($respuesta as $key => $values) {
 
         #Captura el año y el mes
-        $fecha = substr($values["fechaFactura"],0,7);
-        #mete las fechas en el  arrayFechas
+        $fecha = substr($values["fechaFactura"], 0, 10);
+        #mete las fechas en el  arrayFechas 
         array_push($arrayFechas,$fecha);
 	    #todas las ventas las ventas
 	    $arrayVentas = array($fecha => $values["total"]);

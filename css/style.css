@@ -85,6 +85,10 @@ input::file-selector-button {
     
 }
 
+.tableMostrar{
+    font-size: 19px;
+}
+
 .button-save:hover{
     background-color: #48E68B;
 }

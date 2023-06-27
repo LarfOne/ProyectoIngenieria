@@ -41,6 +41,9 @@ const telefonoUsermInput = document.getElementById('telefonoUserm');
 const rolesPermitidos = ['Administrador', 'Usuario', 'SuperAdmin'];
 const estadosPermitidos = ['Activo', 'Inactivo'];
 
+
+
+
 let role = "";
 let roleUsuario = "";
 if(formUserAdd !== null && formUserUpdate != null){
@@ -97,7 +100,11 @@ if(formUserAdd !== null && formUserUpdate != null){
             alert('Por favor, selecciona un estado válido.');
         }
     });
-}
+    }
+
+/* setInterval(function() {
+    console.log("hola");
+}, 5000); */
 
 /**EDITAR USUARIO */
 
@@ -282,7 +289,7 @@ $('#lastNameUser, #lastNameUserm').on('keypress input', function(e) {
 });
 
 $('#emailUser, #emailUserm').on('keypress input', function(e) {
-    validarInputUser(e, 45);
+    validarInputUser(e, 50);
 });
 
 $('#passwordUser, #passwordUserm').on('keypress input', function(e) {
@@ -294,7 +301,7 @@ $('#cuentaUser, #cuentaUserm').on('keypress input', function(e) {
 });
 
 $('#directionUser, #directionUserm').on('keypress input', function(e) {
-    validarInputUser(e, 45);
+    validarInputUser(e, 200);
 });
 
 $('#cuentaUser, #cuentaUserm').on('keypress input', function(e) {

@@ -11,7 +11,7 @@
         if ($_SESSION["role"] == "Administrador" || $_SESSION["role"] == "SuperAdmin") {
 
             echo '<li>
-                    <a href="inicio">
+                    <a class="menuA" href="inicio">
                         <i class="fa fa-home fa-2x"></i>
                         <span class="nav-text">
                             Inicio

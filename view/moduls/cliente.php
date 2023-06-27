@@ -22,7 +22,7 @@
     </button>
     <div class="box-body">
       <div class="table-responsive roboto correrIzquierda">
-        <table class="table" id="tabla" data-sort="table">
+        <table class="table tableMostrar" id="tabla" data-sort="table">
           <thead>
             <tr>
               <th>Cedula</th>
@@ -170,9 +170,9 @@
         </div>
 
         <?php
-
-        $addClient = new ControllerClient;
-        $addClient->ctrCreateClient();
+            $direccion = "cliente";
+            $addClient = new ControllerClient;
+            $addClient->ctrCreateClient($direccion);
 
         ?>
 
@@ -205,7 +205,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" id="idClientem" name="idClientem" style="border-radius: 5px;" value="Ingresar Cedula" readonly required>
+                <input type="text" class="form-control input-lg" id="idClientem" name="idClientem" style="border-radius: 5px;" placeholder="Editar cédula o cedula juridica" readonly required>
 
 
               </div>
@@ -218,7 +218,7 @@
               <div class="input-group">
 
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nomClientem" name="nomClientem" style="border-radius: 5px;" value="Ingresar nombre" required>
+                <input type="text" class="form-control input-lg" id="nomClientem" name="nomClientem" style="border-radius: 5px;" placeholder="Editar nombre" required>
 
               </div>
 
@@ -229,8 +229,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="telefonoClim" name="telefonoClim" style="border-radius: 5px;" value="Ingresar número de teléfono" required>
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                <input type="text" class="form-control input-lg" id="telefonoClim" name="telefonoClim" style="border-radius: 5px;" placeholder="Editar número de teléfono" required>
 
               </div>
 
@@ -241,8 +241,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="email" class="form-control input-lg" id="emailm" name="emailm" style="border-radius: 5px;" value="Ingresar correo electrónico" required>
+              <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                <input type="email" class="form-control input-lg" id="emailm" name="emailm" style="border-radius: 5px;" placeholder="Editar correo electrónico" required>
 
               </div>
 
@@ -253,8 +253,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="direccionm" name="direccionm" style="border-radius: 5px;" value="Ingresar dirección" required>
+                <span class="input-group-addon"><i class="fa fa-map-marker"></i></span>
+                <input type="text" class="form-control input-lg" id="direccionm" name="direccionm" style="border-radius: 5px;" placeholder="Editar dirección" required>
 
               </div>
 

@@ -19,7 +19,7 @@
         </button>
 
         <div class="table-responsive roboto correrIzquierda">
-          <table class="table" id="tabla" data-sort="table">
+          <table class="table tableMostrar" id="tabla" data-sort="table">
             <thead>
                   <tr>
                         <th>Codigo</th>
@@ -134,7 +134,7 @@
             <div class="form-group">
 
               <div class="input-group">
-                  <span class="input-group-addon"><i class="fa fa-map"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-book"></i></span>
                   <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="descripcionActivo" name="descripcionActivo" placeholder="Ingresar descripción" >
 
               </div>
@@ -146,7 +146,7 @@
 
               <div class="input-group">
 
-                  <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-cog"></i></span>
                   <input type="text" style="border-radius: 5px;" class="form-control input-lg" id="estadoActivo" name="estadoActivo" placeholder="Ingresar estado" >
 
               </div>
@@ -164,7 +164,7 @@
 
               <div class="input-group">
 
-                  <span style="border-radius: 5px;" class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                  <span style="border-radius: 5px;" class="input-group-addon"><i class="fa fa-user"></i></span>
                   <!--<input type="text" class="form-control input-lg" name="empleado_id" placeholder="Ingresar cédula del empleado">-->
                   <select class="form-select input-lg" id="empleado_id" name="empleado_id" style="border-radius: 5px;" >
                   <option value="">Seleccionar Empleado.</option>
@@ -257,7 +257,7 @@
 
                             <div class="input-group">
 
-                                <span class="input-group-addon"><i class="fa fa-map"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-book"></i></span>
                                 <input type="text" class="form-control input-lg" id="descripcionActivom" name="descripcionActivom" style="border-radius: 5px;" value="Ingresar descripción" >
 
                             </div>
@@ -270,7 +270,7 @@
 
                             <div class="input-group">
 
-                                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-cog"></i></span>
                                 <input type="text" class="form-control input-lg" id="estadoActivom" name="estadoActivom" style="border-radius: 5px;" value="Ingresar estado" >
 
                             </div>
@@ -282,7 +282,7 @@
 
                             <div class="input-group">
 
-                                <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-user"></i></span>
                                 <!--<input type="text" class="form-control input-lg" id="empleado_idm" name="empleado_idm" value="Ingresar cédula del empleado" required>-->
                                 <select class="form-select input-lg" id="empleado_idm" name="empleado_idm" style="border-radius: 5px;" >
                                 <option value="">Seleccionar Empleado.</option>

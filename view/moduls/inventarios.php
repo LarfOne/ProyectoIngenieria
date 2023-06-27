@@ -15,7 +15,7 @@
 
   <div class="box-body">
   <div class="table-responsive roboto correrIzquierda">
-  <table class="table" id="tabla" data-sort="table">
+  <table class="table tableMostrar" id="tabla" data-sort="table">
     <thead>
                 <tr>
                     <th>Codigo</th>
@@ -56,7 +56,7 @@
             </button>
 
               <button class="btn btn-danger btnDelete btnDeleteInventario" codigoProductM = <?php echo $inventario1['idProducto']; ?> codigoInventarioM = <?php echo $inventario1['codigo']; ?>
-              ><i class="fa fa-times"></i></button>
+              <?php if ($_SESSION["role"] == "Usuario") { echo 'disabled'; } ?>><i class="fa fa-times"></i></button>
           </div>
 
         </td>

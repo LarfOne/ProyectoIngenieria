@@ -19,7 +19,12 @@
     </button>
   <div class="box-body">
   <div class="table-responsive roboto correrIzquierda">
-  <table class="table" id="tabla" data-sort="table">
+  <table class="table tableMostrar" id="tabla" data-sort="table">
+  <colgroup>
+        <col style="width: 30%;">
+        <col style="width: 30%;">
+        <col style="width: 30%;">
+      </colgroup>
     <thead>
                 <tr>
                     <th>Código</th>
@@ -99,8 +104,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameCategories" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar nombre" required>
+                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                <input type="text" class="form-control input-lg" id="nameCategories" name="nameCategories" style="border-radius: 5px;" placeholder="Ingresar Categoria" required>
               </div>
 
             </div>
@@ -165,8 +170,8 @@
 
               <div class="input-group">
 
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nameCategoriesm" style="border-radius: 5px;" name="nameCategoriesm" value="Ingresar nombre" required>
+                <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                <input type="text" class="form-control input-lg" id="nameCategoriesm" style="border-radius: 5px;" name="nameCategoriesm" placeholder="Editar Categoria" required>
 
               </div>
 

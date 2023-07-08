@@ -74,6 +74,7 @@ class ControllerProduct
 										$usuarioResponsable = $_SESSION["nombre"] . " " . $_SESSION["apellidos"];
 
 										$ruta = $_POST["fotoActualProducto"];
+										
 										if(isset($_FILES["imageProductosAjuste"]["tmp_name"]) && !empty($_FILES["imageProductosAjuste"]["tmp_name"])){	
 											list($ancho, $alto) = getimagesize($_FILES["imageProductosAjuste"]["tmp_name"]);
 											//var_dump($_FILES["image"]["tmp_name"]);
@@ -117,21 +118,44 @@ class ControllerProduct
 										$respuesta = Product::mdlUpdateProduct($datas);
 
 										if ($respuesta == "ok") {
-											echo "<script>
+
+											$table = "inventario";
+											$nuevaCantidad = intval($_POST["existenciaAjuste"]) + intval($_POST["cantProductoAjuste"]);
+											//array con los nuevos datos del inventario, que consisten en el código del inventario a modificar
+											$datasInventario = array("codigo" => $_POST["codigoInventarioAjuste"], 
+															"idSucursal" => $_POST["idSucursalAjuste"], 
+															"idProducto" =>  $_POST["idProductoAjuste"],    
+															"cantidad" => $nuevaCantidad);
+												// llama al método "mdlUpdateInventario" de la clase "Inventario" para realizar la actualización en la base de datos
+											$respuesta = Inventario::mdlUpdateInventario($table, $datasInventario);
+
+											if($respuesta == "ok"){
+												echo "<script>
+													Swal.fire({
+														title: 'El producto se modifico correctamente al inventario',
+														icon: 'success',
+													}).then((result) => {
+														window.location = 'inventarios';
+													})
+												</script>";
+
+											}else{
+												echo "<script>
 											
 												Swal.fire({
-													title: 'El producto se modificó correctamente',
-													icon: 'success',
+													title: 'No se puede modificar el producto al inventario',
+													icon: 'error',
 												}).then((result) => {
 													window.location = 'inventarios';
 												})
-											</script>";
-										
+												</script>";
+											}
+											
 										} else {
 											echo "<script>
 											
 											Swal.fire({
-												title: 'No se puede modificar el producto',
+												title: 'No se puede agregar el producto',
 												icon: 'error',
 											}).then((result) => {
 												window.location = 'inventarios';

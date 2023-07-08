@@ -8,7 +8,7 @@
 <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js"></script>
 
-<div id= "container pt-4" style="margin-top: 100px;">
+<div id= "container pt-4" style="margin: 100px 0px 0px 25px;">
   <!---<div class="container mt-3">-->
   <div class="content-wrapper" style="padding: 15px !important;">
   <div class="content-wrapper">
@@ -210,7 +210,7 @@
                 <span class="input-group-addon iconoFoto"><i class="fa fa-user-circle-o"></i> Subir Foto x</span>
                 <input type="file" class="imageUser" id="imageUser" name="imageUser">
                 <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
-                <img src="imagen/userDefault.png" class="img-thumbnail imageTemp" width="100px">
+                <img src="imagen/userDefault.png" class="img-thumbnail imageTempAdd" width="100px">
               </div>
             </div>
           </div>

@@ -23,7 +23,7 @@ class ControladorVentas{
 	static public function ctrCrearVenta(){
 			
 			if(!empty($_POST["listaProductos"])){
-
+				$array = json_decode($_POST['listaProductos'],true);
 				$table = "factura";
 				date_default_timezone_set("America/Costa_Rica");	
 				$fecha = date('Y-m-d H:i:s');
@@ -79,7 +79,6 @@ class ControladorVentas{
 			
 						}
 						
-						$array = json_decode($_POST['listaProductos'],true);
 						$table = "detallefactura";
 		
 						$respuesta = ModeloDetalle::mdlIngresarDetalle($table, $array, $idFactura);

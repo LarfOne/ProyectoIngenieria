@@ -18,33 +18,6 @@
             return $respuesta;
         }
 
-        static public function ctrUpdateInventario(){
-
-            if(isset($_POST["codigoInventarioAjuste"])){
-
-                    $table = "inventario";
-                    $nuevaCantidad = intval($_POST["existenciaAjuste"]) + intval($_POST["cantProductoAjuste"]);
-                     //array con los nuevos datos del inventario, que consisten en el código del inventario a modificar
-                    $datas = array("codigo" => $_POST["codigoInventarioAjuste"], 
-                                    "idSucursal" => $_POST["idSucursalAjuste"], 
-                                    "idProducto" =>  $_POST["idProductoAjuste"],    
-                                    "cantidad" => $nuevaCantidad);
-                        // llama al método "mdlUpdateInventario" de la clase "Inventario" para realizar la actualización en la base de datos
-                    $respuesta = Inventario::mdlUpdateInventario($table, $datas);
-                    
-                    if($respuesta == "ok"){
-                        echo "<script>
-                        
-                            Swal.fire({
-                                title: 'El inventario se modificó correctamente',
-                                icon: 'success',
-                            }).then((result) => {
-                                window.location = 'inventarios';
-                            })
-                        </script>";
-                    }
-            }
-        }
 
         static public function ctrDeleteInventario(){
             // verifica si el parámetro "codigoInventarioE" se ha establecido en la URL 

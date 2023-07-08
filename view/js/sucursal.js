@@ -66,7 +66,7 @@ $(".btnUpdateSucursal").click(function(){
             $("#telefonoSucursalm").val(respuesta["telefono"]);
             $("#emailSucursalm").val(respuesta["email"]);
 
-            console.log("respuesta", respuesta);
+
 
         }
 

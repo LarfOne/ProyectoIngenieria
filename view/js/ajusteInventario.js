@@ -87,7 +87,6 @@ formProductUpdate.addEventListener('submit', function(event) {
             processData: false,
             dataType: "json",
             success: function(respuesta){
-                console.log("respuestaP",respuesta);
                 // Resto del código que usa la respuesta de la llamada AJAX
                 $("#nameProductoAjuste").val(respuesta["nombre"]);
                 $("#marcaProductoAjuste").val(respuesta["marca"]);
@@ -100,7 +99,7 @@ formProductUpdate.addEventListener('submit', function(event) {
                 $("#obsProductoAjuste").val(respuesta["observaciones"]);
                 $("#fotoActualProducto").val(respuesta["image"]);
 
-                if(respuesta["image"] != null) {
+                if(respuesta["image"] != null && respuesta["image"] != "") {
                     $(".imageTempAjuste").attr("src", respuesta["image"]);
                 } else {
                     $(".imageTempAjuste").attr("src", "imagen/computadoraDefault.png");
@@ -224,7 +223,7 @@ $(".imageProductosAjuste").change(function() {
 
     var imagen = this.files[0];
 
-    console.log(this.files[0]);
+
 
     if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
 

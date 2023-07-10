@@ -187,7 +187,7 @@
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" value=0 min=0 max=100000000>
+                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
               </tr>

@@ -1,4 +1,4 @@
-let stock = "";
+let stock = 0;
 let codigoProducto = "";
 let codigoInventario = "";
 let descuento = "";
@@ -75,7 +75,7 @@ $(".btnAgregarProducto1").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-			console.log("respuestaAa",respuesta);
+
 			codigoInventario = respuesta["codigo"];
 			stock = respuesta["cantidad"];
 			llenarTablaVentas();
@@ -106,7 +106,6 @@ function llenarTablaVentas(){
 
 	let idProduct = document.getElementById("idProducto").value;
 	let cantidad = document.getElementById("cantidadProducto").value;
-
 	if(idProduct != ""){
 
 		if(cantidad != "" && cantidad > 0){
@@ -129,59 +128,92 @@ function llenarTablaVentas(){
 						
 						if(respuesta != false){//comprueba que existe el producto
 
-							//console.log("respuesta", respuesta);
-							codigoProducto = respuesta["codigo"];
-							let descripcion = respuesta["descripcion"];
-							let precio = respuesta["precioTotal"];
-							let subTotal = parseInt(precio)*cantidad;
-							
-							//verifica si existe el codigo del producto en la tabla de ventas
-							if ($('.tablita #listaP'+codigoProducto).length) { 
-								let tr = document.querySelector('#listaP'+codigoProducto);
 
-								let td = tr.querySelector('.cantidadProducto');
+							if(stock >= 1){
 
-								let cantidadProducto = parseInt(td.textContent) + parseInt(cantidad);
+								codigoProducto = respuesta["codigo"];
+								let descripcion = respuesta["descripcion"];
+								let precio = respuesta["precioTotal"];
+								let subTotal = parseInt(precio)*cantidad;
 
-								subTotal = parseInt(precio)*cantidadProducto;
 
-								//se modifica el contenido de la tabla
-								$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
+								//para entrar a if el stock tiene que ser mas grande o igual que las cantidades
+								if(stock >= parseInt(cantidad)){
 
-								$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
 
-								
+									
+									//verifica si existe el codigo del producto en la tabla de ventas
+									if ($('.tablita #listaP'+codigoProducto).length) { 
 
-							}else{
-								
-								$(".tablita").append(
+										let tr = document.querySelector('#listaP'+codigoProducto);
 
-									'<tr id="listaP'+codigoProducto+'">'+
-							
-										'<td>'+codigoProducto+'</td>'+
-										'<td class="descripcionProducto">'+descripcion+'</td>'+
-										'<td class="cantidadProducto">'+cantidad+'</td>'+
-										'<td class="descuentoProducto"><input class="descuentoInput" type="number" min="0" max="100" idProduct="'+codigoProducto+'" step="1" value="'+0+'"></td>'+
-										'<td class="precioProducto">'+precio+'</td>'+
-										'<td class="subTotalProducto">'+subTotal+'</td>'+
-										'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
-				
-									'</tr>')
+										let td = tr.querySelector('.cantidadProducto');
 
-							}
+										let cantidadProducto = parseInt(td.textContent) + parseInt(cantidad);
 
-							let tr = document.querySelector('#listaP' + codigoProducto); //selecionamos el tr por el codigo
+										subTotal = parseInt(precio)*cantidadProducto;
 
-							//console.log("listar Productos", tr);
-							
-							let descuento = tr.querySelector('.descuentoInput').value;
+										if(stock >= parseInt(cantidadProducto)){
+											//se modifica el contenido de la tabla
+											$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cantidadProducto);
+
+											$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotal);
+
+										}else{
+											Swal.fire({
+												title: '¡La cantidad del producto no es suficiente!',
+												showConfirmButton: true,
+												confirmButtonText: 'Cerrar',
+												closeOnConfirm: false,
+												icon: 'warning'
+											})
+										}
+
+									}else{
 										
-								getTotalSale();
-								listarProductos(descuento, codigoProducto, subTotal);	
-								cantidadMayorStock(cantidad)
-								
-								stock = "";
-								codigoInventario = "";
+										$(".tablita").append(
+
+											'<tr id="listaP'+codigoProducto+'">'+
+									
+												'<td>'+codigoProducto+'</td>'+
+												'<td class="descripcionProducto">'+descripcion+'</td>'+
+												'<td class="cantidadProducto">'+cantidad+'</td>'+
+												'<td class="descuentoProducto"><input class="descuentoInput" type="number" min="0" max="100" idProduct="'+codigoProducto+'" step="1" value="'+0+'"></td>'+
+												'<td class="precioProducto">'+precio+'</td>'+
+												'<td class="subTotalProducto">'+subTotal+'</td>'+
+												'<td><button type="button" class="btn btn-danger d-flex justify-content-center quitarProducto" style="width:40px; height:35px; text-align:center;" idProduct="'+codigoProducto+'"><i class="fa fa-times fa-xs"></i></button></td>'+
+						
+											'</tr>')
+
+									}
+
+									let tr = document.querySelector('#listaP' + codigoProducto); //selecionamos el tr por el codigo
+
+									
+									let descuento = tr.querySelector('.descuentoInput').value;
+												
+										getTotalSale();
+										listarProductos(descuento, codigoProducto, subTotal);
+										stock = "";
+										codigoInventario = "";
+								}else{
+									Swal.fire({
+										title: '¡La cantidad del producto no es suficiente!',
+										showConfirmButton: true,
+										confirmButtonText: 'Cerrar',
+										closeOnConfirm: false,
+										icon: 'warning'
+									})
+								}
+							}else{
+								Swal.fire({
+									title: '¡El producto que digito esta agotado!',
+									showConfirmButton: true,
+									confirmButtonText: 'Cerrar',
+									closeOnConfirm: false,
+									icon: 'warning'
+								})
+							}
 						}else{
 							
 							Swal.fire({
@@ -250,7 +282,7 @@ function sumarTotalPrecios(){
 
 
 	$("#nuevoSubTotalVenta").val(total);
-	//$("#nuevoTotalVenta").val(total);
+
 	return total;
 
 }
@@ -272,6 +304,18 @@ function Discount(){
 		$("#descuentoVenta").val(getDiscount());
 
 		$("#nuevoTotalVenta").val(fixedValue);
+
+		if ($('#nuevoPagoTarjeta').length) {
+			$("#nuevoPagoTarjeta").val(fixedValue);
+		}
+	
+		if ($('#nuevoPagoSinpe').length) {
+			$("#nuevoPagoSinpe").val(fixedValue);
+		}
+	
+		if ($('#nuevoPagoEfectivo').length) {
+			$("#nuevoPagoEfectivo").val(fixedValue);
+		}
 	}
 }
 
@@ -282,6 +326,8 @@ nuevoTotalVentaInput.addEventListener('blur', function() {
 
     nuevoTotalVentaInput.value = fixedValue;
 });
+
+
 
 
 $('.tablaD').on('blur', '#nuevoDescuentoVenta', function() {
@@ -333,6 +379,11 @@ $('.tablaD').on('blur', '#nuevoPagoTarjeta, #nuevoPagoSinpe, #nuevoPagoEfectivo'
 	}
 });
 
+function actualizarValorNuevoTotalVenta(nuevoValor) {
+    nuevoTotalVentaInput.value = nuevoValor;
+
+}
+
 
 
 /*======================================================
@@ -347,10 +398,22 @@ function Tax(){
 		let totalFinal = parseFloat(totalDiscount) + getTax();
 
 		let fixedValue = parseFloat(totalFinal).toFixed(2);
-		console.log(totalFinal);
+
 		
 		$("#impuestoVenta").val(getTax());
 		$("#nuevoTotalVenta").val(fixedValue);
+
+		if ($('#nuevoPagoTarjeta').length) {
+			$("#nuevoPagoTarjeta").val(fixedValue);
+		}
+	
+		if ($('#nuevoPagoSinpe').length) {
+			$("#nuevoPagoSinpe").val(fixedValue);
+		}
+	
+		if ($('#nuevoPagoEfectivo').length) {
+			$("#nuevoPagoEfectivo").val(fixedValue);
+		}
 	}
 }
 
@@ -384,43 +447,41 @@ function getTotalSale(){
 	total = total + getTax();
 
 	total = total - getDiscount();
-	//console.log("El total es",total);
+
 
 	$("#nuevoTotalVenta").val(total);
-}
 
-/*================================================================
-FUNCION PARA VERIFICAR SI HAY LOS SUFICIENTES PRODUCTOS EN STOCK
-==================================================================*/
+	if (document.getElementById("nuevoTotalVenta").value != "0") {
 
-function cantidadMayorStock(cantidadP){
 
-	let tr = document.querySelector('#listaP'+codigoProducto);
 
-	let td = tr.querySelector('.cantidadProducto');
+		let tarjetaPresente = $('#nuevoPagoTarjeta').length > 0;
+		let sinpePresente = $('#nuevoPagoSinpe').length > 0;
+		let efectivoPresente = $('#nuevoPagoEfectivo').length > 0;
 
-	let cantidades = td.textContent;
+		if ((tarjetaPresente && !sinpePresente && !efectivoPresente) ||
+			(!tarjetaPresente && sinpePresente && !efectivoPresente) ||
+			(!tarjetaPresente && !sinpePresente && efectivoPresente)) {
+			// Acciones adicionales cuando solo hay un elemento presente
+			if (tarjetaPresente) {
+				$("#nuevoPagoTarjeta").val(total);
 
-	if(stock < parseInt(cantidades)){
-		Swal.fire({
-			title: 'No hay suficientes productos en el inventario',
-			html: 'Verifica cuanta cantidad hay en stock.<br>',
-			showConfirmButton: true,
-			confirmButtonText: 'Cerrar',
-			closeOnConfirm: false,
-			icon: 'warning'
-		})
-		let cant = parseInt(cantidades) - parseInt(cantidadP);
-		$('.tablita #listaP'+codigoProducto+' td:eq(2)').text(cant);
+			}
 
-		let index = arrayProductos.findIndex(producto => producto.idProducto === codigoProducto);
+			if (sinpePresente) {
+				$("#nuevoPagoSinpe").val(total);
 
-		if (index !== -1) {
-			// Si el objeto ya existe, actualizamos su propiedad cantidad
-			arrayProductos[index].cantidad = cant;
+			}
+
+			if (efectivoPresente) {
+				$("#nuevoPagoEfectivo").val(total);
+
+			}
 		}
 	}
+
 }
+
 
 function quitarleCantidad(idProduct) {
 
@@ -454,8 +515,9 @@ $('.tableU').on('blur', '.descuentoInput', function() {
 
 	let subTotal = parseInt(precioUnitario)*cantidad;
 
-	console.log('blur',idProduct);										
+									
 	listarProductos(descuentoProducto, idProduct,subTotal);
+	//cantidadesProdu;
 	getTotalSale();
 });
 
@@ -468,10 +530,8 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 
 	let tr = document.querySelector('#listaP' + codigoProducto); //selecionamos el tr por el codigo
 
-	//console.log("listar Productos", tr);
 	let idInventario = codigoInventario;
 	let stockProducto = stock;
-	console.log("stock",stock);
 	let codigo = codigoProducto;
 	let descripcion = tr.querySelector('.descripcionProducto').textContent;
 	let cantidad = tr.querySelector('.cantidadProducto').textContent;
@@ -483,7 +543,7 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	let descuentoTotal = porcentajeDescuento * parseFloat(subTotal); // calcula la cantidad a restar del subtotal
 
 	let subTotalDescuento = parseFloat(subTotal) - descuentoTotal; // resta el descuento al subtotal original
-	console.log("subTotalDescuento",subTotalDescuento);
+
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
 	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);
 
@@ -496,6 +556,7 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 		$('.tablita #listaP'+codigoProducto+' td:eq(5)').text(subTotalDescuento);
 
 	} else {
+		
 		// Si el objeto no existe, lo agregamos al array
 		arrayProductos.push({
 			idInventario: idInventario,
@@ -508,8 +569,7 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 			descuento: descuento
 		});
 	}
-
-	console.log("lista de productos JSON", arrayProductos);
+	
 	$("#listaProductos").val(JSON.stringify(arrayProductos));
 
 }
@@ -527,10 +587,10 @@ $("#checkEfectivo, #checkTarjeta, #checkSinpe").change(function() {
         }
     }
 	    // Imprimir el arreglo actualizado (para fines de depuración)
-		console.log(metodosSeleccionados);
+
 
 		$("#listaMetodoPago").val(metodosSeleccionados);
-		console.log(document.getElementById("listaMetodoPago").textContent);
+
 		pagosVenta();
 });
 

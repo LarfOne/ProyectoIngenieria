@@ -160,7 +160,7 @@ $(".imageProductos").change(function() {
 
     var imagen = this.files[0];
 
-    console.log(this.files[0]);
+
 
     if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
 

@@ -231,6 +231,9 @@ $pdf->writeHTML($bloque3, false, false, false, false, '');
 
 
 foreach($respuestaDetalle as $key => $venta1){
+	$itemPro = "codigo";
+	$valorPro = $venta1["idProducto"];	
+	$respuestaPro = ControllerProduct::ctrShowProduct($itemPro, $valorPro);
 $bloque9 = <<<EOF
 
 
@@ -240,7 +243,7 @@ $bloque9 = <<<EOF
 
 		
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-			$venta1[idProducto]
+			$respuestaPro[nombre]
 			</td>
 			<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
 			$venta1[cantidad]

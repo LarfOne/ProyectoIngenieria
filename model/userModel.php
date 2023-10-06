@@ -138,11 +138,11 @@ class User{
             $sentenciaSQL->bindParam(':nombre', $datas["nombre"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':apellidos', $datas["apellidos"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':email', $datas["email"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
+            $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':cuentaBancaria', $datas["cuentaBancaria"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':direccion', $datas["direccion"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':estado', $datas["estado"], PDO::PARAM_STR);
-            $sentenciaSQL->bindParam(':role', $datas["role"], PDO::PARAM_STR);
-            $sentenciaSQL->bindParam(':password', $datas["password"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':telefono', $datas["telefono"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':image', $datas["image"], PDO::PARAM_STR);
             $sentenciaSQL->bindParam(':cedula', $datas["cedula"], PDO::PARAM_STR);

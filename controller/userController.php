@@ -77,7 +77,7 @@
                             if(preg_match('/^[a-zA-Z0-9]{8,20}$/', $_POST["passwordUser"])){ //solo acepta numeros y letras entre 8 y 20 digitos
                                 if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailUser"])){ //acepta un correo valido
                                     if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["cuentaUser"])){
-                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,200}$/', $_POST["directionUser"])){
+                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ, ]{1,200}$/', $_POST["directionUser"])){
                                             if(preg_match('/^[0-9]{1,8}$/', $_POST["telefonoUser"])){
                                                 //crypt de PHP para cifrar la contraseña del usuario y almacenarla en una variable.
                                                 $incrypt = crypt($_POST["passwordUser"], '$2a$07$usesomesillystringforsalt$');
@@ -199,7 +199,7 @@
                             preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["lastNameUserm"])){ //solo acepta letras
                                 if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailUserm"])){ //acepta un correo valido
                                     if(preg_match('/^[a-zA-Z0-9]{1,45}$/', $_POST["cuentaUserm"])){
-                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,200}$/', $_POST["directionUserm"])){
+                                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ, ]{1,200}$/', $_POST["directionUserm"])){
                                             if(preg_match('/^[0-9]{1,8}$/', $_POST["telefonoUserm"])){
                                                 
                                                 $table = "empleado";
@@ -209,42 +209,47 @@
 
                                                 $ruta = $_POST["fotoActual"];
 
-                                                if(isset($_FILES["imageUpdateUser"]["tmp_name"]) && !empty($_FILES["imageUpdateUser"]["tmp_name"])){
+                                                if($ruta != null  || $ruta == ""){
+                                                    if(isset($_FILES["imageUpdateUser"]["tmp_name"]) && !empty($_FILES["imageUpdateUser"]["tmp_name"])){
 
-                                                    list($ancho, $alto) = getimagesize($_FILES["imageUpdateUser"]["tmp_name"]);
-
-                                                    //var_dump($_FILES["image"]["tmp_name"]);
-
-                                                    $directorio = "imagen/perfil/";
-                                                    if (!file_exists($directorio)) {
-                                                        mkdir($directorio, 0755);
-                                                    }
-
-                                                    if($_FILES["imageUpdateUser"]["type"] == "image/jpeg"){
-                                                        $ruta = "imagen/perfil/".$_POST["idUserm"].".jpg";
-                                                    
-                                                        $origen = imagecreatefromjpeg($_FILES["imageUpdateUser"]["tmp_name"]);
-                                                        $destino = imagecreatetruecolor($ancho, $alto);
-
-                                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
-
-                                                        imagejpeg($destino, $ruta);
-                                                    }
-
-                                                    if($_FILES["imageUpdateUser"]["type"] == "image/png"){
+                                                        list($ancho, $alto) = getimagesize($_FILES["imageUpdateUser"]["tmp_name"]);
+    
+                                                        //var_dump($_FILES["image"]["tmp_name"]);
+    
+                                                        $directorio = "imagen/perfil/";
+                                                        if (!file_exists($directorio)) {
+                                                            mkdir($directorio, 0755);
+                                                        }
+    
+                                                        if($_FILES["imageUpdateUser"]["type"] == "image/jpeg"){
+                                                            $ruta = "imagen/perfil/".$_POST["idUserm"].".jpg";
                                                         
-                                                        $ruta = "imagen/perfil/".$_POST["idUserm"].".png";
-                                                    
-                                                        $origen = imagecreatefrompng($_FILES["imageUpdateUser"]["tmp_name"]);
-                                                        $destino = imagecreatetruecolor($ancho, $alto);
-
-                                                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
-
-                                                        imagepng($destino, $ruta);
+                                                            $origen = imagecreatefromjpeg($_FILES["imageUpdateUser"]["tmp_name"]);
+                                                            $destino = imagecreatetruecolor($ancho, $alto);
+    
+                                                            imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+    
+                                                            imagejpeg($destino, $ruta);
+                                                        }
+    
+                                                        if($_FILES["imageUpdateUser"]["type"] == "image/png"){
+                                                            
+                                                            $ruta = "imagen/perfil/".$_POST["idUserm"].".png";
+                                                        
+                                                            $origen = imagecreatefrompng($_FILES["imageUpdateUser"]["tmp_name"]);
+                                                            $destino = imagecreatetruecolor($ancho, $alto);
+    
+                                                            imagecopyresized($destino, $origen, 0, 0, 0, 0, $ancho, $alto, $ancho, $alto);
+    
+                                                            imagepng($destino, $ruta);
+                                                        }
+                                                        
+    
                                                     }
-                                                    
-
+                                                }else{
+                                                    $ruta = null;
                                                 }
+                                                
 
 
                                                 /**CAMBIAR CONTRASEÑA */

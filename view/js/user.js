@@ -102,15 +102,11 @@ if(formUserAdd !== null && formUserUpdate != null){
     });
     }
 
-/* setInterval(function() {
-    console.log("hola");
-}, 5000); */
 
 /**EDITAR USUARIO */
 
 $(".btnUpdateUser").click(function() {
     let idEmpleado = $(this).attr("idEmpleado");
-    console.log("idEmpleado", idEmpleado);
 
     let datas = new FormData();
 
@@ -128,7 +124,7 @@ $(".btnUpdateUser").click(function() {
         success: function(respuesta) {
             role = respuesta["role"];
             roleUsuario = document.getElementById("sessionRole").value;
-            console.log("respuesta", respuesta);
+
             if(respuesta["role"] === "SuperAdmin" && (roleUsuario === "Administrador" || roleUsuario === "Usuario")){
 
                 $("#idUserm").val(respuesta["cedula"]);
@@ -143,10 +139,15 @@ $(".btnUpdateUser").click(function() {
                 $("#estadoUserm").val(respuesta["estado"]);
                 $("#telefonoUserm").val(respuesta["telefono"]);
                 $("#fotoActual").val(respuesta["image"]);
-                if (respuesta["image"] != null) {
-                    $(".imageTemp").attr("src", respuesta["image"]);
-                } else {
+
+                if (respuesta["image"] != null && respuesta["image"] != "") {
+
+
+
+                }else{
+
                     $(".imageTemp").attr("src", "imagen/userDefault.png");
+                    
                 }
 
                 $('#idUserm').prop('readonly', true);
@@ -171,16 +172,18 @@ $(".btnUpdateUser").click(function() {
                 $("#sucursalUserm").val(respuesta["idSucursal"]);
                 $("#emailUserm").val(respuesta["email"]);
                 $("#roleUserm").val(respuesta["role"]);
-                //$("#passwordUserm").val(respuesta["password"]);
                 $("#passwordActual").val(respuesta["password"]);
                 $("#cuentaUserm").val(respuesta["cuentaBancaria"]);
                 $("#directionUserm").val(respuesta["direccion"]);
                 $("#estadoUserm").val(respuesta["estado"]);
                 $('#telefonoUserm').val(respuesta["telefono"]);
                 $("#fotoActual").val(respuesta["image"]);
-                if (respuesta["image"] != null) {
+                if (respuesta["image"] != null && respuesta["image"] != "") {
+
                     $(".imageTemp").attr("src", respuesta["image"]);
-                } else {
+                    
+                }else{
+
                     $(".imageTemp").attr("src", "imagen/userDefault.png");
                 }
 
@@ -200,7 +203,6 @@ $(".btnUpdateUser").click(function() {
                 $('#btnModificarUser').prop('disabled', false);
             }
             
-            //$("#passwordActual").val(respuesta["password"]);
 
         }
 
@@ -232,8 +234,6 @@ $(".btnDeleteUser").click(function() {
 $(".imageUser").change(function() {
 
     let imagen = this.files[0];
-
-    console.log(this.files[0]);
 
     if (imagen["type"] != "image/png" && imagen["type"] != "image/jpg" && imagen["type"] != "image/jpeg") {
 

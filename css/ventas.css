@@ -236,8 +236,8 @@ color: white;
     border: none;
     color: white;
     height: 65px;
-    background-color: #2ecc71;
-    box-shadow: 0px 5px 0px 0px #15B358;
+    background-color: #27854e;
+    box-shadow: 0px 5px 0px 0px #1c3c29;
     
 }
 
@@ -249,17 +249,17 @@ color: white;
     font-size: larger;
     
     color: black; 
-    border: 2px solid #f44336;
-    background-color: #e74c3c;
-   box-shadow: 0px 5px 0px 0px #CE3323;
+    border: 2px solid#cd2b19;
+    background-color: #cd2b19;
+    box-shadow: 0px 5px 0px 0px #781f15;
 
 }
 .btnVentaGuardar:hover{
-    background-color: #48E68B;
+    background-color: #36a765;
 }
 
 .btnVentaCancelar:hover {
-    background-color: #FF6656;
+    background-color: #f34531;
 }
 
 .btn1 {

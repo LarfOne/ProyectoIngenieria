@@ -33,7 +33,7 @@ if(modalAddUnit != null && modalUpdateUnit != null){
 $(".btnUpdateUnit").click(function(){
     var idUnit = $(this).attr("idUnit");
     var datas = new FormData();
-    console.log(idUnit);
+
     datas.append("idUnit", idUnit);
 
     $.ajax({
@@ -46,7 +46,7 @@ $(".btnUpdateUnit").click(function(){
         processData: false,
         dataType: "json",
         success: function(respuesta){
-            console.log("respuesta", respuesta);
+
             $("#idUnitm").val(respuesta["codigo"]);
             $("#nameUnitm").val(respuesta["nombre"]);
             

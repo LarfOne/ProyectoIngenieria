@@ -17,7 +17,7 @@
  	</div>
  	<div class="main">
 
- 		<form method="post">
+		<form method="post">
  			<span>
  				<i class="fa fa-user"></i>
  				<input type="text" placeholder="Nombre de Usuario" name="ingUser" style="border-radius: 7px;">
@@ -27,20 +27,20 @@
  				<input type="password" placeholder="Contraseña" name="ingPassword" style="border-radius: 7px;">
  			</span><br>
       
-      <div class="row">
-        
-        <button style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important; border-radius: 7px;">Ingresar</button>
-        
-      </div>
+			<div class="row">
+				
+				<button style="text-align:center; font-family: 'Roboto Condensed', sans-serif !important; border-radius: 7px;">Ingresar</button>
+				
+			</div>
 
 
-    <?php
-       
-       $login = new ControllerUser();
-       $login->ctrLoginUser();
-    ?>
+			<?php
+			
+			$login = new ControllerUser();
+			$login->ctrLoginUser();
+			?>
 
- 		</form>
+		</form>
 
  	</div>
  </div>

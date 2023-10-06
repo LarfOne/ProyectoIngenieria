@@ -16,7 +16,7 @@
 
                 if(preg_match('/^[0-9]{1,18}$/', $_POST["idSucursal"]) && 
                     preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["nameSucursal"])){
-                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,200}$/', $_POST["direccionSucursal"])){
+                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ, ]{1,200}$/', $_POST["direccionSucursal"])){
                             if(preg_match('/^[0-9]{1,10}$/', $_POST["telefonoSucursal"])){
                                 if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailSucursal"])){
                                     
@@ -77,7 +77,7 @@
 
                 if(preg_match('/^[0-9]{1,18}$/', $_POST["idSucursalm"]) && 
                     preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["nameSucursalm"])){
-                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ ]{1,200}$/', $_POST["direccionSucursalm"])){
+                        if(preg_match('/^[a-zA-Z0-9ÑñáéíóúÁÉÍÓÚ, ]{1,200}$/', $_POST["direccionSucursalm"])){
                             if(preg_match('/^[0-9]{1,10}$/', $_POST["telefonoSucursalm"])){
                                 if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailSucursalm"])){
                                     //Los datos a actualizar se guardan en un arreglo $datas

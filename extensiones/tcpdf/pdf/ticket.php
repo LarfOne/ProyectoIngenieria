@@ -88,19 +88,20 @@ require_once('tcpdf_include.php');
 
 //  TICKETE DE COMPRA
 
-$medidas = array(80, 150); // Ajustar aqui segun los milimetros necesarios;
+$medidas = array(80, 120); // Medidas en milímetros (Ancho x Alto)
 
 $pdf = new TCPDF('P', 'mm', $medidas, true, 'UTF-8', false);
 $ancho_maximo = 80; // en mm
-$tamano_fuente = 10; // tamaño de fuente inicial
-$pdf->SetMargins(5, 0, 5);
+$tamano_fuente = 9; // tamaño de fuente inicial
+$pdf->SetMargins(7, 0, 7);
 $pdf->SetFont('helvetica', '', $tamano_fuente);
-$pdf->Cell(0, 10, $texto, 0, 1);
-$pdf->setPrintHeader(false); //para eliminar la linea superio del pdf por defecto y tambien ej hearder
+$pdf->SetAutoPageBreak(false); // Desactivar salto de página automático
+$pdf->setPrintHeader(false);
 $pdf->startPageGroup();
 $pdf->SetTitle('Tikete de compra');
 
 $pdf->AddPage();
+
 
 
 
@@ -110,7 +111,7 @@ $bloque1 = <<<EOF
 <table>	
 		<tr>
 			<td style="background-color:white;">
-        <h2>MOUSELAMP</h2>
+        <h2>MOUSE LAMP</h2>
 				<div style="font-size:8.5px; text-align:left; line-height:15px;">
 					Codigo Factura: $valorFac
 					<br>
@@ -216,6 +217,9 @@ EOF;
 $pdf->writeHTML($bloque3, false, false, false, false, '');
 
 foreach($respuestaDetalle as $key => $venta1){
+	$itemPro = "codigo";
+	$valorPro = $venta1["idProducto"];	
+	$respuestaPro = ControllerProduct::ctrShowProduct($itemPro, $valorPro);
 
 	$bloque9 = <<<EOF
 	
@@ -224,7 +228,7 @@ foreach($respuestaDetalle as $key => $venta1){
 			<tr>
 			
 				 <td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
-				 $venta1[idProducto]
+				 $respuestaPro[nombre]
 				 </td>
 				<td style="border: 1px solid #666; color:#333; background-color:white; width:260px; text-align:center">
 				$venta1[cantidad]

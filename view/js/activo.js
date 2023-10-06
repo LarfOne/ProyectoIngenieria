@@ -45,7 +45,6 @@ if(formAddActivo !== null && formUpdateActivo !== null) {
 
 $(".btnUpdateActivo").click(function(){
     var codigo = $(this).attr("codigo");
-    //console.log("activo id", codigo);
 
     var datas = new FormData();
 
@@ -68,7 +67,6 @@ $(".btnUpdateActivo").click(function(){
             $("#estadoActivom").val(respuesta["estado"]);
             $("#empleado_idm").val(respuesta["empleado_id"]);
 
-            console.log("respuesta", respuesta);
 
         }
 

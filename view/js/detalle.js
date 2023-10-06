@@ -17,7 +17,7 @@ $(".btnImprimirTicket").click(function(){
         dataType: "json",
         success: function(respuesta){
 
-            console.log("respuesta", respuesta);
+
 
         }
 
@@ -44,7 +44,6 @@ $(".btnImprimirFactura").click(function(){
         dataType: "json",
         success: function(respuesta){
 
-            console.log("respuesta", respuesta);
 
         }
 

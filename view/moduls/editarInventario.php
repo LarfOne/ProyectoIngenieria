@@ -44,45 +44,45 @@
 
                         <!-- Mandar a traer las sucursales -->
                         <?php
-                        $item = null;
-                        $valor = null;
-                        $sucursal = ControllerSucursal::ctrShowSucursal($item, $valor);
+                              $item = null;
+                              $valor = null;
+                              $sucursal1 = ControllerSucursal::ctrShowSucursal($item, $valor);
                         ?>
+
                         <div class="col mt-5 mr-5">
-                              <label>Sucursal</label>
-                              <select class="form-select input-lg mt-2" id="idSucursalAjuste" name="idSucursalAjuste" <?php if ($_SESSION["role"] == "Usuario") { echo 'disabled'; } ?>>
-                                    
-                              <option value="" >Seleccionar sucursal.</option>
-                              <?php foreach ($sucursal as $sucursal1) { ?>
-                              
-                                          <option value=<?php echo $sucursal1['codigo'] ?>><?php echo $sucursal1['nombre'] ?></option>
-                                    <?php } ?>
-                              </select>
+                        <label>Sucursal</label>
+                        <select class="form-select input-lg mt-2 <?php echo ($_SESSION["role"] == "Usuario") ? 'disabled' : ''; ?>" id="idSucursalAjuste" name="idSucursalAjuste">
+                              <option value="">Seleccionar sucursal.</option>
+                              <?php foreach ($sucursal1 as $sucursal2) { ?>
+                                    <option value="<?php echo $sucursal2['codigo'] ?>"><?php echo $sucursal2['nombre'] ?></option>
+                              <?php } ?>
+                        </select>
                         </div>
 
 
                         <!-- Mandar a traer las unidades -->
                         <?php
-                        $item = null;
-                        $valor = null;
-                        $unit = ControllerUnit::ctrShowUnit($item, $valor);
+                              $item = null;
+                              $valor = null;
+                              $unit = ControllerUnit::ctrShowUnit($item, $valor);
                         ?>
 
                         <div class="col mt-5 mr-5">
                               <label>Unidad</label>
-                              <select class="form-select input-lg mt-2" id="unitProductoAjuste" name="unitProductoAjuste" <?php if ($_SESSION["role"] == "Usuario") { echo 'disabled'; } ?>>
-                              <option value="" >Seleccionar unidad.</option>
+                              <select class="form-select input-lg mt-2 <?php echo ($_SESSION["role"] == "Usuario") ? 'disabled' : ''; ?>" id="unitProductoAjuste" name="unitProductoAjuste" >
+                                    <option value="">Seleccionar unidad.</option>
                                     <?php foreach ($unit as $unit1) { ?>
                                           <option value=<?php echo $unit1['codigo'] ?>><?php echo $unit1['nombre'] ?></option>
                                     <?php } ?>
-
                               </select>
-
                         </div>
+
+
                         <div class="col mt-5 mr-5">
                               <label>Porcentaje de IVA</label>
                               <input class="form-control input-sm mt-2" type="number" id="porcProductoAjuste" value="13" name="porcProductoAjuste" placeholder="Ingresar porcentaje" <?php if ($_SESSION["role"] == "Usuario") { echo 'readonly'; } ?>>
                         </div>
+
                   </div>
 
                   <?php
@@ -112,7 +112,7 @@
 
                         <div class="col mt-5 mr-5 align-self-center w-25 p-3">
                               <label>Categoría.</label>
-                              <select class="form-select input-lg mt-2 selectC" id="cateProductoAjuste" name="cateProductoAjuste" <?php if ($_SESSION["role"] == "Usuario") { echo 'disabled'; } ?>>
+                              <select class="form-select input-lg mt-2 selectC <?php echo ($_SESSION["role"] == "Usuario") ? 'disabled' : ''; ?>" id="cateProductoAjuste" name="cateProductoAjuste" >
                                     <option value="" >Seleccionar categoría.</option>
                                     <?php foreach ($category as $category1) { ?>
                                           <option value=<?php echo $category1['codigo'] ?>><?php echo $category1['nombre'] ?></option>
@@ -127,7 +127,7 @@
                         
                         <div class="col mt-5 mr-5">
                               <label>Foto del producto.</label>
-                              <input type="file" class="form-control input-sm mt-2 imageProductosAjuste" id="imageProductosAjuste" name="imageProductosAjuste" <?php if ($_SESSION["role"] == "Usuario") { echo 'readonly'; } ?>>
+                              <input type="file" class="form-control input-sm mt-2 imageProductosAjuste" id="imageProductosAjuste" name="imageProductosAjuste" <?php if ($_SESSION["role"] == "Usuario") { echo 'disabled'; } ?>>
                               <p class="help-block pesoText">Peso maximo de la foto 10MB</p>
                               <img src="imagen/computadoraDefault.png" class="img-thumbnail imageTempAjuste" width="100px">
                               <input type="hidden" name="fotoActualProducto" id="fotoActualProducto">
@@ -147,14 +147,10 @@
                         
                   </div>
 
-                <?php
-
+                  <?php
                         $updateProducto = new ControllerProduct;
                         $updateProducto -> ctrUpdateProduct();
-
-                        $updateInventario = new ControllerInventario;
-                        $updateInventario -> ctrUpdateInventario();
-                ?>
+                  ?>
 
             </form>
       </div>

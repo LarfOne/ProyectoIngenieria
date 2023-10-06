@@ -47,7 +47,7 @@ if(formClienteAdd !== null && formClienteUpdate !== null) {
 $(".btnUpdateClient").click(function(){
     var idClient = $(this).attr("idClient");
     var datas = new FormData();
-    console.log("idClient", idClient);
+
     datas.append("idClient", idClient);
 
     $.ajax({
@@ -67,7 +67,7 @@ $(".btnUpdateClient").click(function(){
             $("#emailm").val(respuesta["email"]);
             $("#direccionm").val(respuesta["direccion"]);
 
-            //console.log("respuesta", respuesta);
+
 
         }
 

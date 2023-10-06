@@ -187,10 +187,9 @@
                 <td>
                   <div class="input-group">
                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                    <input type="text" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" value=0 min=0 max=100000000 readonly>
+                    <input type="number" class="form-control input-lg" id="nuevoTotalVenta" name="nuevoTotalVenta" value=0 min=0 max=100000000 readonly>
                   </div>
                 </td>
-
               </tr>
             </tbody>
           </table>
@@ -204,7 +203,7 @@
 
           <button type="button" class="btn1 btnVentaCancelar">Cancelar</button>
 
-          <button type="submit" class="btn1  btnVentaGuardar">Guardar</button>
+          <button type="submit" class="btn1 btnVentaGuardar">Guardar</button>
         </a>
       </div>
 

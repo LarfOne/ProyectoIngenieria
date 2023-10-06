@@ -49,9 +49,6 @@ $(".btnUpdateCategories").click(function(){
 
             $("#idCategoriesm").val(respuesta["codigo"]);
             $("#nameCategoriesm").val(respuesta["nombre"]);
-            
-
-            console.log("respuesta", respuesta);
 
         }
 

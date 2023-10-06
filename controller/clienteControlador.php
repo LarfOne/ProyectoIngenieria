@@ -20,7 +20,7 @@ class ControllerClient{
 			if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["idCliente"])){
 				if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,70}$/', $_POST["nomCliente"])){
 					if(preg_match('/^[0-9]{1,8}$/', $_POST["telefonoCli"])){
-						if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["direccion"])){
+						if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ, ]{1,45}$/', $_POST["direccion"])){
 							if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["email"])){ //acepta un correo valido
 								$table = "cliente";
 
@@ -80,7 +80,7 @@ class ControllerClient{
 			if(preg_match('/^[a-zA-Z0-9]{1,20}$/', $_POST["idClientem"])){
 				if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,70}$/', $_POST["nomClientem"])){
 					if(preg_match('/^[0-9]{1,20}$/', $_POST["telefonoClim"])){
-						if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ ]{1,45}$/', $_POST["direccionm"])){
+						if(preg_match('/^[a-zA-ZÑñáéíóúÁÉÍÓÚ, ]{1,45}$/', $_POST["direccionm"])){
 							if(preg_match('/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/', $_POST["emailm"])){ //acepta un correo valido
 
 									$table = "cliente";

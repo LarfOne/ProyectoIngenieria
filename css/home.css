@@ -69,7 +69,7 @@ section {
 /******************CARDS DEL INICIO*************************************/
 
 .card-img {
-    width: 30%; /* ajuste el tamaño de las imágenes */
+    width: 20%; /* ajuste el tamaño de las imágenes */
     margin: 0 auto; /* centrar la imagen dentro de su contenedor */
   }
   

@@ -432,31 +432,19 @@ function getTax(){
 }
 
 function getDiscount() {
-    // Obtén el descuento ingresado como un número entero
-    let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
+    const nuevoDescuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
+    
+    
+    const porcentajeDescuento = Math.max(0, 1 + (nuevoDescuentoVenta / 100));
 
-    // Convierte el descuento a un factor multiplicador de porcentaje	
-    let porcentajeDescuento = 1 + (descuentoVenta / 100);
+    const totalPrecios = sumarTotalPrecios();
+    
+    const descuentoTotal = Math.round(totalPrecios * (1 - 1 / porcentajeDescuento));
 
-	//let porcentajeDescuento = 1.13;
 
-    // Asegúrate de que el porcentajeDescuento sea al menos 0 (sin descuento negativo)
-    if (porcentajeDescuento <= 0) {
-        porcentajeDescuento = 0;
-    }
-    console.log("porcentajeDescuento: ", porcentajeDescuento);
-
-    // Obtén el total de precios sumados
-    let totalPrecios = sumarTotalPrecios();
-
-    // Calcula el descuento aplicado al total de precios
-    let descuentoTotal = (totalPrecios / porcentajeDescuento).toFixed(0);
-
-	let precioDescuento = totalPrecios-descuentoTotal;
-    console.log("descuentoTotal: ", precioDescuento);
-
-    return precioDescuento;
+    return descuentoTotal;
 }
+
 
 function getTotalSale(){
 	let total = parseFloat(sumarTotalPrecios());
@@ -556,10 +544,44 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
 	let subTotal = subTotalP;
 	let descuento = parseInt(descuentoProducto);
 
-	let porcentajeDescuento = descuento / 100; // convierte el descuento a un porcentaje
-	let descuentoTotal = porcentajeDescuento * parseFloat(subTotal); // calcula la cantidad a restar del subtotal
 
-	let subTotalDescuento = parseFloat(subTotal) - descuentoTotal; // resta el descuento al subtotal original
+/////////////////////////////////////////////////////////
+
+
+	//let porcentajeDescuento = descuento / 100; // convierte el descuento a un porcentaje
+
+	let porcentajeDescuento = 1 + (descuento / 100);
+
+	if (porcentajeDescuento <= 0) {
+        porcentajeDescuento = 0;
+    }
+
+
+
+	let descuentoTotal = (parseFloat(subTotal)/porcentajeDescuento).toFixed(0); // calcula la cantidad a restar del subtotal
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////
+
+console.log("valor 1: "+ descuentoTotal);
+
+console.log("valor 2: "+ porcentajeDescuento);
+
+	let subTotalDescuento =  descuentoTotal; // resta el descuento al subtotal original
+
+	console.log("valor 3: "+ subTotalDescuento);
+
+
+
+	
 
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
 	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);

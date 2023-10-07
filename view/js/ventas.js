@@ -431,14 +431,31 @@ function getTax(){
 	return impuestoTotal;
 }
 
-function getDiscount(){
+function getDiscount() {
+    // Obtén el descuento ingresado como un número entero
+    let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
 
-	let descuentoVenta = parseInt(document.getElementById("nuevoDescuentoVenta").value);
-	let porcentajeDescuento = descuentoVenta / 100;
-	let descuentoTotal = porcentajeDescuento * parseFloat(sumarTotalPrecios());
+    // Convierte el descuento a un factor multiplicador de porcentaje	
+    let porcentajeDescuento = 1 + (descuentoVenta / 100);
 
-	return descuentoTotal;
+	//let porcentajeDescuento = 1.13;
 
+    // Asegúrate de que el porcentajeDescuento sea al menos 0 (sin descuento negativo)
+    if (porcentajeDescuento <= 0) {
+        porcentajeDescuento = 0;
+    }
+    console.log("porcentajeDescuento: ", porcentajeDescuento);
+
+    // Obtén el total de precios sumados
+    let totalPrecios = sumarTotalPrecios();
+
+    // Calcula el descuento aplicado al total de precios
+    let descuentoTotal = (totalPrecios / porcentajeDescuento).toFixed(0);
+
+	let precioDescuento = totalPrecios-descuentoTotal;
+    console.log("descuentoTotal: ", precioDescuento);
+
+    return precioDescuento;
 }
 
 function getTotalSale(){

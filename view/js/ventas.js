@@ -556,33 +556,10 @@ function listarProductos(descuentoProducto, codigoProducto, subTotalP){
         porcentajeDescuento = 0;
     }
 
-
-
 	let descuentoTotal = (parseFloat(subTotal)/porcentajeDescuento).toFixed(0); // calcula la cantidad a restar del subtotal
 
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////
-
-console.log("valor 1: "+ descuentoTotal);
-
-console.log("valor 2: "+ porcentajeDescuento);
-
 	let subTotalDescuento =  descuentoTotal; // resta el descuento al subtotal original
-
-	console.log("valor 3: "+ subTotalDescuento);
-
-
-
 	
-
 	// Buscamos el objeto en el array de arrayProductos con el mismo id
 	let index = arrayProductos.findIndex(producto => producto.idProducto === codigo);
 
